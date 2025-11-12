@@ -1,0 +1,43 @@
+.button {
+    font-family: 'Inria Serif';
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #FFC2A1;
+    width: max-content;
+    height: 25px;
+    border-radius: 20px;
+    border: 0;
+    padding: 0 10px;
+    transition: opacity 0.4s;
+}
+.button.iconify-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button:hover {
+    cursor: pointer;
+    opacity: 75%;
+}
+
+.filter-button::before{
+    content: "";
+    background:  url("../img/properties.svg") center center no-repeat;
+    width: 25px;
+    height: 100%;
+}
+.button.reset {
+    border-radius: 0px;
+    border-left: 2px solid #00000093;
+    background: none;
+    padding: 0 14px;
+    color: #00000093;
+}
+
+.specific-filter-button::after{
+    content: "";
+    background: url("../img/arrow.svg") center center no-repeat;
+    width: 25px;
+    height: 40%;
+}
