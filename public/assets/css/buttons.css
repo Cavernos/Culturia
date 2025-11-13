@@ -8,12 +8,9 @@
     border-radius: 20px;
     border: 0;
     padding: 0 10px;
+    line-height: 25px;
     transition: opacity 0.4s;
-}
-.button.iconify-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    vertical-align: middle;
 }
 
 .button:hover {
@@ -21,12 +18,15 @@
     opacity: 75%;
 }
 
-.filter-button::before{
-    content: "";
+.filter-button.iconify-button::before{
+    float: left;
+    content: "";  
     background:  url("../img/properties.svg") center center no-repeat;
     width: 25px;
     height: 100%;
+    margin-right: 3px;
 }
+
 .button.reset {
     border-radius: 0px;
     border-left: 2px solid #00000093;
@@ -35,8 +35,11 @@
     color: #00000093;
 }
 
-.specific-filter-button::after{
+.specific-filter-button.iconify-button::after{
+    float: right;
+    vertical-align: middle;
     content: "";
+    margin: 7.5px 0 7.5px 3px;
     background: url("../img/arrow.svg") center center no-repeat;
     width: 25px;
     height: 40%;

@@ -1,5 +1,6 @@
 @import url("./card.css");
 @import url("./buttons.css"); 
+@import url("./shop.css");
 @font-face {
         font-family: "Inria Serif";
         src: url("../font/InriaSerif-Regular.ttf") format('truetype');
@@ -11,26 +12,7 @@ body {
     margin: 0;
     background-color: #F3E9DA;  
 }
-.container {
-    padding: 10px;
-    display: flex;
-    align-content: flex-start;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
 
-.filter-panel {
-    padding: 10px;
-    white-space: nowrap;
-}
-
-.filter-panel div {
-    margin: 0 7px;
-    display: inline-block;
-    width: fit-content;
-    vertical-align: middle;
-    overflow: hidden;
-}
 div.right {
     margin: 0;
 }
