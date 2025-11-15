@@ -1,12 +1,14 @@
 @import url("./card.css");
 @import url("./buttons.css"); 
 @import url("./shop.css");
+@import url("./carousel.css");
 @font-face {
         font-family: "Inria Serif";
         src: url("../font/InriaSerif-Regular.ttf") format('truetype');
 }
-:root {
+* {
     font-family: "Inria Serif";
+    box-sizing: border-box;
 }
 body {
     margin: 0;

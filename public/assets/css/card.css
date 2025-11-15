@@ -13,10 +13,12 @@
 }
 
 .card .card-container .card-image {
+    display: inline-block;
     background-color: grey;
+    text-align: center;
     width: 100%;
     height: 60%;
-    
+    line-height: 30cqh;
 }
 
 .card-container .card-title {

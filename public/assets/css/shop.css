@@ -1,7 +1,9 @@
 .container {
     padding: 10px;
     display: flex;
-    align-content: flex-start;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
 }
