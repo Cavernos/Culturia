@@ -8,13 +8,25 @@
         font-family: "Inria Serif";
         src: url("../font/InriaSerif-Regular.ttf") format('truetype');
 }
+:root {
+    --default-font: "Inria Serif";
+    --backgroung-color: #F3E9DA;
+    --default-font-weight: bold;
+    --button-background-color: #FFC2A1;
+    --carousel-marker-group-background-color: #371818;
+    --carousel-marker-background-color: #B2785F;
+}
+html {
+    font-size: 62.5%;
+}
 * {
-    font-family: "Inria Serif";
+    
+    font-family: var(--default-font);
     box-sizing: border-box;
 }
 body {
     margin: 0;
-    background-color: #F3E9DA;  
+    background-color: var(--backgroung-color);  
 }
 
 div.right {

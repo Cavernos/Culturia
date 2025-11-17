@@ -46,10 +46,10 @@
 .carousel li.carousel-element {
     flex: 0 0 100%;
     list-style-type: none;
-    scroll-snap-align: center;
-    padding: 3% 0;
-    background: no-repeat center url("../img/six.jpg");
+    background: center no-repeat url("../img/six.jpg");
     background-size: cover;
+    scroll-snap-align: center;
+    align-items: center;
 }
 .carousel.multiple .carousel-element {
     flex: none;
@@ -61,7 +61,7 @@
 .carousel::scroll-marker-group {
     position: absolute;
     justify-self: center;
-    background-color: #371818;
+    background-color: var(--carousel-marker-group-background-color);
     border-radius: 25px;
     display: flex;
     top: calc(anchor(bottom) - 27.5px);
@@ -74,7 +74,7 @@
     content: "";
     width: 7px;
     height: 7px;
-    background-color: #B2785F;
+    background-color: var(--carousel-marker-background-color);
     border-radius: 25px;
     transition: width .5s linear;
 }
@@ -125,23 +125,25 @@
     left: calc(anchor(right) - 65px);
 }
 .carousel .carousel-element-container {
-    width: 345px;
-    height: 225px;
-    margin: 0 auto;
+    text-align: center;
+    vertical-align: baseline;
+    width: 34.5rem;
+    height: fit-content;
     border-radius: 20px;
-    padding: 20px;
+    padding: 4rem 2rem;
     text-align: center;
     color: white;
     background-color: #00000080;
 }
 
 .carousel .carousel-element-name {
-    font-size: 25px;
-    margin: 25px 0;
+    font-size: 2.5rem;
+    margin-top: 0;
+    margin-bottom: 1em;
     font-weight: bold;
 }
 .carousel .carousel-element-description {
-    font-size: 15px;
+    font-size: 1.5rem;
     text-align: justify;
     margin: 0;
 }

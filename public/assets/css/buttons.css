@@ -1,14 +1,14 @@
 .button {
-    font-family: 'Inria Serif';
-    font-size: 15px;
-    font-weight: bold;
-    background-color: #FFC2A1;
+    font-family: var(--default-font);
+    font-size: 1.5rem;
+    font-weight: var(--default-font-weight);
+    background-color: var(--button-background-color);
     width: max-content;
-    height: 25px;
-    border-radius: 20px;
+    height: 2.5rem;
+    border-radius: 2rem;
     border: 0;
-    padding: 0 10px;
-    line-height: 25px;
+    padding: 0 1rem;
+    line-height: 2.5rem;
     transition: opacity 0.4s;
     vertical-align: middle;
 }
