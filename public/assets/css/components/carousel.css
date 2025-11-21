@@ -49,7 +49,7 @@
     display: flex;
     align-items: center;
     list-style-type: none;
-    background: center no-repeat url("../img/six.jpg");
+    background: center no-repeat url("../../img/six.jpg");
     background-size: cover;
     scroll-snap-align: center;
     height: 100%;
@@ -92,7 +92,7 @@
 
 .carousel::scroll-button(*) {
   border: 0;
-  background:  url("../img/arrow_2.svg") center center no-repeat;
+  background:  url("../../img/arrow_2.svg") center center no-repeat;
   background-color: #D9D9D97F;
   border-radius: 100%;
   width: 55px;
