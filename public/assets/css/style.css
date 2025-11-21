@@ -3,6 +3,7 @@
 @import url("./shop.css");
 @import url("./carousel.css");
 @import url("./faq.css");
+@import url("./cart.css");
 
 @font-face {
         font-family: "Inria Serif";
@@ -28,11 +29,17 @@ body {
     margin: 0;
     background-color: var(--backgroung-color);  
 }
-
-div.right {
-    margin: 0;
+.main-container {
+    padding: 0 4.8rem;
 }
 
+.page-title {
+    font-size: 3rem;
+    margin-bottom: 4rem;
+}
+.left {
+    float: left;
+}
 .right {
     float: right; 
 }
