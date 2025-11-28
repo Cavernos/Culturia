@@ -5,9 +5,14 @@
 
 /* Loading pages */
 @import url("./shop.css");
+<<<<<<< Updated upstream
 @import url("./faq.css");
 @import url("./cart.css");
 
+=======
+@import url("./ModifProfil.css");
+@import url("./ModifOeuvre.css");
+>>>>>>> Stashed changes
 @font-face {
         font-family: "Inria Serif";
         src: url("../font/InriaSerif-Regular.ttf") format('truetype');
