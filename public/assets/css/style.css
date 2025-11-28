@@ -14,7 +14,6 @@
 }
 /* Defining default website styles */
 :root {
-    --assets-path : "../../";
     --default-font: "Inria Serif";
     --backgroung-color: #F3E9DA;
     --default-font-weight: bold;
