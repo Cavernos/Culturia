@@ -17,14 +17,25 @@
     cursor: pointer;
     opacity: 75%;
 }
+.iconify-button::before {
+    float: left;
+    content: ""; 
+    height: 100%;
+
+}
 
 .filter-button.iconify-button::before{
-    float: left;
-    content: "";  
-    background:  url("../img/properties.svg") center center no-repeat;
+    background:  url("../../img/properties.svg") center center no-repeat;
     width: 25px;
-    height: 100%;
     margin-right: 3px;
+}
+.delete-button {
+    background: none;
+    border-radius: 0;
+}
+.delete-button.iconify-button::before { 
+    background:  url("../../img/delete.svg") center center no-repeat;
+    width: 24px;
 }
 
 .button.reset {
@@ -40,7 +51,7 @@
     vertical-align: middle;
     content: "";
     margin: 7.5px 0 7.5px 3px;
-    background: url("../img/arrow.svg") center center no-repeat;
+    background: url("../../img/arrow.svg") center center no-repeat;
     width: 25px;
     height: 40%;
 }
