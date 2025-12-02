@@ -10,7 +10,7 @@
 }
 
 .faq-header {
-    background: linear-gradient(135deg, #c9b697 0%, #b39f7f 100%);
+    background: var(--backgroung-color);
     width: 100%;
     text-align: center;
     color: #3a3226;
