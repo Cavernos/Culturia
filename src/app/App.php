@@ -1,22 +1,31 @@
 <?php namespace G1c\Culturia\app;
-use G1c\Culturia\framework\ModuleInterface;
+
+use G1c\Culturia\app\Shop\ShopModule;
 class App {
 
     /**
      * @var array
      */
     private $modules = [];
-    public function __construct(){
+
+    private $definition;
+    public function __construct(string $definition){
+        $this->definition = $definition;
 
 
     }
-    public function add(ModuleInterface $module) {
+    public function add(ShopModule $module): self {
         array_push($this->modules, $module);
         return $this;
     }
     public function run(){
         foreach ($this->modules as $module){
-            $module->launch();
+            return $module;
         }
+    }
+
+    public function getModules() {
+        return $this->modules;
+        
     }
 }

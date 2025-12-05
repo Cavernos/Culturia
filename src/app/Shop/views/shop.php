@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <link rel="stylesheet" href="../public/assets/css/style.css"/>
-        <script type="module" src="../public/assets/js/index.js"></script>
-        <link rel="shortcut icon" href="../public/assets/img/favicon.ico" type="image/x-icon">
-        <title>Culturia</title>
-    </head>
-    <body>
-        <main class="main-container">
+
             <h1 class="page-title">Ouvres en vente</h1>
             <div class="filter-panel">
                     <div class="filter-panel-element">
@@ -22,6 +12,22 @@
                     </div>
             </div> 
             <div class="shop-container">
+                <?php foreach($cards as $card) {?>
+                    <a class="card-link" href="#test">
+                        <div class="card">
+                            <div class="card-container">
+                                <img class='card-image' src="/assets/img/oeuvre_1.png" alt="" srcset=""/>
+                                <div class="card-title">
+                                    <h4 class="card-name"><?php echo $card["name"] ?></h4>
+                                    <h4 class="card-price"><?php echo $card["price"] ?></h4>
+                                </div>
+                                <h4 class="card-author">Artiste</h4>             
+                                <p class="card-description">Description concise de l’oeuvre en expliqueant le style, date, lieu de création...</p>
+                            </div>
+                        
+                        </div>
+                    </a>  
+                <?php } ?>      
             </div>
             <div class="pagination-container">
                 <button class="button iconify-button left-pagination-button"></button>
@@ -36,7 +42,5 @@
                 <button class="button pagination">9</button>
                 <button class="button pagination">10</button>
                 <button class="button iconify-button right-pagination-button"></button>
-            </div>
-        </main>
-    </body>
-</html>
+</div>
+
