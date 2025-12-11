@@ -31,7 +31,7 @@
     margin-bottom: 20px;
 }
 
-.last-update {
+.cgu-last-update {
     font-size: 0.9em;
     color: #3a3226;
     background: rgba(255, 255, 255, 0.3);
@@ -45,7 +45,7 @@
     color: #3a3226;
 }
 
-.intro {
+.cgu-intro {
     background: rgba(201, 182, 151, 0.15);
     padding: 25px;
     border-radius: 10px;
@@ -55,11 +55,11 @@
     font-size: 1.05em;
 }
 
-.section {
+.cgu-section {
     margin-bottom: 45px;
 }
 
-.section-number {
+.cgu-section-number {
     display: inline-block;
     background: #c9b697;
     color: white;
@@ -74,7 +74,7 @@
     vertical-align: middle;
 }
 
-.section-title {
+.cgu-section-title {
     font-size: 1.6em;
     color: #3a3226;
     margin-bottom: 20px;
@@ -85,38 +85,38 @@
     border-bottom: 2px solid #e8dcc4;
 }
 
-.section-content {
+.cgu-section-content {
     line-height: 1.9;
     color: #5a5245;
     font-size: 1.05em;
     text-align: justify;
 }
 
-.section-content p {
+.cgu-section-content p {
     margin-bottom: 15px;
 }
 
-.subsection {
+.cgu-subsection {
     margin-top: 25px;
     margin-left: 20px;
     padding-left: 20px;
     border-left: 3px solid #e8dcc4;
 }
 
-.subsection-title {
+.cgu-subsection-title {
     font-size: 1.2em;
     color: #3a3226;
     font-weight: 600;
     margin-bottom: 12px;
 }
 
-.list-item {
+.cgu-list-item {
     margin-bottom: 12px;
     padding-left: 25px;
     position: relative;
 }
 
-.list-item::before {
+.cgu-list-item::before {
     content: "•";
     color: #c9b697;
     font-size: 1.5em;
@@ -125,7 +125,7 @@
     top: -5px;
 }
 
-.highlight-box {
+.cgu-highlight-box {
     background: rgba(201, 182, 151, 0.2);
     padding: 20px;
     border-radius: 8px;
@@ -133,11 +133,11 @@
     border-left: 4px solid #b39f7f;
 }
 
-.highlight-box strong {
+.cgu-highlight-box strong {
     color: #3a3226;
 }
 
-.contact-box {
+.cgu-contact-box {
     background: linear-gradient(135deg, #c9b697 0%, #b39f7f 100%);
     padding: 30px;
     border-radius: 10px;
@@ -146,31 +146,31 @@
     color: #3a3226;
 }
 
-.contact-box h3 {
+.cgu-contact-box h3 {
     font-size: 1.5em;
     margin-bottom: 15px;
     font-weight: 400;
 }
 
-.contact-box p {
+.cgu-contact-box p {
     font-size: 1.1em;
     line-height: 1.6;
 }
 
-.contact-box a {
+.cgu-contact-box a {
     color: #3a3226;
     text-decoration: none;
     border-bottom: 2px solid #3a3226;
     transition: all 0.3s ease;
 }
 
-.contact-box a:hover {
+.cgu-contact-box a:hover {
     color: #fff;
     border-bottom-color: #fff;
 }
 
 @media (max-width: 768px) {
-    .header h1 {
+    .cgu-header h1 {
         font-size: 2em;
     }
 
@@ -178,11 +178,11 @@
         padding: 30px 25px;
     }
 
-    .section-title {
+    .cgu-section-title {
         font-size: 1.3em;
     }
 
-    .section-number {
+    .cgu-section-number {
         width: 35px;
         height: 35px;
         line-height: 35px;
