@@ -1,0 +1,238 @@
+.header-container {
+    font-size: 1.6rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.top-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #3a3226;
+}
+
+.header-logo-text {
+    font-size: 1.3em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.header-search-container {
+    flex: 1;
+    max-width: 500px;
+    margin: 0 60px;
+}
+
+.header-search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.7);
+    border: 2px solid #3a3226;
+    border-radius: 50px;
+    padding: 12px 25px;
+    transition: all 0.3s ease;
+}
+
+.header-search-wrapper:hover,
+.header-search-wrapper:focus-within {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    fill: none;
+    stroke: #3a3226;
+    stroke-width: 2;
+}
+
+.search-input {
+    border: none;
+    background: transparent;
+    font-size: 1em;
+    color: #3a3226;
+    width: 100%;
+    outline: none;
+    font-family: 'Georgia', serif;
+}
+
+.search-input::placeholder {
+    color: #5a5245;
+    font-style: italic;
+}
+
+.header-icons {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.header-icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.header-icon-btn svg {
+    width: 28px;
+    height: 28px;
+    fill: none;
+    stroke: #3a3226;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.header-icon-btn:hover {
+    transform: translateY(-2px);
+}
+
+.header-icon-btn:hover svg {
+    stroke: #d97d3e;
+}
+
+.nav-container {
+    background: rgba(255, 255, 255, 0.4);
+    border-top: 1px solid rgba(58, 50, 38, 0.1);
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 18px 50px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #3a3226;
+    font-size: 1em;
+    font-weight: 500;
+    position: relative;
+    padding: 8px 0;
+    transition: all 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: #d97d3e;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #d97d3e;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.mobile-menu-btn svg {
+    width: 28px;
+    height: 28px;
+    stroke: #3a3226;
+    stroke-width: 2;
+}
+
+@media (max-width: 1024px) {
+    .top-header {
+        padding: 15px 30px;
+    }
+
+    .navigation {
+        gap: 30px;
+        padding: 15px 30px;
+    }
+
+    .header-search-container {
+        margin: 0 30px;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-header {
+        padding: 15px 20px;
+    }
+
+    .header-search-container {
+        flex: 1;
+        margin: 0 20px;
+        max-width: none;
+    }
+
+    .logo-text {
+        font-size: 1.1em;
+    }
+
+    .header-icons {
+        gap: 15px;
+    }
+
+    .header-icon-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .nav-container {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .navigation.mobile-open {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        display: none;
+    }
+
+    .search-wrapper {
+        padding: 10px 20px;
+    }
+
+    .search-input {
+        font-size: 0.9em;
+    }
+}

@@ -9,9 +9,11 @@
 @import url("./cgu.css");
 @import url("./cart.css");
 @import url("./connexion-choice.css");
-
 @import url("./ModifProfil.css");
 @import url("./ModifOeuvre.css");
+@import url("./header.css");
+@import url("./footer.css");
+
 @font-face {
         font-family: "Inria Serif";
         src: url("../font/InriaSerif-Regular.ttf") format('truetype');
