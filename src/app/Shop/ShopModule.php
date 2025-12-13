@@ -14,6 +14,7 @@ class ShopModule {
         $this->renderer = $renderer;
         $this->renderer->addPath('shop', __DIR__ . '/views');
         $router->get($prefix, ShopController::class, 'shop.index');
+
     }
 
 }

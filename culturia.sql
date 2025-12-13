@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS orders (
 
 CREATE TABLE IF NOT EXISTS reviews (
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    rate DATE,
+    rate INTEGER,
     review_date DATE,
     comment VARCHAR(256),
     order_id INT,

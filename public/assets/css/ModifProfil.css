@@ -8,7 +8,7 @@
     box-shadow: 0 8px 30px rgba(139, 129, 116, 0.15);
     border: 1px solid rgba(163, 147, 130, 0.1);
 }
-
+/**
 h1 {
     font-size: 32px;
     color: #FFC2A1;
@@ -30,7 +30,7 @@ h1::after {
     height: 3px;
     background: linear-gradient(to right, transparent, #FFC2A1, transparent);
 }
-
+*/
 .profile-header {
     text-align: center;
     margin-bottom: 40px;
@@ -164,7 +164,7 @@ textarea {
     justify-content: center;
     margin-top: 40px;
 }
-
+/**
 button {
     padding: 14px 40px;
     border: none;
@@ -178,7 +178,7 @@ button {
     font-weight: 600;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-
+*/
 .btn-primary {
     background: linear-gradient(135deg, #FFC2A1 0%, #FFC2A1 100%);
     color: #666;

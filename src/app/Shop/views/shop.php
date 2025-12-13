@@ -1,5 +1,5 @@
 
-            <h1 class="page-title">Ouvres en vente</h1>
+            <h1 class="page-title">Oeuvres en vente</h1>
             <div class="filter-panel">
                     <div class="filter-panel-element">
                         <button class="button iconify-button filter-button">Filtres</button>
@@ -13,8 +13,7 @@
             </div> 
             <div class="shop-container">
                 <?php foreach($cards as $card) {?>
-                    <a class="card-link" href="#test">
-                        <div class="card">
+                        <a class="card">
                             <div class="card-container">
                                 <img class='card-image' src="/assets/img/oeuvre_1.png" alt="" srcset=""/>
                                 <div class="card-title">
@@ -24,9 +23,7 @@
                                 <h4 class="card-author">Artiste</h4>             
                                 <p class="card-description">Description concise de l’oeuvre en expliqueant le style, date, lieu de création...</p>
                             </div>
-                        
-                        </div>
-                    </a>  
+                        </a> 
                 <?php } ?>      
             </div>
             <div class="pagination-container">

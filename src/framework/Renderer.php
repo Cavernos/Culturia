@@ -26,7 +26,8 @@ class Renderer {
         extract($this->globals);
         extract($params);
         require($layout_path);
-        return ob_get_clean();
+        echo ob_get_clean();
+        return http_response_code(200);
     }
 
     private function hasNamespace(string $view): bool{

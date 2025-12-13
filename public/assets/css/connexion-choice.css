@@ -2,14 +2,6 @@
    Page de choix de connexion
    =========================== */
 
-/* Le fond de la page */
-.main-container {
-    min-height: 100vh;               /* prend toute la hauteur de l'écran */
-    display: flex;
-    justify-content: center;         /* centrer horizontalement */
-    align-items: center;             /* centrer verticalement */
-    padding: 4rem 1.5rem;
-}
 
 /* Conteneur des deux blocs */
 .choice-container {
@@ -59,6 +51,7 @@
 }
 
 /* Liens "Connectez-vous" */
+
 .choice-box a {
     color: #371818;
     text-decoration: underline;

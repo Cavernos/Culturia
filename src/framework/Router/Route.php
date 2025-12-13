@@ -2,25 +2,25 @@
 class Route {
     protected $name;
     protected $callback;
-    protected $params;
+    protected $method;
 
-    public function __construct(string $name, callable|string $callback, array $params)
+    public function __construct(string $method, string $name, callable|string $callback)
     {
         $this->name = $name;
         $this->callback = $callback;
-        $this->params = $params;
+        $this->method = $method;
     }
 
     public function getName(): string{
         return $this->name;
     }
 
-    public function getCallback():callable|string{
+    public function getCallback(): callable|string {
         return $this->callback;
     }
 
-    public function getParams(): array {
-        return $this->params;
+    public function getMethod(): string {
+        return $this->method;
     }
 
 
