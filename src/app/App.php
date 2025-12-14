@@ -2,7 +2,7 @@
 
 use G1c\Culturia\framework\Container;
 use G1c\Culturia\framework\Renderer;
-use G1c\Culturia\framework\Router;
+use G1c\Culturia\framework\Router\Router;
 
 class App {
 
@@ -38,7 +38,7 @@ class App {
         return $this;
     }
     public function handle(mixed $request){
-        $match = Container::getInstance()->get(Router::class)->match();
+        $match = Container::getInstance()->get(Router::class)->match($_SERVER["REQUEST_URI"]);
         return $match;     
     }
     public function run(array $request){
