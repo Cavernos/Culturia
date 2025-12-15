@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Culturia – Connexion</title>
+    <link rel="stylesheet" href="../public/assets/css/style.css">
+</head>
+<body>
+
+    <main class="main-container login-page">
+
+        <!-- Fond légèrement assombri + centrage de la fenêtre -->
+        <div class="login-overlay">
+            <div class="login-modal">
+                <h1>Connexion</h1>
+
+                <form action="#" method="post" class="login-form">
+
+                    <!-- Adresse mail -->
+                    <div class="form-group">
+                        <label for="email">Adresse mail :</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <!-- Mot de passe + lien "oublié ?" -->
+                    <div class="form-group">
+                        <label for="password">Mot de passe :</label>
+                        <div class="password-row">
+                            <input type="password" id="password" name="password" required>
+                            <a href="#" class="forgot-link">Mot de passe oublié ?</a>
+                        </div>
+                    </div>
+
+                    <!-- Séparateur "OU" -->
+                    <div class="login-separator">
+                        <span>OU</span>
+                    </div>
+
+                    <!-- Connexion avec Google / Facebook -->
+                    <div class="social-login">
+                        <a href="#" class="social-link">Se connecter avec Google</a>
+                        <a href="#" class="social-link">Se connecter avec Facebook</a>
+                    </div>
+
+                    <!-- Bouton principal -->
+                    <div class="form-actions">
+                        <button type="submit" class="primary-button">
+                            Je me connecte
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

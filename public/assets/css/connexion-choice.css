@@ -2,42 +2,48 @@
    Page de choix de connexion
    =========================== */
 
-/* Le fond de la page */
-.main-container {
-    min-height: 100vh;               /* prend toute la hauteur de l'écran */
-    display: flex;
-    justify-content: center;         /* centrer horizontalement */
-    align-items: center;             /* centrer verticalement */
-    padding: 4rem 1.5rem;
-}
 
 /* Conteneur des deux blocs */
-.choice-container {
+.choice-box {
     display: flex;
     gap: 0;                           /* pas d'espace entre les deux colonnes */
     max-width: 800px;
     width: 100%;
-    background: #fff7ee;             /* fond clair */
+    margin: 0 auto;                 /*centre le bloc*/
+    color: #3a3226;             /* fond clair */
     border-radius: 1.5rem;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     overflow: hidden;                /* pour que le rayon s’applique bien */
 }
 
 /* Chaque colonne */
-.choice-box {
-    flex: 1;                          /* les deux colonnes prennent la même largeur */
+.choice-box-element {
+    flex: 1;                     /* chaque colonne prend la même largeur */
     padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;      /* pour empiler le texte + bouton */
+    justify-content: center;
+    color: #3a3226;
 }
 
 /* Colonne de gauche légèrement plus foncée */
-.choice-box:first-child {
+.choice-box-element.left {
     background-color: #fff0dc;
 }
 
+/* Colonne de droite un peu différente */
+.choice-box-element.right {
+    background-color: #fff9f0;
+}
+
+
 /* Titres */
-.choice-box h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
+.main-container h1 {
+    text-align: center;
+    width : 100%;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: #3a3226;
 }
 
 /* Textes */
@@ -46,24 +52,39 @@
     line-height: 1.5;
 }
 
+.choice-box h2{
+    text-align: left;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
 /* Boutons */
-.choice-box button {
+.choice-box-element button {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     margin-top: 1.5rem;
     padding: 0.8rem 1.8rem;
     border-radius: 999px;
     border: none;
     cursor: pointer;
     background-color: var(--button-background-color);
-    color: white;
+    color: #3a3226;
     font-weight: var(--default-font-weight);
+    align-self: flex-start;    
+}
+
+/* Effet au survol */
+.choice-box-element button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 /* Liens "Connectez-vous" */
-.choice-box a {
+.choice-box a {  
     color: #371818;
     text-decoration: underline;
     font-size: 0.9rem;
 }
+
 
 
 

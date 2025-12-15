@@ -1,0 +1,144 @@
+/* ================================
+   Page de connexion
+   ================================ */
+
+/* Main de la page de connexion : */
+  
+.main-container.login-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+/* Overlay plein écran */
+.login-overlay {
+    position: fixed;
+    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(243, 233, 218, 0.85); 
+    z-index: 1000;
+}
+
+/* Carte centrale de connexion */
+.login-modal {
+    background: #fdf3e7; 
+    padding: 2.5rem 3rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+    max-width: 420px;
+    width: 100%;
+}
+
+/* Titre “Connexion” */
+.login-modal h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+/* Formulaire */
+.login-form .form-group {
+    margin-bottom: 1.4rem;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 1.4rem;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 0.6rem 0.7rem;
+    border-radius: 0.4rem;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    font-size: 1.4rem;
+}
+
+/* Ligne mot de passe + lien “Mot de passe oublié ?” */
+.password-row {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.password-row input {                                                                   
+    flex: 1;
+}
+
+.forgot-link {
+    font-size: 1.2rem;
+    text-decoration: underline;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Séparateur "OU" */
+.login-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.5rem 0;
+    position: relative;
+}
+
+.login-separator::before,
+.login-separator::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.login-separator span {
+    margin: 0 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #3a3226;
+    text-transform: uppercase;
+}
+
+
+/* Liens Google /Facebook */
+.social-login {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.social-link {
+    margin: 0 0.4rem;
+    text-decoration: underline;
+}
+
+/* Bouton principal : */
+.form-actions {
+    text-align: center;
+}
+
+.primary-button {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 0.9rem 2rem;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--button-background-color);
+    color: #3a3226;
+    font-weight: var(--default-font-weight);
+    font-size: 1.4rem;
+}
+
+
+.primary-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* responsive */
+@media (max-width: 600px) {
+    .login-modal {
+        padding: 2rem 1.5rem;
+    }
+}
