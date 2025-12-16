@@ -12,16 +12,16 @@
                     </div>
             </div> 
             <div class="shop-container">
-                <?php foreach($cards as $card) {?>
+                <?php foreach($artworks as $artwork) {?>
                         <a class="card">
                             <div class="card-container">
-                                <img class='card-image' src="/assets/img/oeuvre_1.png" alt="" srcset=""/>
+                                <img class='card-image' src="<?php echo $artwork->image ?>" alt="" srcset=""/>
                                 <div class="card-title">
-                                    <h4 class="card-name"><?php echo $card["name"] ?></h4>
-                                    <h4 class="card-price"><?php echo $card["price"] ?></h4>
+                                    <h4 class="card-name"><?php echo $artwork->name ?></h4>
+                                    <h4 class="card-price"><?php echo $artwork->price ?>€</h4>
                                 </div>
                                 <h4 class="card-author">Artiste</h4>             
-                                <p class="card-description">Description concise de l’oeuvre en expliqueant le style, date, lieu de création...</p>
+                                <p class="card-description"><?php echo $artwork->description ?></p>
                             </div>
                         </a> 
                 <?php } ?>      

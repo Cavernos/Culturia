@@ -1,11 +1,14 @@
 <?php namespace G1c\Culturia\app\Shop\controllers;
 
+use G1c\Culturia\app\Shop\table\ArtworkTable;
 use G1c\Culturia\framework\Renderer;
 
 class ShopController {
     private $renderer;
-    public function __construct(Renderer $renderer) {
+    private $table;
+    public function __construct(Renderer $renderer, ArtworkTable $table) {
         $this->renderer = $renderer;
+        $this->table = $table;
     }
     
     public function __invoke()
@@ -14,15 +17,8 @@ class ShopController {
         return $this->index();
     }
     public function index(){
-        return $this->renderer->render('@shop/shop', ["cards" => [
-            ["name"=> "Tata", "price" => "750€"], 
-            ["name"=> "Toto", "price" => "750€"],
-            ["name"=> "Tata", "price" => "750€"],
-            ["name"=> "Tata", "price" => "750€"],
-            ["name"=> "Tata", "price" => "750€"],
-            ["name"=> "Tata", "price" => "750€"],
-            ["name"=> "Tata", "price" => "750€"] 
-            ]]);
+        $artworks = $this->table->makeQuery()->fetchAll();
+        return $this->renderer->render('@shop/shop', compact("artworks"));
     }
     public function view($slug, $id) {
         return null;

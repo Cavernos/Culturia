@@ -1,8 +1,6 @@
 <?php
 use G1c\Culturia\app\App;
 use G1c\Culturia\app\Shop\ShopModule;
-use G1c\Culturia\framework\Renderer;
-use G1c\Culturia\framework\Router;
 
 chdir(dirname(__DIR__));
 require_once "vendor/autoload.php";

@@ -1,7 +1,6 @@
 <?php namespace G1c\Culturia\framework\Router;
 
 use G1c\Culturia\framework\Container;
-use G1c\Culturia\framework\Renderer;
 
 class Route {
     protected $path;
@@ -28,7 +27,6 @@ class Route {
     public function match(string $url) : bool {
         $url = trim($url, "/");
         $path = preg_replace_callback("#\{[\w]+:([^}]+)\}#", [$this, "paramMatch"], $this->path);
-        var_dump($path);
         $regex = "#^$path$#i";
         if(!preg_match($regex, $url, $matches)){
             return false;
@@ -42,9 +40,10 @@ class Route {
         //'([^/+])'   
     }
 
+
     public function call() {
         if (is_string($this->callback)){
-            $controller = new ($this->callback)(Container::getInstance()->get(Renderer::class));
+            $controller = Container::getInstance()->get($this->callback);
             if(!is_null($this->name)){
                 $name = explode(".", $this->name);
                 return call_user_func_array([$controller, $name[1]], $this->matches);

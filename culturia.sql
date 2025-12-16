@@ -79,3 +79,5 @@ CREATE TABLE IF NOT EXISTS reviews (
     FOREIGN KEY (order_id) REFERENCES orders (id) ON DELETE CASCADE,
     FOREIGN KEY (client_id) REFERENCES clients (id) ON DELETE CASCADE
 );
+INSERT INTO artists (name,avatar,email, password_hash, inscription_date, modification_date) VALUES ("Alessandro", "", "alessandro.ian@isep.fr", "fksjgjz", "2025-06-21", "2025-06-21");
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 1", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_1.png", 1)

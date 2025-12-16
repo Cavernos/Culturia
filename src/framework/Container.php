@@ -18,7 +18,9 @@ class Container {
 
     public function __construct(?string $definition)
     {
-       $this->contents =  require($definition);
+        if (!is_null($definition)){
+            $this->addDefinition($definition);
+        }
     }
 
     public function addDefinition(string $definition)
@@ -29,7 +31,7 @@ class Container {
         }
     }
 
-    public function get(mixed $key): mixed {  
+    public function get(mixed $key): mixed {
         if (!isset($this->contents[$key])) {
             if(class_exists($key)){
                 if (!isset($this->instances[$key])){
@@ -42,10 +44,10 @@ class Container {
         return $this->contents[$key];
     }
     public function set(mixed $key, mixed $value) : void {
-        if(is_callable($value)){
-            $this->contents[$key] =  $value();
-        } else {
+        if(!is_callable($value)){
             $this->contents[$key] = $value;
+        } else {
+            $this->contents[$key] =  $value($this);
         }
         
         

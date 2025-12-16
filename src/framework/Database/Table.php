@@ -1,0 +1,55 @@
+<?php
+
+namespace G1c\Culturia\framework\Database;
+
+use PDO;
+use stdClass;
+
+class Table
+{
+ private PDO $pdo;
+    /**
+     * @var ?string
+     */
+    protected $table;
+    protected $entity = stdClass::class;
+
+    /**
+     * @param PDO $pdo
+     */
+    public function __construct(PDO $pdo)
+    {
+        $this->pdo = $pdo;
+    }
+
+    /**
+     * @throws NoRecordException
+     */
+    public function find(int $id){
+        return $this->makeQuery()->where("id = $id")->fetchOrFail();
+    }
+
+    public function makeQuery(): Query {
+        return (new Query($this->pdo))
+            ->from($this->table, $this->table[0])
+            ->into($this->entity);
+    }
+
+    public function getPdo(): PDO
+    {
+        return $this->pdo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTable()
+    {
+        return $this->table;
+    }
+
+    public function getEntity(): string
+    {
+        return $this->entity;
+    }
+}
