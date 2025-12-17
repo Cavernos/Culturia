@@ -24,6 +24,9 @@
                     <select id="category" required>
                         <option value="peinture" selected>Peinture</option>
                         <option value="sculpture">Sculpture</option>
+                        <option value="photographie">Photographie</option>
+                        <option value="dessin">Dessin</option>
+                        <option value="ceramique">Céramique</option>
                     </select>
                 </lab>
 
@@ -73,6 +76,51 @@ Une reproduction inspirée de la célèbre fresque de Michel-Ange, réalisée av
             </footer>
         </form>
     </main>
+<script>
+    function previewImage(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const preview = document.getElementById('imagePreview');
+                if (preview) {
+                    preview.innerHTML = '<img src="' + e.target.result + '" alt="Preview" style="max-width: 300px; border-radius: 8px;">';
+                }
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function showDeleteModal() {
+        if (confirm('Êtes-vous sûr de vouloir supprimer cette œuvre définitivement ?')) {
+            alert('Œuvre supprimée avec succès');
+            window.history.back();
+        }
+    }
+
+    document.getElementById('editForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Sauvegarder tous les champs
+        document.querySelectorAll('input, textarea, select').forEach(field => {
+            if (field.type !== 'file') {
+                localStorage.setItem(field.id, field.value);
+            }
+        });
+        
+        alert('✓ Modification enregistrée');
+    });
+
+    // Charger les données au chargement
+    window.addEventListener('load', function() {
+        document.querySelectorAll('input, textarea, select').forEach(field => {
+            const saved = localStorage.getItem(field.id);
+            if (saved && field.type !== 'file') {
+                field.value = saved;
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

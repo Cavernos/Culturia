@@ -3,127 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../public/assets/css/style.css">
-    <link rel="icon" type="image/x-icon" href="../public/assets/img/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../public/assets/img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Culturia</title>
 
 </head>
 <body>
-    <!-- Main Content -->
-    <div class="Profilcontainer">
-        <h1 class="page-title">Modifier mon profil</h1>
+    <div class="Profill">
+        <h1>Modifier mon profil</h1>
         
-        <div class="profile-header">
-            <div class="profile-photo-container">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Ccircle cx='75' cy='75' r='75' fill='%23a67c52'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='white' font-size='60' font-family='Georgia'%3EDD%3C/text%3E%3C/svg%3E" alt="Photo de profil" class="profile-photo" id="profilePhoto">
-                <button class="photo-upload-btn" onclick="document.getElementById('photoInput').click()">
+        <div class="profilheader">
+            <div class="photodeprofil">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Ccircle cx='75' cy='75' r='75' fill='%23a67c52'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='white' font-size='60' font-family='Georgia'%3EDD%3C/text%3E%3C/svg%3E" alt="Photo de profil" class="profilphoto" id="profilPhoto">
+                <button class="boutonphoto" onclick="document.getElementById('photoInput').click()">
                     +
-                    <input type="file" id="photoInput" accept="image/*" onchange="updateProfilePhoto(event)" disabled>
+                    <input type="file" id="photoInput" accept="image/*" onchange="updateProfilePhoto(event)">
                 </button>
             </div>
         </div>
 
         <form id="profileForm">
-            <!-- Informations personnelles -->
             <h2 class="section-title">Informations personnelles</h2>
             
-            <div class="form-row">
-                <div class="form-group">
+            <div class="row">
+                <div class="tout">
                     <label for="firstName">Prénom *</label>
-                    <input type="text" id="firstName" value="Diogo" required disabled>
+                    <input type="text" id="firstName" value="Diogo" required>
                 </div>
 
-                <div class="form-group">
+                <div class="tout">
                     <label for="lastName">Nom *</label>
                     <input type="text" id="lastName" value="Da costa" required>
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="tout">
                 <label for="username">Nom d'utilisateur *</label>
-                <input type="text" id="username" value="Diogo_art" required>
+                <input type="text" id="username" value="Diogo_art" placeholder="nom d'utilisateur grossier = banni" required>
             </div>
 
-            <div class="form-row">
-                <div class="form-group">
+            <div class="row">
+                <div class="tout">
                     <label for="email">Email *</label>
-                    <input type="email" id="email" value="diogodacosta@exemple.fr" required>
+                    <input type="email" id="email" value="toto@email.com" placeholder="toto@email.com"required>
                 </div>
 
-                <div class="form-group">
+                <div class="tout">
                     <label for="phone">Téléphone</label>
-                    <input type="tel" id="phone" value="+33 6 12 34 56 78">
+                    <input type="tel" id="phone" value="+33 66 66 66 66 66"placeholder="numéro de téléphone avec indicatif +33">
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="tout">
                 <label for="bio">Biographie</label>
-                <textarea id="bio" placeholder="Parlez-nous de vous, votre parcours artistique, vos inspirations...">Artiste peintre passionné par l'art classique et contemporain. Je crée des œuvres qui fusionnent techniques traditionnelles et vision moderne.</textarea>
+                <textarea id="bio" value="J'adore l'art" placeholder="Parlez-nous de vous, votre parcours artistique, vos inspirations..."></textarea>
             </div>
 
-            <div class="form-row">
-                <div class="form-group">
+            <div class="row">
+                <div class="tout">
                     <label for="city">Ville</label>
                     <input type="text" id="city" value="Paris">
                 </div>
 
-                <div class="form-group">
+                <div class="tout">
                     <label for="country">Pays</label>
                     <input type="text" id="country" value="France">
                 </div>
             </div>
 
-            <!-- Informations artistiques -->
             <h2 class="section-title">Informations artistiques</h2>
 
-            <div class="form-group">
+            <div class="tout">
                 <label for="artistType">Type d'artiste</label>
                 <select id="artistType">
                     <option value="peintre" selected>Peintre</option>
                     <option value="sculpteur">Sculpteur</option>
-                    <option value="photographe">Photographe</option>
-                    <option value="illustrateur">Illustrateur</option>
-                    <option value="ceramiste">Céramiste</option>
                     <option value="mixte">Art mixte</option>
                 </select>
             </div>
 
-            <div class="form-group">
+            <div class="tout">
                 <label for="specialties">Spécialités (séparées par des virgules)</label>
                 <input type="text" id="specialties" value="Huile sur toile, Aquarelle, Portrait">
             </div>
 
-            <div class="form-group">
+            <div class="tout">
                 <label for="experience">Années d'expérience</label>
                 <input type="text" id="experience" value="8 ans">
             </div>
 
-            <!-- Réseaux sociaux -->
             <h2 class="section-title">Réseaux sociaux & Site web</h2>
 
-            <div class="social-links">
-                <div class="form-group">
+
+                <div class="tout">
                     <label for="website">Site web personnel</label>
                     <input type="url" id="website" placeholder="https://">
                 </div>
 
-                <div class="form-group">
+                <div class="tout">
                     <label for="instagram">Instagram</label>
                     <input type="text" id="instagram" placeholder="@votre_compte">
                 </div>
 
-                <div class="form-group">
+                <div class="tout">
                     <label for="facebook">Facebook</label>
                     <input type="url" id="facebook" placeholder="https://facebook.com/...">
                 </div>
 
-                <div class="form-group">
+                <div class="tout">
                     <label for="twitter">Twitter / X</label>
                     <input type="text" id="twitter" placeholder="@votre_compte">
                 </div>
-            </div>
 
-            <!-- Préférences -->
             <h2 class="section-title">Préférences</h2>
 
             <div class="ww">
@@ -143,12 +134,12 @@
 
             <h2 class="section-title">Sécurité</h2>
 
-            <div class="form-group">
+            <div class="tout">
                 <label for="currentPassword">Mot de passe actuel</label>
                 <input type="password" id="currentPassword" placeholder="Laissez vide si pas de changement">
             </div>
 
-            <div class="form-group">
+            <div class="tout">
                 <label for="newPassword">Nouveau mot de passe</label>
                 <input type="password" id="newPassword" placeholder="Minimum 8 caractères">
                
@@ -156,12 +147,13 @@
                 <input type="password" id="confirmPassword" placeholder="Répétez le mot de passe">
             </div>
 
-            <div class="button-group">
-                <button type="button" class="btn-danger" onclick="showDeleteModal()">Supprimer le compte</button>
-                <button type="button" class="btn-secondary" onclick="window.history.back()">Annuler</button>
-                <button type="submit" class="btn-primary">Enregistrer</button>
+            <div class="groupb">
+                <button type="button" class="supprmier" onclick="showDeleteModal()">Supprimer le compte</button>
+                <button type="button" class="annuley" onclick="window.history.back()">Annuler</button>
+                <button type="submit" class="enregistre">Enregistrer</button>
             </div>
         </form>
+
     </div>
 
 
