@@ -40,7 +40,7 @@ class Router {
         
     }
 
-    public function generateUri(string $name,array $params = [],array $queryParams = [])
+    public function generateUri(string $name,array $params = [],array $queryParams = []): string
     {
         if (!isset($this->namedRoute[$name])){
             throw new RouterException("No route match with this $name");

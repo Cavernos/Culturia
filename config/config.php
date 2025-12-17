@@ -1,6 +1,8 @@
 <?php
 
 use G1c\Culturia\framework\Container;
+use G1c\Culturia\framework\Renderer\RendererPaginationExtension;
+use G1c\Culturia\framework\Renderer\RendererRouterExtension;
 
 return [
     'view.path' => dirname(__DIR__) .DIRECTORY_SEPARATOR."views",
@@ -15,5 +17,12 @@ return [
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
             ]);
+    },
+    "renderer.extensions" => function  (Container $c) {
+        return [
+            $c->get(RendererRouterExtension::class),
+            $c->get(RendererPaginationExtension::class),
+        ];
+
     }
 ];

@@ -136,10 +136,10 @@ class Query
         return $this;
     }
 
-    public function paginate(int $perPage, int $currentPage = 1): QueryResult
+    public function paginate(int $perPage, int $currentPage = 1): Paginator
     {
         $paginator = new PaginatedQuery($this);
-        return (new Paginator($paginator))->setMaxPerPage($perPage)->setCurrentPage($currentPage)->getResults();
+        return (new Paginator($paginator))->setMaxPerPage($perPage)->setCurrentPage($currentPage);
     }
 
     public function fetchAll(): QueryResult

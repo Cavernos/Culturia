@@ -28,7 +28,13 @@ class App {
                 $container->addDefinition($module::DEFINITIONS);
             }    
         }
-        $container->get(Renderer::class)->addGlobal("layout_path", $container->get('view.path'). DIRECTORY_SEPARATOR. "layout.php");
+        $renderer = $container->get(Renderer::class);
+        $renderer->addGlobal("layout_path", $container->get('view.path'). DIRECTORY_SEPARATOR. "layout.php");
+        if ($container->has("renderer.extensions")){
+            foreach ($container->get("renderer.extensions") as $extension) {
+                $renderer->addExtension($extension);
+            }
+        }
         $this->container = $container;
         return $this->container;
 

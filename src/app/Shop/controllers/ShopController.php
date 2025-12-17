@@ -22,7 +22,9 @@ class ShopController {
     }
     public function index(){
         $artworks = $this->table->findPublic()->paginate(16, $_GET["p"] ?? 1);
-        return $this->renderer->render('@shop/shop', compact("artworks"));
+        $prev = $artworks->previous();
+        $next = $artworks->next();
+        return $this->renderer->render('@shop/shop', compact("artworks", "prev", "next"));
     }
     public function view($slug, $id) {
         return null;

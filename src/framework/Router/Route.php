@@ -42,7 +42,6 @@ class Route {
         foreach ($params as $key => $value){
             $path = preg_replace("#\{$key:([^}]+)}#", $value, $path);
         }
-        var_dump($path);
         return $path;
     }
 

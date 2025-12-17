@@ -47,10 +47,12 @@ class Container {
         if(!is_callable($value)){
             $this->contents[$key] = $value;
         } else {
-            $this->contents[$key] =  $value($this);
+            $this->contents[$key] = $value($this);
         }
-        
-        
+    }
+    public function has(mixed $key): bool
+    {
+        return isset($this->contents[$key]) || isset($this->instances[$key]);
     }
     public function resolve(string $class_name, ?string $constructor_parameter_alias = null) {
         $reflected_class = new ReflectionClass($class_name);

@@ -1,8 +1,13 @@
 <?php namespace G1c\Culturia\framework;
+use G1c\Culturia\framework\Renderer\RendererExtensionInterface;
+
 class Renderer {
     const DEFAULT_NAMESPACE = '__MAIN';
     private $paths = [];
     private $globals = [];
+
+    private $extensions = [];
+    private $extensionsCallbacks = [];
 
     public function addPath(string $namespace, ?string $path = null): void {
         if (is_null($path)){
@@ -10,6 +15,12 @@ class Renderer {
         } else {
             $this->paths[$namespace] = $path;
         }
+    }
+
+    public function addExtension(RendererExtensionInterface $extension): void
+    {
+        $this->extensions[] = $extension;
+        $this->extensionsCallbacks[$extension->getFunctions()[1]] = $extension->getFunctions();
     }
 
     public function addGlobal(string $key, mixed $value): void {
@@ -23,6 +34,7 @@ class Renderer {
             $path = $this->paths[self::DEFAULT_NAMESPACE] . DIRECTORY_SEPARATOR . $view . ".php";
         }
         ob_start();
+        extract($this->extensionsCallbacks);
         extract($this->globals);
         extract($params);
         require($layout_path);
