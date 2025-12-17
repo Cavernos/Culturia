@@ -1,5 +1,6 @@
 <?php
 use G1c\Culturia\app\App;
+use G1c\Culturia\app\Home\HomeModule;
 use G1c\Culturia\app\Shop\ShopModule;
 
 chdir(dirname(__DIR__));
@@ -16,7 +17,7 @@ ini_set("error_append_string", "</pre>");
 
 
 
-$app->add(ShopModule::class);
+$app->add(ShopModule::class)->add(HomeModule::class);
 if (php_sapi_name() !== 'cli') {
     $response = $app->run($_REQUEST);
 }
