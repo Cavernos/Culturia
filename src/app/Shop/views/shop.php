@@ -13,31 +13,24 @@
             </div> 
             <div class="shop-container">
                 <?php foreach($artworks as $artwork) {?>
-                        <a class="card">
+                        <a id="<?php echo $artwork->id ?>" class="card">
                             <div class="card-container">
-                                <img class='card-image' src="<?php echo $artwork->image ?>" alt="" srcset=""/>
+                                <img class='card-image' src="<?php echo $artwork->image ?>" alt="<?php echo $artwork->name ?>" srcset=""/>
                                 <div class="card-title">
                                     <h4 class="card-name"><?php echo $artwork->name ?></h4>
                                     <h4 class="card-price"><?php echo $artwork->price ?>€</h4>
                                 </div>
-                                <h4 class="card-author">Artiste</h4>             
+                                <h4 class="card-author"><?php echo $artwork->username ?></h4>
                                 <p class="card-description"><?php echo $artwork->description ?></p>
                             </div>
                         </a> 
                 <?php } ?>      
             </div>
             <div class="pagination-container">
-                <button class="button iconify-button left-pagination-button"></button>
-                <button class="button pagination">1</button>
-                <button class="button pagination">2</button>
-                <button class="button pagination">3</button>
-                <button class="button pagination">4</button>
-                <button class="button pagination">5</button>
-                <button class="button pagination">6</button>
-                <button class="button pagination">7</button>
-                <button class="button pagination">8</button>
-                <button class="button pagination">9</button>
-                <button class="button pagination">10</button>
-                <button class="button iconify-button right-pagination-button"></button>
+                <a class="button iconify-button left-pagination-button"></a>
+                <a href="/shop?p=1" class="button pagination">1</a>
+                <a href="/shop?p=2" class="button pagination">2</a>
+                <a class="button iconify-button right-pagination-button"></a>
+            </div>
 </div>
 

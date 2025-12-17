@@ -25,8 +25,8 @@ class Route {
     }
 
     public function match(string $url) : bool {
-        $url = trim($url, "/");
-        $path = preg_replace_callback("#\{[\w]+:([^}]+)\}#", [$this, "paramMatch"], $this->path);
+        $url = explode("?", trim($url, "/"))[0];
+        $path = preg_replace_callback("#\{[\w]+:([^}]+)}#", [$this, "paramMatch"], $this->path);
         $regex = "#^$path$#i";
         if(!preg_match($regex, $url, $matches)){
             return false;
@@ -35,6 +35,17 @@ class Route {
         $this->matches = $matches;
         return true; 
     }
+
+    public function getUrl(array $params): string
+    {
+        $path = $this->path;
+        foreach ($params as $key => $value){
+            $path = preg_replace("#\{$key:([^}]+)}#", $value, $path);
+        }
+        var_dump($path);
+        return $path;
+    }
+
     private function paramMatch($match) {
         return '(' . $match[1] . ')';
         //'([^/+])'   

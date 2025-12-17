@@ -3,6 +3,7 @@ namespace G1c\Culturia\framework\Database;
 
 
 
+use G1c\Culturia\framework\Paginator;
 use PDO;
 
 
@@ -133,6 +134,12 @@ class Query
     {
         $this->entity = $entity;
         return $this;
+    }
+
+    public function paginate(int $perPage, int $currentPage = 1): QueryResult
+    {
+        $paginator = new PaginatedQuery($this);
+        return (new Paginator($paginator))->setMaxPerPage($perPage)->setCurrentPage($currentPage)->getResults();
     }
 
     public function fetchAll(): QueryResult

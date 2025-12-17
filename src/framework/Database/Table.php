@@ -31,7 +31,7 @@ class Table
 
     public function makeQuery(): Query {
         return (new Query($this->pdo))
-            ->from($this->table, $this->table[0])
+            ->from($this->table)
             ->into($this->entity);
     }
 

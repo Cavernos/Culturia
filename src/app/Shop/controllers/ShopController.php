@@ -2,13 +2,17 @@
 
 use G1c\Culturia\app\Shop\table\ArtworkTable;
 use G1c\Culturia\framework\Renderer;
+use G1c\Culturia\framework\Router\Router;
 
 class ShopController {
     private $renderer;
     private $table;
-    public function __construct(Renderer $renderer, ArtworkTable $table) {
+    private Router $router;
+
+    public function __construct(Renderer $renderer, Router $router, ArtworkTable $table) {
         $this->renderer = $renderer;
         $this->table = $table;
+        $this->router = $router;
     }
     
     public function __invoke()
@@ -17,7 +21,7 @@ class ShopController {
         return $this->index();
     }
     public function index(){
-        $artworks = $this->table->makeQuery()->fetchAll();
+        $artworks = $this->table->findPublic()->paginate(16, $_GET["p"] ?? 1);
         return $this->renderer->render('@shop/shop', compact("artworks"));
     }
     public function view($slug, $id) {

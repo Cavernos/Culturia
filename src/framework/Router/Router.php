@@ -39,6 +39,20 @@ class Router {
         throw new RouterException("No route match with $url");
         
     }
+
+    public function generateUri(string $name,array $params = [],array $queryParams = [])
+    {
+        if (!isset($this->namedRoute[$name])){
+            throw new RouterException("No route match with this $name");
+        }
+        $uri = $this->namedRoute[$name]->getUrl($params);
+        if (!empty($queryParams)){
+            return $uri . "?" . http_build_query($queryParams);
+        }
+        return $uri;
+
+    }
+
         
     
 }

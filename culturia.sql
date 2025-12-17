@@ -14,22 +14,22 @@ DROP TABLE IF EXISTS clients;
 
 CREATE TABLE IF NOT EXISTS clients (
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    name INT,
+    username VARCHAR(128),
     avatar VARCHAR(128),
     email VARCHAR(128),
     password_hash VARCHAR(128),
     inscription_date DATE,
-    modification_date DATE
+    account_modification_date DATE
 );
 
 CREATE TABLE IF NOT EXISTS artists (
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    name INT,
+    username VARCHAR(128),
     avatar VARCHAR(128),
     email VARCHAR(128),
     password_hash VARCHAR(128),
     inscription_date DATE,
-    modification_date DATE
+    account_modification_date DATE
 );
 
 CREATE TABLE IF NOT EXISTS artwork (
@@ -79,5 +79,27 @@ CREATE TABLE IF NOT EXISTS reviews (
     FOREIGN KEY (order_id) REFERENCES orders (id) ON DELETE CASCADE,
     FOREIGN KEY (client_id) REFERENCES clients (id) ON DELETE CASCADE
 );
-INSERT INTO artists (name,avatar,email, password_hash, inscription_date, modification_date) VALUES ("Alessandro", "", "alessandro.ian@isep.fr", "fksjgjz", "2025-06-21", "2025-06-21");
+INSERT INTO artists (username,avatar,email, password_hash, inscription_date, account_modification_date) VALUES ("Alessandro", "toto", "alessandro.ian@isep.fr", "fksjgjz", "2025-06-21", "2025-06-21");
 INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 1", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_1.png", 1)
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 1", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_2.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 2", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_3.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 3", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_4.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 4", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_1.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 5", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_2.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 6", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_3.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 7", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_4.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 8", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_1.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 9", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_2.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 10", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_3.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 11", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_4.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 12", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_1.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 13", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_2.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 14", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_3.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 15", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_4.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 16", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_1.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 17", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_2.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 18", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_3.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 19", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_4.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 20", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_1.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 21", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_2.png", 1);
+INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 22", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_3.png", 1);

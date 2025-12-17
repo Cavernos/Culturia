@@ -4,6 +4,7 @@
     font-weight: var(--default-font-weight);
     background-color: var(--button-background-color);
     width: max-content;
+    display: inline-block;
     height: 2.5rem;
     border-radius: 2rem;
     border: 0;
@@ -11,6 +12,11 @@
     line-height: 2.5rem;
     transition: opacity 0.4s;
     vertical-align: middle;
+}
+
+.button:visited, .button:active, .button:link {
+    text-decoration: none;
+    color: black;
 }
 
 .button:hover {

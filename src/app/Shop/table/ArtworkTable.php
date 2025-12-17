@@ -9,4 +9,11 @@ class ArtworkTable extends Table
 {
     protected $table = "artwork";
     protected $entity = ArtworkModel::class;
+
+    public function findPublic()
+    {
+        return $this->makeQuery()
+            ->select("artwork.*", "artists.username")
+            ->join("artists", "artists.id = artist_id");
+    }
 }
