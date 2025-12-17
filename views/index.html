@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <!-- ==================== 
+     
+    C'est la partie header et footer, le reste du body reste à adapter pour qu'il soit conforme à la maquette
+    
+    ==================== -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CULTURIA - Votre passerelle vers l'art et la culture</title>
+    <link rel="stylesheet" href="../public/assets/css/styles.css">
+</head>
+<body>tfgtgt
+    <!-- ==================== HEADER ==================== -->
+    <header>
+        <div class="header-top">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="25" cy="25" r="20" fill="#D4A574" stroke="#2C2C2C" stroke-width="2"/>
+                    <path d="M 20 20 Q 25 15, 30 20" stroke="#2C2C2C" stroke-width="2" fill="none"/>
+                    <circle cx="20" cy="22" r="2" fill="#2C2C2C"/>
+                    <circle cx="30" cy="22" r="2" fill="#2C2C2C"/>
+                    <path d="M 18 32 Q 25 35, 32 32" stroke="#2C2C2C" stroke-width="2" fill="none"/>
+                </svg>
+                <span class="logo-text">CULTURIA</span>
+            </a>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Oeuvre, artiste, catégorie, sujet...">
+                </div>
+            </div>
+
+            <!-- Header Icons -->
+            <div class="header-icons">
+                <!-- Favorites -->
+                <button class="icon-btn favorite" aria-label="Favoris" title="Favoris">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </button>
+
+                <!-- Cart -->
+                <button class="icon-btn cart" aria-label="Panier" title="Panier">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                </button>
+
+                <!-- User Account -->
+                <button class="icon-btn user" aria-label="Compte utilisateur" title="Mon compte">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="main-nav">
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="boutique.html">Boutique</a></li>
+                <li><a href="evenements.html">Évènements</a></li>
+                <li><a href="galerie.html">Galerie virtuelle</a></li>
+                <li><a href="contact.html">Contactez-nous</a></li>
+                <li><a href="ceramiques.html">Céramiques</a></li>
+                <li><a href="expositions.html">Expositions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main>
+        <section style="padding: 60px 40px; text-align: center; max-width: 1200px; margin: 0 auto;">
+            <h1 style="font-size: 48px; margin-bottom: 20px; color: var(--text-dark);">Bienvenue chez Culturia</h1>
+            <p style="font-size: 20px; color: #666; line-height: 1.6;">Votre passerelle vers l'exploration culturelle.</p>
+
+            <div style="margin-top: 60px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                <div style="padding: 30px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <h3 style="font-size: 24px; margin-bottom: 15px;">🎨 Art</h3>
+                    <p style="color: #666;">À modifier par la suite pour ajouter le reste</p>
+                </div>
+                <div style="padding: 30px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <h3 style="font-size: 24px; margin-bottom: 15px;">🏺 Céramiques</h3>
+                    <p style="color: #666;">À modifier par la suite pour ajouter le reste</p>
+                </div>
+                <div style="padding: 30px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <h3 style="font-size: 24px; margin-bottom: 15px;">🎭 Événements</h3>
+                    <p style="color: #666;">À modifier par la suite pour ajouter le reste</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="footer-content">
+            <!-- Social Media Section -->
+            <div class="footer-section">
+                <h3>Nous Suivre</h3>
+                <div class="social-links">
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Navigation Section -->
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="categorie.html">Catégorie</a></li>
+                    <li><a href="artistes-populaires.html">Artistes populaires</a></li>
+                    <li><a href="oeuvres-populaires.html">Oeuvres populaires</a></li>
+                    <li><a href="evenements.html">Évenements</a></li>
+                    <li><a href="connexion.html">Connexion</a></li>
+                    <li><a href="avis.html">Avis</a></li>
+                </ul>
+            </div>
+
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3>Qui sommes nous ?</h3>
+                <ul class="footer-links">
+                    <li><a href="a-propos.html">À propos de nous</a></li>
+                    <li><a href="rejoindre.html">Nous rejoindre</a></li>
+                    <li><a href="contact.html">Contactez-nous</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="mentions-legales.html">Mention légal</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 CULTURIA. Tous droits réservés. | Fait avec passion pour l'art et la culture</p>
+        </div>
+    </footer>
+</body>
+</html>
