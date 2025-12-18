@@ -7,18 +7,15 @@
 @import url("./shop.css");
 @import url("./faq.css");
 @import url("./cart.css");
-<<<<<<< HEAD
 @import url("./Header.css");
 @import url("./ModifProfil.css");
 @import url("./ModifOeuvre.css");
 @import url("./Footer.css");
 @import url("./Profil.css");
-=======
 @import url("./connexion-choice.css");
+@import url("./Visualisation-oeuvre.css");
 
-@import url("./ModifProfil.css");
-@import url("./ModifOeuvre.css");
->>>>>>> 20da565888147ed6a2ef4d56e68e4223677997e9
+
 @font-face {
         font-family: "Inria Serif";
         src: url("../font/InriaSerif-Regular.ttf") format('truetype');
