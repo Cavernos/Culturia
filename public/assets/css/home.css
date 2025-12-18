@@ -1,0 +1,106 @@
+.page-sub-title {
+    text-align: center;
+    font-size: 2.5rem;
+}
+.category-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1rem;
+    margin: 1rem;
+}
+
+
+.categorie-element-container {
+    grid-column: auto / auto;
+    width: fit-content;
+    transition: transform .4s;
+}
+.categorie-element-container:hover {
+    opacity: 100%;
+    transform: scale(1.1);
+}
+.categorie-element-container:link,  .categorie-element-container:visited, .categorie-element-container:focus{
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.categorie-image {
+    width: 100%;
+    max-width: 16.7rem;
+    max-height: 200px;
+    min-width: 100px;
+    min-height: 50px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 2rem;
+    filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 25));
+}
+
+.categorie-element-nom{
+    font-size: 1.5rem;
+    margin-top: 6px;
+    width: 70%;      /* petit espace sous l'image */
+    text-align: left;     /* texte bien aligné à gauche */
+}
+
+.etes-vous-artiste {
+    position: relative;
+    height: auto;
+}
+.artiste-element-container h1 {
+    margin: 0;
+}
+.artiste-element-container p {
+    margin-top: 10%;
+}
+.artiste-element-container{
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 25%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 20px;
+    padding: 4rem 2rem;
+    text-align: center;
+    font-size: large;
+    color: white;
+    margin: 0 auto;
+    background-color: #00000080;
+    max-width: 65rem;
+    max-height: 30rem;
+}
+
+.categorie-image-artiste{
+    width: 100%;
+    height: auto;
+}
+
+.filter-button{
+    color: #00000080;
+    font-size: large;
+
+}
+
+.artiste-populaire {
+    margin: 9.5rem 5rem;
+}
+.artiste-populaire .image-artiste {
+    max-width: 250px;
+    max-height: 200px;
+    min-width: 100px;
+    min-height: 50px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 5px rgb(104, 104, 104);
+}
+
+.artiste-populaire .artiste-nom {
+
+    font-size: 2rem;
+    margin-top: 6px;
+    text-align: center; /* nom sous l'image, à gauche */
+}

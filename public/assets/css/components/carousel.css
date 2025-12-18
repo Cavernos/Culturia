@@ -21,7 +21,7 @@
 }
 .carousel.multiple {
     columns: 1;
-    height: 390px;
+    max-height: 39rem;
     display: block;
     overflow-x: scroll;
     text-align: center;
@@ -44,6 +44,13 @@
 #card-carousel::scroll-button(*), #card-carousel.carousel.multiple::scroll-marker-group {
     position-anchor: --card-carousel;
 }
+
+#artist-carousel {
+    anchor-name: --artist-carousel;
+}
+#artist-carousel::scroll-button(*), #artist-carousel.carousel.multiple::scroll-marker-group {
+    position-anchor: --artist-carousel;
+}
 .carousel li.carousel-element {
     flex: 0 0 100%;
     display: flex;
@@ -59,6 +66,7 @@
     scroll-snap-align: none;
     display: inline-block;
     text-align: left;
+    margin: 0 2.5rem;
 }
 
 .carousel::scroll-marker-group {
@@ -67,7 +75,7 @@
     background-color: var(--carousel-marker-group-background-color);
     border-radius: 25px;
     display: flex;
-    top: calc(anchor(bottom) - 27.5px);
+    top: calc(anchor(bottom) - 2.75rem);
     justify-content: center;
     gap: 5px;
     padding: 5px;
@@ -100,7 +108,7 @@
   color: black;
   cursor: pointer;
   position: absolute;
-  top: calc(anchor(bottom) - 1/2*(445px + 55px));
+  top: calc(anchor(bottom) - 1/2*(44.5rem + 55px));
   transition: scrolling 1s linear, translate .2s ease-in-out;
 }
 

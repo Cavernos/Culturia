@@ -11,7 +11,7 @@
         <div class="header-top">
             <!-- Logo -->
             <a href="<?= $pathFor("home.index") ?>" class="logo">
-                <img src="/assets/img/Logo-header.png" class="logo-img">
+                <img src="/assets/img/logo.svg" class="logo-img">
 
             </a>
 
@@ -28,17 +28,17 @@
             <div class="header-icons">
                 <!-- Favoris -->
                 <a href="#" class="icon-btn">
-                    <img src="/assets/img/favoris-icon.png" alt="Favoris">
+                    <img src="/assets/img/favoris.svg" alt="Favoris">
                 </a>
 
                 <!-- Panier -->
                 <a href="cart.html" class="icon-btn">
-                    <img src="/assets/img/panier-icon.png" alt="Panier">
+                    <img src="/assets/img/cart.svg" alt="Panier">
                 </a>
 
                 <!-- Profil -->
                 <a href="#" class="icon-btn">
-                    <img src="/assets/img/profil-icon.png" alt="Profil">
+                    <img src="/assets/img/account.svg" alt="Profil">
                 </a>
             </div>
         </div>
@@ -46,7 +46,7 @@
         <!-- Navigation -->
         <nav>
             <?php if ($pathFor('home.index') != ''){ ?>
-            <a href="<?= $pathFor('home.index') ?>">Acceuil</a>
+            <a href="<?= $pathFor('home.index') ?>">Accueil</a>
             <?php } if ($pathFor('shop.index') != ''){ ?>
             <a href="<?=$pathFor('shop.index')?>">Boutique</a>
             <?php } if ($pathFor('artists.index') != ''){ ?>
@@ -66,16 +66,16 @@
                 <h3>Nous Suivre</h3>
                 <div class="social-icons">
                     <a href="#" aria-label="Twitter">
-                        <img src="/assets/img/twitter-icon.png" alt="X">
+                        <img src="/assets/img/X.svg" alt="X">
                     </a>
                     <a href="#" aria-label="Instagram">
-                        <img src="/assets/img/instagram-icon.png" alt="Instagram">
+                        <img src="/assets/img/instagram.svg" alt="Instagram">
                     </a>
                     <a href="#" aria-label="YouTube">
-                        <img src="/assets/img/youtube-icon.png" alt="YouTube">
+                        <img src="/assets/img/youtube.svg" alt="YouTube">
                     </a>
                     <a href="#" aria-label="LinkedIn">
-                        <img src="/assets/img/linkedin-icon.png" alt="LinkedIn">
+                        <img src="/assets/img/linkedIn.svg" alt="LinkedIn">
                     </a>
                 </div>
             </div>
