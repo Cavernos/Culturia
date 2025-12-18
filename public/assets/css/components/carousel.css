@@ -34,8 +34,14 @@
 #artwork-carousel {
     anchor-name: --artwork-carousel;
 }
+#artist-carousel {
+    anchor-name: --artist-carousel;
+}
 #artwork-carousel::scroll-marker-group, #artwork-carousel::scroll-button(*) {
     position-anchor: --artwork-carousel;
+}
+#artist-carousel::scroll-button(*), #artist-carousel.carousel.multiple::scroll-marker-group {
+    position-anchor: --artist-carousel;
 }
 
 #card-carousel {
@@ -154,3 +160,36 @@
     background: transparent; /* make scrollbar transparent */
 }
 
+/* === Carousel spécifique aux artistes populaires === */
+
+#artist-carousel{
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+#artist-carousel::-webkit-scrollbar {
+  display: none; /* optionnel : cacher la barre de scroll */
+}
+
+#artist-carousel .artist-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
+}
+
+.artiste-carousel::scroll-button(left) {
+  content: "";
+  transform: rotate(180deg);
+  right: calc(anchor(left) - 65px);
+}
+.artiste-carousel::scroll-button(right) {
+    content: "";
+    left: calc(anchor(right) - 65px);
+}
