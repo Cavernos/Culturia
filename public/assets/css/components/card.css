@@ -1,21 +1,19 @@
-.card{
+.card {
+    display: block;
     background-color: white;
     width: 25rem;
     height: 30.5rem;
     padding: 2.2rem;
     margin: 3.5rem;
     box-shadow: 5px 0 10px #00000065;
-}
-.card-link {
-    display: block;
-    width: max-content;
-    height: max-content;
-    text-decoration: none;
-    color: black;
     transform: scale(1);
     transition: transform .5s;
 }
-.card-link:hover {
+.card {
+    text-decoration: none;
+    color: black;
+}
+.card:hover {
     transform: scale(1.025);
 }
 
