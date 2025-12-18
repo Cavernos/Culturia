@@ -22,39 +22,3 @@
     vertical-align: middle;
     overflow: hidden;
 }
-.button.left-pagination-button {
-    border-radius: 0;
-    background:  url("../img/arrow.svg") center center no-repeat;
-    transform: rotate(90deg);
-}
-.pagination-button.iconify-button::before {
-    content: "";
-    background:  url("../img/arrow.svg") center center no-repeat;
-    width: 1rem;
-    height: 50%;
-    transform: rotate(90deg);
-}
-.button.pagination{
-    padding: 0;
-    width: 30px;
-    line-height: 30px;
-    height: 30px;
-    border-radius: 10px;
-    transition: transform .5s;
-}
-.button.pagination:hover {
-    position: relative;
-    opacity: 100%;
-    transform: scale(1.1);
-}
-.button.right-pagination-button {
-    border-radius: 0;
-    background:  url("../img/arrow.svg") center center no-repeat;
-    transform: rotate(-90deg);
-}
-.pagination-container {
-    width: 50%;
-    padding: 10px;
-    text-align: center;
-    margin: 0 auto;
-}

@@ -147,20 +147,19 @@
 </ul>
 
 
-<h1 class="page-sub-title">Oeuvres Populaires</h1>
+<h1 class="page-sub-title">Oeuvres récentes</h1>
 <ul id="card-carousel" class="carousel multiple">
-    <?php for($i= 0; $i < 10; $i++){?>
-    <a href="#" class="carousel-element card">
-        <div class="card-container">
-            <img class='card-image' src="/assets/img/oeuvre_1.png" alt="" srcset=""/>
-            <div class="card-title">
-                <h4 class="card-name">Nom oeuvre</h4>
-                <h4 class="card-price">650 €</h4>
+    <?php foreach($artworks as $artwork){?>
+        <a href="<?= $pathFor("shop.view", ["slug"=> str_replace(" ", "-", strtolower($artwork->name)), "id"=> $artwork->id]) ?>" id="<?= $artwork->id ?>" class="carousel-element card">
+            <div class="card-container">
+                <img class='card-image' src="<?= $artwork->image ?>" alt="<?= $artwork->name ?>" srcset=""/>
+                <div class="card-title">
+                    <h4 class="card-name"><?= $artwork->name ?></h4>
+                    <h4 class="card-price"><?= $artwork->price ?>€</h4>
+                </div>
+                <h4 class="card-author"><?= $artwork->username ?></h4>
+                <p class="card-description"><?= $artwork->description ?></p>
             </div>
-            <h4 class="card-author">Artiste</h4>
-            <p class="card-description">Description concise de l’oeuvre en expliqueant le style, date, lieu de création...</p>
-        </div>
-
-    </a>
+        </a>
     <?php }?>
 </ul>

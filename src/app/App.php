@@ -3,6 +3,7 @@
 use G1c\Culturia\framework\Container;
 use G1c\Culturia\framework\Renderer;
 use G1c\Culturia\framework\Router\Router;
+use G1c\Culturia\framework\Router\RouterException;
 
 class App {
 
@@ -44,8 +45,14 @@ class App {
         return $this;
     }
     public function handle(mixed $request){
-        $match = Container::getInstance()->get(Router::class)->match($_SERVER["REQUEST_URI"]);
-        return $match;     
+        try{
+            $match = Container::getInstance()->get(Router::class)->match($_SERVER["REQUEST_URI"]);
+            return $match;
+        } catch (RouterException $exception){
+            echo "<h1>Not Found</h1>";
+            return ;
+        }
+
     }
     public function run(array $request){
         $container = $this->getContainer();
