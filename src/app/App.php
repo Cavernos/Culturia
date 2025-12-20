@@ -2,6 +2,7 @@
 
 use G1c\Culturia\framework\Container;
 use G1c\Culturia\framework\Renderer;
+use G1c\Culturia\framework\Renderer\RendererFactory;
 use G1c\Culturia\framework\Router\Router;
 use G1c\Culturia\framework\Router\RouterException;
 
@@ -14,27 +15,19 @@ class App {
      */
     private $modules = [];
     private $definition;
-    private $renderer;
-    private $router;
 
     public function __construct(string $definition){
         $this->definition = $definition;
 
 
     }
-    public function getContainer(){
+    public function getContainer(): Container
+    {
         $container = Container::getInstance($this->definition);
         foreach($this->modules as $module){
             if($module::DEFINITIONS){
                 $container->addDefinition($module::DEFINITIONS);
             }    
-        }
-        $renderer = $container->get(Renderer::class);
-        $renderer->addGlobal("layout_path", $container->get('view.path'). DIRECTORY_SEPARATOR. "layout.php");
-        if ($container->has("renderer.extensions")){
-            foreach ($container->get("renderer.extensions") as $extension) {
-                $renderer->addExtension($extension);
-            }
         }
         $this->container = $container;
         return $this->container;
@@ -55,9 +48,8 @@ class App {
 
     }
     public function run(array $request){
-        $container = $this->getContainer();
         foreach ($this->modules as $module){
-           $module = $container->get($module);
+            $this->getContainer()->get($module);
         }
         return $this->handle($request); 
        

@@ -5,6 +5,6 @@ use G1c\Culturia\framework\Container;
 
 return [
     'shop.prefix' => '/shop',
-     ShopModule::class => function (Container $c){return Container::getInstance()->resolve(ShopModule::class, "shop.prefix");}
+     ShopModule::class => function (Container $c){return new ShopModule($c);}
 
 ];

@@ -3,11 +3,11 @@ use G1c\Culturia\framework\Renderer\RendererExtensionInterface;
 
 class Renderer {
     const DEFAULT_NAMESPACE = '__MAIN';
-    private $paths = [];
-    private $globals = [];
+    private array $paths = [];
+    private array $globals = [];
 
-    private $extensions = [];
-    private $extensionsCallbacks = [];
+
+    private array $extensionsCallbacks = [];
 
     public function addPath(string $namespace, ?string $path = null): void {
         if (is_null($path)){
@@ -19,7 +19,6 @@ class Renderer {
 
     public function addExtension(RendererExtensionInterface $extension): void
     {
-        $this->extensions[] = $extension;
         $this->extensionsCallbacks[$extension->getFunctions()[1]] = $extension->getFunctions();
     }
 

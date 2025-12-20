@@ -2,10 +2,11 @@
 
 
 use G1c\Culturia\app\Home\controllers\HomeController;
+use G1c\Culturia\framework\Module;
 use G1c\Culturia\framework\Renderer;
 use G1c\Culturia\framework\Router\Router;
 
-class HomeModule {
+class HomeModule extends Module {
     const DEFINITIONS = __DIR__ . "/config.php";
     private Renderer $renderer;
 

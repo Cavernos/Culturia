@@ -1,0 +1,20 @@
+<?php
+
+namespace G1c\Culturia\app\Auth;
+
+use G1c\Culturia\app\Auth\controllers\LoginController;
+use G1c\Culturia\framework\Container;
+use G1c\Culturia\framework\Module;
+use G1c\Culturia\framework\Renderer;
+use G1c\Culturia\framework\Router\Router;
+
+class AuthModule extends Module
+{
+    const DEFINITIONS = __DIR__ . "/config.php";
+     public function __construct(Container $container)
+     {
+        $container->get(Renderer::class)->addPath("auth", __DIR__ . "/views");
+        $container->get(Router::class)->get($container->get("auth.login"), LoginController::class, "auth.login");
+
+     }
+}

@@ -27,5 +27,4 @@
                 <?php } ?>      
             </div>
             <?= $paginate($artworks,"shop.index"); ?>
-</div>
 

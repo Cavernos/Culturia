@@ -2,20 +2,22 @@
 
 use Exception;
 use ReflectionClass;
+use ReflectionException;
 
 class Container {
     
     private $contents = [];
     private $instances = [];
+
     private static $_instance;
 
-    public static function getInstance(?string $definition = null){  
+    public static function getInstance(?string $definition = null): Container
+    {
         if(is_null(self::$_instance)){
             self::$_instance = new Container($definition);
         }
         return self::$_instance;
     }
-
     public function __construct(?string $definition)
     {
         if (!is_null($definition)){
@@ -23,37 +25,54 @@ class Container {
         }
     }
 
-    public function addDefinition(string $definition)
+    public function addDefinition(string $definition): void
     {
         $contents =  require($definition);
         foreach($contents as $key => $property){
             $this->set($key, $property);
         }
+
+    }
+
+    public function factory(string|callable $callable): mixed
+    {
+        if (!is_callable($callable)){
+            return (new $callable())($this);
+        }
+        return $callable($this);
+
     }
 
     public function get(mixed $key): mixed {
-        if (!isset($this->contents[$key])) {
-            if(class_exists($key)){
-                if (!isset($this->instances[$key])){
-                    $this->instances[$key] = $this->resolve($key);
-                }
-                return $this->instances[$key];
-            }
-            return null;
+        if (isset($this->contents[$key])) {
+            return $this->contents[$key];
         }
-        return $this->contents[$key];
+        if (isset($this->instances[$key])){
+            return $this->instances[$key];
+        }
+        if(class_exists($key)){
+            $this->instances[$key] = $this->resolve($key);
+            return $this->instances[$key];
+        }
+        return null;
     }
     public function set(mixed $key, mixed $value) : void {
-        if(!is_callable($value)){
-            $this->contents[$key] = $value;
-        } else {
-            $this->contents[$key] = $value($this);
+        if(!isset($this->contents[$key])){
+            if(!is_callable($value)){
+                $this->contents[$key] = $value;
+            } else {
+                $this->contents[$key] = $value($this);
+            }
         }
     }
     public function has(mixed $key): bool
     {
-        return isset($this->contents[$key]) || isset($this->instances[$key]);
+        return isset($this->contents[$key]) || isset($this->instances[$key]) || isset($this->factory[$key]);
     }
+
+    /**
+     * @throws ReflectionException
+     */
     public function resolve(string $class_name, ?string $constructor_parameter_alias = null) {
         $reflected_class = new ReflectionClass($class_name);
         if($reflected_class->isInstantiable()){

@@ -9,7 +9,7 @@ class Route {
     private $matches;
 
 
-    public function __construct(string $path, callable|string $callback, string $name)
+    public function __construct(string $path, callable|string $callback, ?string $name)
     {
         $this->path = trim($path, "/");
         $this->name = $name;
@@ -56,7 +56,9 @@ class Route {
             $controller = Container::getInstance()->get($this->callback);
             if(!is_null($this->name)){
                 $name = explode(".", $this->name);
-                return call_user_func_array([$controller, $name[1]], $this->matches);
+                if(method_exists($controller, $name[1])){
+                    return call_user_func_array([$controller, $name[1]], $this->matches);
+                }
             }
             return call_user_func($controller);
         }

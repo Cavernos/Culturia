@@ -16,8 +16,25 @@ class Router {
     public function post($path, $callback, $name =null){
         $this->add($path, $callback, $name, "POST");
     }
+    public function update($path, $callback, $name = null){
+        $this->add($path, $callback, $name, "UPDATE");
+    }
 
-    public function add(string $path, callable|string $callback,string $name, string $method){
+    public function delete($path, $callback, $name = null){
+        $this->add($path, $callback, $name, "DELETE");
+    }
+
+    public function crud($path, $callback, $name = null)
+    {
+        $this->get("$path", $callback, "$name.index");
+        $this->get("$path/new", $callback, "$name.create");
+        $this->post("$path/new", $callback);
+        $this->get("$path/{id:\d+}", $callback, "$name.edit");
+        $this->post("$path/{id:\d+}", $callback);
+        $this->delete("$path/{id:\d+}", $callback, "$name.delete");
+    }
+
+    public function add(string $path, callable|string $callback,?string $name, string $method){
         $route = new Route($path,$callback, $name);
         $this->paths[$method][] = $route;
         if (is_string($callback) && $name === null){
