@@ -32,13 +32,14 @@ class Renderer {
         } else {
             $path = $this->paths[self::DEFAULT_NAMESPACE] . DIRECTORY_SEPARATOR . $view . ".php";
         }
+        foreach ($this->extensionsCallbacks as $name => $callback) {
+            ${$name} = $callback;
+        }
         ob_start();
-        extract($this->extensionsCallbacks);
         extract($this->globals);
         extract($params);
         require($layout_path);
-        echo ob_get_clean();
-        return http_response_code(200);
+        return ob_get_clean();
     }
 
     private function hasNamespace(string $view): bool{

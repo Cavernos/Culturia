@@ -27,6 +27,6 @@ return [
         RendererPaginationExtension::class
 
     ],
-    Renderer::class => fn(Container $c) => $c->factory(RendererFactory::class),
+    Renderer::class => Container::getInstance()->factory(RendererFactory::class),
     Logger::class => fn(Container $c) => new Logger($c->get("env"), $c->get("log.path"))
 ];

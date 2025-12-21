@@ -11,7 +11,7 @@
         <div class="header-top">
             <!-- Logo -->
             <a href="<?= $pathFor("home.index") ?>" class="logo">
-                <img src="/assets/img/logo.svg" class="logo-img">
+                <img src="/assets/img/logo.svg" class="logo-img" alt="Logo">
 
             </a>
 
@@ -45,14 +45,14 @@
 
         <!-- Navigation -->
         <nav>
-            <?php if ($pathFor('home.index') != ''){ ?>
+            <?php if ( $pathFor('home.index') != ''){ ?>
             <a href="<?= $pathFor('home.index') ?>">Accueil</a>
-            <?php } if ($pathFor('shop.index') != ''){ ?>
-            <a href="<?=$pathFor('shop.index')?>">Boutique</a>
-            <?php } if ($pathFor('artists.index') != ''){ ?>
-            <a href="<?=$pathFor('artists.index')?>">Artistes</a>
-            <?php } if ($pathFor('contact.index') != ''){ ?>
-            <a href="<?=$pathFor('contact.index')?>">Contactez-nous</a>
+            <?php } if ( $pathFor('shop.index') != ''){ ?>
+            <a href="<?= $pathFor('shop.index')?>">Boutique</a>
+            <?php } if ( $pathFor('artists.index') != ''){ ?>
+            <a href="<?= $pathFor('artists.index')?>">Artistes</a>
+            <?php } if ( $pathFor('contact.index') != ''){ ?>
+            <a href="<?= $pathFor('contact.index')?>">Contactez-nous</a>
             <?php } ?>
         </nav>
     </header>
@@ -84,17 +84,17 @@
             <div class="footer-section">
                 <h3>Navigation</h3>
                 <ul>
-                    <?php if ($pathFor("home.index") != ''){ ?>
+                    <?php if ( $pathFor("home.index") != ''){ ?>
                     <li><a href="<?= $pathFor("home.index") ?>">Accueil</a></li>
-                    <?php } if ($pathFor("category.index") != ''){ ?>
+                    <?php } if ( $pathFor("category.index") != ''){ ?>
                     <li><a href="<?= $pathFor("category.popular") ?>">Catégorie</a></li>
-                    <?php } if ($pathFor("artists.popular") != ''){ ?>
+                    <?php } if ( $pathFor("artists.popular") != ''){ ?>
                     <li><a href="<?= $pathFor("artists.popular") ?>">Artistes populaires</a></li>
-                    <?php } if ($pathFor("shop.popular") != ''){ ?>
+                    <?php } if ( $pathFor("shop.popular") != ''){ ?>
                     <li><a href="<?= $pathFor("shop.popular") ?>">Oeuvres populaires</a></li>
-                    <?php } if ($pathFor("auth.login") != ''){ ?>
+                    <?php } if ( $pathFor("auth.login") != ''){ ?>
                     <li><a href="<?= $pathFor("auth.login") ?>">Connexion</a></li>
-                    <?php } if ($pathFor("advice.index") != ''){ ?>
+                    <?php } if ( $pathFor("advice.index") != ''){ ?>
                     <li><a href="<?= $pathFor("advice.index") ?>">Avis</a></li>
                     <?php } ?>
                 </ul>

@@ -11,18 +11,12 @@ class Container {
 
     private static $_instance;
 
-    public static function getInstance(?string $definition = null): Container
+    public static function getInstance(): Container
     {
         if(is_null(self::$_instance)){
-            self::$_instance = new Container($definition);
+            self::$_instance = new Container();
         }
         return self::$_instance;
-    }
-    public function __construct(?string $definition)
-    {
-        if (!is_null($definition)){
-            $this->addDefinition($definition);
-        }
     }
 
     public function addDefinition(string $definition): void
@@ -34,14 +28,14 @@ class Container {
 
     }
 
-    public function factory(string|callable $callable): mixed
+    public function factory(string|callable $callable): callable
     {
-        if (!is_callable($callable)){
-            return (new $callable())($this);
+        if (!is_callable($callable)) {
+            return fn(Container $c) => (new $callable())($c::getInstance());
         }
-        return $callable($this);
-
+        return fn(Container $c) => $callable($c::getInstance());
     }
+
 
     public function get(mixed $key): mixed {
         if (isset($this->contents[$key])) {

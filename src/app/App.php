@@ -23,7 +23,8 @@ class App {
     }
     public function getContainer(): Container
     {
-        $container = Container::getInstance($this->definition);
+        $container = Container::getInstance();
+        $container->addDefinition($this->definition);
         foreach($this->modules as $module){
             if($module::DEFINITIONS){
                 $container->addDefinition($module::DEFINITIONS);
@@ -40,10 +41,9 @@ class App {
     public function handle(mixed $request){
         try{
             $match = Container::getInstance()->get(Router::class)->match($_SERVER["REQUEST_URI"]);
-            return $match;
+            return print($match);
         } catch (RouterException $exception){
             echo "<h1>Not Found</h1>";
-            return ;
         }
 
     }
