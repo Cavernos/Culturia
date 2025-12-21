@@ -23,6 +23,7 @@ class ShopModule extends Module {
         $prefix = $c->get("shop.prefix");
         $router = $c->get(Router::class);
         $router->get($prefix, ShopController::class, 'shop.index');
+        $router->crud($prefix . "/cart", ShopController::class, 'shop.cart');
         $router->get($prefix . "/{slug:[a-z\-0-9]+}-{id:[0-9]+}", ShopController::class, 'shop.view');
 
     }

@@ -31,10 +31,13 @@
                     <img src="/assets/img/favoris.svg" alt="Favoris">
                 </a>
 
+                <?php if ( $pathFor('shop.cart.index') != ''){ ?>
                 <!-- Panier -->
-                <a href="cart.html" class="icon-btn">
+                <a href="<?= $pathFor('shop.cart.index') ?>" class="icon-btn">
+                    <div class="cart-count">0</div>
                     <img src="/assets/img/cart.svg" alt="Panier">
                 </a>
+                <?php } ?>
 
                 <!-- Profil -->
                 <a href="#" class="icon-btn">

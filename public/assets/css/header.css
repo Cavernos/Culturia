@@ -71,13 +71,19 @@ header {
     text-decoration: none;
     cursor: pointer;
     padding: 8px;
+    color: black;
     transition: transform 0.2s;
-    display: block;
+    display: inline;
+    float: left;
 }
 
 .icon-btn:hover {
     transform: scale(1.1);
 }
+.icon-btn .cart-count{
+    float: right;
+}
+
 
 .icon-btn img {
     width: 28px;

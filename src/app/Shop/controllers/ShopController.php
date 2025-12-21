@@ -15,11 +15,7 @@ class ShopController {
         $this->router = $router;
     }
     
-    public function __invoke()
-    {
-        
-        return $this->index();
-    }
+
     public function index(){
         $artworks = $this->table->findPublic()->paginate(16, $_GET["p"] ?? 1);
         return $this->renderer->render('@shop/shop', compact("artworks"));
@@ -29,5 +25,10 @@ class ShopController {
         $similar_artworks = $this->table->findPublic()->limit(4)->fetchAll();
         return $this->renderer->render('@shop/show', compact("artwork", "similar_artworks"));
         
+    }
+
+    public function cart()
+    {
+        return $this->renderer->render('@shop/cart');
     }
 }
