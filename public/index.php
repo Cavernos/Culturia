@@ -1,4 +1,5 @@
 <?php
+
 use G1c\Culturia\app\App;
 use G1c\Culturia\app\Auth\AuthModule;
 use G1c\Culturia\app\Home\HomeModule;

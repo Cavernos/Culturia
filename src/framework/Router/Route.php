@@ -60,7 +60,7 @@ class Route {
                     return call_user_func_array([$controller, $name[1]], $this->matches);
                 }
             }
-            return call_user_func($controller);
+            return call_user_func($controller, $this->matches);
         }
         return call_user_func_array($this->callback, $this->matches);
         

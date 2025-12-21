@@ -22,8 +22,14 @@
             </div>
 
             <div class="action-buttons">
-                <button class="btn-add-cart">Ajouter au panier</button>
-                <button class="btn-favorite">♡</button>
+                <?php if($pathFor('shop.cart.edit')) { ?>
+                <form method="POST" action="<?= $pathFor('shop.cart.edit', ["id" => $artwork->id])?>">
+                    <button class="btn-add-cart" type="submit">Ajouter au panier</button>
+                </form>
+                <?php } ?>
+                    <button class="btn-favorite" type="submit">♡</button>
+
+
             </div>
 
             <div class="oeuvre-info">

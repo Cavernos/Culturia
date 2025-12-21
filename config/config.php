@@ -6,6 +6,9 @@ use G1c\Culturia\framework\Renderer;
 use G1c\Culturia\framework\Renderer\RendererFactory;
 use G1c\Culturia\framework\Renderer\RendererPaginationExtension;
 use G1c\Culturia\framework\Renderer\RendererRouterExtension;
+use G1c\Culturia\framework\Session\PHPSession;
+use G1c\Culturia\framework\Session\SessionInterface;
+
 return [
     'view.path' => dirname(__DIR__) .DIRECTORY_SEPARATOR. "views",
     "database.hostname" => "localhost",
@@ -27,6 +30,7 @@ return [
         RendererPaginationExtension::class
 
     ],
+    SessionInterface::class => new PHPSession(),
     Renderer::class => Container::getInstance()->factory(RendererFactory::class),
     Logger::class => fn(Container $c) => new Logger($c->get("env"), $c->get("log.path"))
 ];

@@ -12,8 +12,12 @@ class CrudController
     use RouterAwareController;
 
     private Renderer $renderer;
-    private Table $table;
+    protected Table $table;
     private Router $router;
+
+    protected string $viewPath;
+
+    protected string $routePrefix;
 
     public function __construct(Renderer $renderer, Table $table, Router $router)
     {
@@ -22,15 +26,24 @@ class CrudController
         $this->table = $table;
         $this->router = $router;
     }
-    public function __invoke()
+    public function __invoke($params)
     {
-    return $this->index();
+        $this->renderer->addGlobal('viewPath', $this->viewPath);
+        $this->renderer->addGlobal('routePrefix', $this->routePrefix);
+        if (str_ends_with($_SERVER["REQUEST_URI"], 'new')){
+            return $this->create();
+        }
+        if (isset($params[0])){
+            return $this->edit($params[0]);
+        }
+        return $this->index();
     }
 
-    public function index()
+    public function index(): string
     {
         $table = $this->table->getTable();
-        $this->redirect("shop.index");
+        $items = $this->table->makeQuery();
+        return $this->renderer->render("$this->viewPath/index", compact("items"));
 
     }
 
@@ -41,6 +54,6 @@ class CrudController
     public function delete(){
 
     }
-    public function update(){}
+    public function edit($id){}
 
 }
