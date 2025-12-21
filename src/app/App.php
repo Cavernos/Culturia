@@ -1,5 +1,6 @@
 <?php namespace G1c\Culturia\app;
 
+use Exception;
 use G1c\Culturia\framework\Container;
 use G1c\Culturia\framework\Renderer;
 use G1c\Culturia\framework\Renderer\RendererFactory;
@@ -9,12 +10,16 @@ use G1c\Culturia\framework\Router\RouterException;
 class App {
 
     
-    private $container;
+    private Container $container;
     /**
      * @var array
      */
-    private $modules = [];
-    private $definition;
+    private array $modules = [];
+
+    private array $middlewares = [];
+
+    private int $index = 0;
+    private string $definition;
 
     public function __construct(string $definition){
         $this->definition = $definition;
@@ -38,12 +43,21 @@ class App {
         $this->modules[] = $module;
         return $this;
     }
+
+    public function pipe(string $routePrefix, ?string $middleware = null) {
+        if(is_null($middleware)){
+            $this->middlewares[] = $routePrefix;
+        }
+
+        return $this;
+    }
     public function handle(mixed $request){
-        try{
-            $match = Container::getInstance()->get(Router::class)->match($_SERVER["REQUEST_URI"]);
-            return print($match);
-        } catch (RouterException $exception){
-            echo "<h1>Not Found</h1>";
+        $middleware = $this->getMiddleware();
+        if (is_callable($middleware)){
+            return call_user_func_array($middleware, [$request, [$this, 'handle']]);
+        }
+        if (is_null($middleware)){
+            throw new Exception("Aucun middleware n'a intercepté votre requête");
         }
 
     }
@@ -53,6 +67,20 @@ class App {
         }
         return $this->handle($request); 
        
+    }
+
+    private function getMiddleware()
+    {
+        if (array_key_exists($this->index, $this->middlewares)){
+            if (is_string($this->middlewares[$this->index])){
+                $middleware = $this->container->get($this->middlewares[$this->index]);
+            } else {
+                $middleware = $this->middlewares[$this->index];
+            }
+            $this->index++;
+            return $middleware;
+        }
+        return null;
     }
 
     public function getModules() {

@@ -32,12 +32,10 @@ class Renderer {
         } else {
             $path = $this->paths[self::DEFAULT_NAMESPACE] . DIRECTORY_SEPARATOR . $view . ".php";
         }
-        foreach ($this->extensionsCallbacks as $name => $callback) {
-            ${$name} = $callback;
-        }
         ob_start();
         extract($this->globals);
         extract($params);
+        extract($this->extensionsCallbacks);
         require($layout_path);
         return ob_get_clean();
     }
