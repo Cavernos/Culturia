@@ -26,11 +26,14 @@ class CrudController
         $this->table = $table;
         $this->router = $router;
     }
-    public function __invoke($params)
+    public function __invoke($request, $params): string
     {
         $this->renderer->addGlobal('viewPath', $this->viewPath);
         $this->renderer->addGlobal('routePrefix', $this->routePrefix);
-        if (str_ends_with($_SERVER["REQUEST_URI"], 'new')){
+        if($request["REQUEST_METHOD"] == "DELETE"){
+            return $this->delete($params[0]);
+        }
+        if (str_ends_with($request["REQUEST_URI"], 'new')){
             return $this->create();
         }
         if (isset($params[0])){
@@ -47,13 +50,13 @@ class CrudController
 
     }
 
-    public function create(){
+    public function create(): string {
 
     }
 
-    public function delete(){
-
+    public function delete($id): string {
+        return "";
     }
-    public function edit($id){}
+    public function edit($id): string {}
 
 }

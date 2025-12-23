@@ -1,6 +1,5 @@
 <?php namespace G1c\Culturia\framework\Router;
 
-use G1c\Culturia\framework\Router\Route;
 
 class Router {
     private $paths = [];
@@ -44,16 +43,16 @@ class Router {
             $this->namedRoute[$name] = $route; 
         }
     }
-    public function match(string $url){
-        if (!isset($this->paths[$_SERVER["REQUEST_METHOD"]])){
-            throw new RouterException($_SERVER["REQUEST_METHOD"] . "does not exist in paths");
+    public function match(array $request){
+        if (!isset($this->paths[$request["REQUEST_METHOD"]])){
+            throw new RouterException($request["REQUEST_METHOD"] . "does not exist in paths");
         }
-        foreach ($this->paths[$_SERVER["REQUEST_METHOD"]] as $key => $value){
-            if ($value->match($url)){
-                return $value->call();
+        foreach ($this->paths[$request["REQUEST_METHOD"]] as $key => $value){
+            if ($value->match($request["REQUEST_URI"])){
+                return $value->call($request);
             }
         }
-        throw new RouterException("No route match with $url");
+        throw new RouterException("No route match with ".$request["REQUEST_URI"]);
         
     }
 

@@ -39,17 +39,7 @@ class CartCrudController extends CrudController
         return $this->renderer->render("$this->viewPath/index", compact("items", "total_price"));
     }
 
-
-    public function create(): void
-    {
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-            $this->redirect("shop.index");
-        }
-
-
-    }
-    public function edit($id): void
+    public function edit($id): string
     {
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $item = $this->table->find($id);
@@ -58,8 +48,25 @@ class CartCrudController extends CrudController
                 $cart_session[] = $item;
                 $this->session->set("carts", $cart_session);
             }
-            $this->redirect("shop.cart.index");
+            $this->redirect("shop.view",
+                ["slug" => str_replace(" ", "-", strtolower($item->name)), "id" => $item->id ]);
         }
+        return $this->index();
+    }
+
+    public function delete($id): string
+    {
+        $cart = $this->session->get("carts", []);
+        foreach ($cart as $item){
+            if ($item->id == $id){
+                $key = array_search($item, $cart);
+
+                unset($cart[$key]);
+            }
+        }
+        $this->session->set("carts", $cart);
+        $this->redirect("$this->routePrefix.index");
+        return $this->index();
     }
 
 }

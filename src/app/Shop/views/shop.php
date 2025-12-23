@@ -12,7 +12,7 @@
                     </div>
             </div> 
             <div class="shop-container">
-                <?php foreach($artworks as $artwork) {?>
+                <?php foreach($artworks ?? [] as $artwork) {?>
                         <a href="<?= $pathFor("shop.view", ["slug"=> str_replace(" ", "-", strtolower($artwork->name)), "id"=> $artwork->id]) ?>" id="<?= $artwork->id ?>" class="card">
                             <div class="card-container">
                                 <img class='card-image' src="<?= $artwork->image ?>" alt="<?= $artwork->name ?>" srcset=""/>

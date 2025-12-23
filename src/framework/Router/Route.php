@@ -51,7 +51,7 @@ class Route {
     }
 
 
-    public function call() {
+    public function call($request) {
         if (is_string($this->callback)){
             $controller = Container::getInstance()->get($this->callback);
             if(!is_null($this->name)){
@@ -60,7 +60,7 @@ class Route {
                     return call_user_func_array([$controller, $name[1]], $this->matches);
                 }
             }
-            return call_user_func($controller, $this->matches);
+            return call_user_func($controller, $request, $this->matches);
         }
         return call_user_func_array($this->callback, $this->matches);
         

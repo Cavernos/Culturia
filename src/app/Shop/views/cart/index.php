@@ -1,7 +1,10 @@
 <h1 class="page-title">Mon panier</h1>
+<?php if (count($items ?? []) === 0) { ?>
+<h1 class="no-article-in-cart">Aucun article dans le panier</h1>
+<?php } else {?>
 <div class="cart-container">
-    <h2 class="left">Nombre d'articles: <?= count($items) ?></h2>
-    <h2 class="right">Prix total: <?=$total_price?>€</h2>
+    <h2 class="left">Nombre d'articles: <?= count($items ?? []) ?></h2>
+    <h2 class="right">Prix total: <?=$total_price ?? 0 ?>€</h2>
 </div>
 <hr>
 <table class="cart-articles">
@@ -16,20 +19,25 @@
     </tr>
     </thead>
     <tbody class="cart-article-body">
-    <?php foreach ($items as $item){ ?>
+    <?php foreach ($items ?? [] as $item){ ?>
     <tr>
         <td><img src="<?= $item->image ?>" alt="<?=$item->name ?>" srcset=""/></td>
         <td><?= $item->name ?></td>
         <td><?= $item->price ?> €</td>
         <td>60x70</td>
         <td>Abstrait</td>
-        <td><button class="button iconify-button delete-button"></button></td>
+        <td>
+            <form action="<?= $pathFor("shop.cart.delete", ["id" => $item->id]) ?>" method="POST">
+                <input name="_METHOD" value="DELETE" type="hidden"/>
+                <button class="button iconify-button delete-button" type="submit"></button>
+            </form>
+        </td>
     </tr>
-        <?php } ?>
+    <?php } ?>
     </tbody>
 </table>
 <div class="cart-footer">
-    <h1>Prix total : <?=$total_price?> €</h1>
+    <h1>Prix total : <?=$total_price ?? 0?> €</h1>
     <button class="button">Finaliser ma commande</button>
-
 </div>
+<?php } ?>

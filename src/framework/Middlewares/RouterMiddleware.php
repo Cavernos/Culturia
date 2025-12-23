@@ -21,13 +21,13 @@ class RouterMiddleware
     public function __invoke($request, callable $next)
     {
         try {
-            print $this->router->match($request["REQUEST_URI"]);
             $this->logger->info("Route ". $request['REQUEST_URI'] . " matched");
+            print $this->router->match($request);
+            $this->logger->write();
         } catch (RouterException){
             $this->logger->info("No route for". $request['REQUEST_URI']);
-            return $next($request);
-        } finally {
             $this->logger->write();
+            return $next($request);
         }
     }
 
