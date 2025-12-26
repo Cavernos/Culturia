@@ -61,6 +61,10 @@ class App {
         }
 
     }
+
+    /**
+     * @throws Exception
+     */
     public function run(array $request){
         foreach ($this->modules as $module){
             $this->getContainer()->get($module);
@@ -83,7 +87,7 @@ class App {
         return null;
     }
 
-    public function getModules() {
+    public function getModules(): array {
         return $this->modules;
         
     }

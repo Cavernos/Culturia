@@ -1,6 +1,7 @@
 <?php
 
 use G1c\Culturia\app\App;
+use G1c\Culturia\app\Artists\ArtistsModule;
 use G1c\Culturia\app\Auth\AuthModule;
 use G1c\Culturia\app\Home\HomeModule;
 use G1c\Culturia\app\Shop\ShopModule;
@@ -20,7 +21,8 @@ $app = new App(dirname(__DIR__). '/config/config.php');
 
 $app->add(ShopModule::class)
     ->add(AuthModule::class)
-    ->add(HomeModule::class);
+    ->add(HomeModule::class)
+    ->add(ArtistsModule::class);
 
 $app->pipe(TrailingSlashMiddleware::class)
     ->pipe(MethodMiddleware::class)

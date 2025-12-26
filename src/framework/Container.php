@@ -21,9 +21,12 @@ class Container {
 
     public function addDefinition(string $definition): void
     {
-        $contents =  require($definition);
+        $contents = [];
+        if(file_exists($definition)){
+            $contents =  require($definition);
+        }
         foreach($contents as $key => $property){
-            $this->set($key, $property);
+                $this->set($key, $property);
         }
 
     }

@@ -11,6 +11,11 @@ use G1c\Culturia\framework\Router\Router;
 class AuthModule extends Module
 {
     const DEFINITIONS = __DIR__ . "/config.php";
+
+    public const MIGRATIONS = __DIR__ . "/db/migrations";
+
+    public const SEEDS = __DIR__ . "/db/seeds";
+
      public function __construct(Container $container)
      {
         $container->get(Renderer::class)->addPath("auth", __DIR__ . "/views");

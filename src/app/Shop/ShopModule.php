@@ -13,6 +13,10 @@ use G1c\Culturia\framework\Session\SessionInterface;
 class ShopModule extends Module {
     const DEFINITIONS = __DIR__ . '/config.php';
 
+    public const MIGRATIONS = __DIR__ . "/db/migrations";
+
+    const SEEDS = __DIR__ . "/db/seeds";
+
     private Renderer $renderer;
 
     public function __construct(Container $c)
