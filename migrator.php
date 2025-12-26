@@ -1,6 +1,8 @@
 <?php
 
 use G1c\Culturia\framework\Database\Migrator\Migrator;
+use G1c\Culturia\framework\Database\Migrator\Seeder;
+
 require "public/index.php";
 
 $modules = $app->getModules();
@@ -44,7 +46,7 @@ function getClassesFromFiles($files): array
         require_once $file;
         $newClasses =  array_values(get_declared_classes());
         foreach (array_diff( $newClasses, $classes) as $className) {
-            if(is_subclass_of($className, Migrator::class)){
+            if(is_subclass_of($className, Migrator::class)|| is_subclass_of($className, Seeder::class)) {
                 $classNames[] = $className;
             }
         }
@@ -88,6 +90,16 @@ function rollback($instances): bool
 
 }
 
+function seed($seeds, $pdo)
+{
+    $classes = getClassesFromFiles(getFilesFromArray($seeds));
+    foreach ($classes as $class) {
+        $instance = new $class($pdo);
+        if(method_exists($instance, "run")){
+            $instance->run();
+        }
+    }
+}
 
 function create(array $definitions)
 {
@@ -122,16 +134,19 @@ function create(array $definitions)
     return true;
 }
 $migrators = createInstances($migrations, $pdo);
-switch ($argv[1]) {
-    case "create":
-        return create($migrations);
-    case "migrate":
-        return migrate($migrators);
-    case "rollback":
-        return rollback($migrators);
-    default:
-        echo "Aucun argument ne correspond à votre demande";
-
+$params = [
+    "create" => [$migrations],
+    "migrate" => [$migrators],
+    "rollback" => [$migrators],
+    "seed" => [$seeds, $pdo]
+];
+foreach ($argv as $arg) {
+    if (function_exists($arg)){
+        if(isset($params[$arg])){
+            return $arg(...$params[$arg]);
+        }
+    }
 }
+echo "Aucun argument ne correspond à votre demande";
 
 

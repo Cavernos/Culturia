@@ -27,7 +27,10 @@ abstract class Migrator
 
     public function table(): MigrationTable
     {
-        return $this->table;
+        return $this->table->addColumn("id", "INT", [
+            "PRIMARY KEY" => "true",
+            "AUTO_INCREMENT" => "true",
+            "NULL" => false]);
     }
 
     public function getTableName(): string
@@ -42,6 +45,8 @@ abstract class Migrator
 
     public function down()
     {
+        $namespace = explode("\\", $this::class);
+        echo "Rollback " . end($namespace) . PHP_EOL;
         $reverser = new MigrationReverser();
         $filename = $this->getStorePath();
         if(file_exists($filename)) {
@@ -77,11 +82,14 @@ abstract class Migrator
     {
 
         $filepath = $this->getStorePath();
+        $namespace = explode("\\", $this::class);
         if(!file_exists($filepath)) {
+
+            echo "Migrate " . end($namespace) . PHP_EOL;
             $callback();
             file_put_contents($filepath, json_encode($this->recorder->getActions()));
         } else {
-            echo "Migration déjà effectué ";
+            echo "Migration " . end($namespace) . "déjà effectué" . PHP_EOL;
         }
 
 

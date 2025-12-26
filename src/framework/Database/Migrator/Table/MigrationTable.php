@@ -24,7 +24,7 @@ class MigrationTable
     private $pdo;
     private $recorder;
 
-    public function __construct(string $tableName, PDO $pdo, MigrationRecorder $recorder)
+    public function __construct(string $tableName, PDO $pdo, ?MigrationRecorder $recorder = null)
     {
 
         $this->tableName = $tableName;
@@ -51,7 +51,10 @@ class MigrationTable
     }
 
     public function addColumn($name, $type, ?array $params = []): MigrationTable {
-        $this->recorder->record("addColumn", compact('name', 'type', 'params'));
+        if(!isset($param["PRIMARY KEY"])){
+            $this->recorder->record("addColumn", compact('name', 'type', 'params'));
+        }
+
         if(!$this->hasColumn($name)){
             $query = "$name $type";
             foreach ($params as $param => $value) {
@@ -129,10 +132,6 @@ class MigrationTable
         }
 
         if (!empty($this->fields)) {
-            $this->addColumn("id", "INT", [
-                "PRIMARY KEY" => "true",
-                "AUTO_INCREMENT" => "true",
-                "NULL" => false]);
             $parts[] = '(' . join(", ", array_values($this->fields)) . ")";
         }
         if(!empty($this->foreignKeys)) {
