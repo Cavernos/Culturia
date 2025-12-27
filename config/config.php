@@ -3,6 +3,7 @@
 use G1c\Culturia\framework\Container;
 use G1c\Culturia\framework\Logger;
 use G1c\Culturia\framework\Renderer;
+use G1c\Culturia\framework\Renderer\FormExtension;
 use G1c\Culturia\framework\Renderer\RendererFactory;
 use G1c\Culturia\framework\Renderer\RendererPaginationExtension;
 use G1c\Culturia\framework\Renderer\RendererRouterExtension;
@@ -27,7 +28,8 @@ return [
     },
     "renderer.extensions" => [
         RendererRouterExtension::class,
-        RendererPaginationExtension::class
+        RendererPaginationExtension::class,
+        FormExtension::class
 
     ],
     SessionInterface::class => new PHPSession(),
