@@ -15,6 +15,7 @@ class HomeModule extends Module {
         $this->renderer = $renderer;
         $this->renderer->addPath("home", __DIR__ . "/views");
         $router->get($prefix, HomeController::class, "home.index");
+        $router->get($prefix . "/faq", HomeController::class, "home.faq");
     }
 
 }

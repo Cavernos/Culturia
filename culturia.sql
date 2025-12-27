@@ -17,9 +17,9 @@ CREATE TABLE IF NOT EXISTS clients (
     username VARCHAR(128),
     avatar VARCHAR(128),
     email VARCHAR(128),
-    password_hash VARCHAR(128),
+    password TEXT,
     inscription_date DATE,
-    account_modification_date DATE
+    modification_date DATE
 );
 
 CREATE TABLE IF NOT EXISTS artists (

@@ -2,13 +2,19 @@
 
 namespace G1c\Culturia\app\Auth\controllers;
 
-use G1c\Culturia\framework\Router\Router;
+use G1c\Culturia\framework\Renderer;
 
 class LoginController
 {
- public function  __invoke()
- {
-     echo "Login";
-    return ;
- }
+    private Renderer $renderer;
+
+    public function __construct(Renderer $renderer)
+    {
+
+        $this->renderer = $renderer;
+    }
+    public function  __invoke()
+    {
+        return $this->renderer->render("@auth/login");
+    }
 }

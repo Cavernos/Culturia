@@ -40,9 +40,11 @@
                 <?php } ?>
 
                 <!-- Profil -->
-                <a href="#" class="icon-btn">
+                <?php if ( $pathFor('auth.login') != ''){ ?>
+                <a href="<?=$pathFor('auth.login')?>" class="icon-btn">
                     <img src="/assets/img/account.svg" alt="Profil">
                 </a>
+                <?php } ?>
             </div>
         </div>
 
@@ -110,7 +112,9 @@
                     <li><a href="#">À propos de nous</a></li>
                     <li><a href="#">Nous rejoindre</a></li>
                     <li><a href="#">Contactez-nous</a></li>
-                    <li><a href="#">FAQ</a></li>
+                    <?php if ( $pathFor("home.faq") != ''){ ?>
+                    <li><a href="<?= $pathFor("home.faq") ?>">FAQ</a></li>
+                    <?php } ?>
                     <li><a href="#">Mention légal</a></li>
                 </ul>
             </div>

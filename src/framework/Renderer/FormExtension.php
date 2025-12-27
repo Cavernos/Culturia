@@ -13,7 +13,6 @@ class FormExtension implements RendererExtensionInterface
     }
 
     /**
-     * @param array $context
      * @param string $key
      * @param $value
      * @param string|null $label
@@ -24,7 +23,7 @@ class FormExtension implements RendererExtensionInterface
     {
         $type = $options["type"] ?? 'text';
         $error = $this->getHTMLError($context, $key);
-        $class = 'fields admin';
+        $class = 'form-group';
         $value = $this->convertValue($value);
         $attributes = [
             'class' => $options["class"] ?? '',
@@ -32,21 +31,27 @@ class FormExtension implements RendererExtensionInterface
             "id" => $key,
         ];
         if($error) {
-            $class .= ' has-danger';
+           $class .= ' has-danger';
         }
         switch ($type) {
             case 'textarea':
                 $input = $this->textarea($value, $attributes);
+                break;
             case 'file':
-                $input = $this->file($value, $attributes);
+                $input = $this->file($attributes);
+                break;
             case 'checkbox':
                 $input = $this->checkbox($value, $attributes);
+                break;
             case 'password':
                 $input = $this->password($value, $attributes);
+                break;
             case 'email':
                 $input = $this->email($value, $attributes);
+                break;
             case array_key_exists('options', $options):
                 $input = $this->select($value, $options["options"], $attributes);
+                break;
             default:
                 $input = $this->input($value, $attributes);
         }

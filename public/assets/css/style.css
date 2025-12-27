@@ -7,11 +7,12 @@
 /* Loading pages */
 @import url("./header.css");
 @import url("./footer.css");
-@import url("./shop.css");
+@import url("shop/shop.css");
 @import url("./faq.css");
-@import url("./cart.css");
+@import url("shop/cart.css");
 @import url("./home.css");
-@import url("./show-artwork.css");
+@import url("shop/show-artwork.css");
+@import url("auth/login.css");
 /*@import url("./connexion-choice.css");
 
 @import url("./ModifProfil.css");

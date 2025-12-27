@@ -2,6 +2,7 @@
 
 namespace G1c\Culturia\app\Auth;
 
+use G1c\Culturia\app\Auth\controllers\LoginAttemptController;
 use G1c\Culturia\app\Auth\controllers\LoginController;
 use G1c\Culturia\framework\Container;
 use G1c\Culturia\framework\Module;
@@ -19,7 +20,8 @@ class AuthModule extends Module
      public function __construct(Container $container)
      {
         $container->get(Renderer::class)->addPath("auth", __DIR__ . "/views");
-        $container->get(Router::class)->get($container->get("auth.login"), LoginController::class, "auth.login");
-
+        $router = $container->get(Router::class);
+        $router->get($container->get("auth.login"), LoginController::class, "auth.login");
+        $router->post($container->get("auth.login"), LoginAttemptController::class);
      }
 }

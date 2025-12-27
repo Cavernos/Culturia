@@ -1,0 +1,237 @@
+
+<div class="faq-header">
+    <h1 class="page-title">Foire aux Questions</h1>
+    <p>Les questions essentielles que tout le monde se pose</p>
+</div>
+
+<div class="content">
+    <!-- Section Acheteurs -->
+    <div class="section">
+        <h2 class="section-title">Pour les acheteurs</h2>
+
+        <div class="faq-item">
+            <div class="question">Achat et Paiement</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Comment puis-je acheter une œuvre d'art ?</div>
+            <div class="answer">
+                Parcourez notre catalogue, sélectionnez l'œuvre qui vous plaît, et cliquez sur "Acheter". Vous serez guidé à travers un processus de paiement sécurisé. Une fois l'achat effectué, vous recevrez un email avec tous les détails de votre commande validée.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Quels sont les moyens de paiement acceptés ?</div>
+            <div class="answer">
+                Nous acceptons les cartes bancaires (Visa, Mastercard, American Express), PayPal, et les virements bancaires pour les achats importants. Tous les paiements sont sécurisés et cryptés.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Les prix affichés sont-ils définitifs ?</div>
+            <div class="answer">
+                Les prix incluent la TVA applicable. Les frais de livraison sont calculés selon la destination et les dimensions de l'œuvre. Vous verrez l'ensemble total avant de valider votre commande.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Puis-je négocier le prix ?</div>
+            <div class="answer">
+                Pour certaines œuvres en collection, une négociation peut être possible. Contactez-nous directement en utilisant la fonction "Faire une offre" à côté de l'œuvre qui vous intéresse.
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Livraison et Retours -->
+    <div class="faq-section">
+        <h2 class="section-title">Livraison et Retours</h2>
+
+        <div class="faq-item">
+            <div class="question">Quels sont les délais de livraison ?</div>
+            <div class="answer">
+                Le délai standard est variable selon la provenance de l'artiste et votre adresse. Généralement, comptez 7 à 21 jours ouvrés. Un suivi vous sera communiqué dès l'expédition de votre œuvre.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Comment est l'œuvre expédiée ?</div>
+            <div class="answer">
+                Chaque œuvre est soigneusement emballée par l'artiste ou notre équipe avec des matériaux de protection professionnels adaptés, et une assurance. Nous veillons à minimiser tout risque d'endommagement pendant le transport.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Puis-je retourner une œuvre si elle ne me convient pas ?</div>
+            <div class="answer">
+                Oui, disposez d'un délai de 14 jours à compter de la réception pour nous retourner l'œuvre dans son état d'origine. Les frais de retour sont à votre charge. L'œuvre doit être retournée dans son emballage d'origine, en parfait état et sans dommage de délais.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Que faire si l'œuvre arrive endommagée ?</div>
+            <div class="answer">
+                Photographiez immédiatement les dommages et l'emballage, puis contactez-nous sous 48h. Nous gérerons le dossier avec le transporteur et vous proposerons un remplacement ou un remboursement complet.
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Authenticité -->
+    <div class="faq-section">
+        <h2 class="section-title">Authenticité et Certificats</h2>
+
+        <div class="faq-item">
+            <div class="question">Les œuvres sont-elles authentiques ?</div>
+            <div class="answer">
+                Toute œuvre vendue sur notre plateforme est créée et signée par les artistes. Chaque artiste est vérifié lors de son inscription pour garantir l'authenticité des œuvres diffusées.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Vais-je recevoir un certificat d'authenticité ?</div>
+            <div class="answer">
+                Oui, chaque œuvre originale ou en édition limitée s'accompagne d'un certificat d'authenticité signé par l'artiste, mentionnant la taille, les dimensions, la technique, et le numéro de création.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Puis-je vérifier la validité d'un certificat reçu ?</div>
+            <div class="answer">
+                Tous nos certificats comportent une référence unique et une intro plateforme pour toute question sur son travail, demandez une œuvre sur encore, ou simplement échanger.
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Mon Compte Acheteur -->
+    <div class="faq-section">
+        <h2 class="section-title">Mon Compte Acheteur</h2>
+
+        <div class="faq-item">
+            <div class="question">Dois-je créer un compte pour acheter ?</div>
+            <div class="answer">
+                Un compte n'est pas obligatoire pour effectuer un achat, mais il vous permet de suivre vos commandes, sauvegarder vos favoris, et recevoir des recommandations personnalisées.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Comment suivre mes commandes ?</div>
+            <div class="answer">
+                Connectez-vous à votre compte et rendez-vous à la section "Mes commandes". Vous y trouverez l'historique complet et le statut de chaque commande en cours.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Puis-je créer une liste de favoris ?</div>
+            <div class="answer">
+                Oui, cliquez sur l'icône en forme de cœur sur chaque œuvre pour l'ajouter à vos favoris. Vous recevrez une notification si son prix change ou si l'artiste publie de nouvelles créations.
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Pour les Artistes -->
+    <div class="faq-section">
+        <h2 class="section-title">Pour les Artistes</h2>
+
+        <div class="faq-item">
+            <div class="question">Inscription et Profil</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Comment devenir artiste sur votre plateforme ?</div>
+            <div class="answer">
+                Cliquez sur "Devenir Artiste" et remplissez le formulaire d'inscription avec vos informations, votre portfolio, et quelques exemples de vos œuvres. Notre équipe examinera votre candidature sous 3-5 jours ouvrés.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Quels sont les critères de sélection ?</div>
+            <div class="answer">
+                Nous recherchons des artistes professionnels ou émergents avec un travail original et de qualité. Vous devez être l'auteur direct de vos œuvres, être légalement reconnu(e) comme artiste dans votre pays.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">L'inscription est-elle payante ?</div>
+            <div class="answer">
+                Non, l'inscription est complètement gratuite. Nous ne facturons qu'une commission sur les ventes réalisées via la plateforme.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Comment optimiser mon profil d'artiste ?</div>
+            <div class="answer">
+                Nous fournissons un guide complet avec des conseils de qualité professionnelle de vos œuvres, votre démarche artistique, et mettez régulièrement à jour votre portfolio. Plus votre profil est complet, plus vous attirez d'acheteurs potentiels.
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Vente et Commission -->
+    <div class="faq-section">
+        <h2 class="section-title">Vente et Commission</h2>
+
+        <div class="faq-item">
+            <div class="question">Quel est le montant de votre commission ?</div>
+            <div class="answer">
+                Nous prélevons une commission de 35% sur chaque vente. Ce pourcentage couvre l'hébergement, la promotion, le service client, et les frais de transaction bancaire.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Puis-je fixer mes propres prix ?</div>
+            <div class="answer">
+                Vous êtes libre de fixer vos propres prix. Nous vous recommandons de prendre en compte les matériaux, le temps de création, votre expérience, et le prix du marché pour des œuvres similaires.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Quand et comment suis-je payé ?</div>
+            <div class="answer">
+                Les paiements sont effectués (bi-mensuels ou mensuellement) par virement bancaire ou paiement en ligne. Une fois l'œuvre vendue, le montant est transféré après confirmation de la réception de l'œuvre par l'acheteur.
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Livraison et Logistique -->
+    <div class="faq-section">
+        <h2 class="section-title">Livraison et Logistique</h2>
+
+        <div class="faq-item">
+            <div class="question">Qui gère l'expédition des œuvres vendues ?</div>
+            <div class="answer">
+                Vous gérez l'emballage, l'étiquetage et l'expédition des œuvres vendues. Nous vous fournissons des recommandations sur les meilleures pratiques d'emballage et des partenariats avec des transporteurs spécialisés.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Les frais de livraison sont-ils payés par l'acheteur ?</div>
+            <div class="answer">
+                Non, les frais de livraison sont payés par l'acheteur. Vous pouvez définir des frais fixes en variables selon la destination et le poids de l'œuvre.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Que faire si une œuvre est endommagée durant le transport ?</div>
+            <div class="answer">
+                Nous recommandons de toujours assurer vos œuvres lors de chaque expédition. Notre plateforme peut vous mettre en contact avec des assureurs partenaires, dont le coût sera répercuté sur l'acheteur.
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Questions Générales -->
+    <div class="faq-section">
+        <h2 class="section-title">Questions Générales</h2>
+
+        <div class="faq-item">
+            <div class="question">La plateforme est-elle sécurisée ?</div>
+            <div class="answer">
+                Oui, nous utilisons le protocole HTTPS et toutes les transactions sont cryptées. Nous respectons les normes RGPD pour la protection de vos données personnelles.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Expédiez-vous à l'international ?</div>
+            <div class="answer">
+                Oui, nous livrons dans le monde entier. Les frais de douane et taxes d'importation éventuels sont à la charge de l'acheteur et sont calculés lors du passage en douane selon la législation du pays de destination.
+            </div>
+        </div>
+    </div>
+</div>

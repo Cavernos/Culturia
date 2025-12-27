@@ -29,4 +29,9 @@ class HomeController
      $artworks = $this->artworkTable->findPublic()->limit(16)->fetchAll();
      return $this->renderer->render("@home/home", compact("artworks"));
  }
+
+ public function faq()
+ {
+     return $this->renderer->render("@home/faq");
+ }
 }
