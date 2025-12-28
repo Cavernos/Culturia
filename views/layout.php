@@ -32,7 +32,7 @@
                     <img src="/assets/img/favoris.svg" alt="Favoris">
                 </a>
 
-                <?php if ( $pathFor('shop.cart.index') != ''){ ?>
+                <?php if ( $pathFor('shop.cart.index') != '' && $current_user()){ ?>
                 <!-- Panier -->
                 <a href="<?= $pathFor('shop.cart.index') ?>" class="icon-btn">
                     <div class="cart-count"><?=  count($session->get("carts") ?? []) ?></div>
@@ -42,7 +42,7 @@
 
                 <!-- Profil -->
                 <?php if ( $pathFor('auth.login') != ''){ ?>
-                <a href="<?=$pathFor('auth.login')?>" class="icon-btn">
+                <a href="#login" class="icon-btn">
                     <img src="/assets/img/account.svg" alt="Profil">
                 </a>
                     <?php if ($current_user()) { ?>
@@ -71,6 +71,12 @@
             <?php } ?>
         </nav>
     </header>
+    <?php if($flash("error")) { ?>
+        <div class="alert alert-danger"><?= $flash("error") ?></div>
+    <?php } ?>
+    <?php if($flash("success")) { ?>
+        <div class="alert alert-success"><?= $flash("success") ?></div>
+    <?php } ?>
         <main class="main-container">
             <?php require($path); ?>
         </main>
@@ -130,5 +136,43 @@
             </div>
         </div>
     </footer>
+
+    <aside id="login" class="login-overlay">
+        <!-- Fond légèrement assombri + centrage de la fenêtre -->
+        <div class="login-modal">
+
+            <h1>Connexion</h1>
+
+            <form action="<?= $pathFor("auth.login") ?>" method="post" class="login-form">
+
+                <?= $field(["errors" => $errors ?? []], "email", null, "E-mail :") ?>
+
+                <!-- Mot de passe + lien "oublié ?" -->
+                <?= $field(["errors" => $errors ?? []], "password", null, "Mot de passe :", ["type" => "password"]) ?>
+                <a href="#" class="forgot-link">Mot de passe oublié ?</a>
+
+                <!-- Séparateur "OU" -->
+                <div class="login-separator">
+                    <span>OU</span>
+                </div>
+
+                <!-- Connexion avec Google / Facebook -->
+                <div class="social-login">
+                    <a href="#" class="social-link">Se connecter avec Google</a>
+                    <a href="#" class="social-link">Se connecter avec Facebook</a>
+                </div>
+
+                <!-- Bouton principal -->
+                <div class="form-actions">
+                    <button type="submit" class="button">
+                        Je me connecte
+                    </button>
+                    <a href="#" class="button">Fermer</a>
+                </div>
+            </form>
+        </div>
+
+
+    </aside>
     </body>
 </html>

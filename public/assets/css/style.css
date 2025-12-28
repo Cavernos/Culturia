@@ -62,3 +62,22 @@ body {
 .right {
     float: right; 
 }
+
+.alert {
+    width: 50%;
+    margin: 1rem auto;
+    height: 5rem;
+    text-align: center;
+    line-height: 5rem;
+    font-size: 1.6rem;
+    border-radius: 2rem;
+}
+.alert.alert-success {
+    background-color: rgba(60, 179, 113, 50%);
+    color: darkgreen;
+}
+
+.alert.alert-danger{
+    background-color: rgba(205, 92, 92, 50%);
+    color: darkred;
+}

@@ -14,7 +14,7 @@
     color: darkred;
 }
 
-.has-success {
+.has-success small{
     color: darkgreen;
 }
 
@@ -22,11 +22,15 @@
 .login-overlay {
     position: fixed;
     inset: 0; /* top:0; right:0; bottom:0; left:0 */
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
-    background: rgba(243, 233, 218, 0.85); 
+    background: rgba(0, 0, 0, 0.5);
     z-index: 1000;
+}
+
+.login-overlay:target {
+    display: flex;
 }
 
 /* Carte centrale de connexion */
@@ -82,9 +86,8 @@
 
 .forgot-link {
     font-size: 1.2rem;
-    text-decoration: underline;
-    display: flex;
-    flex-direction: column;
+    text-decoration: none;
+    color: black;
 }
 
 /* Séparateur "OU" */
@@ -122,31 +125,20 @@
 
 .social-link {
     margin: 0 0.4rem;
-    text-decoration: underline;
+    color: black;
+    text-decoration: none;
 }
 
 /* Bouton principal : */
 .form-actions {
     text-align: center;
+
 }
 
-.primary-button {
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    padding: 0.9rem 2rem;
-    border-radius: 999px;
-    border: none;
-    cursor: pointer;
-    background-color: var(--button-background-color);
-    color: #3a3226;
-    font-weight: var(--default-font-weight);
-    font-size: 1.4rem;
+.form-actions > * {
+    margin: 1rem;
 }
 
-
-.primary-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
-}
 
 /* responsive */
 @media (max-width: 600px) {

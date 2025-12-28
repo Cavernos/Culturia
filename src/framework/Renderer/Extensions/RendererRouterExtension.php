@@ -1,7 +1,9 @@
 <?php
 
-namespace G1c\Culturia\framework\Renderer;
+namespace G1c\Culturia\framework\Renderer\Extensions;
 
+use G1c\Culturia\framework\Renderer\ExtensionFunction;
+use G1c\Culturia\framework\Renderer\RendererExtensionInterface;
 use G1c\Culturia\framework\Router\Router;
 
 class RendererRouterExtension implements RendererExtensionInterface

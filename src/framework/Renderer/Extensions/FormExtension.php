@@ -1,8 +1,10 @@
 <?php
 
-namespace G1c\Culturia\framework\Renderer;
+namespace G1c\Culturia\framework\Renderer\Extensions;
 
 use DateTime;
+use G1c\Culturia\framework\Renderer\ExtensionFunction;
+use G1c\Culturia\framework\Renderer\RendererExtensionInterface;
 
 class FormExtension implements RendererExtensionInterface
 {
