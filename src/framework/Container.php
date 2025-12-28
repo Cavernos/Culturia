@@ -42,6 +42,10 @@ class Container {
 
     public function get(mixed $key): mixed {
         if (isset($this->contents[$key])) {
+            if(is_callable($this->contents[$key])){
+                $this->contents[$key] = $this->contents[$key]($this);
+                return $this->contents[$key];
+            }
             return $this->contents[$key];
         }
         if (isset($this->instances[$key])){
@@ -54,13 +58,14 @@ class Container {
         return null;
     }
     public function set(mixed $key, mixed $value) : void {
-        if(!isset($this->contents[$key])){
-            if(!is_callable($value)){
-                $this->contents[$key] = $value;
-            } else {
-                $this->contents[$key] = $value($this);
+        if($this->has($key)){
+            if(is_array($this->get($key))){
+                $this->contents[$key] = array_merge($this->get($key), $value);
             }
+        } else {
+            $this->contents[$key] = $value;
         }
+
     }
     public function has(mixed $key): bool
     {

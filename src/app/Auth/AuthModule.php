@@ -4,6 +4,7 @@ namespace G1c\Culturia\app\Auth;
 
 use G1c\Culturia\app\Auth\controllers\LoginAttemptController;
 use G1c\Culturia\app\Auth\controllers\LoginController;
+use G1c\Culturia\app\Auth\controllers\LogoutController;
 use G1c\Culturia\framework\Container;
 use G1c\Culturia\framework\Module;
 use G1c\Culturia\framework\Renderer;
@@ -23,5 +24,6 @@ class AuthModule extends Module
         $router = $container->get(Router::class);
         $router->get($container->get("auth.login"), LoginController::class, "auth.login");
         $router->post($container->get("auth.login"), LoginAttemptController::class);
+        $router->post("/logout", LogoutController::class, "auth.logout");
      }
 }

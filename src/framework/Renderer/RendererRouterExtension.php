@@ -13,9 +13,9 @@ class RendererRouterExtension implements RendererExtensionInterface
 
         $this->router = $router;
     }
-    public function getFunctions(): array
+    public function getFunctions(): ExtensionFunction
     {
-        return [$this, "pathFor"];
+        return new ExtensionFunction("pathFor", [$this, "pathFor"]);
 
     }
 

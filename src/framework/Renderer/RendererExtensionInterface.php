@@ -4,6 +4,6 @@ namespace G1c\Culturia\framework\Renderer;
 
 interface RendererExtensionInterface
 {
-    public function getFunctions(): array;
+    public function getFunctions(): ExtensionFunction;
 
 }

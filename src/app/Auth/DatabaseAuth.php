@@ -31,6 +31,7 @@ class DatabaseAuth implements Auth
         if($userId) {
             try {
                 $this->user = $this->clientTable->find($userId);
+                return $this->user;
             } catch (NoRecordException $e) {
                 $this->session->delete('auth.user');
                 return null;
@@ -53,5 +54,10 @@ class DatabaseAuth implements Auth
             return $user;
         }
         return null;
+    }
+
+    public function logout(): void
+    {
+        $this->session->delete('auth.user');
     }
 }

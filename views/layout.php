@@ -14,7 +14,7 @@
                 <img src="/assets/img/logo.svg" class="logo-img" alt="Logo">
 
             </a>
-
+            <?php if ( $pathFor('search.index') != ''){ ?>
             <!-- Search Bar -->
             <div class="search-container">
                 <div class="search-bar">
@@ -23,6 +23,7 @@
 
                 </div>
             </div>
+            <?php } ?>
 
             <!-- Header Icons -->
             <div class="header-icons">
@@ -44,6 +45,15 @@
                 <a href="<?=$pathFor('auth.login')?>" class="icon-btn">
                     <img src="/assets/img/account.svg" alt="Profil">
                 </a>
+                    <?php if ($current_user()) { ?>
+                       <h2><?= $current_user()->username ?></h2>
+                        <?php if($pathFor("auth.logout") != '') { ?>
+                            <form action="<?= $pathFor("auth.logout") ?>" method="post">
+                                <button type="submit" class="button">Se déconnecter</button>
+                            </form>
+
+                        <?php } ?>
+                    <?php }?>
                 <?php } ?>
             </div>
         </div>

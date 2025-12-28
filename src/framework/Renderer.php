@@ -19,7 +19,7 @@ class Renderer {
 
     public function addExtension(RendererExtensionInterface $extension): void
     {
-        $this->extensionsCallbacks[$extension->getFunctions()[1]] = $extension->getFunctions();
+        $this->extensionsCallbacks[$extension->getFunctions()->getName()] = $extension->getFunctions()->getFunction();
     }
 
     public function addGlobal(string $key, mixed $value): void {

@@ -7,9 +7,9 @@ use DateTime;
 class FormExtension implements RendererExtensionInterface
 {
 
-    public function getFunctions(): array
+    public function getFunctions(): ExtensionFunction
     {
-        return [$this, 'field'];
+        return new ExtensionFunction("field", [$this, 'field']);
     }
 
     /**

@@ -15,9 +15,9 @@ class RendererPaginationExtension implements RendererExtensionInterface
 
         $this->router = $router;
     }
-    public function getFunctions(): array
+    public function getFunctions(): ExtensionFunction
     {
-        return [$this, "paginate"];
+        return new ExtensionFunction("paginate", [$this, "paginate"]);
     }
 
     public function paginate(Paginator $paginator,
