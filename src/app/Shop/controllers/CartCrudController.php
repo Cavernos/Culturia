@@ -31,7 +31,12 @@ class CartCrudController extends CrudController
 
     public function index(): string
     {
-        $items = $this->session->get("carts", []);
+        $user = $this->session->get("auth.user");
+        if(isset($this->session->get("carts", [])[$user])){
+            $items = $this->session->get("carts", [])[$user];
+        } else {
+            $items = [];
+        }
         $total_price = 0;
         foreach ($items as $item){
             $total_price += $item->price;
@@ -44,9 +49,13 @@ class CartCrudController extends CrudController
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $item = $this->table->find($id);
             $cart_session = $this->session->get("carts", []);
-            if(!in_array($item, $cart_session)){
-                $cart_session[] = $item;
-                $this->session->set("carts", $cart_session);
+            $user = $this->session->get("auth.user");
+            if(!is_null($user)){
+                if(!in_array($item, $cart_session[$user])){
+
+                    $cart_session[$user][] = $item;
+                    $this->session->set("carts", $cart_session);
+                }
             }
             $this->redirect("shop.view",
                 ["slug" => str_replace(" ", "-", strtolower($item->name)), "id" => $item->id ]);

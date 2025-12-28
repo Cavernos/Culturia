@@ -35,7 +35,7 @@
                 <?php if ( $pathFor('shop.cart.index') != '' && $current_user()){ ?>
                 <!-- Panier -->
                 <a href="<?= $pathFor('shop.cart.index') ?>" class="icon-btn">
-                    <div class="cart-count"><?=  count($session->get("carts") ?? []) ?></div>
+                    <div class="cart-count"><?=  count($session->get("carts")[$current_user()->id] ?? []) ?></div>
                     <img src="/assets/img/cart.svg" alt="Panier">
                 </a>
                 <?php } ?>

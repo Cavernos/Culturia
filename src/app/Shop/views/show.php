@@ -22,7 +22,7 @@
             </div>
 
             <div class="action-buttons">
-                <?php if($pathFor('shop.cart.edit')) { ?>
+                <?php if($pathFor('shop.cart.edit') && $current_user()) { ?>
                 <form method="POST" action="<?= $pathFor('shop.cart.edit', ["id" => $artwork->id])?>">
                     <button class="btn-add-cart" type="submit">Ajouter au panier</button>
                 </form>
