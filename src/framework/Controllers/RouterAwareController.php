@@ -8,5 +8,6 @@ trait RouterAwareController
     {
         $redirectUri = $this->router->generateUri($path, $params);
         header("Location: $redirectUri", 301);
+        exit;
     }
 }

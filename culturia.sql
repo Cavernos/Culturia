@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS artists (
     email VARCHAR(128),
     password_hash VARCHAR(128),
     inscription_date DATE,
-    account_modification_date DATE
+    modification_date DATE
 );
 
 CREATE TABLE IF NOT EXISTS artwork (
@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS artwork (
 CREATE TABLE IF NOT EXISTS category (
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     name VARCHAR(128),
+    avatar VARCHAR(256),
     description VARCHAR(256)
 );
 

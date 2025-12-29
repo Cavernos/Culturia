@@ -23,4 +23,11 @@ class ArtworkTable extends Table
         return $query->where("$this->table.id = $id");
 
     }
+
+    public function findRecent()
+    {
+        $query = clone $this->findPublic();
+        return $query->order("modification_date DESC")->limit(16);
+
+    }
 }

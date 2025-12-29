@@ -11,8 +11,8 @@ class ClientSeeder extends Seeder
 
     public function run() {
         $data = [];
-        $time = (new DateTime())->setTimestamp(rand(0, time()))->format('Y-m-d');
         for ($i = 0; $i < 100; $i++) {
+            $time = (new DateTime())->setTimestamp(rand(0, time()))->format('Y-m-d');
             $data[] = [
                 "username" => "User ". $i + 1,
                 "avatar" => "/assets/img/oeuvre_". (rand(0, 100) % 4 + 1).".png",

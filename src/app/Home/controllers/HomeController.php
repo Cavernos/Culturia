@@ -26,7 +26,7 @@ class HomeController
     }
  public function index()
  {
-     $artworks = $this->artworkTable->findPublic()->limit(16)->fetchAll();
+     $artworks = $this->artworkTable->findRecent()->fetchAll();
      return $this->renderer->render("@home/home", compact("artworks"));
  }
 

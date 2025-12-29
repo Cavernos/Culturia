@@ -20,7 +20,7 @@ class CreateArtistsTable extends Migrator
             ->addColumn('username', "VARCHAR(128)")
             ->addColumn('avatar', "VARCHAR(128)")
             ->addColumn('email', "VARCHAR(128)")
-            ->addColumn('password_hash', "VARCHAR(128)")
+            ->addColumn('password', "VARCHAR(128)")
             ->addColumn("inscription_date", "DATE")
             ->addColumn("modification_date", "DATE")
             ->create();

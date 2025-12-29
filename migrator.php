@@ -90,14 +90,21 @@ function rollback($instances): bool
 
 }
 
-function seed($seeds, $pdo)
+function seed($seeds, $pdo, ?string $name = null)
 {
     $classes = getClassesFromFiles(getFilesFromArray($seeds));
+    if(!is_null($name)) {
+        $classes = array_filter($classes, function ($value) use ($name){
+            return str_contains($value, $name);
+        });
+        echo "Seeding" . $name;
+    }
     foreach ($classes as $class) {
         $instance = new $class($pdo);
         if(method_exists($instance, "run")){
             $instance->run();
         }
+
     }
 }
 
@@ -140,8 +147,14 @@ $params = [
     "rollback" => [$migrators],
     "seed" => [$seeds, $pdo]
 ];
-foreach ($argv as $arg) {
+$args = $argv;
+array_shift($args);
+foreach ($args as $index => $arg) {
     if (function_exists($arg)){
+
+        if(isset($params[$arg]) && count($args) >= 3 && $args[$index + 1] === "-s" && isset($args[$index + 2])) {
+            return $arg($seeds, $pdo, $args[$index + 2]);
+        }
         if(isset($params[$arg])){
             return $arg(...$params[$arg]);
         }

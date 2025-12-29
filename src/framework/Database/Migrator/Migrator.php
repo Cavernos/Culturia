@@ -51,6 +51,8 @@ abstract class Migrator
         $filename = $this->getStorePath();
         if(file_exists($filename)) {
             $actions = json_decode(file_get_contents($filename), true);
+        } else {
+            return;
         }
         $reversed_action = $reverser->reverse($actions ?? []);
         foreach ($reversed_action as $action) {
@@ -89,7 +91,7 @@ abstract class Migrator
             $callback();
             file_put_contents($filepath, json_encode($this->recorder->getActions()));
         } else {
-            echo "Migration " . end($namespace) . "déjà effectué" . PHP_EOL;
+            echo "Migration " . end($namespace) . " déjà effectué" . PHP_EOL;
         }
 
 
