@@ -42,83 +42,14 @@
 </ul>
 <h1 class="page-sub-title">Catégories</h1>
 <div class="category-container">
-
+    <?php foreach($categories as $category){?>
         <a href="#" class = "categorie-element-container">
-            <img class = "categorie-image" src = "/assets/img/abstrait.png" alt="" srcset=""/>
+            <img class = "categorie-image" src = "<?= $category->avatar ?>" alt="<?= $category->name ?>" srcset=""/>
             <h4 class = "categorie-element-nom">
-                Abstrait
+               <?= $category->name ?>
             </h4>
         </a>
-
-        <a class = "categorie-element-container">
-            <img class = "categorie-image" src = "/assets/img/paysage.jpg" alt="" srcset=""/>
-            <h4 class = "categorie-element-nom">
-                Paysages
-            </h4>
-        </a>
-
-        <a class = "categorie-element-container">
-            <img class = "categorie-image" src = "/assets/img/fleur.jpg" alt="" srcset=""/>
-            <h4 class = "categorie-element-nom">
-                Floral
-            </h4>
-        </a>
-
-        <a class = "categorie-element-container">
-            <img class = "categorie-image" src = "/assets/img/popart.jpg" alt="" srcset=""/>
-            <h4 class = "categorie-element-nom">
-                Pop Art
-            </h4>
-        </a>
-
-
-        <a class = "categorie-element-container">
-            <img class = "categorie-image" src = "/assets/img/portrait.jpg" alt="" srcset=""/>
-            <h4 class = "categorie-element-nom">
-                Portrait
-            </h4>
-        </a>
-
-
-        <a class = "categorie-element-container">
-            <img class = "categorie-image" src = "/assets/img/impressionisme.jpeg" alt="" srcset=""/>
-            <h4 class = "categorie-element-nom">
-                Impréssionisme
-            </h4>
-        </a>
-
-
-        <a class = "categorie-element-container">
-            <img class = "categorie-image" src = "/assets/img/cubisme.jpeg" alt="" srcset=""/>
-            <h4 class = "categorie-element-nom">
-                Cubisme
-            </h4>
-        </a>
-
-
-        <a class = "categorie-element-container">
-            <img class = "categorie-image" src = "/assets/img/japonais.jpg" alt="" srcset=""/>
-            <h4 class = "categorie-element-nom">
-                Japonais
-            </h4>
-        </a>
-
-
-        <a class = "categorie-element-container">
-            <img class = "categorie-image" src = "/assets/img/contemporain.jpg" alt="" srcset=""/>
-            <h4 class = "categorie-element-nom">
-                Contemporain
-            </h4>
-        </a>
-
-
-        <a class = "categorie-element-container">
-            <img class = "categorie-image" src = "/assets/img/sculpture.jpg" alt="" srcset=""/>
-            <h4 class = "categorie-element-nom">
-                Sculpture
-            </h4>
-        </a>
-
+    <?php } ?>
 </div>
 <div class="etes-vous-artiste">
     <div class="artiste-element-container">

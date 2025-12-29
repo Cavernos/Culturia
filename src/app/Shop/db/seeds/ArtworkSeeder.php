@@ -20,7 +20,7 @@ class ArtworkSeeder extends Seeder
                 "modification_date" => $time,
                 "price" => rand(100, 5000) * $i + rand(100, 5000),
                 "image" => "/assets/img/oeuvre_". (rand(0, 100) % 4 + 1).".png",
-                "artist_id" => 1
+                "artist_id" => rand(1, 100)
             ];
         }
         $this->table()->insert($data)->save();
