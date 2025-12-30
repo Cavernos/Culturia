@@ -113,8 +113,8 @@ class FormExtension implements RendererExtensionInterface
         $htmlOptions = array_reduce(array_keys($options), function (string $html, string $key) use($options, $value) {
             $params = ['value' => $key, 'selected' => $key === $value];
             return $html . "<option {$this->getHtmlFromArray($params)}>$options[$key]</option>";
-        });
-        return "<select {$this->getHtmlFromArray($attributes)}>{$htmlOptions}</select>}>";
+        }, "");
+        return "<select {$this->getHtmlFromArray($attributes)}>$htmlOptions</select>";
     }
 
     public function getHtmlFromArray(array $attributes): string

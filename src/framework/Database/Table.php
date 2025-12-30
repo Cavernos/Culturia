@@ -35,6 +35,17 @@ class Table
             ->into($this->entity);
     }
 
+    public function insert(array $params): bool
+    {
+        $fields = array_keys($params);
+        $values = join(", ", array_map(function ($field) {
+            return ":". $field;
+        }, $fields));
+        $fields = implode(", ", $fields);
+        $statement = $this->pdo->prepare("INSERT INTO $this->table ($fields) VALUES ($values)");
+        return $statement->execute($params);
+    }
+
     public function getPdo(): PDO
     {
         return $this->pdo;

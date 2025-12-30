@@ -13,7 +13,7 @@ class Validator
       "png" => "image/png"
     ];
 
-    private $params;
+    private array $params;
     private $errors = [];
 
     public function __construct(array $params){
@@ -32,6 +32,16 @@ class Validator
             if (is_null($value)) {
                 $this->addError($key, 'required');
             }
+        }
+        return $this;
+    }
+
+    public function same(string $firstKey, string $secondKey): self
+    {
+        $value_1 = $this->getValue($firstKey);
+        $value_2 = $this->getValue($secondKey);
+        if($value_1 !== $value_2){
+            $this->addError($secondKey, 'same', [$firstKey, $secondKey]);
         }
         return $this;
     }

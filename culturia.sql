@@ -41,6 +41,8 @@ CREATE TABLE IF NOT EXISTS artwork (
     price INT,
     image VARCHAR(128),
     artist_id INT,
+    order_id INT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders (id) ON DELETE CASCADE
     FOREIGN KEY (artist_id) REFERENCES artists (id) ON DELETE CASCADE
 );
 
@@ -64,9 +66,7 @@ CREATE TABLE IF NOT EXISTS orders (
     order_date DATE,
     client_address VARCHAR(128),
     previsionnal_delivery DATE,
-    artwork_id INT,
     client_id INT,
-    FOREIGN KEY (artwork_id) REFERENCES artwork (id) ON DELETE CASCADE,
     FOREIGN KEY (client_id) REFERENCES clients (id) ON DELETE CASCADE
 );
 
@@ -80,8 +80,3 @@ CREATE TABLE IF NOT EXISTS reviews (
     FOREIGN KEY (order_id) REFERENCES orders (id) ON DELETE CASCADE,
     FOREIGN KEY (client_id) REFERENCES clients (id) ON DELETE CASCADE
 );
-INSERT INTO artists (username,avatar,email, password_hash, inscription_date, account_modification_date) VALUES ("Alessandro", "toto", "alessandro.ian@isep.fr", "fksjgjz", "2025-06-21", "2025-06-21");
-INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 1", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_1.png", 1);
-INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 2", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_2.png", 1);
-INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 3", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_3.png", 1);
-INSERT INTO artwork (name,description,creation_date, modification_date, price, image, artist_id) VALUES ("Oeuvre 4", "Lorem ipsum", "2025-06-21", "2025-06-21", "650€", "/assets/img/oeuvre_4.png", 1);

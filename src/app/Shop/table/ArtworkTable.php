@@ -19,7 +19,7 @@ class ArtworkTable extends Table
     }
     public function findPublicId(int $id)
     {
-        $query = clone $this->findPublic();
+        $query = clone $this->findPublic()->select("artwork.*", "artists.username", "artists.avatar");
         return $query->where("$this->table.id = $id");
 
     }

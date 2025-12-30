@@ -9,7 +9,6 @@ use PDO;
 
 class Query
 {
-
     private $select;
 
     private $from;

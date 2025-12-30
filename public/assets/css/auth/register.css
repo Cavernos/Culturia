@@ -1,0 +1,70 @@
+/* ================================
+   Page Candidater (inscription artiste)
+   ================================ */
+
+/* Overlay : même principe que Connexion */
+.candidature-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    /* Même ambiance beige que le site */
+    background: rgba(243, 233, 218, 0.85);
+    z-index: 1000;
+}
+.candidature-overlay:target {
+    display: flex;
+}
+
+/* Carte centrale */
+.candidature-modal {
+    background: #fdf3e7;
+    padding: 3rem 3.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+
+    width: 100%;
+    max-width: 520px;
+}
+
+.candidature-container {
+    margin: 0 auto;
+    max-width: 520px;
+    width: 100%;
+}
+
+/* Titre */
+.candidature-modal h1 {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 2.4rem;
+}
+
+/* Formulaire */
+.candidature-form {
+    width: 100%;
+}
+
+
+/* Responsive */
+@media (max-width: 650px) {
+    .candidature-modal {
+        padding: 2.2rem 2rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-row label,
+    .form-row input {
+        width: 100%;
+    }
+
+    .form-row label {
+        margin-bottom: 0.4rem;
+    }
+}

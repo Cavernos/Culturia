@@ -3,19 +3,27 @@
 @import url("components/buttons.css"); 
 @import url("components/carousel.css");
 @import url("components/pagination.css");
+@import url("components/form.css");
 
 /* Loading pages */
 @import url("./header.css");
 @import url("./footer.css");
-@import url("shop/shop.css");
-@import url("./faq.css");
-@import url("shop/cart.css");
+
 @import url("./home.css");
+@import url("./faq.css");
+
+@import url("shop/shop.css");
+@import url("shop/cart.css");
 @import url("shop/show-artwork.css");
+
+
 @import url("auth/login.css");
+@import url("auth/register.css");
+@import url("auth/cgu.css");
+@import url("./ModifProfil.css");
 /*@import url("./connexion-choice.css");
 
-@import url("./ModifProfil.css");
+
 @import url("./ModifOeuvre.css");*/
 @font-face {
         font-family: "Inria Serif";

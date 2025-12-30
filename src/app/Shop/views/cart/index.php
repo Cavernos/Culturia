@@ -38,6 +38,6 @@
 </table>
 <div class="cart-footer">
     <h1>Prix total : <?=$total_price ?? 0?> €</h1>
-    <button class="button">Finaliser ma commande</button>
+    <button class="button" type="submit">Finaliser ma commande</button>
 </div>
 <?php } ?>

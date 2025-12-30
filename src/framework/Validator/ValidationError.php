@@ -18,7 +18,8 @@ class ValidationError
         'datetime' => "Le champ %s doit être une date valide (%s)",
         'exists' => "Le champ %s n'existe pas dans la table %s",
         'filetype' => "Le champ %s n'est pas au bon format (formats valides: %s)",
-        'uploaded' => "Vous devez uploader un fichier"
+        'uploaded' => "Vous devez uploader un fichier",
+        'same' => "Les deux champs %s et %s, ne sont pas identiques"
     ];
 
     public function __construct($key, $rule, $attributes) {
