@@ -1,6 +1,7 @@
 
             <h1 class="page-title">Oeuvres en vente</h1>
-            <div class="filter-panel">
+            <?php if($pathFor('shop.filter') != '') { ?>
+            <form method="post" action="<?= $pathFor("shop.filter") ?>" class="filter-panel">
                     <div class="filter-panel-element">
                         <button class="button iconify-button filter-button">Filtres</button>
                         <button class="button iconify-button specific-filter-button">Prix</button> 
@@ -10,7 +11,8 @@
                     <div class="right">
                         <button class="button iconify-button specific-filter-button">Trier par</button> 
                     </div>
-            </div> 
+            </form>
+            <?php } ?>
             <div class="shop-container">
                 <?php foreach($artworks ?? [] as $artwork) {?>
                         <a href="<?= $pathFor("shop.view", ["slug"=> str_replace(" ", "-", strtolower($artwork->name)), "id"=> $artwork->id]) ?>" id="<?= $artwork->id ?>" class="card">

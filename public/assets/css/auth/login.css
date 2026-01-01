@@ -19,28 +19,13 @@
 }
 
 /* Overlay plein écran */
-.login-overlay {
-    position: fixed;
-    inset: 0; /* top:0; right:0; bottom:0; left:0 */
-    display: none;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-}
 
-.login-overlay:target {
-    display: flex;
-}
 
 /* Carte centrale de connexion */
-.login-modal {
-    background: #fdf3e7; 
+.modal.login {
     padding: 2.5rem 3rem;
-    border-radius: 1.5rem;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
     max-width: 420px;
-    width: 100%;
+
 }
 .login-container {
     margin: 0 auto;
@@ -48,11 +33,7 @@
     width: 100%;
 }
 /* Titre “Connexion” */
-.login-modal h1 {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 2rem;
-}
+
 
 /* Formulaire */
 .login-form .form-group {
@@ -137,12 +118,4 @@
 
 .form-actions > * {
     margin: 1rem;
-}
-
-
-/* responsive */
-@media (max-width: 600px) {
-    .login-modal {
-        padding: 2rem 1.5rem;
-    }
 }

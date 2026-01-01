@@ -71,6 +71,35 @@
 #role:not(:checked) + .form-switch .left {
     color: black;
 }
+/* Ligne label + input */
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.6rem;
+}
+
+/* Labels à gauche */
+.form-group label {
+    width: 45%;
+    font-size: 1.5rem;
+}
+
+/* Champs à droite */
+.form-group input {
+    width: 55%;
+    padding: 0.6rem 0.8rem;
+    border-radius: 0.4rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 1.4rem;
+}
+.form-group:has(input[type="checkbox"]) label:not(.form-switch) {
+    width: 65%;
+}
+.form-group:not(:has(.form-switch)) input[type="checkbox"] {
+    width: 35%;
+
+}
+
     /* Bouton */
 .form-actions {
     text-align: center;

@@ -45,7 +45,7 @@
 }
 
 .button.reset {
-    border-radius: 0px;
+    border-radius: 0;
     border-left: 2px solid #00000093;
     background: none;
     padding: 0 14px;

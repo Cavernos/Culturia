@@ -1,6 +1,10 @@
 <h1 class="page-title">Mon panier</h1>
 <?php if (count($items ?? []) === 0) { ?>
-<h1 class="no-article-in-cart">Aucun article dans le panier</h1>
+    <div class="no-article-in-cart-container">
+        <h1>Aucun article dans le panier</h1>
+        <a class="button" href="<?= $pathFor("shop.index") ?>">Retour à la boutique</a>
+    </div>
+
 <?php } else {?>
 <div class="cart-container">
     <h2 class="left">Nombre d'articles: <?= count($items ?? []) ?></h2>
