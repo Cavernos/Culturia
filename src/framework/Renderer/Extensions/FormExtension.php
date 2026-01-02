@@ -24,6 +24,7 @@ class FormExtension implements RendererExtensionInterface
     public function field(array $context, string $key, $value, ?string $label = null, array $options = []): string
     {
         $type = $options["type"] ?? 'text';
+        $context = ["errors" => $context];
         $error = $this->getHTMLError($context, $key);
         $class = 'form-group';
         $value = $this->convertValue($value);
@@ -42,6 +43,7 @@ class FormExtension implements RendererExtensionInterface
             case 'file':
                 $input = $this->file($attributes);
                 break;
+            case 'switch':
             case 'checkbox':
                 $input = $this->checkbox($value, $attributes);
                 break;
@@ -56,6 +58,9 @@ class FormExtension implements RendererExtensionInterface
                 break;
             default:
                 $input = $this->input($value, $attributes);
+        }
+        if($type === "switch") {
+            return "<div class='{$class}'>{$input}<label class='form-switch' for='{$key}'>{$label}</label>{$error}</div>";
         }
         return "<div class='{$class}'><label for='{$key}'>{$label}</label>{$input}{$error}</div>";
     }
@@ -96,7 +101,7 @@ class FormExtension implements RendererExtensionInterface
 
     public function checkbox(?string $value, array $attributes): string
     {
-        $html = "<input type='hidden' {$attributes["name"]} value='0'/>";
+        $html = "<input type='hidden' name='{$attributes["name"]}' value='0'/>";
         if($value) {
             $attributes["checked"] = true;
         }

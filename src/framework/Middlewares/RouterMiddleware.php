@@ -23,10 +23,8 @@ class RouterMiddleware
         try {
             $this->logger->info("Route ". $request['REQUEST_URI'] . " matched");
             print $this->router->match($request);
-            $this->logger->write();
         } catch (RouterException){
             $this->logger->info("No route for". $request['REQUEST_URI']);
-            $this->logger->write();
             return $next($request);
         }
     }

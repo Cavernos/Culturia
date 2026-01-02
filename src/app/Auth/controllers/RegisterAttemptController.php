@@ -34,12 +34,11 @@ class RegisterAttemptController
         $errors = null;
         $params = $_POST;
         $validator = (new Validator($params))
-            ->required("username", "email", "password", "password2", "cgu")
+            ->required("username", "email", "password", "password2", "cgu", "role")
             ->length("email", 3, 255)
             ->length("username", 3, 255)
             ->length("password", 3, 2000)
             ->same("password", "password2");
-        ;
         $errors = $validator->getErrors();
         $user = false;
         if (count($errors) === 0){
@@ -51,7 +50,7 @@ class RegisterAttemptController
             (new FlashService($this->session))->success("Enregistrement réussi");
             $this->redirect($path);
         } else {
-            (new FlashService($this->session))->error("Identifiants Invalides");
+            (new FlashService($this->session))->error("Enregistrement invalide");
             return $this->renderer->render("@auth/register", compact("errors", "params"));
         }
 

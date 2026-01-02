@@ -46,14 +46,17 @@ class Logger
     public function info(string $message): void
     {
         $this->logs[] = $this->writeMessage($message, "INFO");
+        $this->write();
     }
 
     public function warning(string $message): void {
         $this->logs[] = $this->writeMessage($message, "WARNING");
+        $this->write();
     }
 
     public function error(string $message): void {
         $this->logs[] = $this->writeMessage($message, "ERROR");
+        $this->write();
     }
 
 
@@ -63,7 +66,7 @@ class Logger
         return "$time $type $channel $message";
     }
 
-    public function write(string ...$lines): void
+    private function write(string ...$lines): void
     {
         if(!$lines){
             $lines = $this->logs;

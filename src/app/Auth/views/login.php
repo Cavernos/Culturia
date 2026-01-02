@@ -5,11 +5,11 @@
             <h1>Connexion</h1>
 
             <form action="<?= $pathFor("auth.login") ?>" method="post" class="login-form">
-
-                <?= $field(["errors" => $errors ?? []], "email", null, "E-mail :") ?>
+                <?= $field($errors ?? [], 'role', $params["role"] ?? null, "<span class='left'>Artiste</span><span class='right'>Client</span>", ["type" => "switch"]) ?>
+                <?= $field($errors ?? [], "email", $params["email"] ?? null, "E-mail :") ?>
 
                 <!-- Mot de passe + lien "oublié ?" -->
-                <?= $field(["errors" => $errors ?? []], "password", null, "Mot de passe :", ["type" => "password"]) ?>
+                <?= $field($errors ?? [], "password", $params["password"] ?? null, "Mot de passe :", ["type" => "password"]) ?>
                 <a href="#" class="forgot-link">Mot de passe oublié ?</a>
 
                 <!-- Séparateur "OU" -->

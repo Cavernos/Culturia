@@ -56,7 +56,7 @@
         <h1>Etez-vous artiste?</h1>
         <p>Inscrivez-vous pour mettre en ligne vos oeuvres</p>
 
-        <a class="button filter-button">Je m'inscrit</a>
+        <a href="#register" class="button filter-button">Je m'inscrit</a>
 
     </div>
     <img class = "categorie-image-artiste" src = "/assets/img/artiste_back.jpg" width="200px" height="200px" srcset=""/>

@@ -26,7 +26,7 @@ class FlashService
         $this->add("error", $message);
     }
 
-    public function add(string $type, string $message): void
+    private function add(string $type, string $message): void
     {
         $this->session->get($this->sessionKey, []);
         $flash[$type] = $message;
