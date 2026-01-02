@@ -118,7 +118,7 @@ class FormExtension implements RendererExtensionInterface
         if($value) {
             $attributes["class"] = $attributes["class"]. " asc";
         }
-        $attributes["name"] = false;
+        $attributes["name"] = $attributes["name"]. "_btn";
         return $html . "<button type='submit' {$this->getHtmlFromArray($attributes)}>{$label}</button>";
     }
 

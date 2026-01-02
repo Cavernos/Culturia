@@ -47,22 +47,43 @@ class ShopController {
         $artworks = $this->table->findPublic();
         if(array_key_exists('reset', $params)){
             if($params["reset"] == 1) {
+                foreach ($params as $key => $value) {
+                    $params[$key] = "0";
+                }
                 $artworks = $artworks->paginate(16, $_GET["p"] ?? 1);
                 return $this->render("@shop/shop", compact("params", "artworks"));
             }
             unset($params["reset"]);
         }
-        var_dump($params);
         $filter = [];
-        $params["name"] = 1;
-        foreach ($params as $key => $value) {
-            if($value == 1) {
-                $filter[$key] = "ASC";
-            } else {
-                $filter[$key] = "DESC";
+        uksort($params, function ($a, $b) {
+            $aEndWithBtn = str_ends_with($a, "_btn");
+            $bEndWithBtn = str_ends_with($b, "_btn");
+            $aBase = $aEndWithBtn ? str_replace("_btn", "", $a) : $a;
+            $bBase = $bEndWithBtn ? str_replace("_btn", "", $b) : $b;
+            if($aBase !== $bBase) {
+                return strcmp($aBase, $bBase);
             }
+
+            if($aEndWithBtn && !$bEndWithBtn) return -1;
+            if(!$aEndWithBtn && $bEndWithBtn) return 1;
+            return 0;
+        });
+        foreach ($params as $key => $value) {
+            if(str_contains($key, "_btn")){
+                $name = str_replace("_btn", "", $key);
+                $params[$name] = ($params[$name] == 1) ? "0" : "1";
+            } else {
+                if($params[$key] == 0) {
+                    $filter[$key] = "ASC";
+                } else {
+                    $filter[$key] = "DESC";
+                }
+            }
+
         }
         $order = join(', ', array_map(fn($k, $v) => "$k $v", array_keys($filter), $filter));
+        $order = str_replace("artists", "artists.id", $order);
         var_dump($order);
         $artworks = $artworks->order($order)->paginate(16, $_GET["p"] ?? 1);
         return $this->render("@shop/shop", compact("params", "artworks"));

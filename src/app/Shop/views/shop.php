@@ -5,9 +5,7 @@
                     <div class="filter-panel-element">
                         <button type="submit" class="button iconify-button filter-button">Filtres</button>
                         <?= $field($errors ?? [], 'price', $params["price"] ?? 0, 'Prix', ["type" => "toggleFilter", "class" => "button iconify-button filter-button"]); ?>
-                        <?= $field($errors ?? [], 'name', $params["name"] ?? 0, 'Nom', ["type" => "toggleFilter", "class" => "button iconify-button filter-button"]); ?>
-                        <button type="submit" class="button iconify-button filter-button asc">Prix</button>
-                        <button type="submit" class="button iconify-button filter-button asc">Taille</button>
+                        <?= $field($errors ?? [], 'artists', $params["artists"] ?? 0, 'Artiste', ["type" => "toggleFilter", "class" => "button iconify-button filter-button"]); ?>
                         <button type="submit" id="reset" name="reset" value="1" class="button reset">Réinitialiser</button>
                     </div> 
                     <div class="right">
