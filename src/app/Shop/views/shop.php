@@ -3,13 +3,13 @@
             <?php if($pathFor('shop.filter') != '') { ?>
             <form method="post" action="<?= $pathFor("shop.filter") ?>" class="filter-panel">
                     <div class="filter-panel-element">
-                        <button class="button iconify-button filter-button">Filtres</button>
-                        <button class="button iconify-button specific-filter-button">Prix</button> 
-                        <button class="button iconify-button specific-filter-button">Taille</button>
-                        <button class="button reset">Réinitialiser</button>
+                        <button type="submit" class="button iconify-button filter-button">Filtres</button>
+                        <button type="submit" class="button iconify-button filter-button asc">Prix</button>
+                        <button type="submit" class="button iconify-button filter-button asc">Taille</button>
+                        <button type="submit" class="button reset">Réinitialiser</button>
                     </div> 
                     <div class="right">
-                        <button class="button iconify-button specific-filter-button">Trier par</button> 
+                        <button type="submit" class="button iconify-button specific-filter-button">Trier par</button>
                     </div>
             </form>
             <?php } ?>

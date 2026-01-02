@@ -40,4 +40,10 @@ class ShopController {
         $this->logger->info("Rendering $view");
         return $this->renderer->render($view, $args);
     }
+
+    public function filter()
+    {
+        $params = $_POST;
+        var_dump($params);
+    }
 }
