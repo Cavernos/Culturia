@@ -44,6 +44,17 @@ class ShopController {
     public function filter()
     {
         $params = $_POST;
-        var_dump($params);
+        $artworks = $this->table->findPublic();
+        foreach ($params as $key => $value) {
+            if($value == 1) {
+                $artworks = $artworks->order("$key ASC");
+            } else {
+                $artworks = $artworks->order("$key DESC");
+            }
+        }
+        $artworks = $artworks->paginate(16, $_GET["p"] ?? 1);
+
+        $filter = !$params["price"] ?? 0;
+        return $this->render("@shop/shop", compact("filter", "artworks"));
     }
 }
