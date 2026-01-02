@@ -4,10 +4,11 @@
             <form method="post" action="<?= $pathFor("shop.filter") ?>" class="filter-panel">
                     <div class="filter-panel-element">
                         <button type="submit" class="button iconify-button filter-button">Filtres</button>
-                        <?= $field($errors ?? [], 'price', $filter ?? 0, 'Prix', ["type" => "filter", "class" => "button iconify-button filter-button"]); ?>
+                        <?= $field($errors ?? [], 'price', $params["price"] ?? 0, 'Prix', ["type" => "toggleFilter", "class" => "button iconify-button filter-button"]); ?>
+                        <?= $field($errors ?? [], 'name', $params["name"] ?? 0, 'Nom', ["type" => "toggleFilter", "class" => "button iconify-button filter-button"]); ?>
                         <button type="submit" class="button iconify-button filter-button asc">Prix</button>
                         <button type="submit" class="button iconify-button filter-button asc">Taille</button>
-                        <button type="submit" class="button reset">Réinitialiser</button>
+                        <button type="submit" id="reset" name="reset" value="1" class="button reset">Réinitialiser</button>
                     </div> 
                     <div class="right">
                         <button type="submit" class="button iconify-button specific-filter-button">Trier par</button>

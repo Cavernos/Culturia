@@ -45,16 +45,26 @@ class ShopController {
     {
         $params = $_POST;
         $artworks = $this->table->findPublic();
+        if(array_key_exists('reset', $params)){
+            if($params["reset"] == 1) {
+                $artworks = $artworks->paginate(16, $_GET["p"] ?? 1);
+                return $this->render("@shop/shop", compact("params", "artworks"));
+            }
+            unset($params["reset"]);
+        }
+        var_dump($params);
+        $filter = [];
+        $params["name"] = 1;
         foreach ($params as $key => $value) {
             if($value == 1) {
-                $artworks = $artworks->order("$key ASC");
+                $filter[$key] = "ASC";
             } else {
-                $artworks = $artworks->order("$key DESC");
+                $filter[$key] = "DESC";
             }
         }
-        $artworks = $artworks->paginate(16, $_GET["p"] ?? 1);
-
-        $filter = !$params["price"] ?? 0;
-        return $this->render("@shop/shop", compact("filter", "artworks"));
+        $order = join(', ', array_map(fn($k, $v) => "$k $v", array_keys($filter), $filter));
+        var_dump($order);
+        $artworks = $artworks->order($order)->paginate(16, $_GET["p"] ?? 1);
+        return $this->render("@shop/shop", compact("params", "artworks"));
     }
 }

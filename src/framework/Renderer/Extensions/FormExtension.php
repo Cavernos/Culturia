@@ -42,14 +42,14 @@ class FormExtension implements RendererExtensionInterface
             'switch', 'checkbox' => $this->checkbox($value, $attributes),
             'password' => $this->password($value, $attributes),
             'email' => $this->email($value, $attributes),
-            'filter' => $this->filter($value, $label, $attributes),
+            'toggleFilter' => $this->toggleFilter($value, $label, $attributes),
             array_key_exists('options', $options) => $this->select($value, $options["options"], $attributes),
             default => $this->input($value, $attributes),
         };
         if($type === "switch") {
             return "<div class='{$class}'>{$input}<label class='form-switch' for='{$key}'>{$label}</label>{$error}</div>";
         }
-        if ($type === "filter") {
+        if ($type === "toggleFilter") {
             return "{$input}";
         }
         return "<div class='{$class}'><label for='{$key}'>{$label}</label>{$input}{$error}</div>";
@@ -111,7 +111,7 @@ class FormExtension implements RendererExtensionInterface
         }, "");
         return "<select {$this->getHtmlFromArray($attributes)}>$htmlOptions</select>";
     }
-    public function filter(?string $value, ?string $label, array $attributes)
+    public function toggleFilter(?string $value, ?string $label, array $attributes): string
     {
         $html = "<input type='hidden' name='{$attributes["name"]}' value='{$value}'/>";
         $attributes["class"] = $attributes["class"]. " desc";
