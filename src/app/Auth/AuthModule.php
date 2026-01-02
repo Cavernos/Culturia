@@ -12,6 +12,7 @@ use G1c\Culturia\framework\Container;
 use G1c\Culturia\framework\Module;
 use G1c\Culturia\framework\Renderer;
 use G1c\Culturia\framework\Router\Router;
+use G1c\Culturia\framework\Session\SessionInterface;
 
 class AuthModule extends Module
 {
@@ -26,10 +27,12 @@ class AuthModule extends Module
         $container->get(Renderer::class)->addPath("auth", __DIR__ . "/views");
         $router = $container->get(Router::class);
         $router->get("/cgu", AuthController::class, "auth.cgu");
-        $router->get($container->get("auth.login"), LoginController::class, "auth.login");
-        $router->post($container->get("auth.login"), LoginAttemptController::class);
-         $router->get($container->get("auth.register"), RegisterController::class, "auth.register");
-         $router->post($container->get("auth.register"), RegisterAttemptController::class);
-        $router->post("/logout", LogoutController::class, "auth.logout");
+         $router->post("/logout", LogoutController::class, "auth.logout");
+         if(!$container->get(SessionInterface::class)->get("auth.user")){
+             $router->get($container->get("auth.login"), LoginController::class, "auth.login");
+             $router->post($container->get("auth.login"), LoginAttemptController::class);
+             $router->get($container->get("auth.register"), RegisterController::class, "auth.register");
+             $router->post($container->get("auth.register"), RegisterAttemptController::class);
+         }
      }
 }

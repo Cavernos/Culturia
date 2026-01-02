@@ -48,7 +48,7 @@ class CartCrudController extends CrudController
     public function edit($id): string
     {
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $item = $this->table->find($id);
+            $item = $this->table->findById($id);
             $cart_session = $this->session->get("carts", []);
             $user = $this->session->get("auth.user");
             if(!is_null($user)){

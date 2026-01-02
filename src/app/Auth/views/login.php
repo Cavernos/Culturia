@@ -25,7 +25,7 @@
 
                 <!-- Bouton principal -->
                 <div class="form-actions">
-                    <button type="submit" class="primary-button">
+                    <button type="submit" class="button">
                         Je me connecte
                     </button>
                 </div>

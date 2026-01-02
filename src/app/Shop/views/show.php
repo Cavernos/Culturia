@@ -1,3 +1,8 @@
+<?php
+
+use G1c\Culturia\app\Auth\model\ClientModel;
+
+?>
 <div class="oeuvre-container">
     <div class="oeuvre-main">
         <div class="oeuvre-image-section">
@@ -22,7 +27,7 @@
             </div>
 
             <div class="action-buttons">
-                <?php if($pathFor('shop.cart.edit') && $current_user()) { ?>
+                <?php if($pathFor('shop.cart.edit') && $current_user() instanceof ClientModel) { ?>
                 <form method="POST" action="<?= $pathFor('shop.cart.edit', ["id" => $artwork->id])?>">
                     <button class="btn-add-cart" type="submit">Ajouter au panier</button>
                 </form>
@@ -43,7 +48,7 @@
                     <li><strong>Catégorie :</strong> Peinture</li>
                     <li><strong>Technique :</strong> Huile sur toile</li>
                     <li><strong>Dimensions :</strong> 80 x 60 cm</li>
-                    <li><strong>Année :</strong> 2024</li>
+                    <li><strong>Année :</strong> <?= $artwork->modificationDate->format("Y") ?></li>
                     <li><strong>Certificat :</strong> Inclus</li>
                 </ul>
             </div>

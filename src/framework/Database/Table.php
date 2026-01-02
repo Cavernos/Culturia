@@ -25,8 +25,13 @@ class Table
     /**
      * @throws NoRecordException
      */
-    public function find(int $id){
+    public function findById(int $id){
         return $this->makeQuery()->where("id = $id")->fetchOrFail();
+    }
+    public function findByParams(string $condition, array $params)
+    {
+
+        return $this->makeQuery()->where($condition)->params($params)->fetchOrFail();
     }
 
     public function makeQuery(): Query {

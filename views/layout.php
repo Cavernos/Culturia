@@ -1,3 +1,8 @@
+<?php
+
+use G1c\Culturia\app\Auth\model\ClientModel;
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -24,36 +29,39 @@
                 </div>
             </div>
             <?php } ?>
-
             <!-- Header Icons -->
             <div class="header-icons">
+                <?php if ($current_user() instanceof ClientModel) { ?>
                 <!-- Favoris -->
                 <a href="#" class="icon-btn">
                     <img src="/assets/img/favoris.svg" alt="Favoris">
                 </a>
 
-                <?php if ( $pathFor('shop.cart.index') != '' && $current_user()){ ?>
+                <?php if ( $pathFor('shop.cart.index') != ''){ ?>
                 <!-- Panier -->
                 <a href="<?= $pathFor('shop.cart.index') ?>" class="icon-btn">
                     <div class="cart-count"><?=  count($session->get("carts")[$current_user()->id] ?? []) ?></div>
                     <img src="/assets/img/cart.svg" alt="Panier">
                 </a>
                 <?php } ?>
+                <?php } ?>
 
                 <!-- Profil -->
-                <?php if ( $pathFor('auth.login') != ''){ ?>
-                <a href="#register" class="icon-btn">
+                <?php if ($current_user()) { ?>
+                <a href="/" class="icon-btn">
                     <img src="/assets/img/account.svg" alt="Profil">
                 </a>
-                    <?php if ($current_user()) { ?>
-                       <h2><?= $current_user()->username ?></h2>
-                        <?php if($pathFor("auth.logout") != '') { ?>
+                    <h2><?= $current_user()->username ?></h2>
+                    <?php if($pathFor("auth.logout") != '') { ?>
                             <form action="<?= $pathFor("auth.logout") ?>" method="post">
                                 <button type="submit" class="button">Se déconnecter</button>
                             </form>
 
-                        <?php } ?>
-                    <?php }?>
+                    <?php } ?>
+                <?php }?>
+                <?php if ( $pathFor('auth.login') != '' && $pathFor('auth.register') != '') { ?>
+                    <a href="#login" class="button">Se connecter</a>
+                    <a href="#register" class="button">S'inscrire</a>
                 <?php } ?>
             </div>
         </div>
@@ -115,6 +123,8 @@
                     <li><a href="<?= $pathFor("shop.popular") ?>">Oeuvres populaires</a></li>
                     <?php } if ( $pathFor("auth.login") != ''){ ?>
                     <li><a href="<?= $pathFor("auth.login") ?>">Connexion</a></li>
+                    <?php } if ( $pathFor("auth.register") != ''){ ?>
+                        <li><a href="<?= $pathFor("auth.register") ?>">Inscription</a></li>
                     <?php } if ( $pathFor("advice.index") != ''){ ?>
                     <li><a href="<?= $pathFor("advice.index") ?>">Avis</a></li>
                     <?php } ?>

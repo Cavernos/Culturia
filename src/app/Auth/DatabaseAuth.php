@@ -58,10 +58,7 @@ class DatabaseAuth implements Auth
         } else {
             $table = $this->artistsTable;
         }
-        $user  = $table->makeQuery()
-            ->where("email = :email OR username = :email")
-            ->params([':email' => $username])
-            ->fetchOrFail();
+        $user  = $table->findByParams("email = :email OR username = :email",[':email' => $username] );
         if($user && password_verify($password, $user->password)) {
             $this->session->set('auth.user', $user->id);
             return $user;
@@ -98,7 +95,7 @@ class DatabaseAuth implements Auth
             }
             $table->insert($params);
             $id = $table->getPdo()->lastInsertId();
-            $user = $table->find($id);
+            $user = $table->findById($id);
             if($user){
                 $this->session->set('auth.user', $user->id);
                 return $user;
@@ -116,7 +113,7 @@ class DatabaseAuth implements Auth
     private function searchUser(Table $table, int $id): ?User
     {
         try {
-            return $table->find($id);
+            return $table->findById($id);
         } catch (NoRecordException $e) {
             return null;
         }
