@@ -39,7 +39,6 @@ class Table
             ->from($this->table)
             ->into($this->entity);
     }
-
     public function insert(array $params): bool
     {
         $fields = array_keys($params);

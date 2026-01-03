@@ -1,21 +1,20 @@
 
             <h1 class="page-title">Oeuvres en vente</h1>
-            <?php if($pathFor('shop.filter') != '') { ?>
-            <form method="post" action="<?= $pathFor("shop.filter") ?>" class="filter-panel">
+            <div class="filter-panel">
                     <div class="filter-panel-element">
                         <button type="submit" class="button iconify-button filter-button">Filtres</button>
-                        <?= $field($errors ?? [], 'price', $params["price"] ?? 0, 'Prix', ["type" => "toggleFilter", "class" => "button iconify-button filter-button"]); ?>
-                        <?= $field($errors ?? [], 'artists', $params["artists"] ?? 0, 'Artiste', ["type" => "toggleFilter", "class" => "button iconify-button filter-button"]); ?>
-                        <button type="submit" id="reset" name="reset" value="1" class="button reset">Réinitialiser</button>
+                        <a href="<?=$pathFor('shop.index', [], array_merge($_GET, ["artists" => $filter_param["artists"] ?? "desc"]))?>" class="button iconify-button filter-button <?= $_GET['artists'] ?? "desc" ?>">Artistes</a>
+                        <a href="<?=$pathFor('shop.index', [], array_merge($_GET, ["price" => $filter_param["price"] ?? "desc"]))?>" class="button iconify-button filter-button <?= $_GET['price'] ?? "desc" ?>">Prix</a>
+                        <a href="<?=$pathFor('shop.index')?>" class="button reset">Réinitialiser</a>
                     </div> 
                     <div class="right">
                         <button type="submit" class="button iconify-button specific-filter-button">Trier par</button>
                     </div>
-            </form>
-            <?php } ?>
+            </div>
+
             <div class="shop-container">
                 <?php foreach($artworks ?? [] as $artwork) {?>
-                        <a href="<?= $pathFor("shop.view", ["slug"=> str_replace(" ", "-", strtolower($artwork->name)), "id"=> $artwork->id]) ?>" id="<?= $artwork->id ?>" class="card">
+                        <a href="<?= $pathFor("shop.view", ["slug" => str_replace(" ", "-", strtolower($artwork->name)), "id"=> $artwork->id]) ?>" id="<?= $artwork->id ?>" class="card">
                             <div class="card-container">
                                 <img class='card-image' src="<?= $artwork->image ?>" alt="<?= $artwork->name ?>" srcset=""/>
                                 <div class="card-title">
