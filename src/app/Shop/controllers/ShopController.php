@@ -33,17 +33,12 @@ class ShopController {
                 } else {
                     $artworks->order("$key $value");
                 }
-                if($value === "asc") {
-                    $filter_param[$key] = "desc";
-                } elseif($value === "desc") {
-                    $filter_param[$key] = "asc";
-                }
             }
             $artworks = $artworks->paginate(16, $_GET["p"] ?? 1);
         } else {
             $artworks = $this->table->findPublic()->paginate(16, $_GET["p"] ?? 1);
         }
-        return $this->render('@shop/shop', compact("artworks", "filter_param"));
+        return $this->render('@shop/shop', compact("artworks"));
     }
     public function view($slug, $id) {
         $artwork = $this->table->findPublicId($id)->fetchOrFail();

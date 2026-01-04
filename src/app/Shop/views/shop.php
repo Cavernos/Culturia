@@ -3,9 +3,9 @@
             <div class="filter-panel">
                     <div class="filter-panel-element">
                         <button type="submit" class="button iconify-button filter-button">Filtres</button>
-                        <a href="<?=$pathFor('shop.index', [], array_merge($_GET, ["artists" => $filter_param["artists"] ?? "desc"]))?>" class="button iconify-button filter-button <?= $_GET['artists'] ?? "desc" ?>">Artistes</a>
-                        <a href="<?=$pathFor('shop.index', [], array_merge($_GET, ["price" => $filter_param["price"] ?? "desc"]))?>" class="button iconify-button filter-button <?= $_GET['price'] ?? "desc" ?>">Prix</a>
-                        <a href="<?=$pathFor('shop.index')?>" class="button reset">Réinitialiser</a>
+                        <?= $filter("price", "Prix", "shop.index", $_GET, ["type" => "toggle"]) ?>
+                        <?= $filter('artists', "Artistes", "shop.index", $_GET, ["type" => "toggle"]) ?>
+                        <?= $filter(null, "Réinitialiser", "shop.index", $_GET, ["type" => "reset"]) ?>
                     </div> 
                     <div class="right">
                         <button type="submit" class="button iconify-button specific-filter-button">Trier par</button>

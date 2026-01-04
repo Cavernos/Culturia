@@ -55,7 +55,7 @@
 .filter-button.iconify-button.desc::before, .filter-button.iconify-button.asc::before {
     content: none;
 }
-.filter-button.iconify-button.desc::after{
+.filter-button.iconify-button.asc::after{
     float: right;
     vertical-align: middle;
     content: "";
@@ -64,7 +64,7 @@
     width: 25px;
     height: 40%;
 }
-.filter-button.iconify-button.asc::after{
+.filter-button.iconify-button.desc::after{
     float: right;
     vertical-align: middle;
     content: "";
