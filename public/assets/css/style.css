@@ -4,6 +4,7 @@
 @import url("components/carousel.css");
 @import url("components/pagination.css");
 @import url("components/form.css");
+@import url("components/filters.css");
 
 /* Loading pages */
 @import url("./header.css");

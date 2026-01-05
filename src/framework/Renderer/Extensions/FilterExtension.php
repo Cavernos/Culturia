@@ -23,15 +23,16 @@ class FilterExtension implements RendererExtensionInterface
 
     public function filter(?string $name, string $label, string $path, array $request, ?array $options = []): string
     {
-        $filters = array_intersect_key($request, array_flip($this->filters));
+        $filters = array_diff_key($request, array_flip($this->filters));
         if(!is_null($name)){
-            $request[$name] = $filters[$name] === "desc" ? "asc" : "desc";
+            $request[$name] = (isset($request[$name]) && $request[$name] === "desc") ? "asc" : "desc";
+
             $uri = $this->router->generateUri(
                 $path,
                 [],
-                array_merge(array_diff_key($request, array_flip($filters)), [$name => $request[$name]]));
+                array_merge($filters, [$name => $request[$name]]));
         } else {
-            $uri = $this->router->generateUri($path, [], array_diff_key($request, array_flip($this->filters)));
+            $uri = $this->router->generateUri($path, [], $filters);
         }
 
         $classNames = ["button"];

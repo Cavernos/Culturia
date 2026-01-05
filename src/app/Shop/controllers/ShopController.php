@@ -26,15 +26,10 @@ class ShopController {
     public function index(){
         $filter_param = array_intersect_key($_GET, array_flip(["price", "artists"]));
         if(!empty($filter_param)) {
-            $artworks = $this->table->findPublic();
-            foreach ($filter_param as $key => $value) {
-                if($key=="artists") {
-                    $artworks->order("artists.id $value");
-                } else {
-                    $artworks->order("$key $value");
-                }
-            }
-            $artworks = $artworks->paginate(16, $_GET["p"] ?? 1);
+            $artworks = $this->table
+                ->findPublic()
+                ->filter($filter_param, ["artists" => "artists.id"])
+                ->paginate(16, $_GET["p"] ?? 1);
         } else {
             $artworks = $this->table->findPublic()->paginate(16, $_GET["p"] ?? 1);
         }

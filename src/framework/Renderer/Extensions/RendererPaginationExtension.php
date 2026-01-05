@@ -27,11 +27,12 @@ class RendererPaginationExtension implements RendererExtensionInterface
                              array $routerOptions = []): string
     {
         $html_paginator[] = '<div class="pagination-container">';
-        $html_paginator[] = '<a href="'. $this->router->generateUri($route, $routerOptions, ["p" => $paginator->previous()]).'" class="button iconify-button left-pagination-button"></a>';
+        $html_paginator[] = '
+        <a href="'. $this->router->generateUri($route, $routerOptions, ["p" => $paginator->previous()]).'" class="button iconify-button left-pagination-button"></a>';
         for ($i =1; $i < $paginator->getTotalPages() + 1; $i++){
-            $html_paginator[] = "<a href='" . $this->router->generateUri($route, $routerOptions, ["p" => $i]) . "' class='button pagination'>$i</a>";
+            $html_paginator[] = "<a href='" . $this->router->generateUri($route, $routerOptions,  ["p" => $i]) . "' class='button pagination'>$i</a>";
         }
-        $html_paginator[] = '<a href="'. $this->router->generateUri($route, $routerOptions, ["p" => $paginator->next()]).'" class="button iconify-button right-pagination-button"></a>';
+        $html_paginator[] = '<a href="'. $this->router->generateUri($route, $routerOptions,  ["p" => $paginator->next()]).'" class="button iconify-button right-pagination-button"></a>';
         $html_paginator[] = '</div>';
         return join(' ', $html_paginator);
     }
