@@ -45,8 +45,7 @@ html {
 }
 
 * {
-    
-    font-family: var(--default-font);
+    font-family: var(--default-font), serif;
     box-sizing: border-box;
 }
 
@@ -89,4 +88,10 @@ body {
 .alert.alert-danger{
     background-color: rgba(205, 92, 92, 50%);
     color: darkred;
+}
+
+@media (max-width: 800px) {
+    .main-container {
+        padding: 0;
+    }
 }

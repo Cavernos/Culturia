@@ -100,6 +100,7 @@
 
 .artiste-populaire {
   position: relative;
+  margin: 9.5rem 5rem;
   width: 250px;
 }
 
@@ -110,13 +111,12 @@
   min-height: 50px;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  display: block;
   border-radius: 10px;
   box-shadow: 5px 5px 5px 5px rgb(104, 104, 104);
 }
 
 .artiste-nom {
-  font-size: medium;
+  font-size: 2rem;
   margin-top: 6px;
-  text-align: left; /* nom sous l'image, à gauche */
+  text-align: center; /* nom sous l'image, à gauche */
 }
