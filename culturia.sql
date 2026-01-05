@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS artists (
     username VARCHAR(128),
     avatar VARCHAR(128),
     email VARCHAR(128),
-    password_hash VARCHAR(128),
+    password VARCHAR(128),
     inscription_date DATE,
     modification_date DATE
 );
