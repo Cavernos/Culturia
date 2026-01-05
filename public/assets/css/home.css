@@ -3,98 +3,120 @@
     font-size: 2.5rem;
 }
 .category-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 1rem;
-    margin: 1rem;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0 4rem;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(5, 1fr);
+}
+@media (max-width: 800px) {
+  .category-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes quand l'écran est étroit */
+  }
 }
 
 
 .categorie-element-container {
-    grid-column: auto / auto;
-    width: fit-content;
-    transition: transform .4s;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
 }
-.categorie-element-container:hover {
-    opacity: 100%;
-    transform: scale(1.1);
-}
-.categorie-element-container:link,  .categorie-element-container:visited, .categorie-element-container:focus{
-    text-decoration: none;
-    color: inherit;
-}
-
 
 .categorie-image {
-    width: 100%;
-    max-width: 16.7rem;
-    max-height: 200px;
-    min-width: 100px;
-    min-height: 50px;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    border-radius: 2rem;
-    filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 25));
+  width: 100%;
+  max-width: 250px;
+  max-height: 200px;
+  min-width: 100px;
+  min-height: 50px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 5px rgb(104, 104, 104);
 }
 
 .categorie-element-nom{
-    font-size: 1.5rem;
+    font-size:medium;
     margin-top: 6px;
     width: 70%;      /* petit espace sous l'image */
-    text-align: left;     /* texte bien aligné à gauche */
+    text-align: left;
+    color: black;
+
 }
 
 .etes-vous-artiste {
-    position: relative;
-    height: auto;
-}
-.artiste-element-container h1 {
-    margin: 0;
-}
-.artiste-element-container p {
-    margin-top: 10%;
-}
-.artiste-element-container{
-    width: auto;
-    height: auto;
-    position: absolute;
-    top: 25%;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-radius: 20px;
-    padding: 4rem 2rem;
-    text-align: center;
-    font-size: large;
-    color: white;
-    margin: 0 auto;
-    background-color: #00000080;
-    max-width: 65rem;
-    max-height: 30rem;
+  position: relative;
+  width: 100%;       /* occupe 100% de la largeur de la fenêtre */
+  margin: 50px 0;    /* espace avant/après la section */
 }
 
-.categorie-image-artiste{
-    width: 100%;
-    height: auto;
+.artiste-element-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* centre sur l'image */
+  width: 80%;          /* proportion de la largeur de l'image */
+  max-width: 55rem;    /* limite sur grands écrans */
+  padding: 2rem;
+  border-radius: 20px;
+  background-color: #00000080;
+  color: white;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.artiste-element-container h1 {
+  margin: 0 0 1rem 0;
+  color: whitesmoke;
+}
+
+.artiste-element-container p {
+  margin: 0 0 1.5rem 0;
+  font-size: medium;
+}
+
+@media (max-width: 600px) {
+  .artiste-element-container {
+    width: 90%;
+    padding: 1.5rem;
+    font-size: medium;
+  }
+}
+
+
+.categorie-image-artiste {
+  width: 100%;       /* prend toute la largeur du conteneur */
+  height: auto;      /* conserve les proportions */
+  display: block;
+}
+
+.filter-button{
+    color: #00000080;
+    font-size: large;
+
 }
 
 .artiste-populaire {
-    margin: 9.5rem 5rem;
-}
-.artiste-populaire .image-artiste {
-    max-width: 250px;
-    max-height: 200px;
-    min-width: 100px;
-    min-height: 50px;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px 5px rgb(104, 104, 104);
+  position: relative;
+  width: 250px;
 }
 
-.artiste-populaire .artiste-nom {
+.image-artiste {
+  max-width: 250px;
+  max-height: 200px;
+  min-width: 100px;
+  min-height: 50px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 5px rgb(104, 104, 104);
+}
 
-    font-size: 2rem;
-    margin-top: 6px;
-    text-align: center; /* nom sous l'image, à gauche */
+.artiste-nom {
+  font-size: medium;
+  margin-top: 6px;
+  text-align: left; /* nom sous l'image, à gauche */
 }

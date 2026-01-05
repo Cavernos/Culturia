@@ -19,6 +19,11 @@
     text-decoration: none;
 }
 
+.button:visited, .button:active, .button:link {
+    text-decoration: none;
+    color: black;
+}
+
 .button:hover {
     cursor: pointer;
     opacity: 75%;
