@@ -1,0 +1,35 @@
+/* ================================
+   Page Candidater (inscription artiste)
+   ================================ */
+
+
+.candidature-container {
+    margin: 0 auto;
+    max-width: 520px;
+    width: 100%;
+}
+
+
+/* Formulaire */
+.candidature-form {
+    width: 100%;
+}
+
+
+/* Responsive */
+@media (max-width: 650px) {
+
+    .form-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-row label,
+    .form-row input {
+        width: 100%;
+    }
+
+    .form-row label {
+        margin-bottom: 0.4rem;
+    }
+}

@@ -1,0 +1,150 @@
+
+
+
+header {
+    background-color: #F3E9DA;
+    padding: 20px 40px; 
+
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 58px;
+    width: 78px;
+}
+
+.search-container {
+    flex: 0 0 500px;
+    margin-left :50px
+}
+
+.search-bar {
+    position: relative;
+    width: 100%;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 15px 50px 12px 20px;
+    border: px solid #333;
+    border-radius: 30px;
+    font-size: 14px;
+    font-family: 'Georgia', serif;
+    background-color: #F3E9DA;
+}
+
+.search-bar input:focus {
+    outline: none;
+    border-color: #666;
+}
+
+.search-icon {
+    position: absolute;
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #333;
+}
+
+/* Header Icons */
+.header-icons {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.icon-btn {
+    text-decoration: none;
+    cursor: pointer;
+    padding: 8px;
+    color: black;
+    transition: transform 0.2s;
+    display: inline;
+    float: left;
+}
+
+.icon-btn:hover {
+    transform: scale(1.1);
+}
+.icon-btn .cart-count{
+    float: right;
+}
+
+
+.icon-btn img {
+    width: 28px;
+    height: 28px;
+    display: block;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding-top: 15px;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav a:hover {
+    color: #666;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #333;
+    transition: width 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Main Content */
+.content {
+    min-height: calc(100vh - 140px);
+}
+
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .search-container {
+        flex: 1;
+        width: 100%;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 20px;
+        font-size: 12px;
+    }
+}

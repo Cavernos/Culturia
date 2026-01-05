@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Culturia – Candidater</title>
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="../public/assets/css/style.css" />
+  <link rel="shortcut icon" href="../public/assets/img/favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+
+  <main class="main-container candidature-page">
+
+    <!-- Overlay + fenêtre centrale -->
+    <div class="candidature-overlay">
+
+      <div class="candidature-modal">
+        <h1>Candidater</h1>
+
+        <form class="candidature-form" action="#" method="post">
+
+          <!-- Nom d'artiste -->
+          <div class="form-row">
+            <label for="artistName">Nom d’artiste:</label>
+            <input type="text" id="artistName" name="artistName" required />
+          </div>
+
+          <!-- Mail -->
+          <div class="form-row">
+            <label for="email">Mail:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <!-- Mot de passe -->
+          <div class="form-row">
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+
+          <!-- Catégorie d'art -->
+          <div class="form-row">
+            <label for="category">Catégorie d’art:</label>
+            <input type="text" id="category" name="category" placeholder="Ex : Peinture, Sculpture..." />
+          </div>
+
+          <!-- Conditions -->
+          <div class="form-checkbox">
+            <input type="checkbox" id="terms" name="terms" required />
+            <label for="terms">J’accepte les condition d’utilisation</label>
+          </div>
+
+          <!-- Bouton -->
+          <div class="form-actions">
+            <button type="submit" class="primary-button">Je candidate</button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+
+  </main>
+
+</body>
+</html>

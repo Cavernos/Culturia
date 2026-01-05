@@ -1,0 +1,24 @@
+.shop-container {
+    display: flex;
+    padding-top: 3.5rem;
+    gap: 7rem;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.filter-panel {
+    width: 100%;
+    height: 2.5rem;
+}
+
+.filter-panel .filter-panel-element {
+    float: left;
+}
+.filter-panel .filter-panel-element > .button {
+    margin-right: 1.4rem;
+    display: inline-block;
+    width: fit-content;
+    vertical-align: middle;
+    overflow: hidden;
+}

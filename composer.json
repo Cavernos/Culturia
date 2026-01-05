@@ -1,0 +1,10 @@
+{
+    "name": "g1c/culturia",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "G1c\\Culturia\\": "src/"
+        }
+    },
+    "require": {}
+}

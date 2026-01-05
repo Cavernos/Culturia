@@ -1,0 +1,124 @@
+.category-container {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0 4rem;  
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(5, 1fr);
+}
+@media (max-width: 800px) {
+  .category-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes quand l'écran est étroit */
+  }
+}
+
+
+.categorie-element-container {
+  display:flex;
+  flex-direction: column;  
+  align-items: center;
+  text-decoration: none;
+}
+
+.categorie-image {
+  width: 100%;
+  max-width: 250px;
+  max-height: 200px;
+  min-width: 100px;
+  min-height: 50px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 5px rgb(104, 104, 104);
+}
+
+.categorie-element-nom{
+    font-size:medium;
+    margin-top: 6px;
+    width: 70%;      /* petit espace sous l'image */
+    text-align: left;   
+    color: black; 
+    
+}
+
+h1{
+    font-size: xx-large;
+    text-align: center;
+    margin-top: 50px;
+}
+/* La section s'étend sur toute la largeur de la page */
+.etes-vous-artiste {
+  position: relative;
+  width: 100%;       /* occupe 100% de la largeur de la fenêtre */
+  margin: 50px 0;    /* espace avant/après la section */
+}
+
+.artiste-element-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* centre sur l'image */
+  width: 80%;          /* proportion de la largeur de l'image */
+  max-width: 55rem;    /* limite sur grands écrans */
+  padding: 2rem;
+  border-radius: 20px;
+  background-color: #00000080;
+  color: white;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.artiste-element-container h1 {
+  margin: 0 0 1rem 0;
+  color: whitesmoke;
+}
+
+.artiste-element-container p {
+  margin: 0 0 1.5rem 0;
+  font-size: medium;
+}
+
+@media (max-width: 600px) {
+  .artiste-element-container {
+    width: 90%;
+    padding: 1.5rem;
+    font-size: medium;
+  }
+}
+
+
+.categorie-image-artiste {
+  width: 100%;       /* prend toute la largeur du conteneur */
+  height: auto;      /* conserve les proportions */
+  display: block;
+}
+
+.filter-button{
+    color: #00000080;
+    font-size: large;
+
+}
+
+.artiste-populaire {
+  position: relative;
+  width: 250px;
+}
+
+.image-artiste {
+  max-width: 250px;
+  max-height: 200px;
+  min-width: 100px;
+  min-height: 50px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 5px rgb(104, 104, 104);
+}
+
+.artiste-nom {
+  font-size: medium;
+  margin-top: 6px;
+  text-align: left; /* nom sous l'image, à gauche */
+}

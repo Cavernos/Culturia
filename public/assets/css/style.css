@@ -2,15 +2,29 @@
 @import url("components/card.css");
 @import url("components/buttons.css"); 
 @import url("components/carousel.css");
+@import url("components/pagination.css");
+@import url("components/form.css");
 
 /* Loading pages */
-@import url("./shop.css");
-@import url("./faq.css");
-@import url("./cart.css");
-@import url("./connexion-choice.css");
+@import url("./header.css");
+@import url("./footer.css");
 
-@import url("./ModifProfil.css");
-@import url("./ModifOeuvre.css");
+@import url("./home.css");
+@import url("./faq.css");
+
+@import url("shop/shop.css");
+@import url("shop/cart.css");
+@import url("shop/show-artwork.css");
+
+@import url("auth/common.css");
+@import url("auth/login.css");
+@import url("auth/register.css");
+@import url("auth/cgu.css");
+/*@import url("./ModifProfil.css");
+/*@import url("./connexion-choice.css");
+
+
+@import url("./ModifOeuvre.css");*/
 @font-face {
         font-family: "Inria Serif";
         src: url("../font/InriaSerif-Regular.ttf") format('truetype');
@@ -46,7 +60,7 @@ body {
 
 .page-title {
     font-size: 3rem;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
 }
 
 .left {
@@ -58,111 +72,22 @@ body {
 }
 
 
-#artwork-categories {
-  list-style: none;
-  margin: 0 auto;
-  padding: 0 4rem;  
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(5, 1fr);
-}
-@media (max-width: 800px) {
-  #artwork-categories {
-    grid-template-columns: repeat(2, 1fr); /* 2 colonnes quand l'écran est étroit */
-  }
-}
-
-
-.categorie-element-container {
-  display:flex;
-  flex-direction: column;  
-  align-items: center;
-}
-
-.categorie-image {
-  width: 100%;
-  max-width: 250px;
-  max-height: 200px;
-  min-width: 100px;
-  min-height: 50px;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  display: block;
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px 5px rgb(104, 104, 104);
-}
-
-.categorie-element-nom{
-    font-size:medium;
-    margin-top: 6px;
-    width: 70%;      /* petit espace sous l'image */
-    text-align: left;     /* texte bien aligné à gauche */
-}
-
-h1{
-    font-size: xx-large;
+.alert {
+    width: 50%;
+    margin: 1rem auto;
+    height: 5rem;
     text-align: center;
-    margin-top: 50px;
+    line-height: 5rem;
+    font-size: 1.6rem;
+    border-radius: 2rem;
 }
-.etes-vous-artiste {
-    position: relative;
-    height: auto;
-}
-.artiste-element-container h1 {
-    margin: 0;
-}
-.artiste-element-container p{
-    margin-top: 10%;
-}
-.artiste-element-container{
-    width: auto;
-    height: auto;
-    position: absolute;
-    top: 25%;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-radius: 20px;
-    padding: 4rem 2rem;
-    text-align: center;
-    font-size: large;
-    color: white;
-    margin: 0 auto;
-    background-color: #00000080;
-    max-width: 65rem;
-    max-height: 30rem;
+.alert.alert-success {
+    background-color: rgba(60, 179, 113, 50%);
+    color: darkgreen;
 }
 
-.categorie-image-artiste{
-    width: 100%;
-    height: auto;
+.alert.alert-danger{
+    background-color: rgba(205, 92, 92, 50%);
+    color: darkred;
 }
 
-.filter-button{
-    color: #00000080;
-    font-size: large;
-
-}
-
-.artiste-populaire {
-  position: relative;
-  width: 250px;
-}
-
-.image-artiste {
-  max-width: 250px;
-  max-height: 200px;
-  min-width: 100px;
-  min-height: 50px;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  display: block;
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px 5px rgb(104, 104, 104);
-}
-
-.artiste-nom {
-  font-size: medium;
-  margin-top: 6px;
-  text-align: left; /* nom sous l'image, à gauche */
-}

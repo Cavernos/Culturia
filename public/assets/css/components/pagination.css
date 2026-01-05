@@ -1,0 +1,39 @@
+.button.left-pagination-button {
+    border-radius: 0;
+    background:  url("../../img/arrow.svg") center center no-repeat;
+    transform: rotate(90deg);
+}
+.pagination-button.iconify-button::before {
+    content: "";
+    background:  url("../../img/arrow.svg") center center no-repeat;
+    width: 1rem;
+    height: 50%;
+    transform: rotate(90deg);
+}
+.button.pagination{
+    padding: 0;
+    width: 30px;
+    line-height: 30px;
+    height: 30px;
+    border-radius: 10px;
+    transition: opacity .5s;
+}
+.button.pagination:hover {
+    opacity: 50%;
+
+
+}
+.button.right-pagination-button {
+    border-radius: 0;
+    background:  url("../../img/arrow.svg") center center no-repeat;
+    transform: rotate(-90deg);
+}
+.pagination-container {
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: 10px;
+    text-align: center;
+
+}
