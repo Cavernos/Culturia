@@ -24,7 +24,7 @@ class ShopController {
     
 
     public function index(){
-        $filter_param = array_intersect_key( $_GET, array_flip(["price", "artists"]));
+        $filter_param = array_intersect_key($_GET, array_flip(["price", "artists"]));
         if(!empty($filter_param)) {
             $artworks = $this->table->findPublic();
             foreach ($filter_param as $key => $value) {
