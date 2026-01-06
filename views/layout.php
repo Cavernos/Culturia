@@ -9,6 +9,7 @@ use G1c\Culturia\app\Auth\model\ClientModel;
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <link rel="stylesheet" href="/assets/css/style.css"/>
         <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
+        <script src="/assets/js/index.js" type="module"></script>
         <title>Culturia</title>
     </head>
     <body>
@@ -67,8 +68,8 @@ use G1c\Culturia\app\Auth\model\ClientModel;
                     <?php } ?>
                 <?php }?>
                 <?php if ( $pathFor('auth.login') != '' && $pathFor('auth.register') != '') { ?>
-                    <a href="#login" class="button">Se connecter</a>
-                    <a href="#register" class="button">S'inscrire</a>
+                    <button for-modal="login"  class="button">Se connecter</button>
+                    <button for-modal="register" class="button">S'inscrire</button>
                 <?php } ?>
             </div>
             <nav>
@@ -155,9 +156,7 @@ use G1c\Culturia\app\Auth\model\ClientModel;
         </div>
     </footer>
 
-    <aside id="login" class="overlay">
-        <!-- Fond légèrement assombri + centrage de la fenêtre -->
-        <div class="modal login">
+    <modal-box id="login">
 
             <h1>Connexion</h1>
 
@@ -185,19 +184,14 @@ use G1c\Culturia\app\Auth\model\ClientModel;
                     <button type="submit" class="button">
                         Je me connecte
                     </button>
-                    <a href="/" class="button">Fermer</a>
                 </div>
             </form>
-        </div>
 
 
-    </aside>
-    <aside id="register" class="overlay">
+    </modal-box>
+    <modal-box id="register">
         <!-- Overlay + fenêtre centrale -->
-
-        <div class="modal">
             <h1>S'inscrire</h1>
-
             <form class="candidature-form" action="<?= $pathFor("auth.register") ?>" method="post">
                 <?= $field($errors ?? [], 'role', $params["role"] ?? null, "<span class='left'>Artiste</span><span class='right'>Client</span>", ["type" => "switch"]) ?>
                 <!-- Nom d'artiste -->
@@ -221,12 +215,10 @@ use G1c\Culturia\app\Auth\model\ClientModel;
                     <button type="submit" class="button">
                         Je m'inscris
                     </button>
-                    <a href="/" class="button">Fermer</a>
+
                 </div>
-
             </form>
-        </div>
 
-    </aside>
+    </modal-box>
     </body>
 </html>

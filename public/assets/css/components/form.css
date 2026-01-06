@@ -60,15 +60,15 @@
 .form-group:has(.form-switch) input[type="checkbox"]{
     display: none;
 }
-#role:checked  + .form-switch::before{
+.form-group:has(.form-switch) input[type="checkbox"]:checked  + .form-switch::before{
     transform: translateX(100%);
 }
 
-#role:checked + .form-switch .right {
+.form-group:has(.form-switch) input[type="checkbox"]:checked + .form-switch .right {
     color: black;
 }
 
-#role:not(:checked) + .form-switch .left {
+.form-group:has(.form-switch) input[type="checkbox"]:not(:checked) + .form-switch .left {
     color: black;
 }
 /* Ligne label + input */
@@ -106,8 +106,4 @@
     margin-top: 1.5rem;
 }
 
-/* On réutilise EXACTEMENT le style global */
-.form-actions .primary-button {
-    padding: 1rem 2.4rem;
-    font-size: 1.5rem;
-}
+

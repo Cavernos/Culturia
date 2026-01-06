@@ -8,12 +8,19 @@
     z-index: 1000;
 }
 
-.overlay:target {
+.overlay:target, .overlay[open] {
     display: flex;
+
+}
+.button.close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
 }
 
 .modal {
     background: #fdf3e7;
+    position: relative;
     padding: 1rem 3.5rem;
     border-radius: 1.5rem;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);

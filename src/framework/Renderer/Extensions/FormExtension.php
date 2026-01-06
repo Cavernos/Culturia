@@ -31,26 +31,26 @@ class FormExtension implements RendererExtensionInterface
         $attributes = [
             'class' => $options["class"] ?? '',
             "name" => $key,
-            "id" => $key,
+            "id" => $key . uniqid(),
         ];
         if($error) {
            $class .= ' has-danger';
         }
-        $input = match ($type) {
-            'textarea' => $this->textarea($value, $attributes),
-            'file' => $this->file($attributes),
-            'switch', 'checkbox' => $this->checkbox($value, $attributes),
-            'password' => $this->password($value, $attributes),
-            'email' => $this->email($value, $attributes),
-            'toggleFilter' => $this->toggleFilter($value, $label, $attributes),
-            array_key_exists('options', $options) => $this->select($value, $options["options"], $attributes),
-            default => $this->input($value, $attributes),
-        };
-        if($type === "switch") {
-            return "<div class='{$class}'>{$input}<label class='form-switch' for='{$key}'>{$label}</label>{$error}</div>";
+        if( array_key_exists('options', $options)) {
+            $input = $this->select($value, $options["options"], $attributes);
+        } else {
+            $input = match ($type) {
+                'textarea' => $this->textarea($value, $attributes),
+                'file' => $this->file($attributes),
+                'switch', 'checkbox' => $this->checkbox($value, $attributes),
+                'password' => $this->password($value, $attributes),
+                'email' => $this->email($value, $attributes),
+                default => $this->input($value, $attributes),
+            };
+
         }
-        if ($type === "toggleFilter") {
-            return "{$input}";
+        if($type === "switch") {
+            return "<div class='{$class}'>{$input}<label class='form-switch' for='{$attributes["id"]}'>{$label}</label>{$error}</div>";
         }
         return "<div class='{$class}'><label for='{$key}'>{$label}</label>{$input}{$error}</div>";
     }
@@ -111,17 +111,6 @@ class FormExtension implements RendererExtensionInterface
         }, "");
         return "<select {$this->getHtmlFromArray($attributes)}>$htmlOptions</select>";
     }
-    public function toggleFilter(?string $value, ?string $label, array $attributes): string
-    {
-        $html = "<input type='hidden' name='{$attributes["name"]}' value='{$value}'/>";
-        $attributes["class"] = $attributes["class"]. " desc";
-        if($value) {
-            $attributes["class"] = $attributes["class"]. " asc";
-        }
-        $attributes["name"] = $attributes["name"]. "_btn";
-        return $html . "<button type='submit' {$this->getHtmlFromArray($attributes)}>{$label}</button>";
-    }
-
     public function getHtmlFromArray(array $attributes): string
     {
         $htmlParts = [];
