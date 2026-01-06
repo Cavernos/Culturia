@@ -11,7 +11,11 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     margin-bottom: 20px;
+}
+.header-top nav {
+    flex-basis: 100%;
 }
 
 /* Logo */
@@ -39,7 +43,7 @@ header {
 .search-bar input {
     width: 100%;
     padding: 15px 50px 12px 20px;
-    border: px solid #333;
+    border: 3px solid #333;
     border-radius: 30px;
     font-size: 14px;
     font-family: 'Georgia', serif;
@@ -63,7 +67,7 @@ header {
 /* Header Icons */
 .header-icons {
     display: flex;
-    gap: 25px;
+    gap: 2.5rem;
     align-items: center;
 }
 
@@ -94,6 +98,7 @@ header {
 /* Navigation */
 nav {
     display: flex;
+    position: static;
     justify-content: center;
     gap: 40px;
     padding-top: 15px;
@@ -130,21 +135,81 @@ nav a:hover::after {
 .content {
     min-height: calc(100vh - 140px);
 }
+.burger-menu {
+    display: none;
+}
+.burger {
+    display: none;
+}
 
-@media (max-width: 768px) {
+@media (max-width: 750px) {
+    header {
+        padding: 0;
+    }
+    .header-icons .button {
+        display: none;
+    }
     .header-top {
-        flex-direction: column;
+        align-items: center;
         gap: 15px;
     }
-
-    .search-container {
-        flex: 1;
-        width: 100%;
+    .burger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 24px;
+        height: 18px;
+        margin-left: 1rem;
+        cursor: pointer;
     }
-
+    .burger span {
+        height: 3px;
+        background: #000000;
+        border-radius: 2px;
+        transition: 0.3s ease;
+    }
     nav {
-        flex-wrap: wrap;
-        gap: 20px;
-        font-size: 12px;
+        position: fixed;
+        top: 8rem;
+        background: var(--backgroung-color);
+        left: -100vw;
+        width: 100vw;
+        z-index: 10;
+        height: 100vh;
+        justify-content: flex-start;
+        transition: left 0.75s ease;
+
+    }
+  .burger-menu:checked ~ nav {
+        left: 0;
+    }
+    .burger-menu:checked ~ .burger span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+    .burger-menu:checked ~ .burger span:nth-child(2) {
+        opacity: 0;
+    }
+    .burger-menu:checked ~ .burger span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+    .header-icons {
+        align-items: flex-end;
+        gap: 1rem;
+    }
+    .search-container{
+        display: none;
+    }
+    .search-bar input{
+        display: none;
+    }
+    .icon-btn img {
+        width: auto;
+        height: 22px;
+
+    }
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
     }
 }

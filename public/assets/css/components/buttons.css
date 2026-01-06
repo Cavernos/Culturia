@@ -12,6 +12,11 @@
     line-height: 2.5rem;
     transition: opacity 0.4s;
     vertical-align: middle;
+    color: black;
+}
+
+.button:visited, .button:active, .button:link {
+    text-decoration: none;
 }
 
 .button:visited, .button:active, .button:link {
@@ -52,12 +57,25 @@
     color: #00000093;
 }
 
-.specific-filter-button.iconify-button::after{
+.filter-button.iconify-button.desc::before, .filter-button.iconify-button.asc::before {
+    content: none;
+}
+.filter-button.iconify-button.asc::after{
     float: right;
     vertical-align: middle;
     content: "";
     margin: 7.5px 0 7.5px 3px;
     background: url("../../img/arrow.svg") center center no-repeat;
+    width: 25px;
+    height: 40%;
+}
+.filter-button.iconify-button.desc::after{
+    float: right;
+    vertical-align: middle;
+    content: "";
+    margin: 7.5px 0 7.5px 3px;
+    background: url("../../img/arrow.svg") center center no-repeat;
+    transform: rotate(180deg);
     width: 25px;
     height: 40%;
 }

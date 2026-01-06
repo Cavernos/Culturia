@@ -2,6 +2,7 @@
 
 use Exception;
 use G1c\Culturia\framework\Container;
+use G1c\Culturia\framework\Middlewares\RoutePrefixedMiddleware;
 use G1c\Culturia\framework\Renderer;
 use G1c\Culturia\framework\Renderer\RendererFactory;
 use G1c\Culturia\framework\Router\Router;
@@ -47,6 +48,8 @@ class App {
     public function pipe(string $routePrefix, ?string $middleware = null) {
         if(is_null($middleware)){
             $this->middlewares[] = $routePrefix;
+        } else {
+            $this->middlewares[] = new RoutePrefixedMiddleware($this->getContainer(), $routePrefix, $middleware);
         }
 
         return $this;

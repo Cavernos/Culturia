@@ -97,7 +97,7 @@ function seed($seeds, $pdo, ?string $name = null)
         $classes = array_filter($classes, function ($value) use ($name){
             return str_contains($value, $name);
         });
-        echo "Seeding" . $name;
+        echo "Seeding " . $name;
     }
     foreach ($classes as $class) {
         $instance = new $class($pdo);

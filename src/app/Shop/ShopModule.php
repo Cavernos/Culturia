@@ -33,6 +33,7 @@ class ShopModule extends Module {
         $router->get($prefix, ShopController::class, 'shop.index');
         $router->crud($prefix . "/cart", CartCrudController::class, 'shop.cart');
         $router->get($prefix . "/{slug:[a-z\-0-9]+}-{id:[0-9]+}", ShopController::class, 'shop.view');
+        $router->post($prefix . "/filter", ShopController::class, 'shop.filter');
 
     }
 

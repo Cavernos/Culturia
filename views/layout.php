@@ -13,7 +13,14 @@ use G1c\Culturia\app\Auth\model\ClientModel;
     </head>
     <body>
     <header>
+
         <div class="header-top">
+            <input id="header-menu-toggle" type="checkbox" class="burger-menu" />
+            <label for="header-menu-toggle" class="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
             <!-- Logo -->
             <a href="<?= $pathFor("home.index") ?>" class="logo">
                 <img src="/assets/img/logo.svg" class="logo-img" alt="Logo">
@@ -64,20 +71,21 @@ use G1c\Culturia\app\Auth\model\ClientModel;
                     <a href="#register" class="button">S'inscrire</a>
                 <?php } ?>
             </div>
+            <nav>
+                <?php if ( $pathFor('home.index') != ''){ ?>
+                    <a href="<?= $pathFor('home.index') ?>">Accueil</a>
+                <?php } if ( $pathFor('shop.index') != ''){ ?>
+                    <a href="<?= $pathFor('shop.index')?>">Boutique</a>
+                <?php } if ( $pathFor('artists.index') != ''){ ?>
+                    <a href="<?= $pathFor('artists.index')?>">Artistes</a>
+                <?php } if ( $pathFor('contact.index') != ''){ ?>
+                    <a href="<?= $pathFor('contact.index')?>">Contactez-nous</a>
+                <?php } ?>
+            </nav>
         </div>
 
         <!-- Navigation -->
-        <nav>
-            <?php if ( $pathFor('home.index') != ''){ ?>
-            <a href="<?= $pathFor('home.index') ?>">Accueil</a>
-            <?php } if ( $pathFor('shop.index') != ''){ ?>
-            <a href="<?= $pathFor('shop.index')?>">Boutique</a>
-            <?php } if ( $pathFor('artists.index') != ''){ ?>
-            <a href="<?= $pathFor('artists.index')?>">Artistes</a>
-            <?php } if ( $pathFor('contact.index') != ''){ ?>
-            <a href="<?= $pathFor('contact.index')?>">Contactez-nous</a>
-            <?php } ?>
-        </nav>
+
     </header>
     <?php if($flash("error")) { ?>
         <div class="alert alert-danger"><?= $flash("error") ?></div>

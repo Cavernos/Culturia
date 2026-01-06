@@ -141,6 +141,19 @@ class Query
         return (new Paginator($paginator))->setMaxPerPage($perPage)->setCurrentPage($currentPage);
     }
 
+    public function filter(array $filters, array $alias =  []): self
+    {
+        foreach ($filters as $key => $value) {
+            if(isset($alias[$key])) {
+                $this->order("$alias[$key] $value");
+            } else {
+                $this->order("$key $value");
+            }
+
+        }
+        return $this;
+    }
+
     public function fetchAll(): QueryResult
     {
            return new QueryResult(

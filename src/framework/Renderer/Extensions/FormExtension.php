@@ -36,31 +36,21 @@ class FormExtension implements RendererExtensionInterface
         if($error) {
            $class .= ' has-danger';
         }
-        switch ($type) {
-            case 'textarea':
-                $input = $this->textarea($value, $attributes);
-                break;
-            case 'file':
-                $input = $this->file($attributes);
-                break;
-            case 'switch':
-            case 'checkbox':
-                $input = $this->checkbox($value, $attributes);
-                break;
-            case 'password':
-                $input = $this->password($value, $attributes);
-                break;
-            case 'email':
-                $input = $this->email($value, $attributes);
-                break;
-            case array_key_exists('options', $options):
-                $input = $this->select($value, $options["options"], $attributes);
-                break;
-            default:
-                $input = $this->input($value, $attributes);
-        }
+        $input = match ($type) {
+            'textarea' => $this->textarea($value, $attributes),
+            'file' => $this->file($attributes),
+            'switch', 'checkbox' => $this->checkbox($value, $attributes),
+            'password' => $this->password($value, $attributes),
+            'email' => $this->email($value, $attributes),
+            'toggleFilter' => $this->toggleFilter($value, $label, $attributes),
+            array_key_exists('options', $options) => $this->select($value, $options["options"], $attributes),
+            default => $this->input($value, $attributes),
+        };
         if($type === "switch") {
             return "<div class='{$class}'>{$input}<label class='form-switch' for='{$key}'>{$label}</label>{$error}</div>";
+        }
+        if ($type === "toggleFilter") {
+            return "{$input}";
         }
         return "<div class='{$class}'><label for='{$key}'>{$label}</label>{$input}{$error}</div>";
     }
@@ -120,6 +110,16 @@ class FormExtension implements RendererExtensionInterface
             return $html . "<option {$this->getHtmlFromArray($params)}>$options[$key]</option>";
         }, "");
         return "<select {$this->getHtmlFromArray($attributes)}>$htmlOptions</select>";
+    }
+    public function toggleFilter(?string $value, ?string $label, array $attributes): string
+    {
+        $html = "<input type='hidden' name='{$attributes["name"]}' value='{$value}'/>";
+        $attributes["class"] = $attributes["class"]. " desc";
+        if($value) {
+            $attributes["class"] = $attributes["class"]. " asc";
+        }
+        $attributes["name"] = $attributes["name"]. "_btn";
+        return $html . "<button type='submit' {$this->getHtmlFromArray($attributes)}>{$label}</button>";
     }
 
     public function getHtmlFromArray(array $attributes): string

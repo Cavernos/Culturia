@@ -3,6 +3,7 @@
 use G1c\Culturia\app\Auth\AuthModule;
 use G1c\Culturia\app\Auth\AuthRendererExtension;
 use G1c\Culturia\app\Auth\DatabaseAuth;
+use G1c\Culturia\app\Auth\ForbiddenMiddleware;
 use G1c\Culturia\framework\Auth;
 use G1c\Culturia\framework\Container;
 
@@ -18,5 +19,6 @@ return [
     ],
     Auth::class => function (Container $c) {
         return $c->resolve(DatabaseAuth::class);
-    }
+    },
+    ForbiddenMiddleware::class => fn(Container $container) => $container->resolve(ForbiddenMiddleware::class, "auth.login"),
 ];

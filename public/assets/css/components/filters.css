@@ -1,0 +1,40 @@
+.filter-panel {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+.filter-panel:has(.toggle-filter-panel:checked) .filter-panel-menu{
+    display: block;
+}
+.toggle-filter-panel {
+    display: none;
+}
+.active-filters {
+    display: flex;
+    gap: 8px;
+}
+
+.filter-panel-menu {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+}
+
+.active-filters .button {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(0);
+    transition: opacity .25s ease, transform .25s ease;
+}
+.active-filters .button.active {
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(.5rem);
+}
+.filter-panel-menu label {
+    display: block;
+}

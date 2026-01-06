@@ -3,8 +3,9 @@
 namespace G1c\Culturia\app\Shop\model;
 
 use DateTime;
+use G1c\Culturia\framework\Model;
 
-class ArtworkModel
+class ArtworkModel extends Model
 {
     public $id;
     public $name;

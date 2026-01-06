@@ -52,9 +52,9 @@ class CartCrudController extends CrudController
             $cart_session = $this->session->get("carts", []);
             $user = $this->session->get("auth.user");
             if(!is_null($user)){
-                if(!in_array($item, $cart_session[$user])){
 
-                    $cart_session[$user][] = $item;
+                if(!isset($cart_session[$user][$item->id])){
+                    $cart_session[$user][$item->id] = $item;
                     (new FlashService($this->session))->success("L'article a bien été ajouté au panier");
                     $this->session->set("carts", $cart_session);
                 } else {

@@ -106,6 +106,7 @@
 
 .carousel::scroll-button(*) {
   border: 0;
+    display: none;
   background:  url("../../img/arrow_2.svg") center center no-repeat;
   background-color: #D9D9D97F;
   border-radius: 100%;

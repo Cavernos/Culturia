@@ -24,8 +24,15 @@ class ShopController {
     
 
     public function index(){
-        $artworks = $this->table->findPublic()->paginate(16, $_GET["p"] ?? 1);
-
+        $filter_param = array_intersect_key($_GET, array_flip(["price", "artists"]));
+        if(!empty($filter_param)) {
+            $artworks = $this->table
+                ->findPublic()
+                ->filter($filter_param, ["artists" => "artists.id"])
+                ->paginate(16, $_GET["p"] ?? 1);
+        } else {
+            $artworks = $this->table->findPublic()->paginate(16, $_GET["p"] ?? 1);
+        }
         return $this->render('@shop/shop', compact("artworks"));
     }
     public function view($slug, $id) {

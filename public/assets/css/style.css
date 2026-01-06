@@ -4,6 +4,7 @@
 @import url("components/carousel.css");
 @import url("components/pagination.css");
 @import url("components/form.css");
+@import url("components/filters.css");
 
 /* Loading pages */
 @import url("./header.css");
@@ -44,8 +45,7 @@ html {
 }
 
 * {
-    
-    font-family: var(--default-font);
+    font-family: var(--default-font), serif;
     box-sizing: border-box;
 }
 
@@ -91,3 +91,8 @@ body {
     color: darkred;
 }
 
+@media (max-width: 800px) {
+    .main-container {
+        padding: 0;
+    }
+}
