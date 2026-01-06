@@ -24,7 +24,6 @@ class ShopModule extends Module {
         $c->get(Logger::class)->setChannel("shop");
         $this->renderer = $c->get(Renderer::class);
         $this->renderer->addPath('shop', __DIR__ . '/views');
-        $this->renderer->addGlobal("session", $c->get(SessionInterface::class));
         /**
          * Add new routes
          */

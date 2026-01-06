@@ -48,7 +48,7 @@ use G1c\Culturia\app\Auth\model\ClientModel;
                 <?php if ( $pathFor('shop.cart.index') != ''){ ?>
                 <!-- Panier -->
                 <a href="<?= $pathFor('shop.cart.index') ?>" class="icon-btn">
-                    <div class="cart-count"><?=  count($session->get("carts")[$current_user()->id] ?? []) ?></div>
+                    <div class="cart-count"><?= $cart_count() ?></div>
                     <img src="/assets/img/cart.svg" alt="Panier">
                 </a>
                 <?php } ?>
