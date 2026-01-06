@@ -20,13 +20,18 @@
 .categorie-element-container {
   display:flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  text-align: left;
   text-decoration: none;
+  transition: transform .3s ease;
+}
+.categorie-element-container:hover {
+  transform: scale(110%);
 }
 
 .categorie-image {
   width: 100%;
-  max-width: 250px;
+  max-width: 200px;
   max-height: 200px;
   min-width: 100px;
   min-height: 50px;
@@ -38,10 +43,9 @@
 }
 
 .categorie-element-nom{
-    font-size:medium;
+    font-size: 2rem;
     margin-top: 6px;
     width: 70%;      /* petit espace sous l'image */
-    text-align: left;
     color: black;
 
 }
