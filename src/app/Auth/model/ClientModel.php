@@ -3,9 +3,10 @@
 namespace G1c\Culturia\app\Auth\model;
 
 use G1c\Culturia\framework\Auth\User as AuthUser;
+use G1c\Culturia\framework\Model;
 
 
-class ClientModel implements AuthUser
+class ClientModel extends Model implements AuthUser
 {
 
     public $id;

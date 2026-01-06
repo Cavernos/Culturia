@@ -2,7 +2,9 @@
 
 namespace G1c\Culturia\app\Shop\model;
 
-class CategoryModel
+use G1c\Culturia\framework\Model;
+
+class CategoryModel extends Model
 {
     public $id;
 
