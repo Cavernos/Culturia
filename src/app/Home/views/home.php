@@ -61,16 +61,6 @@
     </div>
     <img class = "categorie-image-artiste" src = "/assets/img/artiste_back.jpg" width="200px" height="200px" srcset=""/>
 </div>
-<div class="etes-vous-artiste">
-    <img class="categorie-image-artiste"
-    src = "/assets/img/artiste_back.jpg"
-    alt="Artiste">
-    <div class="artiste-element-container">
-        <h1>Etez-vous artiste?</h1>
-        <p>Inscrivez-vous pour mettre en ligne vos oeuvres</p>
-        <a class="button filter-button">Je m'inscris</a>
-    </div>
-</div>
 
 <h1 class="page-sub-title">Artistes Populaires</h1>
 
