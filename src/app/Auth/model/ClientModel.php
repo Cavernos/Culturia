@@ -39,4 +39,8 @@ class ClientModel extends Model implements AuthUser
         return "/upload/avatar/{$this->avatar}";
     }
 
+    public function is(ClientModel|Model $model): bool
+    {
+        return $this instanceof $model;
+    }
 }

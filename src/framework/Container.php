@@ -1,13 +1,14 @@
 <?php namespace G1c\Culturia\framework;
 
+use Closure;
 use Exception;
 use ReflectionClass;
 use ReflectionException;
 
 class Container {
     
-    private $contents = [];
-    private $instances = [];
+    private array $contents = [];
+    private array $instances = [];
 
     private static $_instance;
 
@@ -42,8 +43,9 @@ class Container {
 
     public function get(mixed $key): mixed {
         if (isset($this->contents[$key])) {
-            if(is_callable($this->contents[$key])){
-                $this->contents[$key] = $this->contents[$key]($this);
+            if($this->contents[$key] instanceof Closure){
+                $resolve = $this->contents[$key]($this);
+                $this->contents[$key] = $resolve;
                 return $this->contents[$key];
             }
             return $this->contents[$key];
@@ -75,7 +77,8 @@ class Container {
     /**
      * @throws ReflectionException
      */
-    public function resolve(string $class_name, ?string $constructor_parameter_alias = null) {
+    public function resolve(string $class_name, ?string $constructor_parameter_alias = null): object|string|null
+    {
         $reflected_class = new ReflectionClass($class_name);
         if($reflected_class->isInstantiable()){
             $constructor = $reflected_class->getConstructor();
