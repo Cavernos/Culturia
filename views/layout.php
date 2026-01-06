@@ -62,6 +62,7 @@ use G1c\Culturia\app\Auth\model\ClientModel;
                     <h2><?= $current_user()->username ?></h2>
                     <?php if($pathFor("auth.logout") != '') { ?>
                             <form action="<?= $pathFor("auth.logout") ?>" method="post">
+                                <?= $csrf_input() ?>
                                 <button type="submit" class="button">Se déconnecter</button>
                             </form>
 
@@ -161,6 +162,7 @@ use G1c\Culturia\app\Auth\model\ClientModel;
             <h1>Connexion</h1>
 
             <form action="<?= $pathFor("auth.login") ?>" method="post" class="login-form">
+                <?= $csrf_input() ?>
                 <?= $field($errors ?? [], 'role', $params["role"] ?? null, "<span class='left'>Artiste</span><span class='right'>Client</span>", ["type" => "switch"]) ?>
                 <?= $field($errors ?? [], "email",  $params['email'] ?? null, "E-mail ou Nom d'utilisteur :") ?>
 
@@ -190,6 +192,7 @@ use G1c\Culturia\app\Auth\model\ClientModel;
 
     </modal-box>
     <modal-box id="register">
+        <?= $csrf_input() ?>
         <!-- Overlay + fenêtre centrale -->
             <h1>S'inscrire</h1>
             <form class="candidature-form" action="<?= $pathFor("auth.register") ?>" method="post">

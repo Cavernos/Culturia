@@ -33,6 +33,7 @@
         <td>
             <form action="<?= $pathFor("shop.cart.delete", ["id" => $item->id]) ?>" method="POST">
                 <input name="_METHOD" value="DELETE" type="hidden"/>
+                <?= $csrf_input() ?>
                 <button class="button iconify-button delete-button" type="submit"></button>
             </form>
         </td>

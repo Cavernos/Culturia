@@ -52,7 +52,7 @@ class FormExtension implements RendererExtensionInterface
         if($type === "switch") {
             return "<div class='{$class}'>{$input}<label class='form-switch' for='{$attributes["id"]}'>{$label}</label>{$error}</div>";
         }
-        return "<div class='{$class}'><label for='{$key}'>{$label}</label>{$input}{$error}</div>";
+        return "<div class='{$class}'><label for='{$attributes["id"]}'>{$label}</label>{$input}{$error}</div>";
     }
 
     /**

@@ -2,7 +2,9 @@
 
 use G1c\Culturia\framework\Container;
 use G1c\Culturia\framework\Logger;
+use G1c\Culturia\framework\Middlewares\CsrfMiddleware;
 use G1c\Culturia\framework\Renderer;
+use G1c\Culturia\framework\Renderer\Extensions\CsrfExtension;
 use G1c\Culturia\framework\Renderer\Extensions\FilterExtension;
 use G1c\Culturia\framework\Renderer\Extensions\FlashExtension;
 use G1c\Culturia\framework\Renderer\Extensions\FormExtension;
@@ -33,10 +35,14 @@ return [
         RendererPaginationExtension::class,
         FormExtension::class,
         FlashExtension::class,
-        FilterExtension::class
+        FilterExtension::class,
+        CsrfExtension::class
 
     ],
     SessionInterface::class => new PHPSession(),
+    CsrfMiddleware::class => function (Container $c){
+        $session = $c->get(SessionInterface::class);
+        return new CsrfMiddleware($session);},
     Renderer::class => Container::getInstance()->factory(RendererFactory::class),
     Logger::class => fn(Container $c) => new Logger($c->get("env"), $c->get("log.path"))
 ];

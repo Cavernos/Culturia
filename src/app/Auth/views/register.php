@@ -4,6 +4,7 @@
         <h1>S'inscrire</h1>
 
         <form class="candidature-form" action="<?= $pathFor("auth.register") ?>" method="post">
+            <?= $csrf_input() ?>
             <?= $field($errors ?? [], 'role', $params["role"] ?? null, "<span class='left'>Artiste</span><span class='right'>Client</span>", ["type" => "switch"]) ?>
             <!-- Nom d'artiste -->
             <?= $field($errors ?? [], 'username', $params["username"] ?? null,  "Nom d'utilisateur : "); ?>

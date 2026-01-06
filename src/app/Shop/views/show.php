@@ -29,6 +29,7 @@ use G1c\Culturia\app\Auth\model\ClientModel;
             <div class="action-buttons">
                 <?php if($pathFor('shop.cart.edit') && $current_user() instanceof ClientModel) { ?>
                 <form method="POST" action="<?= $pathFor('shop.cart.edit', ["id" => $artwork->id])?>">
+                    <?= $csrf_input() ?>
                     <button class="btn-add-cart" type="submit">Ajouter au panier</button>
                 </form>
                 <?php } ?>

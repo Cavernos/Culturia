@@ -5,6 +5,7 @@
             <h1>Connexion</h1>
 
             <form action="<?= $pathFor("auth.login") ?>" method="post" class="login-form">
+                <?= $csrf_input() ?>
                 <?= $field($errors ?? [], 'role', $params["role"] ?? null, "<span class='left'>Artiste</span><span class='right'>Client</span>", ["type" => "switch"]) ?>
                 <?= $field($errors ?? [], "email", $params["email"] ?? null, "E-mail :") ?>
 
