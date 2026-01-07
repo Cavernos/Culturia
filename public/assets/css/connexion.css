@@ -3,7 +3,6 @@
    ================================ */
 
 /* Main de la page de connexion : */
-  
 .main-container.login-page {
     max-width: 1200px;
     margin: 0 auto;
@@ -71,8 +70,6 @@
 .forgot-link {
     font-size: 1.2rem;
     text-decoration: underline;
-    display: flex;
-    flex-direction: column;
 }
 
 /* Séparateur "OU" */

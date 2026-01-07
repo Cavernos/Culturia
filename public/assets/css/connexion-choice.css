@@ -36,7 +36,6 @@
     background-color: #fff9f0;
 }
 
-
 /* Titres */
 .main-container h1 {
     text-align: center;
@@ -80,7 +79,6 @@
 
 /* Liens "Connectez-vous" */
 .choice-box a {  
-    color: #371818;
     text-decoration: underline;
     font-size: 0.9rem;
 }

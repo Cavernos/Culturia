@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Culturia – Postuler</title>
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="../public/assets/css/style.css" />
+  <link rel="shortcut icon" href="../public/assets/img/favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+
+  <main class="main-container candidature-page">
+
+    <!-- Overlay + fenêtre centrale -->
+    <div class="candidature-overlay">
+
+      <div class="candidature-modal">
+        <h1>Postuler</h1>
+
+        <form class="candidature-form" action="#" method="post">
+
+          <!-- Nom d'artiste -->
+          <div class="form-row">
+            <label for="artistName">Nom d’artiste:</label>
+            <input type="text" id="artistName" name="artistName" required />
+          </div>
+
+          <!-- Mail -->
+          <div class="form-row">
+            <label for="email">Mail:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <!-- Mot de passe -->
+          <div class="form-row">
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+
+          <!-- Catégorie d'art -->
+          <div class="form-row">
+            <label for="category">Catégorie d’art:</label>
+            <select name="categorie_art" required>
+            <option value="" disabled selected>Choisir une catégorie</option>
+            <option value="peinture">Peinture</option>
+            <option value="Art abstrait">Art abstrait</option>
+            <option value="Cubisme">Cubisme</option>
+            <option value="illustration">Illustration</option>
+            <option value="art_numerique">Art numérique</option>
+            <option value="street art">Street art</option>
+            <option value="Impressionisme">Impressionisme</option>
+            <option value="Symbolisme">Symbolisme</option>
+            <option value="autre">Autre</option>
+          </select>
+          </div>
+
+          <!-- Conditions -->
+          <div class="form-checkbox">
+            <input type="checkbox" id="terms" name="terms" required />
+            <label for="terms">J’accepte les conditions d’utilisation</label>
+          </div>
+
+          <!-- Bouton -->
+          <div class="form-actions">
+            <button type="submit" class="primary-button">Je postule</button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+
+  </main>
+
+</body>
+</html>

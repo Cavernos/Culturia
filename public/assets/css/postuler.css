@@ -1,0 +1,126 @@
+/* ================================
+   Page Postuler (inscription artiste)
+   ================================ */
+
+
+/* Overlay */
+.candidature-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /*  ambiance beige  */
+    background: rgba(243, 233, 218, 0.85);
+    z-index: 1000;
+}
+
+/* Carte centrale */
+.candidature-modal {
+    background: #fdf3e7;
+    padding: 3rem 3.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+    width: 100%;
+    max-width: 520px;
+}
+
+
+/* Titre */
+.candidature-modal h1 {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 2.4rem;
+}
+
+/* Formulaire */
+.candidature-form {
+    width: 100%;
+}
+
+
+/* Ligne label + input */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr; /* label | input */
+    align-items: center;
+    column-gap: 0.8rem;              /* rapproche */
+    margin-bottom: 1.6rem;
+}
+
+/* Labels à gauche */
+.form-row label {
+    font-size: 1.5rem;
+    white-space: nowrap; /* empêche "Catégorie d’art" de passer à la ligne */
+}
+
+/* Champs à droite */
+.form-row input {
+    width: 100%; /* en grid, c’est mieux */
+    padding: 0.6rem 0.8rem;
+    border-radius: 0.4rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 1.4rem;
+}
+
+.form-row select {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border-radius: 0.4rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 1.4rem;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.form-row select:focus,
+.form-row input:focus {
+    outline: none;
+    border-color: var(--button-background-color);
+}
+
+/* Checkbox conditions */
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 2rem 0;
+    font-size: 1.3rem;
+}
+
+.form-checkbox input {
+    accent-color: var(--button-background-color);
+}
+
+/* Bouton */
+.form-actions {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.form-actions .primary-button {
+    padding: 1rem 2.4rem;
+    font-size: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 650px) {
+    .candidature-modal {
+        padding: 2.2rem 2rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-row label,
+    .form-row input {
+        width: 100%;
+    }
+
+    .form-row label {
+        margin-bottom: 0.4rem;
+    }
+}
