@@ -22,6 +22,7 @@ class RoutePrefixedMiddleware
     {
         $path = parse_url($request["REQUEST_URI"], PHP_URL_PATH);
         if(str_starts_with($path, $this->routePrefix)) {
+            $request["prefix"] = $this->routePrefix;
             return $this->container->get($this->middleware)($request, $next);
         }
         return $next($request);

@@ -17,7 +17,7 @@ class PHPSession implements ArrayAccess, SessionInterface
         return $this->has($offset);
     }
 
-    public function offsetGet(mixed $offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return $this->get($offset);
     }
@@ -27,7 +27,7 @@ class PHPSession implements ArrayAccess, SessionInterface
         $this->set($offset, $value);
     }
 
-    public function offsetUnset(mixed $offset)
+    public function offsetUnset(mixed $offset): void
     {
         $this->delete($offset);
     }

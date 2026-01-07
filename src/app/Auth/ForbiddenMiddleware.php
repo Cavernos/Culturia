@@ -25,8 +25,9 @@ class ForbiddenMiddleware
             return $next($request);
         } catch (ForbiddenException $e)
         {
+            $accountType = $e->getAccountType();
             $this->session->set('auth.redirect', parse_url($request["REQUEST_URI"], PHP_URL_PATH));
-            (new FlashService($this->session))->error("Vous devez posséder un compte pour accéder à cette page");
+            (new FlashService($this->session))->error("Vous devez être un $accountType pour accéder à cette page");
             var_dump($this->loginPath);
             header("Location: $this->loginPath");
             return exit();

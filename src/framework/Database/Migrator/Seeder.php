@@ -9,7 +9,7 @@ class Seeder
 {
     protected $tableName = "";
 
-
+    private PDO $pdo;
     public function __construct(PDO $pdo)
     {
 

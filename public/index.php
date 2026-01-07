@@ -29,7 +29,8 @@ $app->pipe(TrailingSlashMiddleware::class)
     ->pipe(MethodMiddleware::class)
     ->pipe(CsrfMiddleware::class)
     ->pipe(ForbiddenMiddleware::class)
-    ->pipe($container->get("artists.prefix"), LoggedInMiddleware::class)
+    ->pipe($container->get("artists.profile.prefix"), LoggedInMiddleware::class)
+    ->pipe($container->get("auth.prefix"), LoggedInMiddleware::class)
     ->pipe(RouterMiddleware::class)
     ->pipe(NotFoundMiddleware::class);
 if (php_sapi_name() !== 'cli') {

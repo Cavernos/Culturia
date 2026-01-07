@@ -34,16 +34,19 @@ class DatabaseAuth implements Auth
             return $this->user;
         }
         $userId = $this->session->get('auth.user');
+        $role = $this->session->get('auth.role');
         if($userId) {
-            $this->user = $this->searchUser($this->clientTable, $userId);
-            if(!is_null($this->user)) {
-                return $this->user;
+            $table = $this->getTable($role);
+            try {
+                $this->user = $table->findById($userId);
+            } catch (NoRecordException $e) {
+                return null;
             }
-            $this->user = $this->searchUser($this->artistsTable, $userId);
             if(!is_null($this->user)) {
                 return $this->user;
             }
             $this->session->delete('auth.user');
+            $this->session->delete('auth.role');
         }
         return null;
     }
@@ -53,14 +56,11 @@ class DatabaseAuth implements Auth
         if(empty($username) || empty($password)) {
             return null;
         }
-        if($role) {
-            $table = $this->clientTable;
-        } else {
-            $table = $this->artistsTable;
-        }
+        $table = $this->getTable($role);
         $user  = $table->findByParams("email = :email OR username = :email",[':email' => $username] );
         if($user && password_verify($password, $user->password)) {
             $this->session->set('auth.user', $user->id);
+            $this->session->set('auth.role', (bool)$role);
             return $user;
         }
         return null;
@@ -86,18 +86,13 @@ class DatabaseAuth implements Auth
                 "modification_date" => date("Y-m-d H:i:s")
 
             ];
-            if($params["role"]) {
-                /** @var ClientModel $user */
-                $table =$this->clientTable;
-            } else {
-                /** @var ArtistsModel $user */
-                $table = $this->artistsTable;
-            }
+            $table = $this->getTable($params['role']);
             $table->insert($params);
             $id = $table->getPdo()->lastInsertId();
             $user = $table->findById($id);
             if($user){
                 $this->session->set('auth.user', $user->id);
+                $this->session->set('auth.role', (bool)$params["role"]);
                 return $user;
             }
         }
@@ -108,14 +103,15 @@ class DatabaseAuth implements Auth
     public function logout(): void
     {
         $this->session->delete('auth.user');
+        $this->session->delete('auth.role');
     }
 
-    private function searchUser(Table $table, int $id): ?User
+    private function getTable(bool $role): Table
     {
-        try {
-            return $table->findById($id);
-        } catch (NoRecordException $e) {
-            return null;
+        if($role) {
+            return $this->clientTable;
+        } else {
+            return $this->artistsTable;
         }
 
     }

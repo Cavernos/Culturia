@@ -18,7 +18,7 @@ class ArtistsModel extends Model implements AuthUser
         return $this->username;
     }
 
-    public function is(ArtistsModel|Model $model): bool
+    public function is(string $model): bool
     {
         return $this instanceof $model;
     }
