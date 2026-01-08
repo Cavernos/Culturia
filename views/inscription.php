@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 "password" => $hash
             ]);
 
-            $successMsg = "Inscription réussie ";
+            $successMsg = "Inscription réussie.";
             $_POST = [];
         }
     }
@@ -71,28 +71,42 @@ function old(string $key): string {
       <h1>S'inscrire</h1>
 
       <?php if ($errorMsg): ?>
-        <p style="color:#b00020; margin-bottom:10px;"><?= htmlspecialchars($errorMsg) ?></p>
+        <p style="color:#b00020; margin-bottom:10px;"><?= htmlspecialchars($errorMsg, ENT_QUOTES, "UTF-8") ?></p>
       <?php endif; ?>
 
       <?php if ($successMsg): ?>
-        <p style="color:green; margin-bottom:10px;"><?= htmlspecialchars($successMsg) ?></p>
+        <div class="success-message">
+          <?= htmlspecialchars($successMsg) ?><br>
+          <span class="success-sub">Votre compte a bien été créé.</span>
+        </div>
       <?php endif; ?>
 
-      <form class="inscription-form" action="inscription.php" method="POST">
+
+      <form class="inscription-form" action="" method="POST">
 
         <div class="form-row">
           <label for="username">Nom :</label>
           <input type="text" id="username" name="username" value="<?= old("username") ?>" required />
         </div>
 
-        <div class="form-row">
+        <div class="form-row"> 
           <label for="email">Mail:</label>
           <input type="email" id="email" name="email" value="<?= old("email") ?>" required />
         </div>
 
         <div class="form-row">
           <label for="password">Mot de passe:</label>
-          <input type="password" id="password" name="password" required />
+
+          <div>
+            <input type="password" id="password" name="password" required />
+
+           
+            <div class="password-strength">
+              <div class="password-strength__bar" id="passwordStrengthBar"></div>
+            </div>
+
+            <p class="password-strength__text" id="passwordStrengthText"></p>
+          </div>
         </div>
 
         <div class="form-checkbox">
@@ -110,5 +124,6 @@ function old(string $key): string {
 
 </main>
 
+<script src="../public/assets/js/inscription.js"></script>
 </body>
 </html>

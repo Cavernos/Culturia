@@ -3,7 +3,6 @@
    ================================ */
 
 
-/* Overlay */
 .inscription-overlay {
     position: fixed;
     inset: 0;
@@ -11,12 +10,12 @@
     justify-content: center;
     align-items: center;
 
-    /*  ambiance beige  */
+  
     background: rgba(243, 233, 218, 0.85);
     z-index: 1000;
 }
 
-/* Carte centrale */
+
 .inscription-modal {
     background: #fdf3e7;
     padding: 3rem 3.5rem;
@@ -27,20 +26,16 @@
 }
 
 
-/* Titre */
 .inscription-modal h1 {
     text-align: center;
     margin-bottom: 2.5rem;
     font-size: 2.4rem;
 }
 
-/* Formulaire */
 .inscription-form {
     width: 100%;
 }
 
-
-/* Ligne label + input */
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1.3fr; 
@@ -49,13 +44,13 @@
     margin-bottom: 1.6rem;
 }
 
-/* Labels à gauche */
+
 .form-row label {
     font-size: 1.5rem;
     white-space: nowrap; 
 }
 
-/* Champs à droite */
+
 .form-row input {
     width: 100%; 
     padding: 0.6rem 0.8rem;
@@ -65,7 +60,7 @@
 }
 
 
-/* Checkbox conditions */
+
 .form-checkbox {
     display: flex;
     align-items: center;
@@ -78,7 +73,7 @@
     accent-color: var(--button-background-color);
 }
 
-/* Bouton */
+
 .form-actions {
     text-align: center;
     margin-top: 1.5rem;
@@ -89,15 +84,52 @@
     font-size: 1.5rem;
 }
 
-/* Responsive */
+.password-strength {
+  width: 100%;
+  max-width: 320px;           
+  height: 8px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 999px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.password-strength__bar {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  transition: width 200ms ease;
+}
+
+.password-strength__text{
+  margin-top: 6px;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.password-strength__text.is-weak { color: #e74c3c; }
+.password-strength__text.is-medium { color: #f39c12; }
+.password-strength__text.is-strong { color: #2ecc71; }
+
+.password-strength__bar.is-weak { background: #e74c3c; }
+.password-strength__bar.is-medium { background: #f39c12; }
+.password-strength__bar.is-strong { background: #2ecc71; }
+
+.password-strength {
+  grid-column: 1 / -1;   
+  max-width: 100%;       
+}
+
+
 @media (max-width: 650px) {
     .inscription-modal {
         padding: 2.2rem 2rem;
     }
 
+@media (max-width: 650px) {
     .form-row {
-        flex-direction: column;
-        align-items: flex-start;
+        grid-template-columns: 1fr;  /* une seule colonne */
+    }
     }
 
     .form-row label,
@@ -108,4 +140,48 @@
     .form-row label {
         margin-bottom: 0.4rem;
     }
+}
+
+.password-strength {
+  grid-column: 1 / -1;
+  max-width: 100%;
+}
+
+@media (max-width: 650px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.success-message {
+  background: #e9f9f0;
+  border: 1px solid #2ecc71;
+  color: #1e8449;
+  padding: 1.4rem 1.6rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(46, 204, 113, 0.15);
+  animation: popSuccess 0.4s ease;
+}
+
+.success-message .success-sub {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+@keyframes popSuccess {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
