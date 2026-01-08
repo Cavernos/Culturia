@@ -32,7 +32,7 @@
                     <img src="../public/assets/img/panier-icon.png" alt="Panier">
                 </a>
 
-                                <a href="#" class="icon-btn">
+                                <a href="/profil" class="icon-btn">
                     <img src="../public/assets/img/profil-icon.png" alt="Profil">
                 </a>
             </div>
