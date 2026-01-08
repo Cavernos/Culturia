@@ -1,0 +1,158 @@
+     * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #e8dfd0;
+            color: #2c2c2c;
+            padding: 40px 60px;
+        }
+
+        .page-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .favorites-count {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+
+        .favorites-table {
+            width: 100%;
+            background-color: transparent;
+            border-collapse: collapse;
+        }
+
+        .favorites-table thead {
+            border-bottom: 2px solid #2c2c2c;
+        }
+
+        .favorites-table th {
+            padding: 15px 20px;
+            text-align: left;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .favorites-table th:first-child {
+            padding-left: 0;
+        }
+
+        .favorites-table th:last-child {
+            text-align: right;
+            padding-right: 0;
+        }
+
+        .favorites-table tbody tr {
+            border-bottom: 1px solid #c9b8a3;
+        }
+
+        .favorites-table td {
+            padding: 30px 20px;
+            vertical-align: middle;
+        }
+
+        .favorites-table td:first-child {
+            padding-left: 0;
+        }
+
+        .favorites-table td:last-child {
+            text-align: right;
+            padding-right: 0;
+        }
+
+        .artwork-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .artwork-name {
+            font-size: 18px;
+        }
+
+        .price {
+            font-size: 18px;
+        }
+
+        .size {
+            font-size: 18px;
+        }
+
+        .type {
+            font-size: 18px;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 28px;
+            color: #2c2c2c;
+            transition: color 0.3s;
+        }
+
+        .remove-btn:hover {
+            color: #d4a574;
+        }
+
+        .total-section {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #2c2c2c;
+        }
+
+        .total-price {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .checkout-btn {
+            background-color: #d4a574;
+            color: #2c2c2c;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background-color: #c9945d;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            display: none;
+        }
+
+        .empty-state-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .empty-state h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #8b7355;
+            font-weight: normal;
+        }
+
+        .empty-state p {
+            font-size: 18px;
+            color: #9b8b7a;
+            font-style: italic;
+        }

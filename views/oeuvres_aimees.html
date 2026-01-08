@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Œuvres Favorites - Culturia</title>
+    <link rel="stylesheet" href="public/assets/css/favorites/favorites.css">
+</head>
+<body>
+    <h1 class="page-title">Mes œuvres favorites</h1>
+    <p class="favorites-count">Nombre d'œuvres: <strong>4</strong></p>
+
+    <table class="favorites-table">
+        <thead>
+            <tr>
+                <th>Oeuvre</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Taille</th>
+                <th>Type</th>
+                <th>Retirer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="https://images.unsplash.com/photo-1578301978162-7aae4d755744?w=400" alt="Oeuvre 1" class="artwork-image"></td>
+                <td class="artwork-name">La Jeune Fille à la Perle</td>
+                <td class="price">4652 €</td>
+                <td class="size">60x70</td>
+                <td class="type">Portrait</td>
+                <td><button class="remove-btn" onclick="removeItem(this)">🗑️</button></td>
+            </tr>
+            <tr>
+                <td><img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=400" alt="Oeuvre 2" class="artwork-image"></td>
+                <td class="artwork-name">Composition Abstraite</td>
+                <td class="price">905 €</td>
+                <td class="size">60x70</td>
+                <td class="type">Abstrait</td>
+                <td><button class="remove-btn" onclick="removeItem(this)">🗑️</button></td>
+            </tr>
+            <tr>
+                <td><img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=400" alt="Oeuvre 3" class="artwork-image"></td>
+                <td class="artwork-name">Paysage Montagneux</td>
+                <td class="price">1250 €</td>
+                <td class="size">80x100</td>
+                <td class="type">Paysage</td>
+                <td><button class="remove-btn" onclick="removeItem(this)">🗑️</button></td>
+            </tr>
+            <tr>
+                <td><img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=400" alt="Oeuvre 4" class="artwork-image"></td>
+                <td class="artwork-name">Nature Morte Florale</td>
+                <td class="price">780 €</td>
+                <td class="size">50x60</td>
+                <td class="type">Floral</td>
+                <td><button class="remove-btn" onclick="removeItem(this)">🗑️</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="total-section">
+        <p class="total-price">Total: <span id="totalPrice">7587 €</span></p>
+        <button class="checkout-btn">Ajouter au panier</button>
+    </div>
+
+    <div class="empty-state" id="emptyState">
+        <div class="empty-state-icon">♥</div>
+        <h2>Aucune œuvre favorite</h2>
+        <p>Explorez la galerie et ajoutez vos coups de cœur</p>
+    </div>
+
+    <script src="favorites.js"></script>
+</body>
+</html>

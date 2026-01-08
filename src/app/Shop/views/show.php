@@ -31,9 +31,19 @@ use G1c\Culturia\app\Auth\model\ClientModel;
                 <form method="POST" action="<?= $pathFor('shop.cart.edit', ["id" => $artwork->id])?>">
                     <button class="btn-add-cart" type="submit">Ajouter au panier</button>
                 </form>
+                <form method="POST" action="<?= $pathFor('shop.favorite.toggle', ["id" => $artwork->id])?>" class="favorite-form">
+                    <button class="btn-favorite" type="submit">
+                        <?php 
+                        // Vérifier si l'œuvre est déjà dans les favoris
+                        $isFavorite = false; // Tu devras remplacer ceci par une vraie vérification depuis ta base de données
+                        echo $isFavorite ? '♥' : '♡'; 
+                        ?>
+                    </button>
+                </form>
+                <?php } else { ?>
+                    <button class="btn-favorite" onclick="alert('Veuillez vous connecter pour ajouter aux favoris')">♡</button>
                 <?php } ?>
-                    <button class="btn-favorite" type="submit">♡</button>
-
+                     
 
             </div>
 
