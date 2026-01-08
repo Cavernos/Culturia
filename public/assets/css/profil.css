@@ -1,0 +1,173 @@
+/* Profile Container */
+.profile-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Profile Header */
+.profile-header {
+    background: linear-gradient(to bottom, #ffffff 0%, #fefdfb 100%);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 8px 30px rgba(139, 129, 116, 0.15);
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.profile-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #2b1810;
+    flex-shrink: 0;
+}
+
+.profile-info h1 {
+    font-size: 32px;
+    color: #333;
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+.profile-info p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Correction : Ajout du point pour la classe et suppression des effets de bloc */
+.tab-btn {
+    background: none !important;    /* Supprime tout fond résiduel */
+    border: none !important;        /* Supprime les bordures */
+    box-shadow: none !important;     /* Supprime l'ombre blanche que l'on voit sur l'image */
+    padding: 12px 20px;             /* Ajout d'un peu d'espace horizontal entre les mots */
+    font-size: 16px;
+    font-family: 'Georgia', serif;
+    color: #8b8174;                 /* La couleur marron de votre thème */
+    cursor: pointer;
+    text-transform: uppercase;      /* Pour correspondre aux majuscules de l'image */
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.tab-btn:hover {
+    color: #333;
+}
+
+/* Optionnel : Soulignement uniquement pour l'onglet actif */
+.tab-btn.active {
+    color: #333;
+    border-bottom: 2px solid #8b8174 !important; /* Petit trait discret sous le texte actif */
+}
+
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    background: linear-gradient(to bottom, #ffffff 0%, #fefdfb 100%);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 8px 30px rgba(139, 129, 116, 0.15);
+    min-height: 400px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h2 {
+    font-size: 24px;
+    color: #8b8174;
+    margin-bottom: 30px;
+    font-weight: normal;
+}
+
+/* Order Item */
+.order-item {
+    border-bottom: 2px solid #e8dfd5;
+    padding: 25px 0;
+    display: flex;
+    gap: 20px;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+.order-image {
+    width: 100px;
+    height: 100px;
+    background-color: #d4cbc0;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.order-details {
+    flex: 1;
+}
+
+.order-details h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: normal;
+}
+
+.order-details p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.order-price {
+    font-size: 20px;
+    color: #a67c52;
+    font-weight: bold;
+    align-self: center;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+}
+
+.empty-state p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tabs-nav {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .order-item {
+        flex-direction: column;
+    }
+}
+
+.btn-modifier-profil {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* vert */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-modifier-profil:hover {
+    background-color: #45a049; /* effet hover */
+}

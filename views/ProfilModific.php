@@ -9,6 +9,7 @@
 
 </head>
 <body>
+    <?php include 'header.html'; ?>
     <!-- Main Content -->
     <div class="Profilcontainer">
         <h1 class="page-title">Modifier mon profil</h1>

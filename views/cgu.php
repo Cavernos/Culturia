@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="../public/assets/css/style.css">
 </head>
 <body>
+
+    <?php
+
+    require_once __DIR__ . '/header.html';
+
+    ?>
+
     <div class="cgu-container">
         <div class="cgu-header">
             <h1>Conditions Générales d'Utilisation</h1>
@@ -234,5 +241,10 @@
             </div>
         </div>
     </div>
+
+    <?php
+    require_once __DIR__ . '/footer.html';
+    ?>
+    
 </body>
 </html>

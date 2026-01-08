@@ -20,11 +20,10 @@
 @import url("auth/login.css");
 @import url("auth/register.css");
 @import url("auth/cgu.css");
-/*@import url("./ModifProfil.css");
-/*@import url("./connexion-choice.css");
+@import url("./ModifProfil.css");
+/*@import url("./connexion-choice.css");*/
+@import url("./profil.css");
 
-
-@import url("./ModifOeuvre.css");*/
 @font-face {
         font-family: "Inria Serif";
         src: url("../font/InriaSerif-Regular.ttf") format('truetype');
