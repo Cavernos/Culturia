@@ -1,8 +1,6 @@
 services:
   php:
-    build:
-      context: .
-      target: production
+    image: cavernos/culturia:2.0
     container_name: culturia_prod
     environment:
       ENV: production
