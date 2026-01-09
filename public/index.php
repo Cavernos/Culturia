@@ -31,9 +31,12 @@
 // if (php_sapi_name() !== 'cli') {
 //     $response = $app->run($_SERVER);
 // }
-
+session_start();
 
 require_once __DIR__ . '/../app/controllers/MainController.php';
+
+require_once __DIR__ . '/../app/Models/User.php';
+require_once __DIR__ . '/../app/Controllers/RegisterController.php';
 
 $route = $_GET['url'] ?? 'home';
 
@@ -57,6 +60,17 @@ switch($route) {
 
     case 'modifProfil':
         require '../views/ProfilModific.php';
+        break;
+    
+    case 'register':
+        $controller = new RegisterController();
+    
+    // Vérifier si c'est une soumission POST
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controller->register();  // Traiter l'inscription
+        } else {
+            $controller->showForm();  // Afficher le formulaire
+        }
         break;
 
     default:
