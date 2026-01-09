@@ -34,6 +34,7 @@
 
 
 require_once __DIR__ . '/../app/controllers/MainController.php';
+require_once __DIR__ . '/../app/controllers/ContactController.php';
 
 $route = $_GET['url'] ?? 'home';
 
@@ -57,6 +58,16 @@ switch($route) {
 
     case 'modifProfil':
         require '../views/ProfilModific.php';
+        break;
+    
+    case 'contact':
+        $controller = new ContactController();
+        $controller->index();
+        break;
+    
+    case 'contact/send':
+        $controller = new ContactController();
+        $controller->sendMessage();
         break;
 
     default:

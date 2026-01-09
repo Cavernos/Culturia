@@ -23,7 +23,7 @@
 @import url("./ModifProfil.css");
 /*@import url("./connexion-choice.css");*/
 @import url("./profil.css");
-
+@import url("./contact.css");
 @font-face {
         font-family: "Inria Serif";
         src: url("../font/InriaSerif-Regular.ttf") format('truetype');
