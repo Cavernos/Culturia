@@ -56,9 +56,16 @@ use G1c\Culturia\app\Auth\model\ClientModel;
 
                 <!-- Profil -->
                 <?php if ($current_user()) { ?>
-                <a href="/" class="icon-btn">
-                    <img src="/assets/img/account.svg" alt="Profil">
+                <?php if($current_user()->is(\G1c\Culturia\app\Artists\model\ArtistsModel::class)) { ?>
+                <a href="<?= $pathFor('artists.profile', ["id" => $current_user()->id]) ?>" class="icon-btn">
+                    <img class="profile-image" src="<?= $current_user()->avatar ? $current_user()->avatar : "/assets/img/profile.svg" ?>" alt="Profil">
                 </a>
+                    <?php } else { ?>
+                        <a href="<?= $pathFor('auth.prefix', ["id" => $current_user()->id])  ?>" class="icon-btn">
+                            <img class="profile-image" src="<?= $current_user()->avatar ?  $current_user()->avatar  : "/assets/img/profile.svg" ?>" alt="Profil">
+                        </a>
+
+                    <?php } ?>
                     <h2><?= $current_user()->username ?></h2>
                     <?php if($pathFor("auth.logout") != '') { ?>
                             <form action="<?= $pathFor("auth.logout") ?>" method="post">
@@ -73,7 +80,7 @@ use G1c\Culturia\app\Auth\model\ClientModel;
                     <button for-modal="register" class="button">S'inscrire</button>
                 <?php } ?>
             </div>
-            <nav>
+            <nav class="header-nav">
                 <?php if ( $pathFor('home.index') != ''){ ?>
                     <a href="<?= $pathFor('home.index') ?>">Accueil</a>
                 <?php } if ( $pathFor('shop.index') != ''){ ?>

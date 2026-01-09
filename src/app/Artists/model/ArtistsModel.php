@@ -18,6 +18,19 @@ class ArtistsModel extends Model implements AuthUser
         return $this->username;
     }
 
+    public function getThumb(){
+        if($this->avatar){
+            ['filename' => $filename, 'extension' => $extension] = pathinfo($this->avatar);
+            return "/upload/artists/avatar/{$filename}_thumb.$extension";
+        }
+        return null;
+
+    }
+
+    public function getImageURL(): string {
+        return "/upload/artists/avatar/{$this->avatar}";
+    }
+
     public function is(string $model): bool
     {
         return $this instanceof $model;

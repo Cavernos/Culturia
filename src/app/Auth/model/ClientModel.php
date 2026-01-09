@@ -29,14 +29,14 @@ class ClientModel extends Model implements AuthUser
     public function getThumb(){
         if($this->avatar){
             ['filename' => $filename, 'extension' => $extension] = pathinfo($this->avatar);
-            return "/upload/avatar/{$filename}_thumb.$extension";
+            return "/upload/clients/avatar/{$filename}_thumb.$extension";
         }
         return null;
 
     }
 
     public function getImageURL():string {
-        return "/upload/avatar/{$this->avatar}";
+        return "/upload/clients/avatar/{$this->avatar}";
     }
 
     public function is(string $model): bool

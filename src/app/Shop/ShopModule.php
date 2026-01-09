@@ -30,9 +30,10 @@ class ShopModule extends Module {
         $prefix = $c->get("shop.prefix");
         $router = $c->get(Router::class);
         $router->get($prefix, ShopController::class, 'shop.index');
-        $router->crud($prefix . "/cart", CartCrudController::class, 'shop.cart');
         $router->get($prefix . "/{slug:[a-z\-0-9]+}-{id:[0-9]+}", ShopController::class, 'shop.view');
-        $router->post($prefix . "/filter", ShopController::class, 'shop.filter');
+        if($c->has("admin.prefix")){
+            $router->crud($c->get("admin.prefix") . $prefix . "/cart", CartCrudController::class, 'shop.cart');
+        }
 
     }
 

@@ -4,8 +4,8 @@ namespace G1c\Culturia\app\Auth\controllers;
 
 use G1c\Culturia\app\Auth\DatabaseAuth;
 use G1c\Culturia\framework\Controllers\RouterAwareController;
-use G1c\Culturia\framework\Database\NoRecordException;
 use G1c\Culturia\framework\Renderer;
+use G1c\Culturia\framework\Response\RedirectResponse;
 use G1c\Culturia\framework\Router\Router;
 use G1c\Culturia\framework\Session\FlashService;
 use G1c\Culturia\framework\Session\SessionInterface;
@@ -45,10 +45,10 @@ class RegisterAttemptController
             $user = $this->auth->register($params);
         }
         if($user) {
-            $path = $this->session->get('auth.redirect') ?: "home.index";
+            $path = $this->session->get('auth.redirect') ?: $this->router->generateUri("auth.index", ["id"=> $user->id]);
             $this->session->delete("auth.redirect");
             (new FlashService($this->session))->success("Enregistrement réussi");
-            $this->redirect($path);
+            return new RedirectResponse($path);
         } else {
             (new FlashService($this->session))->error("Enregistrement invalide");
             return $this->renderer->render("@auth/register", compact("errors", "params"));

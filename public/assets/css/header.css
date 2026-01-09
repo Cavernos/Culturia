@@ -94,9 +94,12 @@ header {
     height: 28px;
     display: block;
 }
+.icon-btn .profile-image {
+    border-radius: 20px;
+}
 
 /* Navigation */
-nav {
+.header-nav {
     display: flex;
     position: static;
     justify-content: center;
@@ -104,7 +107,7 @@ nav {
     padding-top: 15px;
 }
 
-nav a {
+.header-nav a {
     color: #333;
     text-decoration: none;
     font-size: 14px;
@@ -112,11 +115,11 @@ nav a {
     position: relative;
 }
 
-nav a:hover {
+.header-nav a:hover {
     color: #666;
 }
 
-nav a::after {
+.header-nava::after {
     content: '';
     position: absolute;
     bottom: -5px;
@@ -127,7 +130,7 @@ nav a::after {
     transition: width 0.3s;
 }
 
-nav a:hover::after {
+.header-nava:hover::after {
     width: 100%;
 }
 
@@ -168,7 +171,7 @@ nav a:hover::after {
         border-radius: 2px;
         transition: 0.3s ease;
     }
-    nav {
+    .header-nav{
         position: fixed;
         top: 8rem;
         background: var(--backgroung-color);
@@ -180,7 +183,7 @@ nav a:hover::after {
         transition: left 0.75s ease;
 
     }
-  .burger-menu:checked ~ nav {
+  .burger-menu:checked ~ .header-nav{
         left: 0;
     }
     .burger-menu:checked ~ .burger span:nth-child(1) {
@@ -207,7 +210,7 @@ nav a:hover::after {
         height: 22px;
 
     }
-    nav {
+    .header-nav{
         flex-direction: column;
         align-items: center;
         gap: 1rem;

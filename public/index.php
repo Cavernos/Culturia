@@ -1,5 +1,6 @@
 <?php
 
+use G1c\Culturia\app\Admin\AdminModule;
 use G1c\Culturia\app\App;
 use G1c\Culturia\app\Artists\ArtistsModule;
 use G1c\Culturia\app\Auth\AuthModule;
@@ -22,6 +23,7 @@ $app = new App(dirname(__DIR__). '/config/config.php');
 $app->add(ShopModule::class)
     ->add(AuthModule::class)
     ->add(HomeModule::class)
+    ->add(AdminModule::class)
     ->add(ArtistsModule::class);
 
 $container = $app->getContainer();
@@ -29,8 +31,7 @@ $app->pipe(TrailingSlashMiddleware::class)
     ->pipe(MethodMiddleware::class)
     ->pipe(CsrfMiddleware::class)
     ->pipe(ForbiddenMiddleware::class)
-    ->pipe($container->get("artists.profile.prefix"), LoggedInMiddleware::class)
-    ->pipe($container->get("auth.prefix"), LoggedInMiddleware::class)
+    ->pipe($container->get("admin.prefix"), LoggedInMiddleware::class)
     ->pipe(RouterMiddleware::class)
     ->pipe(NotFoundMiddleware::class);
 if (php_sapi_name() !== 'cli') {

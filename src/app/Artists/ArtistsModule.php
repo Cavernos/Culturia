@@ -29,7 +29,7 @@ class ArtistsModule extends Module
         $renderer->addPath("artists", __DIR__ . "/views");
         $router = $c->get(Router::class);
         $router->get($prefix, ArtistsController::class, "artists.index");
-        $router->get($prefix . "/profile/{id:\d+}", ArtistProfileController::class, "artists.profile");
+        $router->get($prefix . "/{id:[0-9]+}", ArtistProfileController::class, "artists.profile");
 
     }
 }

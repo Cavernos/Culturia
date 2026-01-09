@@ -3,6 +3,7 @@
 namespace G1c\Culturia\app\Auth;
 
 use G1c\Culturia\framework\Auth\ForbiddenException;
+use G1c\Culturia\framework\Response\RedirectResponse;
 use G1c\Culturia\framework\Router\Router;
 use G1c\Culturia\framework\Session\FlashService;
 use G1c\Culturia\framework\Session\SessionInterface;
@@ -25,12 +26,9 @@ class ForbiddenMiddleware
             return $next($request);
         } catch (ForbiddenException $e)
         {
-            $accountType = $e->getAccountType();
             $this->session->set('auth.redirect', parse_url($request["REQUEST_URI"], PHP_URL_PATH));
-            (new FlashService($this->session))->error("Vous devez être un $accountType pour accéder à cette page");
-            var_dump($this->loginPath);
-            header("Location: $this->loginPath");
-            return exit();
+            (new FlashService($this->session))->error("Vous devez être connecté pour accéder à cette page");
+            return new RedirectResponse($this->loginPath);
         }
  }
 }

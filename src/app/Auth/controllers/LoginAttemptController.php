@@ -6,6 +6,7 @@ use G1c\Culturia\app\Auth\DatabaseAuth;
 use G1c\Culturia\framework\Controllers\RouterAwareController;
 use G1c\Culturia\framework\Database\NoRecordException;
 use G1c\Culturia\framework\Renderer;
+use G1c\Culturia\framework\Response\RedirectResponse;
 use G1c\Culturia\framework\Router\Router;
 use G1c\Culturia\framework\Session\FlashService;
 use G1c\Culturia\framework\Session\SessionInterface;
@@ -53,7 +54,7 @@ class LoginAttemptController
             (new FlashService($this->session))->success("Connexion réussie");
             $path = $this->session->get("auth.redirect") ?: $this->router->generateUri('auth.index', ["id" => $user->id]);
             $this->session->delete("auth.redirect");
-            $this->redirect("home.index");
+            return new RedirectResponse($path);
         }
     }
 }
