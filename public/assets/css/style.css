@@ -95,7 +95,7 @@ body {
     color: darkred;
 }
 
-@media (max-width: 800px) {
+@media (max-width: var(--tablet-break-point)) {
     .main-container {
         padding: 0;
     }

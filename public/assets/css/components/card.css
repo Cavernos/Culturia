@@ -81,3 +81,30 @@
 .card .delete-form button[type="submit"]:hover {
     transform: scale(110%);
 }
+.card-container .add {
+    margin: 0;
+    text-align: center;
+    font-size: 4rem;
+    width: 50%;
+    line-height: 103px;
+    aspect-ratio: 1/1;
+    background: gray;
+    border-radius: 50%;
+
+}
+.card:has(.add) .card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 750px) {
+    .card .card-container .card-image {
+        height: 60%;
+        display: block;
+        margin: 0 auto;
+
+    }
+
+
+}

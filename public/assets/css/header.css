@@ -174,7 +174,7 @@ header {
     .header-nav{
         position: fixed;
         top: 8rem;
-        background: var(--backgroung-color);
+        background: var(--background-color);
         left: -100vw;
         width: 100vw;
         z-index: 10;

@@ -82,7 +82,7 @@ footer {
     display: block;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 750px) {
     .footer-container {
         flex-direction: column;
         gap: 30px;

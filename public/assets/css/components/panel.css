@@ -57,3 +57,14 @@
     display: none;
     width: 100%;
 }
+
+@media (max-width: 750px) {
+    .panel {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+    }
+    .panel-nav {
+        border: 0;
+    }
+}

@@ -39,3 +39,13 @@
 .order-content .button {
     justify-self: center;
 }
+
+@media (max-width: 750px) {
+    .order-container a {
+        margin: 0;
+    }
+    .order-content.open a {
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -91,7 +91,7 @@
     border-left: 4px solid #c9b697;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 750px) {
     .header h1 {
         font-size: 2em;
     }

@@ -42,7 +42,7 @@
 }
 
 
-@media (max-width: 650px) {
+@media (max-width: 750px) {
     .modal {
         padding: 2.2rem 2rem;
     }
