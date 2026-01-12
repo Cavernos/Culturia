@@ -20,10 +20,15 @@
 .panel-container {
     display: flex;
     grid-column: 2;
+    gap: 4rem;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 4rem;
 }
+.panel-container:has(.order-container) {
+    flex-direction: column;
+    gap: 2rem;
+}
+
 .panel-element .page-sub-title {
     margin-top: 0;
 }

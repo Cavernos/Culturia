@@ -6,6 +6,7 @@
 @import url("components/form.css");
 @import url("components/filters.css");
 @import url("components/panel.css");
+@import url("components/order.css");
 
 /* Loading pages */
 @import url("./header.css");
@@ -22,6 +23,7 @@
 @import url("auth/login.css");
 @import url("auth/register.css");
 @import url("auth/cgu.css");
+@import url("auth/profile.css");
 /*@import url("./ModifProfil.css");
 /*@import url("./connexion-choice.css");
 
@@ -34,7 +36,7 @@
 /* Defining default website styles */
 :root {
     --default-font: "Inria Serif";
-    --backgroung-color: #F3E9DA;
+    --background-color: #F3E9DA;
     --default-font-weight: bold;
     --button-background-color: #FFC2A1;
     --carousel-marker-group-background-color: #371818;
@@ -52,7 +54,7 @@ html {
 
 body {
     margin: 0;
-    background-color: var(--backgroung-color);  
+    background-color: var(--background-color);
 }
 
 .main-container {

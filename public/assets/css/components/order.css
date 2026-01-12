@@ -1,0 +1,41 @@
+.order-container {
+    width: 100%;
+    background-color: white;
+    border-radius: 20px;
+    padding: 2rem;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    gap: 3rem;
+    align-items: center;
+}
+.order-container a {
+    margin-left: auto;
+
+}
+.order-content {
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    transform: translateY(-50px);
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.order-content.open {
+
+    position: static;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 2rem;
+}
+.order-content .button {
+    justify-self: center;
+}

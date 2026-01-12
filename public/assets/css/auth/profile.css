@@ -1,0 +1,46 @@
+.profile-header {
+    width: 100%;
+    height: max-content;
+    display: inline-block;
+}
+.profile-header img {
+    width: 15rem;
+    border-radius: 50%;
+    height: 15rem;
+    margin-right: 3rem;
+    float: left;
+}
+.profile-header .profile-infos {
+    line-height: 5rem;
+}
+.profile-header .profile-infos > * {
+    margin: 1rem 0;
+}
+.profile-header .profile-name {
+    font-size: 4rem;
+}
+.profile-header .profile-email {
+    font-size: 3rem;
+}
+.profile-actions {
+    display: flex;
+    width: 100%;
+    gap: 2rem;
+    justify-content: right;
+
+    align-items: flex-end;
+}
+.profile-actions .button {
+    font-size: 2rem;
+}
+.profile-stats {
+    width: 100%;
+}
+.profile-stats .profile-stats-header {
+    display: flex;
+    justify-content: space-between;
+}
+.profile-stats .last-item-sold {
+    display: flex;
+    gap: 3rem;
+}
