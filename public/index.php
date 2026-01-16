@@ -35,6 +35,7 @@
 
 require_once __DIR__ . '/../app/controllers/MainController.php';
 require_once __DIR__ . '/../app/controllers/ContactController.php';
+require_once __DIR__ . '/../app/controllers/ProfilController.php';
 
 $route = $_GET['url'] ?? 'home';
 
@@ -53,11 +54,23 @@ switch($route) {
         break;
     
     case 'profil':
-        require '../views/profil.php';
+        try {
+            $controller = new ProfilController();
+            $controller->index();
+        } catch (Exception $e) {
+            error_log("Erreur modifProfil: " . $e->getMessage());
+            echo "Une erreur est survenue";
+        }
         break;
 
     case 'modifProfil':
-        require '../views/ProfilModific.php';
+        try {
+            $controller = new ProfilController();
+            $controller->indexModifProfil();
+        } catch (Exception $e) {
+            error_log("Erreur modifProfil: " . $e->getMessage());
+            echo "Une erreur est survenue";
+        }
         break;
     
     case 'saveSettings':
@@ -78,6 +91,17 @@ switch($route) {
     case 'contact/send':
         $controller = new ContactController();
         $controller->sendMessage();
+        break;
+    case 'profil/update':
+        try {
+            $controller = new ProfilController();
+            $controller->update();
+        } catch (Exception $e) {
+            error_log("Erreur profil/update: " . $e->getMessage());
+            header('Content-Type: application/json');
+            http_response_code(500);
+            echo json_encode(['success' => false, 'message' => 'Erreur serveur']);
+        }
         break;
 
     default:
