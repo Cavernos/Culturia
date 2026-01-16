@@ -62,9 +62,12 @@
     border-bottom: 2px solid #8b8174 !important; /* Petit trait discret sous le texte actif */
 }
 
-
 /* Tab Content */
-.tab-content {
+.tabs-content {
+    width: 100%;
+}
+
+.tab-pane {
     display: none;
     background: linear-gradient(to bottom, #ffffff 0%, #fefdfb 100%);
     border-radius: 12px;
@@ -73,11 +76,11 @@
     min-height: 400px;
 }
 
-.tab-content.active {
+.tab-pane.active {
     display: block;
 }
 
-.tab-content h2 {
+.tab-pane h2 {
     font-size: 24px;
     color: #8b8174;
     margin-bottom: 30px;

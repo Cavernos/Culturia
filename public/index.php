@@ -60,6 +60,16 @@ switch($route) {
         require '../views/ProfilModific.php';
         break;
     
+    case 'saveSettings':
+        header('Content-Type: application/json');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = json_decode(file_get_contents('php://input'), true);
+            // Ici on pourrait sauvegarder en base de données
+            // Pour l'instant, on simule juste l'enregistrement
+            echo json_encode(['success' => true, 'message' => 'Paramètres enregistrés']);
+        }
+        break;
+    
     case 'contact':
         $controller = new ContactController();
         $controller->index();
