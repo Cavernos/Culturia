@@ -45,6 +45,7 @@ class FormExtension implements RendererExtensionInterface
                 'switch', 'checkbox' => $this->checkbox($value, $attributes),
                 'password' => $this->password($value, $attributes),
                 'email' => $this->email($value, $attributes),
+                'number' => $this->number($value, $attributes),
                 default => $this->input($value, $attributes),
             };
 
@@ -72,6 +73,10 @@ class FormExtension implements RendererExtensionInterface
     public function input(?string $value, array $attributes): string
     {
         return "<input type='text' {$this->getHtmlFromArray($attributes)} value='{$value}'/>";
+    }
+    public function number(?string $value, array $attributes): string
+    {
+        return "<input type='number' {$this->getHtmlFromArray($attributes)} value='{$value}'/>";
     }
 
     public function password(?string $value, array $attributes): string

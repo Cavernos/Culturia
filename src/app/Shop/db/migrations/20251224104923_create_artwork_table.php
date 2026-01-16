@@ -21,7 +21,7 @@ class ArtworkMigrations extends Migrator
             ->addColumn("description", "VARCHAR(128)")
             ->addColumn("creation_date", "DATE")
             ->addColumn("modification_date", "DATE")
-            ->addColumn("price", "INT")
+            ->addColumn("price", "INT UNSIGNED")
             ->addColumn("image", "VARCHAR(128)")
             ->create();
     }

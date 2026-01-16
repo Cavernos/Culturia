@@ -19,7 +19,7 @@ class AddOrderIdToArtwork extends Migrator
         $this->table()
             ->addColumn("order_id", "INT", ["NULL" => "true"])
             ->addForeignKey("order_id", "orders", "id", ["DELETE" => "CASCADE"])
-            ->update();
+            ->update()->save();
 
 
     }

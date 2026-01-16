@@ -17,7 +17,7 @@ class ArtistsSeeder extends Seeder
             $data[] = [
                 "username" => "Artiste " . $i + 1,
                 "email" => "artiste_" . $i + 1 . "@culturia.com",
-                "avatar" => "/assets/img/artist_" . (rand(0, 100) % 10 + 1) . ".png",
+                "avatar" => "/assets/img/artist_" . (rand(0, 100) % 3 + 1) . ".png",
                 "password" => password_hash("toto", PASSWORD_BCRYPT),
                 "inscription_date" => $time,
                 "modification_date" => $time,

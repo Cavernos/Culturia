@@ -13,7 +13,6 @@ class OrderMigrations extends Migrator
             ->addColumn('order_date', 'DATE')
             ->addColumn("client_address", "VARCHAR(128)")
             ->addColumn("previsionnal_delivery", "DATE")
-            ->addColumn("artwork_id", "INT")
             ->addColumn("client_id", "INT")
             ->create();
     }

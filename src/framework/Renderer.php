@@ -2,7 +2,7 @@
 use G1c\Culturia\framework\Renderer\RendererExtensionInterface;
 
 class Renderer {
-    const DEFAULT_NAMESPACE = '__MAIN';
+    const string DEFAULT_NAMESPACE = '__MAIN';
     private array $paths = [];
     private array $globals = [];
 
@@ -23,6 +23,9 @@ class Renderer {
     }
 
     public function addGlobal(string $key, mixed $value): void {
+        if($this->hasNamespace($value)) {
+            $value = $this->replaceNamespace($value);
+        }
         $this->globals[$key] = $value;
     }
 

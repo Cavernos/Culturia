@@ -25,9 +25,10 @@ class CartCrudController extends CrudController
                                 ArtworkTable $table,
                                 Router $router,
                                 SessionInterface $session){
-        parent::__construct($renderer, $table, $router);
+
         $this->session = $session;
         $this->renderer = $renderer;
+        parent::__construct($renderer, $table, new FlashService($session), $router);
     }
 
     public function index(): string
@@ -45,7 +46,7 @@ class CartCrudController extends CrudController
         return $this->renderer->render("$this->viewPath/index", compact("items", "total_price"));
     }
 
-    public function edit($id): string
+    public function edit($request, $id): string
     {
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $item = $this->table->findById($id);

@@ -1,2 +1,158 @@
-<h1 class="page-title">Profil de <?= $current_user()->username ?? ""?></h1>
+<h1 class="page-title">Profil de <?= $user->username ?? ""?></h1>
+<div class="panel">
+    <nav class="panel-nav" >
+        <button class="panel-button active"><?= $current_user() == $user ? "Vos i" : "I"?>nformations</button>
+        <button class="panel-button"><?= $current_user() == $user ? "Vos o" : "O"?>euvres</button>
+        <?php if ($current_user() == $user) { ?>
+        <button class="panel-button"><?= $current_user() == $user ? "Vos c" : "C"?>ommandes</button>
+        <?php } ?>
+    </nav>
+    <div class="panel-element active">
+        <h1 class="page-sub-title"><?= $current_user() == $user ? "Vos i" : "I"?>nformations</h1>
+        <div class="panel-container">
+            <div class="profile-header">
+                <img src="<?= $user->avatar ?: "/assets/img/account.svg"?>" alt="Profile"/>
+                <div class="profile-infos">
+                    <h1 class="profile-name"><?= $user->username ?></h1>
+                    <h2 class="profile-email"><?= $user->email ?></h2>
+                </div>
+            </div>
+            <?php if($user == $current_user()) { ?>
+            <div class="profile-actions">
+                <a href="#" class="button">Modifier le profil</a>
+                <form method="POST" class="delete-form">
+                    <input type="hidden" name="_METHOD" value="DELETE"/>
+                    <button class="button" type="submit">Supprimer le profil</button>
+                </form>
+            </div>
+            <div class="profile-stats">
+                <div class="profile-stats-header">
+                    <h1>Chiffre d'affaire : 600000€</h1>
+                    <h1>Nombre d'article vendus : 12</h1>
+                </div>
 
+                <h1>Dernières ventes</h1>
+                <div class="last-item-sold">
+                    <div class="card">
+                        <div class="card-container">
+                            <img class='card-image' src="../public/assets/img/oeuvre_1.png" alt="" srcset=""/>
+                            <div class="card-title">
+                                <h4 class="card-name">Nom oeuvre</h4>
+                                <h4 class="card-price">650 €</h4>
+                            </div>
+                            <h4 class="card-author">Artiste</h4>
+                            <p class="card-description">Description concise de l’oeuvre en expliqueant le style, date, lieu de création...</p>
+                        </div>
+
+                    </div>
+                    <div class="card">
+                        <div class="card-container">
+                            <img class='card-image' src="../public/assets/img/oeuvre_1.png" alt="" srcset=""/>
+                            <div class="card-title">
+                                <h4 class="card-name">Nom oeuvre</h4>
+                                <h4 class="card-price">650 €</h4>
+                            </div>
+                            <h4 class="card-author">Artiste</h4>
+                            <p class="card-description">Description concise de l’oeuvre en expliqueant le style, date, lieu de création...</p>
+                        </div>
+
+                    </div>
+                    <div class="card">
+                        <div class="card-container">
+                            <img class='card-image' src="../public/assets/img/oeuvre_1.png" alt="" srcset=""/>
+                            <div class="card-title">
+                                <h4 class="card-name">Nom oeuvre</h4>
+                                <h4 class="card-price">650 €</h4>
+                            </div>
+                            <h4 class="card-author">Artiste</h4>
+                            <p class="card-description">Description concise de l’oeuvre en expliqueant le style, date, lieu de création...</p>
+                        </div>
+
+                    </div>
+                    <div class="card">
+                        <div class="card-container">
+                            <img class='card-image' src="../public/assets/img/oeuvre_1.png" alt="" srcset=""/>
+                            <div class="card-title">
+                                <h4 class="card-name">Nom oeuvre</h4>
+                                <h4 class="card-price">650 €</h4>
+                            </div>
+                            <h4 class="card-author">Artiste</h4>
+                            <p class="card-description">Description concise de l’oeuvre en expliqueant le style, date, lieu de création...</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <?php } ?>
+
+
+        </div>
+    </div>
+
+    <div class="panel-element">
+        <h1 class="page-sub-title"><?= $current_user() == $user ? "Vos o" : "O"?>euvres</h1>
+        <div class="panel-container">
+            <?php foreach ($user_artworks as $artwork) {?>
+            <a href="<?= $pathFor("shop.view", ["slug" => $artwork->getSlug(), "id" => $artwork->id]) ?>" class="card">
+                <?php if($current_user() == $user) { ?>
+                <form method="POST" action="<?= $pathFor("admin.artworks.delete" ,["id" => $artwork->id]) ?>" class="delete-form">
+                    <?= $csrf_input() ?>
+                    <input type="hidden" name="_METHOD" value="DELETE"/>
+                    <button type="submit">&times;</button>
+                </form>
+                <?php } ?>
+                <div class="card-container">
+                    <img class='card-image' src="<?= $artwork->image ?>" alt="<?=$artwork->name ?>" srcset=""/>
+                    <div class="card-title">
+                        <h4 class="card-name"><?= $artwork->name ?></h4>
+                        <h4 class="card-price"><?= $artwork->price ?> €</h4>
+                    </div>
+                    <p class="card-description"><?= $artwork->description ?></p>
+                </div>
+            </a>
+            <?php } ?>
+            <?php if($current_user() == $user) { ?>
+                <a href="<?= $pathFor("admin.artworks.create") ?>" class="card">
+
+                    <div class="card-container">
+                        <h1 class="add">&plus;</h1>
+                    </div>
+
+                </a>
+            <?php } ?>
+        </div>
+    </div>
+    <div class="panel-element">
+        <h1 class="page-sub-title"><?= $current_user() == $user ? "Vos c" : "C"?>ommandes</h1>
+        <div class="panel-container">
+            <?php foreach ($orders as $order) { ?>
+            <div class="order-container">
+                <img src="../public/assets/img/account.svg" alt="client"/>
+                <h2>De : Client 1</h2>
+                <h2>Nombre d'article : 3</h2>
+                <h2>Prix total : 500€</h2>
+                <a id="toggle" class="button">Récapitulatif de la commande</a>
+                <div class="order-content">
+                    <div class="card">
+                        <div class="card-container">
+                            <img class='card-image' src="<?= $order->image ?>" alt="<?= $order->name ?>" srcset=""/>
+                            <div class="card-title">
+                                <h4 class="card-name"><?= $order->name ?></h4>
+                                <h4 class="card-price"><?= $order->price ?> €</h4>
+                            </div>
+                            <p class="card-description"><?= $order->description ?></p>
+                        </div>
+                    </div>
+                    <?php if(iterator_count($orders) > 4) { ?>
+                    <a href="" class="button">Voir toutes les oeuvres</a>
+                    <?php } ?>
+                </div>
+            </div>
+            <?php } ?>
+        </div>
+
+    </div>

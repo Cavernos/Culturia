@@ -8,7 +8,7 @@ use PDO;
 
 class Validator
 {
-    private const MIME_TYPES = [
+    private const array MIME_TYPES = [
       "jpg" => "image/jpeg",
       "png" => "image/png"
     ];
@@ -96,7 +96,7 @@ class Validator
         $value = $this->getValue($key);
         $date = DateTime::createFromFormat($format, $value);
         $error = DateTime::getLastErrors();
-        if($error["error_count"] > 0 || $error["warning_count"] || $date === false) {
+        if(is_array($error) && ($error["error_count"] > 0 || $error["warning_count"] || $date === false)) {
             $this->addError($key, 'datetime', [$format]);
             return $this;
         }

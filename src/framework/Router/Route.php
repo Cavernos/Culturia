@@ -1,5 +1,6 @@
 <?php namespace G1c\Culturia\framework\Router;
 
+use ArgumentCountError;
 use G1c\Culturia\framework\Container;
 
 class Route {
@@ -56,8 +57,11 @@ class Route {
             $controller = Container::getInstance()->get($this->callback);
             if(!is_null($this->name)){
                 $name = explode(".", $this->name);
-                if(method_exists($controller, $name[1])){
-                    return call_user_func_array([$controller, $name[1]], $this->matches);
+                if(method_exists($controller, end($name))){
+                    try {
+                        return call_user_func_array([$controller, end($name)], $this->matches);
+                    } catch (ArgumentCountError $e) {
+                    }
                 }
             }
             return call_user_func($controller, $request, $this->matches);

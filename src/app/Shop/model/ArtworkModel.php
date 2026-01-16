@@ -21,6 +21,10 @@ class ArtworkModel extends Model
         $date = DateTime::createFromFormat("Y-m-d", $creationDate);
         $this->creationDate = $date;
     }
+    public function getSlug()
+    {
+        return str_replace(" ", "-", strtolower($this->name));
+    }
 
     public function setModificationDate(string $modificationDate)
     {

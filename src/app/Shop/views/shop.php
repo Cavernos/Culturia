@@ -14,7 +14,7 @@
 
             <div class="shop-container">
                 <?php foreach($artworks ?? [] as $artwork) {?>
-                        <a href="<?= $pathFor("shop.view", ["slug" => str_replace(" ", "-", strtolower($artwork->name)), "id"=> $artwork->id]) ?>" id="<?= $artwork->id ?>" class="card">
+                        <a href="<?= $pathFor("shop.view", ["slug" => $artwork->getSlug(), "id"=> $artwork->id]) ?>" id="<?= $artwork->id ?>" class="card">
                             <div class="card-container">
                                 <img class='card-image' src="<?= $artwork->image ?>" alt="<?= $artwork->name ?>" srcset=""/>
                                 <div class="card-title">
