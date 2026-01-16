@@ -86,7 +86,7 @@ class CrudController
     public function delete(int $id): string {
         $this->table->delete($id);
         $this->flashService->error($this->flashMessages['delete']);
-        $this->redirect($this->routePrefix . '.index');
+        $this->redirect(...$this->getRedirectPath());
         return "true";
     }
     public function edit($request, $id): string {
@@ -122,7 +122,7 @@ class CrudController
         return [];
     }
 
-    protected function getRedirectPath(array $item): array
+    protected function getRedirectPath(?array $item = []): array
     {
         return [$this->routePrefix . ".index"];
     }

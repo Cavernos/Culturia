@@ -66,14 +66,14 @@
 
 <ul id="artist-carousel" class="carousel multiple">
     <!-- Slide 1 -->
-    <?php for($i= 0; $i < 6; $i++){?>
-    <div class="carousel-element">
+    <?php foreach($artists as $artist){?>
+    <a href="<?= $pathFor("artists.profile", ["id" => $artist->id ]) ?>" class="carousel-element">
         <div class="artiste-populaire">
-            <img class="image-artiste" src="/assets/img/artist_<?=$i%3 + 1?>.png" alt="Artiste <?=$i+1?>">
-            <p class="artiste-nom">Artiste <?=$i+1?></p>
+            <img class="image-artiste" src="<?= $artist->avatar ?>" alt="<?= $artist->username ?>">
+            <p class="artiste-nom"><?= $artist->username ?></p>
         </div>
 
-    </div>
+    </a>
     <?php }?>
 </ul>
 
