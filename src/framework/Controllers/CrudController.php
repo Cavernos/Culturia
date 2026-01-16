@@ -46,7 +46,6 @@ class CrudController
         $this->renderer->addGlobal('viewPath', $this->viewPath);
         $this->renderer->addGlobal('routePrefix', $this->routePrefix);
         if($request["REQUEST_METHOD"] == "DELETE"){
-            var_dump($params);
             return $this->delete((int)$params[0]);
         }
         if (str_ends_with($request["REQUEST_URI"], 'new')){
@@ -84,9 +83,9 @@ class CrudController
         return $this->renderer->render("$this->viewPath/create", $params);
     }
 
-    public function delete($id): string {
+    public function delete(int $id): string {
         $this->table->delete($id);
-        $this->flashService->error($this->flashService['delete']);
+        $this->flashService->error($this->flashMessages['delete']);
         $this->redirect($this->routePrefix . '.index');
         return "true";
     }

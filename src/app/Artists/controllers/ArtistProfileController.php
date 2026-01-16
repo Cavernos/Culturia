@@ -40,11 +40,14 @@ class ArtistProfileController
 
         }
         $user_artworks = $this->artworkTable->makeQuery()
+            ->select("artwork.*")
             ->join("artists", "artist_id = artists.id")
             ->where("artists.id = :id")
-            ->params([":id" => $id])->fetchAll();
+            ->params([":id" => $id])
+            ->fetchAll();
+
         $orders = $this->orderTable->findByArtistsId($id)->fetchAll();
-        var_dump($orders);
+        var_dump($user_artworks);
         return $this->renderer->render("@artists/profile/index",
             compact("user", "user_artworks", "orders"));
     }

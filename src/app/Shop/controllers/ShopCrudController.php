@@ -42,7 +42,7 @@ class ShopCrudController extends CrudController
     public function delete($id): string
     {
         $artwork = $this->table->findById($id);
-        return parent::delete($artwork);
+        return parent::delete($artwork->id);
     }
 
     protected function getParams($item): array
@@ -84,7 +84,6 @@ class ShopCrudController extends CrudController
 
     protected function getRedirectPath(array $item): array
     {
-        var_dump($item);
         return ["artists.profile", ["id" => $item["artist_id"]]];
     }
 }
