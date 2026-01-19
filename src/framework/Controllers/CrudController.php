@@ -83,10 +83,15 @@ class CrudController
         return $this->renderer->render("$this->viewPath/create", $params);
     }
 
-    public function delete(int $id): string {
-        $this->table->delete($id);
+    public function delete(int|Model $id): string {
+        if(property_exists($id, "id")){
+            $item = $id->id;
+        } else {
+            $item = $id;
+        }
+        $this->table->delete($item);
         $this->flashService->error($this->flashMessages['delete']);
-        $this->redirect(...$this->getRedirectPath());
+        $this->redirect(...$this->getRedirectPath($id));
         return "true";
     }
     public function edit($request, $id): string {
@@ -122,7 +127,7 @@ class CrudController
         return [];
     }
 
-    protected function getRedirectPath(?array $item = []): array
+    protected function getRedirectPath(array|Model|null $item = []): array
     {
         return [$this->routePrefix . ".index"];
     }

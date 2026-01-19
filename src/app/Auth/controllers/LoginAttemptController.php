@@ -30,7 +30,7 @@ class LoginAttemptController
         $this->router = $router;
     }
 
-    public function __invoke()
+    public function __invoke(): RedirectResponse|string
     {
         $errors = null;
         $params = $_POST;
@@ -52,7 +52,8 @@ class LoginAttemptController
             return $this->renderer->render("@auth/login", compact("errors", "params"));
         } else {
             (new FlashService($this->session))->success("Connexion réussie");
-            $path = $this->session->get("auth.redirect") ?: $this->router->generateUri('auth.index', ["id" => $user->id]);
+            $route_name = $params["role"] == 1 ? 'auth.index' : 'artists.profile';
+            $path = $this->session->get("auth.redirect") ?: $this->router->generateUri($route_name, ["id" => $user->id]);
             $this->session->delete("auth.redirect");
             return new RedirectResponse($path);
         }

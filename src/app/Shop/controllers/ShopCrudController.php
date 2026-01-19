@@ -42,7 +42,7 @@ class ShopCrudController extends CrudController
     public function delete($id): string
     {
         $artwork = $this->table->findById($id);
-        return parent::delete($artwork->id);
+        return parent::delete($artwork);
     }
 
     protected function getParams($item): array
@@ -82,8 +82,17 @@ class ShopCrudController extends CrudController
         return $params;
     }
 
-    protected function getRedirectPath(array $item): array
+    protected function getRedirectPath(array|ArtworkModel|null|Model $item = []): array
     {
-        return ["artists.profile", ["id" => $item["artist_id"]]];
+        $redirect_array = ["artists.profile"];
+        if($item instanceof ArtworkModel) {
+            $redirect_array[] = ["id" => $item->artistId];
+            return $redirect_array;
+        }
+        if(isset($item["artist_id"])){
+            $redirect_array[] = ["id" => $item["artist_id"]];
+            return $redirect_array;
+        }
+        return parent::getRedirectPath();
     }
 }
