@@ -16,11 +16,11 @@ use G1c\Culturia\framework\Session\SessionInterface;
 
 return [
     'view.path' => dirname(__DIR__) .DIRECTORY_SEPARATOR. "views",
-    "database.hostname" => "localhost",
-    "database.port" => "3306",
-    "database.username" => "root",
-    "database.password" => "",
-    "database.name" => "culturia_test",
+    "database.hostname" => getenv("DATABASE_HOST") ?: "localhost",
+    "database.port" => getenv("DATABASE_PORT") ?: "3306",
+    "database.username" => getenv("DATABASE_USERNAME") ?: "root",
+    "database.password" => getenv("DATABASE_PASSWORD") ?: "",
+    "database.name" => getenv("DATABASE_NAME") ?:"culturia_test",
     "env" => getenv("ENV") ?: "production",
     "log.path" => dirname(__DIR__) . DIRECTORY_SEPARATOR . "app.log",
     PDO::class => function (Container $c){

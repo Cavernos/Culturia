@@ -1,0 +1,10 @@
+services:
+  php:
+    build: .
+    container_name: culturia_dev
+    environment:
+      ENV: dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/var/www/html
