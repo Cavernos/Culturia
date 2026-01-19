@@ -4,7 +4,32 @@ services:
     container_name: culturia_dev
     environment:
       ENV: dev
+      DATABASE_HOST: db
     ports:
       - "8000:8000"
     volumes:
-      - .:/var/www/html
+      - ./src:/var/www/html/src
+      - ./config:/var/www/html/config
+    networks:
+      - web
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8
+    container_name: db_dev
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      MYSQL_DATABASE: culturia_test
+    networks:
+      - web
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+
+networks:
+  web:

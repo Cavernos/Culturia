@@ -1,0 +1,11 @@
+Dockerfile
+docker-compose.dev.yml
+/vendor/
+.idea/
+.vscode/
+composer.lock
+*.DS_Store
+.htaccess
+*.log
+storage/
+upload/
