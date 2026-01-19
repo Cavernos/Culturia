@@ -30,8 +30,9 @@ class ArtistProfileController
         $this->orderTable = $orderTable;
     }
 
-    public function __invoke()
+    public function __invoke(ServerRequestInterface $request): string
     {
+        return $this->profile($request);
     }
 
     public function profile(ServerRequestInterface $request): string

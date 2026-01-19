@@ -38,6 +38,5 @@ $app->pipe(TrailingSlashMiddleware::class)
     ->pipe(NotFoundMiddleware::class);
 if (php_sapi_name() !== 'cli') {
     $response = $app->run(ServerRequest::fromGlobals());
-    var_dump($response);
     send($response);
 }

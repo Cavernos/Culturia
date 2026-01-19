@@ -48,25 +48,21 @@ class Route {
         return $path;
     }
 
-    private function paramMatch($match) {
-        return '(' . $match[1] . ')';
+    private function paramMatch($match): string
+    {
+        preg_match("#\{(\w+):[^}]+}#", $match[0], $param);
+        return "(?P<$param[1]>" . $match[1] . ')';
         //'([^/+])'   
     }
 
 
-    public function call(ServerRequestInterface $request): string {
+    public function call(ServerRequestInterface $request): string|ResponseInterface {
+        foreach ($this->matches as $name => $value) {
+            $request = $request->withAttribute($name, $value);
+        }
         if (is_string($this->callback)){
             $controller = Container::getInstance()->get($this->callback);
-            if(!is_null($this->name)){
-                $name = explode(".", $this->name);
-                if(method_exists($controller, end($name))){
-                    try {
-                        return call_user_func_array([$controller, end($name)], [$request]);
-                    } catch (ArgumentCountError $e) {
-                    }
-                }
-            }
-            return call_user_func($controller, $request);
+            return call_user_func_array($controller, [$request]);
         }
         return call_user_func_array($this->callback, [$request]);
         

@@ -5,6 +5,7 @@ use G1c\Culturia\framework\Logger;
 use G1c\Culturia\framework\Renderer;
 use G1c\Culturia\framework\Router\Router;
 use G1c\Culturia\framework\Session\SessionInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class ShopController {
     private $renderer;
@@ -22,8 +23,14 @@ class ShopController {
         $this->logger = $logger;
     }
     
-
-    public function index(){
+    public function __invoke(ServerRequestInterface $request): string
+    {
+        if($request->getAttribute("id")) {
+            return $this->view($request);
+        }
+        return $this->index($request);
+    }
+    public function index(ServerRequestInterface $request){
         $filter_param = array_intersect_key($_GET, array_flip(["price", "artists"]));
         if(!empty($filter_param)) {
             $artworks = $this->table
@@ -35,8 +42,8 @@ class ShopController {
         }
         return $this->render('@shop/shop', compact("artworks"));
     }
-    public function view($slug, $id) {
-        $artwork = $this->table->findPublicId($id)->fetchOrFail();
+    public function view(ServerRequestInterface $request): string {
+        $artwork = $this->table->findPublicId($request->getAttribute("id"))->fetchOrFail();
         $similar_artworks = $this->table->findPublic()->limit(4)->fetchAll();
         return $this->render('@shop/show', compact("artwork", "similar_artworks"));
         

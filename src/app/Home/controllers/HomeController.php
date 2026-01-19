@@ -31,7 +31,7 @@ class HomeController
         $this->artistsTable = $artistsTable;
     }
 
-    public function __invoke(ServerRequestInterface $request)
+    public function __invoke(ServerRequestInterface $request): string
     {
         return $this->index($request);
     }

@@ -43,12 +43,12 @@ class CrudController
         $this->router = $router;
         $this->flashService = $flashService;
     }
-    public function __invoke(ServerRequestInterface $request, $params): string|ResponseInterface
+    public function __invoke(ServerRequestInterface $request): string|ResponseInterface
     {
         $this->renderer->addGlobal('viewPath', $this->viewPath);
         $this->renderer->addGlobal('routePrefix', $this->routePrefix);
         if($request->getMethod() == "DELETE"){
-            return $this->delete((int)$params[0]);
+            return $this->delete($request->getAttribute("id"));
         }
         if (str_ends_with($request->getUri()->getPath(), 'new')){
             return $this->create($request);
@@ -56,12 +56,11 @@ class CrudController
         if (isset($params[0])){
             return $this->edit($request, $params[0]);
         }
-        return $this->index();
+        return $this->index($request);
     }
 
-    public function index(): string
+    public function index(ServerRequestInterface $request): string
     {
-        $table = $this->table->getTable();
         $items = $this->table->makeQuery();
         return $this->renderer->render("$this->viewPath/index", compact("items"));
 
@@ -71,11 +70,11 @@ class CrudController
         $errors = null;
         $item = $this->getNewEntity();
         if($request->getMethod() == "POST"){
-            $validator = $this->getValidator($request->getParsedBody());
+            $validator = $this->getValidator($request);
             if(!empty($validator->isValid())) {
-                $this->table->insert($this->getParams($item));
+                $this->table->insert($this->getParams($request, $item));
                 $this->flashService->success($this->flashMessages['create']);
-                return $this->redirect(...$this->getRedirectPath($this->getParams($item)));
+                return $this->redirect(...$this->getRedirectPath($this->getParams($request, $item)));
 
             }
             $errors = $validator->getErrors();
@@ -99,11 +98,11 @@ class CrudController
         $item = $this->table->findById($request->getAttribute("id"));
         $errors = null;
         if($request->getMethod() === "POST") {
-            $validator = $this->getValidator($request->getParsedBody());
+            $validator = $this->getValidator($request);
             if(!empty($validator->isValid())) {
-                $this->table->update($item->id, $this->getParams($item));
+                $this->table->update($item->id, $this->getParams($request, $item));
                 $this->flashService->success($this->flashService['edit']);
-                return $this->redirect(...$this->getRedirectPath($this->getParams($item)));
+                return $this->redirect(...$this->getRedirectPath($this->getParams($request, $item)));
             }
             $errors = $validator->getErrors();
             Hydrator::hydrate($request->getParsedBody(), $item);

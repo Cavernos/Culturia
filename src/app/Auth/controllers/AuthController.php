@@ -14,6 +14,11 @@ class AuthController
 
         $this->renderer = $renderer;
     }
+
+    public function __invoke(ServerRequestInterface $request)
+    {
+        return $this->cgu($request);
+    }
     public function cgu(ServerRequestInterface $request): string
     {
         return $this->renderer->render("@auth/cgu");

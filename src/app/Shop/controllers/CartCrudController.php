@@ -33,7 +33,7 @@ class CartCrudController extends CrudController
         parent::__construct($renderer, $table, new FlashService($session), $router);
     }
 
-    public function index(): string
+    public function index(ServerRequestInterface $request): string
     {
         $user = $this->session->get("auth.user");
         if(isset($this->session->get("carts", [])[$user])){

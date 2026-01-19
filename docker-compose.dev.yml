@@ -10,6 +10,8 @@ services:
     volumes:
       - ./src:/var/www/html/src
       - ./config:/var/www/html/config
+      - ./composer.json:/var/www/html/composer.json
+      - ./public/index.php:/var/www/html/public/index.php
       - ./scripts/entrypoint.sh:/usr/local/bin/entrypoint.sh
     networks:
       - web
