@@ -4,6 +4,7 @@ namespace G1c\Culturia\framework\Middlewares;
 
 use ArrayAccess;
 use G1c\Culturia\framework\Exception\CsrfInvalidException;
+use Psr\Http\Message\ServerRequestInterface;
 use TypeError;
 
 class CsrfMiddleware
@@ -22,8 +23,8 @@ class CsrfMiddleware
         $this->sessionKey = $sessionKey;
     }
 
-    public function __invoke($request, callable $next) {
-        if(in_array($request["REQUEST_METHOD"], ['POST', 'PUT', 'DELETE'])) {
+    public function __invoke(ServerRequestInterface $request, callable $next) {
+        if(in_array($request->getMethod(), ['POST', 'PUT', 'DELETE'])) {
             $params = $_POST ?: [];
             if(!array_key_exists($this->formKey, $params)) {
                 $this->reject();

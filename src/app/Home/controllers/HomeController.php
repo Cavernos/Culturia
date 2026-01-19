@@ -7,6 +7,7 @@ use G1c\Culturia\app\Shop\table\ArtworkTable;
 use G1c\Culturia\app\Shop\table\CategoryTable;
 use G1c\Culturia\framework\Renderer;
 use G1c\Culturia\framework\Session\SessionInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class HomeController
 {
@@ -30,11 +31,11 @@ class HomeController
         $this->artistsTable = $artistsTable;
     }
 
-    public function __invoke()
+    public function __invoke(ServerRequestInterface $request)
     {
-        return $this->index();
+        return $this->index($request);
     }
- public function index()
+ public function index(ServerRequestInterface $request): string
  {
      $artworks = $this->artworkTable->findRecent()->fetchAll();
      $categories = $this->categoryTable->makeQuery()->limit(10)->fetchAll();
@@ -42,7 +43,7 @@ class HomeController
      return $this->renderer->render("@home/home", compact("artworks", "categories", "artists"));
  }
 
- public function faq()
+ public function faq(ServerRequestInterface $request): string
  {
      return $this->renderer->render("@home/faq");
  }

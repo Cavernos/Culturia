@@ -13,6 +13,8 @@ use G1c\Culturia\framework\Middlewares\MethodMiddleware;
 use G1c\Culturia\framework\Middlewares\NotFoundMiddleware;
 use G1c\Culturia\framework\Middlewares\RouterMiddleware;
 use G1c\Culturia\framework\Middlewares\TrailingSlashMiddleware;
+use GuzzleHttp\Psr7\ServerRequest;
+use function Http\Response\send;
 
 chdir(dirname(__DIR__));
 require_once "vendor/autoload.php";
@@ -35,5 +37,7 @@ $app->pipe(TrailingSlashMiddleware::class)
     ->pipe(RouterMiddleware::class)
     ->pipe(NotFoundMiddleware::class);
 if (php_sapi_name() !== 'cli') {
-    $response = $app->run($_SERVER);
+    $response = $app->run(ServerRequest::fromGlobals());
+    var_dump($response);
+    send($response);
 }

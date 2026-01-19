@@ -2,6 +2,8 @@
 
 use ArgumentCountError;
 use G1c\Culturia\framework\Container;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class Route {
     protected $path;
@@ -52,21 +54,21 @@ class Route {
     }
 
 
-    public function call($request) {
+    public function call(ServerRequestInterface $request): string {
         if (is_string($this->callback)){
             $controller = Container::getInstance()->get($this->callback);
             if(!is_null($this->name)){
                 $name = explode(".", $this->name);
                 if(method_exists($controller, end($name))){
                     try {
-                        return call_user_func_array([$controller, end($name)], $this->matches);
+                        return call_user_func_array([$controller, end($name)], [$request]);
                     } catch (ArgumentCountError $e) {
                     }
                 }
             }
-            return call_user_func($controller, $request, $this->matches);
+            return call_user_func($controller, $request);
         }
-        return call_user_func_array($this->callback, $this->matches);
+        return call_user_func_array($this->callback, [$request]);
         
         
      }

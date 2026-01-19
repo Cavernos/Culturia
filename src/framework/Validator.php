@@ -5,6 +5,7 @@ namespace G1c\Culturia\framework;
 use DateTime;
 use G1c\Culturia\framework\Validator\ValidationError;
 use PDO;
+use Psr\Http\Message\UploadedFileInterface;
 
 class Validator
 {

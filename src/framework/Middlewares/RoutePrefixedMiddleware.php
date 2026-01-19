@@ -3,6 +3,8 @@
 namespace G1c\Culturia\framework\Middlewares;
 
 use G1c\Culturia\framework\Container;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class RoutePrefixedMiddleware
 {
@@ -18,9 +20,9 @@ class RoutePrefixedMiddleware
         $this->container = $container;
     }
 
-    public function __invoke($request, callable $next)
+    public function __invoke(ServerRequestInterface $request, callable $next): ResponseInterface
     {
-        $path = parse_url($request["REQUEST_URI"], PHP_URL_PATH);
+        $path = $request->getUri()->getPath();
         if(str_starts_with($path, $this->routePrefix)) {
             return $this->container->get($this->middleware)($request, $next);
         }

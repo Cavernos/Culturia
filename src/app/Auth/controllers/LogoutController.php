@@ -7,6 +7,8 @@ use G1c\Culturia\framework\Container;
 use G1c\Culturia\framework\Controllers\RouterAwareController;
 use G1c\Culturia\framework\Router\Router;
 use G1c\Culturia\framework\Session\FlashService;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class LogoutController
 {
@@ -23,11 +25,11 @@ class LogoutController
         $this->flash = $flash;
     }
 
-    public function __invoke()
+    public function __invoke(ServerRequestInterface $request): ResponseInterface
     {
         $this->auth->logout();
         $this->flash->success("Déconnexion réussie");
-        $this->redirect("home.index");
+        return $this->redirect("home.index");
 
     }
 }

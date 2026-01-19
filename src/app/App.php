@@ -3,10 +3,9 @@
 use Exception;
 use G1c\Culturia\framework\Container;
 use G1c\Culturia\framework\Middlewares\RoutePrefixedMiddleware;
-use G1c\Culturia\framework\Renderer;
-use G1c\Culturia\framework\Renderer\RendererFactory;
-use G1c\Culturia\framework\Router\Router;
-use G1c\Culturia\framework\Router\RouterException;
+use GuzzleHttp\Psr7\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class App {
 
@@ -54,21 +53,19 @@ class App {
 
         return $this;
     }
-    public function handle(mixed $request){
+    public function handle(ServerRequestInterface $request): ResponseInterface{
         $middleware = $this->getMiddleware();
         if (is_callable($middleware)){
             return call_user_func_array($middleware, [$request, [$this, 'handle']]);
         }
-        if (is_null($middleware)){
-            throw new Exception("Aucun middleware n'a intercepté votre requête");
-        }
-
+        if (is_null($middleware)) throw new Exception("Aucun middleware n'a intercepté votre requête");
+        return new Response();
     }
 
     /**
      * @throws Exception
      */
-    public function run(array $request){
+    public function run(ServerRequestInterface $request): ResponseInterface{
         foreach ($this->modules as $module){
             $this->getContainer()->get($module);
         }

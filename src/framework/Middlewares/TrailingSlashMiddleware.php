@@ -3,14 +3,19 @@
 namespace G1c\Culturia\framework\Middlewares;
 
 use G1c\Culturia\framework\Router\Router;
+use GuzzleHttp\Psr7\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class TrailingSlashMiddleware
 {
-    public function __invoke($request, callable $next)
+    public function __invoke(ServerRequestInterface $request, callable $next): ResponseInterface
     {
-        $uri = $request["REQUEST_URI"];
+        $uri = $request->getUri()->getPath();
         if(!empty($uri) && $uri[-1] === "/" && $uri != "/"){
-            header("LOCATION: ". substr($uri, 0, -1), 301);
+            return (new Response())
+                ->withStatus(301)
+                ->withHeader("Location", substr($uri, 0, -1));
         }
         return $next($request);
     }

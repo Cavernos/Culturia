@@ -10,6 +10,7 @@ services:
     volumes:
       - ./src:/var/www/html/src
       - ./config:/var/www/html/config
+      - ./scripts/entrypoint.sh:/usr/local/bin/entrypoint.sh
     networks:
       - web
     depends_on:

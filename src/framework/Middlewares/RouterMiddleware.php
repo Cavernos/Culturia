@@ -5,6 +5,8 @@ namespace G1c\Culturia\framework\Middlewares;
 use G1c\Culturia\framework\Logger;
 use G1c\Culturia\framework\Router\Router;
 use G1c\Culturia\framework\Router\RouterException;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class RouterMiddleware
 {
@@ -18,13 +20,13 @@ class RouterMiddleware
         $this->logger = $logger;
     }
 
-    public function __invoke($request, callable $next)
+    public function __invoke(ServerRequestInterface $request, callable $next): ResponseInterface
     {
         try {
-            $this->logger->info("Route ". $request['REQUEST_URI'] . " matched");
-            print $this->router->match($request);
+            $this->logger->info("Route ".  $request->getUri()->getPath() . " matched");
+            return $this->router->match($request);
         } catch (RouterException){
-            $this->logger->info("No route for". $request['REQUEST_URI']);
+            $this->logger->info("No route for". $request->getUri()->getPath());
             return $next($request);
         }
     }

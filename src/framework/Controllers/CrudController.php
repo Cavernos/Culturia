@@ -9,6 +9,8 @@ use G1c\Culturia\framework\Renderer;
 use G1c\Culturia\framework\Router\Router;
 use G1c\Culturia\framework\Session\FlashService;
 use G1c\Culturia\framework\Validator;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 
 class CrudController
@@ -41,14 +43,14 @@ class CrudController
         $this->router = $router;
         $this->flashService = $flashService;
     }
-    public function __invoke($request, $params): string
+    public function __invoke(ServerRequestInterface $request, $params): string|ResponseInterface
     {
         $this->renderer->addGlobal('viewPath', $this->viewPath);
         $this->renderer->addGlobal('routePrefix', $this->routePrefix);
-        if($request["REQUEST_METHOD"] == "DELETE"){
+        if($request->getMethod() == "DELETE"){
             return $this->delete((int)$params[0]);
         }
-        if (str_ends_with($request["REQUEST_URI"], 'new')){
+        if (str_ends_with($request->getUri()->getPath(), 'new')){
             return $this->create($request);
         }
         if (isset($params[0])){
@@ -65,25 +67,25 @@ class CrudController
 
     }
 
-    public function create($request): string {
+    public function create(ServerRequestInterface $request): string|ResponseInterface {
         $errors = null;
         $item = $this->getNewEntity();
-        if($request["REQUEST_METHOD"] == "POST"){
-            $validator = $this->getValidator($_POST);
+        if($request->getMethod() == "POST"){
+            $validator = $this->getValidator($request->getParsedBody());
             if(!empty($validator->isValid())) {
                 $this->table->insert($this->getParams($item));
                 $this->flashService->success($this->flashMessages['create']);
-                $this->redirect(...$this->getRedirectPath($this->getParams($item)));
-                return "";
+                return $this->redirect(...$this->getRedirectPath($this->getParams($item)));
+
             }
             $errors = $validator->getErrors();
-            Hydrator::hydrate($_POST, $item);
+            Hydrator::hydrate($request->getParsedBody(), $item);
         }
         $params = $this->formParams(compact("item", "errors"));
         return $this->renderer->render("$this->viewPath/create", $params);
     }
 
-    public function delete(int|Model $id): string {
+    public function delete(int|Model $id): string|ResponseInterface {
         if(property_exists($id, "id")){
             $item = $id->id;
         } else {
@@ -91,33 +93,32 @@ class CrudController
         }
         $this->table->delete($item);
         $this->flashService->error($this->flashMessages['delete']);
-        $this->redirect(...$this->getRedirectPath($id));
-        return "true";
+        return $this->redirect(...$this->getRedirectPath($id));
     }
-    public function edit($request, $id): string {
-        $item = $this->table->findById($id);
+    public function edit(ServerRequestInterface $request): string|ResponseInterface {
+        $item = $this->table->findById($request->getAttribute("id"));
         $errors = null;
-        if($request['REQUEST_METHOD'] === "POST") {
-            $validator = $this->getValidator($_POST);
+        if($request->getMethod() === "POST") {
+            $validator = $this->getValidator($request->getParsedBody());
             if(!empty($validator->isValid())) {
                 $this->table->update($item->id, $this->getParams($item));
                 $this->flashService->success($this->flashService['edit']);
-                $this->redirect(...$this->getRedirectPath($this->getParams($item)));
+                return $this->redirect(...$this->getRedirectPath($this->getParams($item)));
             }
             $errors = $validator->getErrors();
-            Hydrator::hydrate($_POST, $item);
+            Hydrator::hydrate($request->getParsedBody(), $item);
         }
         $params = $this->formParams(compact("item", "errors"));
         return $this->renderer->render("$this->viewPath/edit", $params);
     }
 
-    protected function getValidator($request): Validator
+    protected function getValidator(ServerRequestInterface $request): Validator
     {
-        return new Validator(array_merge($_POST, $_FILES));
+        return new Validator(array_merge($request->getParsedBody(), $request->getUploadedFiles()));
     }
-    protected function getParams($item): array
+    protected function getParams(ServerRequestInterface $request, $item): array
     {
-        return array_filter($_POST, function ($key) {
+        return array_filter($request->getParsedBody(), function ($key) {
            return in_array($key, []);
         }, ARRAY_FILTER_USE_KEY);
     }

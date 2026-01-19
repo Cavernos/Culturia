@@ -11,6 +11,7 @@ use G1c\Culturia\framework\Router\Router;
 use G1c\Culturia\framework\Session\FlashService;
 use G1c\Culturia\framework\Session\SessionInterface;
 use G1c\Culturia\framework\Validator;
+use Psr\Http\Message\ServerRequestInterface;
 
 class LoginAttemptController
 {
@@ -30,10 +31,10 @@ class LoginAttemptController
         $this->router = $router;
     }
 
-    public function __invoke(): RedirectResponse|string
+    public function __invoke(ServerRequestInterface $request): RedirectResponse|string
     {
         $errors = null;
-        $params = $_POST;
+        $params = $request->getParsedBody();
         $params = array_filter($params, function ($key){
             return in_array($key, ["email", "password", "role"]);
         }, ARRAY_FILTER_USE_KEY);

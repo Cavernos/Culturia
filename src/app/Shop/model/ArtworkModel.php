@@ -32,4 +32,13 @@ class ArtworkModel extends Model
         $this->modificationDate = $date;
     }
 
+    public function getThumb()
+    {
+        if($this->image){
+            ['filename' => $filename, 'extension' => $extension] = pathinfo($this->image);
+            return "/upload/clients/avatar/{$filename}_thumb.$extension";
+        }
+        return null;
+    }
+
 }

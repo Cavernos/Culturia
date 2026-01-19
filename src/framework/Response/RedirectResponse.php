@@ -2,13 +2,14 @@
 
 namespace G1c\Culturia\framework\Response;
 
-class RedirectResponse
+use GuzzleHttp\Psr7\Response;
+
+class RedirectResponse extends Response
 {
 
     public function __construct(string $path)
     {
-        header("Location : $path",true, 301);
-        exit;
+        parent::__construct(301, ['Location' => $path]);
     }
 
 }

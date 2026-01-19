@@ -10,6 +10,8 @@ use G1c\Culturia\framework\Router\Router;
 use G1c\Culturia\framework\Session\FlashService;
 use G1c\Culturia\framework\Session\SessionInterface;
 use G1c\Culturia\framework\Validator;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class RegisterAttemptController
 {
@@ -29,10 +31,10 @@ class RegisterAttemptController
         $this->router = $router;
     }
 
-    public function __invoke()
+    public function __invoke(ServerRequestInterface $request): string|ResponseInterface
     {
         $errors = null;
-        $params = $_POST;
+        $params = $request->getParsedBody();
         $validator = (new Validator($params))
             ->required("username", "email", "password", "password2", "cgu", "role")
             ->length("email", 3, 255)

@@ -8,6 +8,8 @@ use G1c\Culturia\app\Shop\table\ArtworkTable;
 use G1c\Culturia\app\Shop\table\OrderTable;
 use G1c\Culturia\framework\Database\NoRecordException;
 use G1c\Culturia\framework\Renderer;
+use MongoDB\Driver\Server;
+use Psr\Http\Message\ServerRequestInterface;
 
 class ArtistProfileController
 {
@@ -32,8 +34,9 @@ class ArtistProfileController
     {
     }
 
-    public function profile($id): string
+    public function profile(ServerRequestInterface $request): string
     {
+        $id = $request->getAttribute("id");
         try {
             $user = $this->artistsTable->findById($id);
         } catch (NoRecordException $e) {
@@ -47,7 +50,6 @@ class ArtistProfileController
             ->fetchAll();
 
         $orders = $this->orderTable->findByArtistsId($id)->fetchAll();
-        var_dump($user_artworks);
         return $this->renderer->render("@artists/profile/index",
             compact("user", "user_artworks", "orders"));
     }

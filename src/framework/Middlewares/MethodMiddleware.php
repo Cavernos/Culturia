@@ -2,13 +2,16 @@
 
 namespace G1c\Culturia\framework\Middlewares;
 
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
 class MethodMiddleware
 {
-    public function __invoke($request, $next)
+    public function __invoke(ServerRequestInterface $request, $next): ResponseInterface
     {
-        if(array_key_exists("_METHOD", $_POST) && in_array($_POST["_METHOD"], ["DELETE", "PUT"]))
+        if(array_key_exists("_METHOD", $request->getParsedBody()) && in_array($request->getParsedBody()["_METHOD"], ["DELETE", "PUT"]))
         {
-            $request["REQUEST_METHOD"] = $_POST["_METHOD"];
+            $request["REQUEST_METHOD"] = $request->getParsedBody()["_METHOD"];
         }
         return $next($request);
     }

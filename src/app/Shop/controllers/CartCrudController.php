@@ -9,6 +9,8 @@ use G1c\Culturia\framework\Renderer;
 use G1c\Culturia\framework\Router\Router;
 use G1c\Culturia\framework\Session\FlashService;
 use G1c\Culturia\framework\Session\SessionInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class CartCrudController extends CrudController
 {
@@ -46,10 +48,10 @@ class CartCrudController extends CrudController
         return $this->renderer->render("$this->viewPath/index", compact("items", "total_price"));
     }
 
-    public function edit($request, $id): string
+    public function edit(ServerRequestInterface $request): string
     {
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $item = $this->table->findById($id);
+        if($request->getMethod() == "POST"){
+            $item = $this->table->findById($request->getAttribute("id"));
             $cart_session = $this->session->get("carts", []);
             $user = $this->session->get("auth.user");
             if(!is_null($user)){
@@ -69,7 +71,7 @@ class CartCrudController extends CrudController
         return $this->index();
     }
 
-    public function delete($id): string
+    public function delete($id): ResponseInterface
     {
         $user = $this->session->get("auth.user");
         $cart = $this->session->get("carts", []);
@@ -84,8 +86,7 @@ class CartCrudController extends CrudController
         }
         $this->session->set("carts", $cart);
         (new FlashService($this->session))->success("L'article a bien été supprimé du panier");
-        $this->redirect("$this->routePrefix.index");
-        return $this->index();
+        return $this->redirect("$this->routePrefix.index");
     }
 
 }

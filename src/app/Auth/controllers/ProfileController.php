@@ -3,6 +3,7 @@
 namespace G1c\Culturia\app\Auth\controllers;
 
 use G1c\Culturia\framework\Renderer;
+use Psr\Http\Message\ServerRequestInterface;
 
 class ProfileController
 {
@@ -14,7 +15,7 @@ class ProfileController
         $this->renderer = $renderer;
     }
 
-    public function __invoke()
+    public function __invoke(ServerRequestInterface $request): string
     {
         return $this->renderer->render("@auth/profile/index");
     }

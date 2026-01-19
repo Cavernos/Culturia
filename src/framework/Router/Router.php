@@ -1,6 +1,11 @@
 <?php namespace G1c\Culturia\framework\Router;
 
 
+use GuzzleHttp\Psr7\Response;
+use Psr\Http\Message\MessageInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
 class Router {
     private $paths = [];
     private $namedRoute = [];
@@ -43,16 +48,17 @@ class Router {
             $this->namedRoute[$name] = $route; 
         }
     }
-    public function match(array $request){
-        if (!isset($this->paths[$request["REQUEST_METHOD"]])){
-            throw new RouterException($request["REQUEST_METHOD"] . "does not exist in paths");
+    public function match(ServerRequestInterface $request): ResponseInterface
+    {
+        if (!isset($this->paths[$request->getMethod()])){
+            throw new RouterException($request->getMethod() . "does not exist in paths");
         }
-        foreach ($this->paths[$request["REQUEST_METHOD"]] as $key => $value){
-            if ($value->match($request["REQUEST_URI"])){
-                return $value->call($request);
+        foreach ($this->paths[$request->getMethod()] as $key => $value){
+            if ($value->match($request->getUri()->getPath())){
+                return new Response(200, [], $value->call($request));
             }
         }
-        throw new RouterException("No route match with ".$request["REQUEST_URI"]);
+        throw new RouterException("No route match with ". $request->getUri()->getPath());
         
     }
 

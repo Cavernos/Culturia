@@ -12,6 +12,7 @@ use G1c\Culturia\framework\Renderer;
 use G1c\Culturia\framework\Router\Router;
 use G1c\Culturia\framework\Session\FlashService;
 use G1c\Culturia\framework\Validator;
+use Psr\Http\Message\ServerRequestInterface;
 
 class ShopCrudController extends CrudController
 {
@@ -45,9 +46,9 @@ class ShopCrudController extends CrudController
         return parent::delete($artwork);
     }
 
-    protected function getParams($item): array
+    protected function getParams(ServerRequestInterface $request, $item): array
     {
-        $params = array_merge($_POST, $_FILES);
+        $params = array_merge($request->getParsedBody(), $request->getUploadedFiles());
         $params["image"] = "/assets/img/oeuvre_1.png";
 
         $params = array_filter($params, function ($key) {
@@ -65,6 +66,9 @@ class ShopCrudController extends CrudController
             ->exists("artist_id", $this->artistsTable->getTable(), $this->artistsTable->getPdo())
             ->extension("image", ["jpg", "png"])
             ->dateTime("creation_date");
+        if(is_null($request["id"])){
+            $validator->uploaded("image");
+        }
         return $validator;
     }
 
