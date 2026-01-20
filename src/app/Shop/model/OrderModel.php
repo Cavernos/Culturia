@@ -7,10 +7,10 @@ use G1c\Culturia\framework\Model;
 class OrderModel extends Model
 {
     public $id;
-    public  $order_date;
+    public  $orderDate;
 
-    public $previsionnal_delivery;
+    public $previsionnalDelivery;
 
-    public $client_adress;
-    public $client_id;
+    public $clientAdress;
+    public $clientId;
 }

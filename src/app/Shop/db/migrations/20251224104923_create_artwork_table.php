@@ -18,7 +18,7 @@ class ArtworkMigrations extends Migrator
     {
         $table = $this->table()
             ->addColumn("name", "VARCHAR(128)")
-            ->addColumn("description", "VARCHAR(128)")
+            ->addColumn("description", "VARCHAR(255)")
             ->addColumn("creation_date", "DATE")
             ->addColumn("modification_date", "DATE")
             ->addColumn("price", "INT UNSIGNED")

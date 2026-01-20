@@ -14,6 +14,7 @@ services:
       - ./config:/var/www/html/config
       - ./composer.json:/var/www/html/composer.json
       - ./public/index.php:/var/www/html/public/index.php
+      - ./public/assets:/var/www/html/public/assets
       - ./scripts/entrypoint.sh:/usr/local/bin/entrypoint.sh
     networks:
       - web

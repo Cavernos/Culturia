@@ -5,6 +5,7 @@ use G1c\Culturia\app\App;
 use G1c\Culturia\app\Artists\ArtistsModule;
 use G1c\Culturia\app\Auth\AuthModule;
 use G1c\Culturia\app\Auth\ForbiddenMiddleware;
+use G1c\Culturia\app\Auth\InvalidCsrfMiddleware;
 use G1c\Culturia\app\Home\HomeModule;
 use G1c\Culturia\app\Shop\ShopModule;
 use G1c\Culturia\framework\Auth\LoggedInMiddleware;
@@ -31,6 +32,7 @@ $app->add(ShopModule::class)
 $container = $app->getContainer();
 $app->pipe(TrailingSlashMiddleware::class)
     ->pipe(MethodMiddleware::class)
+    ->pipe(InvalidCsrfMiddleware::class)
     ->pipe(CsrfMiddleware::class)
     ->pipe(ForbiddenMiddleware::class)
     ->pipe($container->get("admin.prefix"), LoggedInMiddleware::class)

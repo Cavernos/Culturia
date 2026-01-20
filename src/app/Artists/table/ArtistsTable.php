@@ -10,4 +10,6 @@ class ArtistsTable extends Table
     protected $table = 'artists';
 
     protected $entity = ArtistsModel::class;
+
+
 }

@@ -29,9 +29,11 @@ class FormExtension implements RendererExtensionInterface
         $class = 'form-group';
         $value = $this->convertValue($value);
         $attributes = [
-            'class' => $options["class"] ?? '',
+            'class' => $options["class"] ?? false,
             "name" => $key,
             "id" => $key . uniqid(),
+            "disabled" => $options["disabled"] ?? false,
+            "readonly" => $options["readonly"] ?? false
         ];
         if($error) {
            $class .= ' has-danger';

@@ -27,8 +27,8 @@
             </div>
             <div class="profile-stats">
                 <div class="profile-stats-header">
-                    <h1>Chiffre d'affaire : 600000€</h1>
-                    <h1>Nombre d'article vendus : 12</h1>
+                    <h1>Chiffre d'affaire : <?= $summary["revenue"] ?>€</h1>
+                    <h1>Nombre d'article vendus : <?= $summary["total"] ?></h1>
                 </div>
 
                 <h1>Dernières ventes</h1>
@@ -130,28 +130,30 @@
         <h1 class="page-sub-title"><?= $current_user() == $user ? "Vos c" : "C"?>ommandes</h1>
         <div class="panel-container">
             <?php foreach ($orders as $order) { ?>
-            <div class="order-container">
-                <img src="../public/assets/img/account.svg" alt="client"/>
-                <h2>De : Client 1</h2>
-                <h2>Nombre d'article : 3</h2>
-                <h2>Prix total : 500€</h2>
-                <a id="toggle" class="button">Récapitulatif de la commande</a>
-                <div class="order-content">
-                    <div class="card">
-                        <div class="card-container">
-                            <img class='card-image' src="<?= $order->image ?>" alt="<?= $order->name ?>" srcset=""/>
-                            <div class="card-title">
-                                <h4 class="card-name"><?= $order->name ?></h4>
-                                <h4 class="card-price"><?= $order->price ?> €</h4>
+                <div class="order-container">
+                    <img src="/assets/img/account.svg" alt="client"/>
+                    <h2>De : Client 1</h2>
+                    <h2>Nombre d'article : <?= count($order["artworks"]) ?></h2>
+                    <h2>Prix total : <?= array_sum(array_column(iterator_to_array($order["artworks"]), 'price'))?> €</h2>
+                    <a id="toggle" class="button">Récapitulatif de la commande</a>
+                    <div class="order-content">
+                        <?php foreach ($order["artworks"] as $artwork) { ?>
+                        <div class="card">
+                            <div class="card-container">
+                                <img class='card-image' src="<?= $artwork->getThumb() ?>" alt="<?= $artwork->name ?>" srcset=""/>
+                                <div class="card-title">
+                                    <h4 class="card-name"><?= $artwork->name ?></h4>
+                                    <h4 class="card-price"><?= $artwork->price ?> €</h4>
+                                </div>
+                                <p class="card-description"><?= $artwork->description ?></p>
                             </div>
-                            <p class="card-description"><?= $order->description ?></p>
                         </div>
+                        <?php } ?>
+                        <?php if(iterator_count($order['artworks']) > 4) { ?>
+                            <a href="" class="button">Voir toutes les oeuvres</a>
+                        <?php } ?>
                     </div>
-                    <?php if(iterator_count($orders) > 4) { ?>
-                    <a href="" class="button">Voir toutes les oeuvres</a>
-                    <?php } ?>
                 </div>
-            </div>
             <?php } ?>
         </div>
 

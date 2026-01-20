@@ -4,7 +4,8 @@ use ArrayAccess;
 use Exception;
 use Iterator;
 
-class QueryResult implements ArrayAccess, Iterator {
+class QueryResult implements ArrayAccess, Iterator, \Countable
+{
     private array $records = [];
     private ?string $entity;
     private array $hydratedRecords = [];
@@ -96,5 +97,10 @@ class QueryResult implements ArrayAccess, Iterator {
     public function offsetUnset(mixed $offset): void
     {
         throw new Exception("Il n'est pas possible de modifier un enregistrement");
+    }
+
+    public function count(): int
+    {
+        return count($this->records);
     }
 }

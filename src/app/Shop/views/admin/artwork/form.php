@@ -6,5 +6,5 @@
 <?= $field($errors ?? [], 'creation_date', $item->creationDate ?? null,  "Date de création"); ?>
 <?= $field($errors ?? [], 'price', $item->price ?? null,  "Prix :", ["type" => "number"]); ?>
 <?php if(true) { ?>
-    <?= $field($errors ?? [], 'artist_id', $item->artistId ?? null,  "Artiste :", ["options" => $artists]); ?>
+    <?= $field($errors ?? [], 'artist_id', $item->artistId ?? null,  "Artiste :", ["options" => $artists, "class" => "readonly"]); ?>
 <?php } ?>
