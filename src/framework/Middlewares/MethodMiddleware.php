@@ -11,7 +11,7 @@ class MethodMiddleware
     {
         if(array_key_exists("_METHOD", $request->getParsedBody()) && in_array($request->getParsedBody()["_METHOD"], ["DELETE", "PUT"]))
         {
-            $request["REQUEST_METHOD"] = $request->getParsedBody()["_METHOD"];
+            return $next($request->withMethod($request->getParsedBody()["_METHOD"]));
         }
         return $next($request);
     }

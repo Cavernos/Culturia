@@ -7,7 +7,7 @@ use G1c\Culturia\app\Auth\model\ClientModel;
     <div class="oeuvre-main">
         <div class="oeuvre-image-section">
             <div class="main-image">
-                <img src="<?=$artwork->image ?>" alt="<?=$artwork->name?>">
+                <img src="<?= $artwork->getImageUrl() ?>" alt="<?=$artwork->name?>">
             </div>
         </div>
 
@@ -15,7 +15,7 @@ use G1c\Culturia\app\Auth\model\ClientModel;
             <h1><?=$artwork->name ?></h1>
 
             <div class="artist-info">
-                <div class="artist-photo"></div>
+                <img class="artist-photo" src="<?= $artwork->avatar ?>"/>
                 <div>
                     <p class="artist-name"><?=$artwork->username ?></p>
                     <p class="artist-location">Paris, France</p>

@@ -18,8 +18,8 @@ class ArtworkModel extends Model
 
     public function setCreationDate(string $creationDate)
     {
-        $date = DateTime::createFromFormat("Y-m-d", $creationDate);
-        $this->creationDate = $date;
+        $this->creationDate = new DateTime($creationDate);
+        return $this;
     }
     public function getSlug()
     {
@@ -28,17 +28,21 @@ class ArtworkModel extends Model
 
     public function setModificationDate(string $modificationDate)
     {
-        $date = DateTime::createFromFormat("Y-m-d", $modificationDate);
-        $this->modificationDate = $date;
+        $this->modificationDate = new DateTime($modificationDate);
     }
 
     public function getThumb()
     {
         if($this->image){
             ['filename' => $filename, 'extension' => $extension] = pathinfo($this->image);
-            return "/upload/clients/avatar/{$filename}_thumb.$extension";
+            return "/upload/artworks/{$filename}_thumb.$extension";
         }
         return null;
+    }
+
+    public function getImageUrl()
+    {
+        return "/upload/artworks/{$this->image}";
     }
 
 }

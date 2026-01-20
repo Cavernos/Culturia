@@ -72,9 +72,10 @@ class CrudController
         if($request->getMethod() == "POST"){
             $validator = $this->getValidator($request);
             if(!empty($validator->isValid())) {
-                $this->table->insert($this->getParams($request, $item));
+                $params = $this->getParams($request, $item);
+                $this->table->insert($params);
                 $this->flashService->success($this->flashMessages['create']);
-                return $this->redirect(...$this->getRedirectPath($this->getParams($request, $item)));
+                return $this->redirect(...$this->getRedirectPath($params));
 
             }
             $errors = $validator->getErrors();
@@ -91,7 +92,7 @@ class CrudController
             $item = $id;
         }
         $this->table->delete($item);
-        $this->flashService->error($this->flashMessages['delete']);
+        $this->flashService->success($this->flashMessages['delete']);
         return $this->redirect(...$this->getRedirectPath($id));
     }
     public function edit(ServerRequestInterface $request): string|ResponseInterface {
@@ -102,7 +103,7 @@ class CrudController
             if(!empty($validator->isValid())) {
                 $this->table->update($item->id, $this->getParams($request, $item));
                 $this->flashService->success($this->flashService['edit']);
-                return $this->redirect(...$this->getRedirectPath($this->getParams($request, $item)));
+                return $this->redirect(...$this->getRedirectPath($item));
             }
             $errors = $validator->getErrors();
             Hydrator::hydrate($request->getParsedBody(), $item);

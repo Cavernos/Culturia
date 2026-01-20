@@ -83,7 +83,7 @@
     <?php foreach($artworks as $artwork){?>
         <a href="<?= $pathFor("shop.view", ["slug"=> str_replace(" ", "-", strtolower($artwork->name)), "id"=> $artwork->id]) ?>" id="<?= $artwork->id ?>" class="carousel-element card">
             <div class="card-container">
-                <img class='card-image' src="<?= $artwork->image ?>" alt="<?= $artwork->name ?>" srcset=""/>
+                <img class='card-image' src="<?= $artwork->getThumb() ?>" alt="<?= $artwork->name ?>" srcset=""/>
                 <div class="card-title">
                     <h4 class="card-name"><?= $artwork->name ?></h4>
                     <h4 class="card-price"><?= $artwork->price ?>€</h4>

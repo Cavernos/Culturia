@@ -55,7 +55,11 @@ class Router {
         }
         foreach ($this->paths[$request->getMethod()] as $key => $value){
             if ($value->match($request->getUri()->getPath())){
-                return new Response(200, [], $value->call($request));
+                $response = $value->call($request);
+                if($response instanceof ResponseInterface) {
+                    return $response;
+                }
+                return new Response(200, [], $response);
             }
         }
         throw new RouterException("No route match with ". $request->getUri()->getPath());

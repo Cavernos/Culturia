@@ -25,7 +25,7 @@
     <tbody class="cart-article-body">
     <?php foreach ($items ?? [] as $item){ ?>
     <tr>
-        <td><img src="<?= $item->image ?>" alt="<?=$item->name ?>" srcset=""/></td>
+        <td><img src="<?= $item->getThumb() ?>" alt="<?=$item->name ?>" srcset=""/></td>
         <td><?= $item->name ?></td>
         <td><?= $item->price ?> €</td>
         <td>60x70</td>
