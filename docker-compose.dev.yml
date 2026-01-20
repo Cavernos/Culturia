@@ -1,6 +1,8 @@
 services:
   php:
-    build: .
+    build:
+      context: .
+      target: dev
     container_name: culturia_dev
     environment:
       ENV: dev
@@ -28,10 +30,12 @@ services:
     networks:
       - web
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: >
+        mysql -e "SHOW DATABASES LIKE 'culturia_test';" | grep 'culturia_test'
+      start_period: 30s
       interval: 5s
-      timeout: 3s
-      retries: 10
+      timeout: 5s
+      retries: 30
 
 
 networks:

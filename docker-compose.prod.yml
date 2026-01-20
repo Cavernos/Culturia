@@ -1,0 +1,16 @@
+services:
+  php:
+    build:
+      context: .
+      target: production
+    container_name: culturia_prod
+    environment:
+      ENV: production
+    ports:
+      - "9000:9000"
+    networks:
+      - web
+
+
+networks:
+  web:

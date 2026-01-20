@@ -1,5 +1,6 @@
 Dockerfile
 docker-compose.dev.yml
+docker-compose.prod.yml
 /vendor/
 .idea/
 .vscode/
