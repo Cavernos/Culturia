@@ -16,7 +16,8 @@ class ValidationError
         'maxLength' => "Le champ %s doit contenir moins %d caractères",
         'betweenLength' => "Le champ %s doit contenir entre %d et %d caractères",
         'datetime' => "Le champ %s doit être une date valide (%s)",
-        'exists' => "Le champ %s n'existe pas dans la table %s",
+        'notExists' => "Le champ %s n'existe pas dans la table %s",
+        'exists' => "Votre %s existe déjà",
         'filetype' => "Le champ %s n'est pas au bon format (formats valides: %s)",
         'uploaded' => "Vous devez uploader un fichier",
         'same' => "Les deux champs %s et %s, ne sont pas identiques"

@@ -17,9 +17,9 @@ class CreateArtistsTable extends Migrator
     public function run()
     {
         $table = $this->table()
-            ->addColumn('username', "VARCHAR(128)")
+            ->addColumn('username', "VARCHAR(128) UNIQUE")
             ->addColumn('avatar', "VARCHAR(128)")
-            ->addColumn('email', "VARCHAR(128)")
+            ->addColumn('email', "VARCHAR(128) UNIQUE")
             ->addColumn('password', "VARCHAR(128)")
             ->addColumn("inscription_date", "DATE")
             ->addColumn("modification_date", "DATE")

@@ -64,6 +64,9 @@ class ShopCrudController extends CrudController
         $params = array_filter($params, function ($key) {
             return in_array($key, ['name', "creation_date", "description", "artist_id", "image", "price"]);
         }, ARRAY_FILTER_USE_KEY);
+        array_walk_recursive($params, function (&$value) {
+            $value = preg_replace('/[^\P{C}]/u', '', $value);
+        });
         return array_merge($params, ["modification_date" => date("Y-m-d H:i:s")]);
     }
 
@@ -73,7 +76,7 @@ class ShopCrudController extends CrudController
             ->required('name', 'creation_date', "description", 'artist_id', "price")
             ->length("name", 3, 100)
             ->length("description", 5, 200)
-            ->exists("artist_id", $this->artistsTable->getTable(), $this->artistsTable->getPdo())
+            ->notExists("artist_id", $this->artistsTable->getTable(), $this->artistsTable->getPdo())
             ->extension("image", ["jpg", "png"])
             ->dateTime("creation_date");
         if(is_null($request->getAttribute("id"))){

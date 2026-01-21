@@ -14,9 +14,9 @@ DROP TABLE IF EXISTS clients;
 
 CREATE TABLE IF NOT EXISTS clients (
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    username VARCHAR(128),
+    username VARCHAR(128) UNIQUE,
     avatar VARCHAR(128),
-    email VARCHAR(128),
+    email VARCHAR(128) UNIQUE,
     password TEXT,
     inscription_date DATE,
     modification_date DATE
@@ -24,9 +24,9 @@ CREATE TABLE IF NOT EXISTS clients (
 
 CREATE TABLE IF NOT EXISTS artists (
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    username VARCHAR(128),
+    username VARCHAR(128) UNIQUE,
     avatar VARCHAR(128),
-    email VARCHAR(128),
+    email VARCHAR(128) UNIQUE,
     password VARCHAR(128),
     inscription_date DATE,
     modification_date DATE

@@ -5,6 +5,7 @@ namespace G1c\Culturia\app\Artists;
 use G1c\Culturia\app\Artists\controllers\ArtistProfileController;
 use G1c\Culturia\app\Artists\controllers\ArtistsController;
 use G1c\Culturia\framework\Container;
+use G1c\Culturia\framework\Logger;
 use G1c\Culturia\framework\Module;
 use G1c\Culturia\framework\Renderer;
 use G1c\Culturia\framework\Router\Router;
@@ -23,7 +24,10 @@ class ArtistsModule extends Module
         /**
          * @var Renderer $renderer
          * @var Router $router
+         * @var Logger $logger
          * */
+        $logger = $c->get(Logger::class);
+        $logger->setChannel("Auth");
         $prefix = $c->get("artists.prefix");
         $renderer = $c->get(Renderer::class);
         $renderer->addPath("artists", __DIR__ . "/views");

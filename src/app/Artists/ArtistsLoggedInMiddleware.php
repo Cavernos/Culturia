@@ -22,6 +22,7 @@ class ArtistsLoggedInMiddleware extends LoggedInMiddleware
         if(!$user || !$user->is(ArtistsModel::class)) {
             throw new ForbiddenException("Vous devez être connecté en tant qu'artiste pour voir cette page");
         }
+        $request->withAttribute('user', $user);
         return $next($request);
     }
 }

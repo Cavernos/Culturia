@@ -43,7 +43,7 @@ use G1c\Culturia\app\Auth\model\ClientModel;
                 <?php if ( $pathFor('client.favorite.index') != ''){ ?>
                 <!-- Favoris -->
                 <a href="<?= $pathFor('client.favorite.index')?>" class="icon-btn">
-                    <div class="cart-count"><?= $session_count("favorites") ?></div>
+                    <div class="cart-count"><?= $session_count("favorite") ?></div>
                     <img src="/assets/img/favoris.svg" alt="Favoris">
                 </a>
                     <?php } ?>

@@ -110,13 +110,31 @@ class Validator
      * @param PDO $pdo
      * @return $this
      */
-    public function exists(string $key, string $table, PDO $pdo): self
+    public function notExists(string $key, string $table, PDO $pdo): self
     {
         $value = $this->getValue($key);
         $statement = $pdo->prepare("SELECT id FROM $table WHERE id = ?");
         $statement->execute([$value]);
         if($statement->fetchColumn() === false) {
-            $this->addError($key, 'exists', [$table]);
+            $this->addError($key, 'notExists', [$table]);
+            return $this;
+        }
+        return $this;
+    }
+
+    /**
+     * @param string $key
+     * @param string $table
+     * @param PDO $pdo
+     * @return $this
+     */
+    public function exists(string $key, string $table, PDO $pdo): self
+    {
+        $value = $this->getValue($key);
+        $statement = $pdo->prepare("SELECT id FROM $table WHERE $key = ?");
+        $statement->execute([$value]);
+        if($statement->rowCount() > 0) {
+            $this->addError($key, 'exists');
             return $this;
         }
         return $this;

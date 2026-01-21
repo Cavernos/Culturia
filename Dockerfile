@@ -24,7 +24,7 @@ RUN git config --global --add safe.directory /var/www/html
 # Install php extensions
 RUN docker-php-ext-configure zip && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
-    docker-php-ext-install -j$(nproc)  pdo pdo_mysql zip exif gd
+    docker-php-ext-install -j$(nproc)  pdo pdo_mysql zip exif gd opcache
 
 # Composer installation
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -33,6 +33,16 @@ RUN composer install --no-interaction --optimize-autoloader
 FROM build AS dev
 RUN apk add --no-cache $PHPIZE_DEPS linux-headers
 RUN pecl install xdebug && docker-php-ext-enable xdebug
+
+RUN { \
+    echo 'opcache.enable=1'; \
+    echo 'opcache.enable_cli=1'; \
+    echo 'opcache.validate_timestamp=1'; \
+    echo 'opcache.memory_consumption=256'; \
+    echo 'opcache.max_accelerated_files=20000'; \
+    echo 'opcache.revalidate_freq=0'; \
+    echo 'opcache.interned_strings_buffer=16'; \
+    } > /usr/local/etc/php/conf.d/opcache.ini
 # Expose ports
 EXPOSE 8000
 COPY scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
@@ -53,7 +63,7 @@ RUN apk update && apk upgrade --no-cache && \
         libzip \
         zlib \
     && docker-php-ext-install -j$(nproc) \
-        mysqli opcache \
+        mysqli \
     && rm -rf /var/cache/apk/* /tmp/*
 
 COPY --from=build /usr/local/lib/php/extensions /usr/local/lib/php/extensions

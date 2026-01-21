@@ -165,7 +165,7 @@ class MigrationTable
             }
             $i++;
         }
-        $this->method = "INSERT INTO";
+        $this->method = "INSERT IGNORE INTO";
        return $this;
 
     }

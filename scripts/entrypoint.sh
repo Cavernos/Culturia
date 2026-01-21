@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 if [ "${ENV:-}" = "production" ]; then
   echo "Mode $ENV : Lancement de fast-cgi"
   php-fpm

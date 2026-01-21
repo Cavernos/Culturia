@@ -21,6 +21,7 @@ class ClientLoggedInMiddleware extends LoggedInMiddleware
         if(!$user || !$user->is(ClientModel::class)) {
             throw new ForbiddenException("Vous devez être connecté en tant que client pour voir cette page");
         }
+        $request->withAttribute('user', $user);
         return $next($request);
     }
 

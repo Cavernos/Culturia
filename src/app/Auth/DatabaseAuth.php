@@ -107,7 +107,7 @@ class DatabaseAuth implements Auth
         $this->session->delete('auth.role');
     }
 
-    private function getTable(bool $role): Table
+    public function getTable(bool $role): Table
     {
         if($role) {
             return $this->clientTable;
