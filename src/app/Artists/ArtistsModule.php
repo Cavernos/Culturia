@@ -34,6 +34,10 @@ class ArtistsModule extends Module
         $router = $c->get(Router::class);
         $router->get($prefix, ArtistsController::class, "artists.index");
         $router->get($prefix . "/{id:[0-9]+}", ArtistProfileController::class, "artists.profile");
+        $router->get($prefix . "/{id:[0-9]+}/edit", ArtistProfileController::class, "artists.edit");
+        $router->post($prefix . "/{id:[0-9]+}/edit", ArtistProfileController::class);
+        $router->delete($prefix . "/{id:[0-9]+}", ArtistProfileController::class, "artists.delete");
+
 
     }
 }

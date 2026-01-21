@@ -19,8 +19,9 @@
             </div>
             <?php if($user == $current_user()) { ?>
                 <div class="profile-actions">
-                    <a href="#" class="button">Modifier le profil</a>
-                    <form method="POST" class="delete-form">
+                    <a href="<?= $pathFor("auth.edit", ["id" => $current_user()->id]) ?>" class="button">Modifier le profil</a>
+                    <form method="POST" action="<?= $pathFor("auth.delete", ["id" => $current_user()->id])?>" class="delete-form">
+                        <?= $csrf_input() ?>
                         <input type="hidden" name="_METHOD" value="DELETE"/>
                         <button class="button" type="submit">Supprimer le profil</button>
                     </form>

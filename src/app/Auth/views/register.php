@@ -16,9 +16,9 @@
             <?= $field($errors ?? [], 'password', $params["password"] ?? null, "Mot de passe : ", ["type" => "password"]) ?>
             <?= $field($errors ?? [], 'password2', $params["password2"] ?? null, "Réécrire le mot de passe : ", ["type" => "password"]) ?>
 
-            <!-- Catégorie d'art -->
+            <!-- Catégorie d'art
             <?= $field($errors ?? [], 'category', null, "Categorie d'art :", ["options" => ["Option 1" => "Categorie 1"]]) ?>
-
+            -->
             <!-- Conditions -->
             <?= $field($errors ?? [], 'cgu', $params["cgu"] ?? null, "<a href='{$pathFor('auth.cgu')}'>J’accepte les condition d’utilisation</a>", ["type" => "checkbox"]) ?>
 

@@ -9,6 +9,12 @@ use G1c\Culturia\app\Shop\table\OrderTable;
 use G1c\Culturia\framework\Database\NoRecordException;
 use G1c\Culturia\framework\Database\QueryResult;
 use G1c\Culturia\framework\Renderer;
+use G1c\Culturia\framework\Response\RedirectResponse;
+use G1c\Culturia\framework\Router\Router;
+use G1c\Culturia\framework\Session\FlashService;
+use G1c\Culturia\framework\Session\SessionInterface;
+use G1c\Culturia\framework\Validator;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 class ArtistProfileController
@@ -17,21 +23,36 @@ class ArtistProfileController
     private ArtistsTable $artistsTable;
     private ArtworkTable $artworkTable;
     private OrderTable $orderTable;
+    private SessionInterface $session;
+    private Router $router;
 
     public function __construct(Renderer $renderer,
                                 ArtistsTable $artistsTable,
                                 ArtworkTable $artworkTable,
-                                OrderTable $orderTable)
+                                OrderTable $orderTable,
+    SessionInterface $session,
+    Router $router
+
+    )
     {
 
         $this->renderer = $renderer;
         $this->artistsTable = $artistsTable;
         $this->artworkTable = $artworkTable;
         $this->orderTable = $orderTable;
+        $this->session = $session;
+        $this->router = $router;
     }
 
-    public function __invoke(ServerRequestInterface $request): string
+    public function __invoke(ServerRequestInterface $request): string|RedirectResponse
     {
+        $this->renderer->addGlobal("viewPath", "@artists/profile");
+        if($request->getMethod() === "DELETE") {
+            return $this->delete($request);
+        }
+        if(str_ends_with($request->getUri()->getPath(), "edit")) {
+            return $this->edit($request);
+        }
         return $this->profile($request);
     }
 
@@ -88,5 +109,50 @@ class ArtistProfileController
 
         }
         return [[], ["revenue" => 0, "total" => 0]];
+    }
+
+    public function edit(ServerRequestInterface $request): string|RedirectResponse
+    {
+        $errors = null;
+        $user = $this->artistsTable->findById($request->getAttribute("id"));
+        if($request->getMethod() === "POST") {
+            $params = array_filter($request->getParsedBody(), function ($value) {
+                return in_array($value, ["email", "username"]);
+            }, ARRAY_FILTER_USE_KEY);
+            if($params['email'] !== $user->email || $params['username'] !== $user->username) {
+                $validator = (new Validator($params))
+                    ->required("username", "email")
+                    ->length("username", 3, 255)
+                    ->length("email", 3, 255)
+                    ->exists("username",
+                        $this->artistsTable->getTable(),
+                        $this->artistsTable->getPdo(),
+                        $user->id,
+                    )
+                    ->exists("email",
+                            $this->artistsTable->getTable(),
+                        $this->artistsTable->getPdo(),
+                        $user->id
+                    );
+                $errors = $validator->getErrors();
+                if(count($errors) === 0) {
+                    $this->artistsTable->update($user->id, $params);
+                    (new FlashService($this->session))->success("Profil modifié avec succès");
+                    $path = $this->router->generateUri("artists.profile", ["id" => $user->id]);
+                    return new RedirectResponse($path);
+                }
+                (new FlashService($this->session))->error("Il manque des informations pour le profil");
+            }
+        }
+        return $this->renderer->render("@artists/profile/edit", compact("user", "errors"));
+
+    }
+
+    public function delete(ServerRequestInterface $request): string|ResponseInterface
+    {
+        $id = $request->getAttribute("id");
+        $this->artistsTable->delete($id);
+        (new FlashService($this->session))->success("Profil supprimé avec succès");
+        return new RedirectResponse("/");
     }
 }

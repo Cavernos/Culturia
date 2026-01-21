@@ -32,9 +32,16 @@ class AuthModule extends Module
         $router->get("/cgu", AuthController::class, "auth.cgu");
          $router->post("/logout", LogoutController::class, "auth.logout");
          $client_prefix = $container->get("auth.prefix");
-         $router->get($client_prefix . "/{id:[0-9]+}", ProfileController::class, 'auth.index');
+         $router->get($client_prefix . "/{id:[0-9]+}", ProfileController::class, 'auth.index').
+
+         $router->get($client_prefix . "/{id:[0-9]+}/edit", ProfileController::class, 'auth.edit');
+         $router->post($client_prefix . "/{id:[0-9]+}/edit", ProfileController::class);
+         $router->delete($client_prefix . "/{id:[0-9]+}", ProfileController::class, "auth.delete");
+
+
          $router->crud($client_prefix . "/favorite", FavoriteCrudController::class, 'client.favorite');
          $router->crud( $client_prefix . "/cart", CartCrudController::class, 'client.cart');
+
          $router->get($container->get("auth.login"), LoginController::class, "auth.login");
          $router->post($container->get("auth.login"), LoginAttemptController::class);
          $router->get($container->get("auth.register"), RegisterController::class, "auth.register");

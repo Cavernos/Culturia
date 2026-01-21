@@ -3,8 +3,9 @@
     flex-direction: column;
     flex-wrap: wrap;
     max-width: 75%;
-    margin: 0 auto;
+    margin: 1rem auto;
     gap: 0.6rem;
+
     font-size: 1.3rem;
 }
 

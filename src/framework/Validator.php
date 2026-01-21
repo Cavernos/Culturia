@@ -128,11 +128,11 @@ class Validator
      * @param PDO $pdo
      * @return $this
      */
-    public function exists(string $key, string $table, PDO $pdo): self
+    public function exists(string $key, string $table, PDO $pdo, int $id = 0): self
     {
         $value = $this->getValue($key);
-        $statement = $pdo->prepare("SELECT id FROM $table WHERE $key = ?");
-        $statement->execute([$value]);
+        $statement = $pdo->prepare("SELECT id FROM $table WHERE $key = ? AND id != ?");
+        $statement->execute([$value, $id]);
         if($statement->rowCount() > 0) {
             $this->addError($key, 'exists');
             return $this;
