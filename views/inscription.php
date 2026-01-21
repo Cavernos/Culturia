@@ -11,14 +11,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = trim($_POST["username"] ?? "");
     $email    = trim($_POST["email"] ?? "");
     $password = $_POST["password"] ?? "";
+    $password_confirmation = $_POST["password_confirmation"] ?? "";
     $termsOk  = isset($_POST["terms"]);
 
-    if ($username === "" || $email === "" || $password === "") {
+    if ($username === "" || $email === "" || $password === "" || $password_confirmation === "") {
         $errorMsg = "Tous les champs sont obligatoires.";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errorMsg = "Email invalide.";
     } elseif (strlen($password) < 8) {
         $errorMsg = "Mot de passe trop court (min. 8 caractères).";
+    } elseif ($password !== $password_confirmation) {
+        $errorMsg = "Les mots de passe ne correspondent pas.";
     } elseif (!$termsOk) {
         $errorMsg = "Tu dois accepter les conditions d’utilisation.";
     } else {
@@ -34,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 INSERT INTO clients (username, email, password, inscription_date, modification_date)
                 VALUES (:username, :email, :password, CURDATE(), CURDATE())
             ");
+
             $stmt->execute([
                 "username" => $username,
                 "email" => $email,
@@ -49,13 +53,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 function old(string $key): string {
     return htmlspecialchars($_POST[$key] ?? "", ENT_QUOTES, "UTF-8");
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Culturia – inscription</title>
+  <title>Culturia – Inscription</title>
 
   <link rel="stylesheet" href="../public/assets/css/style.css" />
   <link rel="shortcut icon" href="../public/assets/img/favicon.ico" type="image/x-icon" />
@@ -64,14 +69,15 @@ function old(string $key): string {
 <body>
 
 <main class="main-container inscription-page">
-
   <div class="inscription-overlay">
     <div class="inscription-modal">
 
       <h1>S'inscrire</h1>
 
       <?php if ($errorMsg): ?>
-        <p style="color:#b00020; margin-bottom:10px;"><?= htmlspecialchars($errorMsg, ENT_QUOTES, "UTF-8") ?></p>
+        <p style="color:#b00020; margin-bottom:10px;">
+          <?= htmlspecialchars($errorMsg, ENT_QUOTES, "UTF-8") ?>
+        </p>
       <?php endif; ?>
 
       <?php if ($successMsg): ?>
@@ -81,7 +87,6 @@ function old(string $key): string {
         </div>
       <?php endif; ?>
 
-
       <form class="inscription-form" action="" method="POST">
 
         <div class="form-row">
@@ -89,25 +94,33 @@ function old(string $key): string {
           <input type="text" id="username" name="username" value="<?= old("username") ?>" required />
         </div>
 
-        <div class="form-row"> 
-          <label for="email">Mail:</label>
+       <div class="form-row">
+        <label for="email">Email :</label>
+
+       <div class="field-stack">
           <input type="email" id="email" name="email" value="<?= old("email") ?>" required />
+          <small class="field-help" id="emailHelp"></small>
         </div>
+      </div>
 
-        <div class="form-row">
-          <label for="password">Mot de passe:</label>
+     <div class="form-row">
+      <label for="password">Mot de passe :</label>
 
-          <div>
-            <input type="password" id="password" name="password" required />
+      <div class="field-stack">
+       <input type="password" id="password" name="password" required />
 
-           
-            <div class="password-strength">
-              <div class="password-strength__bar" id="passwordStrengthBar"></div>
-            </div>
+       <div class="password-strength">
+          <div class="password-strength__bar" id="passwordStrengthBar"></div>
+       </div>
 
-            <p class="password-strength__text" id="passwordStrengthText"></p>
-          </div>
-        </div>
+       <small class="password-strength__text" id="passwordStrengthText"></small>
+      </div>
+     </div>
+
+      <div class="form-row">
+        <label for="password_confirmation">Confirmer le mot de passe :</label>
+        <input type="password" id="password_confirmation" name="password_confirmation" required />
+      </div>
 
         <div class="form-checkbox">
           <input type="checkbox" id="terms" name="terms" <?= isset($_POST["terms"]) ? "checked" : "" ?> required />
@@ -121,9 +134,7 @@ function old(string $key): string {
       </form>
     </div>
   </div>
-
 </main>
-
 <script src="../public/assets/js/inscription.js"></script>
 </body>
 </html>

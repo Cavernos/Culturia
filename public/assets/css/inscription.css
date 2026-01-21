@@ -2,96 +2,86 @@
    Page Inscription (inscription acheteur)
    ================================ */
 
-
 .inscription-overlay {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-  
-    background: rgba(243, 233, 218, 0.85);
-    z-index: 1000;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(243, 233, 218, 0.85);
+  z-index: 1000;
 }
-
 
 .inscription-modal {
-    background: #fdf3e7;
-    padding: 3rem 3.5rem;
-    border-radius: 1.5rem;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
-    width: 100%;
-    max-width: 520px;
+  background: #fdf3e7;
+  padding: 3rem 3.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  width: 100%;
+  max-width: 520px;
 }
 
-
 .inscription-modal h1 {
-    text-align: center;
-    margin-bottom: 2.5rem;
-    font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 2.4rem;
 }
 
 .inscription-form {
-    width: 100%;
+  width: 100%;
 }
 
 .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1.3fr; 
-    align-items: center;
-    column-gap: 0.8rem;             
-    margin-bottom: 1.6rem;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  align-items: center;
+  column-gap: 0.8rem;
+  margin-bottom: 1.6rem;
 }
-
 
 .form-row label {
-    font-size: 1.5rem;
-    white-space: nowrap; 
+  font-size: 1.5rem;
+  white-space: nowrap;
 }
-
 
 .form-row input {
-    width: 100%; 
-    padding: 0.6rem 0.8rem;
-    border-radius: 0.4rem;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    font-size: 1.4rem;
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.4rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 1.4rem;
 }
 
-
-
 .form-checkbox {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin: 2rem 0;
-    font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 2rem 0;
+  font-size: 1.3rem;
 }
 
 .form-checkbox input {
-    accent-color: var(--button-background-color);
+  accent-color: var(--button-background-color);
 }
 
-
 .form-actions {
-    text-align: center;
-    margin-top: 1.5rem;
+  text-align: center;
+  margin-top: 1.5rem;
 }
 
 .form-actions .primary-button {
-    padding: 1rem 2.4rem;
-    font-size: 1.5rem;
+  padding: 1rem 2.4rem;
+  font-size: 1.5rem;
 }
+
 
 .password-strength {
   width: 100%;
-  max-width: 320px;           
   height: 8px;
   background: rgba(0,0,0,0.08);
   border-radius: 999px;
-  margin-top: 10px;
   overflow: hidden;
+  margin-top: 0; 
 }
 
 .password-strength__bar {
@@ -102,9 +92,9 @@
 }
 
 .password-strength__text{
-  margin-top: 6px;
   font-size: 1.2rem;
   opacity: 0.9;
+  margin: 0;
 }
 
 .password-strength__text.is-weak { color: #e74c3c; }
@@ -115,43 +105,6 @@
 .password-strength__bar.is-medium { background: #f39c12; }
 .password-strength__bar.is-strong { background: #2ecc71; }
 
-.password-strength {
-  grid-column: 1 / -1;   
-  max-width: 100%;       
-}
-
-
-@media (max-width: 650px) {
-    .inscription-modal {
-        padding: 2.2rem 2rem;
-    }
-
-@media (max-width: 650px) {
-    .form-row {
-        grid-template-columns: 1fr;  /* une seule colonne */
-    }
-    }
-
-    .form-row label,
-    .form-row input {
-        width: 100%;
-    }
-
-    .form-row label {
-        margin-bottom: 0.4rem;
-    }
-}
-
-.password-strength {
-  grid-column: 1 / -1;
-  max-width: 100%;
-}
-
-@media (max-width: 650px) {
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-}
 
 .success-message {
   background: #e9f9f0;
@@ -185,3 +138,39 @@
     opacity: 1;
   }
 }
+
+
+@media (max-width: 650px) {
+  .inscription-modal {
+    padding: 2.2rem 2rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row label {
+    margin-bottom: 0.4rem;
+  }
+}
+
+.field-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.field-help {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-top: -2px;
+}
+
+input.is-valid {
+  border-color: #2ecc71;
+}
+input.is-invalid {
+  border-color: #e74c3c;
+}
+#emailHelp.is-valid { color: #2ecc71; }
+#emailHelp.is-invalid { color: #e74c3c; }
