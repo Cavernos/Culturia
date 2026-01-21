@@ -3,6 +3,7 @@
 namespace G1c\Culturia\app\Auth;
 
 use G1c\Culturia\app\Auth\controllers\AuthController;
+use G1c\Culturia\app\Auth\controllers\FavoriteCrudController;
 use G1c\Culturia\app\Auth\controllers\LoginAttemptController;
 use G1c\Culturia\app\Auth\controllers\LoginController;
 use G1c\Culturia\app\Auth\controllers\LogoutController;
@@ -30,6 +31,7 @@ class AuthModule extends Module
         $router->get("/cgu", AuthController::class, "auth.cgu");
          $router->post("/logout", LogoutController::class, "auth.logout");
          $router->get($container->get("auth.prefix") . "/{id:[0-9]+}", ProfileController::class, 'auth.index');
+         $router->crud($container->get("auth.prefix") . "/favorite", FavoriteCrudController::class, 'client.favorite');
          if(!$container->get(SessionInterface::class)->get("auth.user")){
              $router->get($container->get("auth.login"), LoginController::class, "auth.login");
              $router->post($container->get("auth.login"), LoginAttemptController::class);

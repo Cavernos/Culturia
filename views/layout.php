@@ -40,11 +40,12 @@ use G1c\Culturia\app\Auth\model\ClientModel;
             <!-- Header Icons -->
             <div class="header-icons">
                 <?php if ($current_user() instanceof ClientModel) { ?>
+                <?php if ( $pathFor('client.favorite.index') != ''){ ?>
                 <!-- Favoris -->
-                <a href="#" class="icon-btn">
+                <a href="<?= $pathFor('client.favorite.index')?>" class="icon-btn">
                     <img src="/assets/img/favoris.svg" alt="Favoris">
                 </a>
-
+                    <?php } ?>
                 <?php if ( $pathFor('shop.cart.index') != ''){ ?>
                 <!-- Panier -->
                 <a href="<?= $pathFor('shop.cart.index') ?>" class="icon-btn">

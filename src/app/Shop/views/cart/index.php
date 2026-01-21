@@ -8,7 +8,7 @@
 <?php } else {?>
 <div class="cart-container">
     <h2 class="left">Nombre d'articles: <?= count($items ?? []) ?></h2>
-    <h2 class="right">Prix total: <?=$total_price ?? 0 ?>€</h2>
+    <h2 class="right">Prix total: <?= array_sum(array_column(iterator_to_array($items ?? []), "price")) ?? 0 ?>€</h2>
 </div>
 <hr>
 <table class="cart-articles">
@@ -42,7 +42,7 @@
     </tbody>
 </table>
 <div class="cart-footer">
-    <h1>Prix total : <?=$total_price ?? 0?> €</h1>
+    <h1>Prix total : <?= array_sum(array_column(iterator_to_array($items ?? []), "price")) ?? 0?> €</h1>
     <button class="button" type="submit">Finaliser ma commande</button>
 </div>
 <?php } ?>

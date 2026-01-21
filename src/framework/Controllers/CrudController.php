@@ -6,9 +6,11 @@ use G1c\Culturia\framework\Database\Hydrator;
 use G1c\Culturia\framework\Database\Table;
 use G1c\Culturia\framework\Model;
 use G1c\Culturia\framework\Renderer;
+use G1c\Culturia\framework\Response\RedirectResponse;
 use G1c\Culturia\framework\Router\Router;
 use G1c\Culturia\framework\Session\FlashService;
 use G1c\Culturia\framework\Validator;
+use Intervention\Image\Colors\Rgb\Channels\Red;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -59,7 +61,7 @@ class CrudController
         return $this->index($request);
     }
 
-    public function index(ServerRequestInterface $request): string
+    public function index(ServerRequestInterface $request): string|ResponseInterface
     {
         $items = $this->table->makeQuery();
         return $this->renderer->render("$this->viewPath/index", compact("items"));
