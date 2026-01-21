@@ -43,13 +43,14 @@ use G1c\Culturia\app\Auth\model\ClientModel;
                 <?php if ( $pathFor('client.favorite.index') != ''){ ?>
                 <!-- Favoris -->
                 <a href="<?= $pathFor('client.favorite.index')?>" class="icon-btn">
+                    <div class="cart-count"><?= $session_count("favorites") ?></div>
                     <img src="/assets/img/favoris.svg" alt="Favoris">
                 </a>
                     <?php } ?>
-                <?php if ( $pathFor('shop.cart.index') != ''){ ?>
+                <?php if ( $pathFor('client.cart.index') != ''){ ?>
                 <!-- Panier -->
-                <a href="<?= $pathFor('shop.cart.index') ?>" class="icon-btn">
-                    <div class="cart-count"><?= $cart_count() ?></div>
+                <a href="<?= $pathFor('client.cart.index') ?>" class="icon-btn">
+                    <div class="cart-count"><?= $session_count("carts") ?></div>
                     <img src="/assets/img/cart.svg" alt="Panier">
                 </a>
                 <?php } ?>
@@ -76,7 +77,7 @@ use G1c\Culturia\app\Auth\model\ClientModel;
 
                     <?php } ?>
                 <?php }?>
-                <?php if ( $pathFor('auth.login') != '' && $pathFor('auth.register') != '') { ?>
+                <?php if ( !$current_user()) { ?>
                     <button for-modal="login"  class="button">Se connecter</button>
                     <button for-modal="register" class="button">S'inscrire</button>
                 <?php } ?>
@@ -135,13 +136,13 @@ use G1c\Culturia\app\Auth\model\ClientModel;
                     <li><a href="<?= $pathFor("home.index") ?>">Accueil</a></li>
                     <?php } if ( $pathFor("category.index") != ''){ ?>
                     <li><a href="<?= $pathFor("category.popular") ?>">Catégorie</a></li>
-                    <?php } if ( $pathFor("artists.popular") != ''){ ?>
-                    <li><a href="<?= $pathFor("artists.popular") ?>">Artistes populaires</a></li>
-                    <?php } if ( $pathFor("shop.popular") != ''){ ?>
-                    <li><a href="<?= $pathFor("shop.popular") ?>">Oeuvres populaires</a></li>
-                    <?php } if ( $pathFor("auth.login") != ''){ ?>
+                    <?php } if ( $pathFor("artists.index") != ''){ ?>
+                    <li><a href="<?= $pathFor("artists.index") ?>">Artistes populaires</a></li>
+                    <?php } if ( $pathFor("shop.index") != ''){ ?>
+                    <li><a href="<?= $pathFor("shop.index") ?>">Boutique</a></li>
+                    <?php } if ( $pathFor("auth.login") != '' && !$current_user()){ ?>
                     <li><a href="<?= $pathFor("auth.login") ?>">Connexion</a></li>
-                    <?php } if ( $pathFor("auth.register") != ''){ ?>
+                    <?php } if ( $pathFor("auth.register") != '' && !$current_user()){ ?>
                         <li><a href="<?= $pathFor("auth.register") ?>">Inscription</a></li>
                     <?php } if ( $pathFor("advice.index") != ''){ ?>
                     <li><a href="<?= $pathFor("advice.index") ?>">Avis</a></li>
@@ -159,7 +160,9 @@ use G1c\Culturia\app\Auth\model\ClientModel;
                     <?php if ( $pathFor("home.faq") != ''){ ?>
                     <li><a href="<?= $pathFor("home.faq") ?>">FAQ</a></li>
                     <?php } ?>
-                    <li><a href="#">Mention légal</a></li>
+                    <?php if($pathFor("shop.cgu")) { ?>
+                    <li><a href="<?= $pathFor("shop.cgu") ?>">Mention légal</a></li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>

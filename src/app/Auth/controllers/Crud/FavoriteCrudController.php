@@ -1,9 +1,8 @@
 <?php
 
-namespace G1c\Culturia\app\Auth\controllers;
+namespace G1c\Culturia\app\Auth\controllers\Crud;
 
 use G1c\Culturia\framework\Controllers\SessionCrudController;
-use G1c\Culturia\framework\Response\RedirectResponse;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 

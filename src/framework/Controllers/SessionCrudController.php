@@ -48,7 +48,7 @@ class SessionCrudController extends CrudController
         return $this->renderer->render("$this->viewPath/index", compact("items"));
     }
 
-    public function edit(ServerRequestInterface $request): string
+    public function edit(ServerRequestInterface $request): string|ResponseInterface
     {
         if ($request->getMethod() == "POST") {
             $item = $this->table->findById($request->getAttribute("id"));
@@ -64,7 +64,7 @@ class SessionCrudController extends CrudController
                 }
             }
 
-            $this->redirect("shop.view",
+            return $this->redirect("shop.view",
                 ["slug" => str_replace(" ", "-", strtolower($item->name)), "id" => $item->id]);
         }
         return $this->index($request);

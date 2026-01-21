@@ -1,15 +1,12 @@
 <?php namespace G1c\Culturia\app\Shop;
 
-use G1c\Culturia\app\Shop\controllers\CartCrudController;
 use G1c\Culturia\app\Shop\controllers\ShopController;
 use G1c\Culturia\app\Shop\controllers\ShopCrudController;
 use G1c\Culturia\framework\Container;
-use G1c\Culturia\framework\Controllers\CrudController;
 use G1c\Culturia\framework\Logger;
 use G1c\Culturia\framework\Module;
 use G1c\Culturia\framework\Renderer;
 use G1c\Culturia\framework\Router\Router;
-use G1c\Culturia\framework\Session\SessionInterface;
 
 class ShopModule extends Module {
     const string DEFINITIONS = __DIR__ . '/config.php';
@@ -34,7 +31,7 @@ class ShopModule extends Module {
         $router->get($prefix . "/{slug:[a-z\-0-9]+}-{id:[0-9]+}", ShopController::class, 'shop.view');
         if($c->has("admin.prefix")){
             $admin_prefix = $c->get("admin.prefix");
-            $router->crud($admin_prefix . $prefix . "/cart", CartCrudController::class, 'shop.cart');
+
             $router->crud($admin_prefix . $prefix . "/artwork", ShopCrudController::class, 'admin.artworks');
         }
 

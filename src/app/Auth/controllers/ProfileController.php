@@ -34,7 +34,10 @@ class ProfileController
     public function index(ServerRequestInterface $request): string
     {
         $user = $this->clientTable->findById($request->getAttribute("id"));
-        $favorite_artworks = $this->session->get("favorite")[$user->id];
-        return $this->renderer->render("@auth/profile/index", compact("user", "favorite_artworks"));
+        $favorites = $this->session->get("favorite", []);
+        if(isset($favorites[$user->id])) {
+            $favorites = $favorites[$user->id];
+        }
+        return $this->renderer->render("@auth/profile/index", compact("user", "favorites"));
     }
 }

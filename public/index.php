@@ -2,13 +2,14 @@
 
 use G1c\Culturia\app\Admin\AdminModule;
 use G1c\Culturia\app\App;
+use G1c\Culturia\app\Artists\ArtistsLoggedInMiddleware;
 use G1c\Culturia\app\Artists\ArtistsModule;
 use G1c\Culturia\app\Auth\AuthModule;
+use G1c\Culturia\app\Auth\ClientLoggedInMiddleware;
 use G1c\Culturia\app\Auth\ForbiddenMiddleware;
 use G1c\Culturia\app\Auth\InvalidCsrfMiddleware;
 use G1c\Culturia\app\Home\HomeModule;
 use G1c\Culturia\app\Shop\ShopModule;
-use G1c\Culturia\framework\Auth\LoggedInMiddleware;
 use G1c\Culturia\framework\Middlewares\CsrfMiddleware;
 use G1c\Culturia\framework\Middlewares\MethodMiddleware;
 use G1c\Culturia\framework\Middlewares\NotFoundMiddleware;
@@ -35,7 +36,8 @@ $app->pipe(TrailingSlashMiddleware::class)
     ->pipe(InvalidCsrfMiddleware::class)
     ->pipe(CsrfMiddleware::class)
     ->pipe(ForbiddenMiddleware::class)
-    ->pipe($container->get("admin.prefix"), LoggedInMiddleware::class)
+    ->pipe($container->get("admin.prefix"), ArtistsLoggedInMiddleware::class)
+    ->pipe($container->get("auth.prefix"), ClientLoggedInMiddleware::class )
     ->pipe(RouterMiddleware::class)
     ->pipe(NotFoundMiddleware::class);
 if (php_sapi_name() !== 'cli') {

@@ -9,19 +9,25 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class LoggedInMiddleware
 {
-    private Auth $auth;
+    protected Auth $auth;
 
     public function __construct(Auth $auth)
     {
         $this->auth = $auth;
     }
-    public function __invoke(ServerRequestInterface $request, callable $next)
+
+    /**
+     * @param ServerRequestInterface $request
+     * @param callable $next
+     * @return mixed
+     * @throws ForbiddenException
+     */
+    public function __invoke(ServerRequestInterface $request, callable $next): mixed
     {
         $user = $this->auth->getUser();
        if(!$user) {
-           throw new ForbiddenException();
+           throw new ForbiddenException("Vous devez être connecté pour accéder à cette page");
        }
-
         $request->withAttribute('user', $user);
         return $next($request);
 

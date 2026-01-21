@@ -34,7 +34,7 @@
     <div class="panel-element">
         <h1 class="page-sub-title"><?= $current_user() == $user ? "Vos o" : "O"?>euvres favorites</h1>
         <div class="panel-container">
-            <?php foreach ($favorite_artworks ?? [] as $artwork) {?>
+            <?php foreach ($favorites ?? [] as $artwork) {?>
                 <a href="<?= $pathFor("shop.view", ["slug" => $artwork->getSlug(), "id" => $artwork->id]) ?>" class="card">
                     <?php if($current_user() == $user) { ?>
                         <form method="POST" action="<?= $pathFor("client.favorite.delete" ,["id" => $artwork->id]) ?>" class="delete-form">

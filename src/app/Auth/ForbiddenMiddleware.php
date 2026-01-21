@@ -2,6 +2,7 @@
 
 namespace G1c\Culturia\app\Auth;
 
+use G1c\Culturia\app\Auth\exceptions\ClientForbiddenException;
 use G1c\Culturia\framework\Auth\ForbiddenException;
 use G1c\Culturia\framework\Response\RedirectResponse;
 use G1c\Culturia\framework\Router\Router;
@@ -25,10 +26,11 @@ class ForbiddenMiddleware
  public function __invoke(ServerRequestInterface $request, callable $next) {
         try {
             return $next($request);
-        } catch (ForbiddenException $e)
+        }
+        catch (ForbiddenException $e)
         {
             $this->session->set('auth.redirect', $request->getUri()->getPath());
-            (new FlashService($this->session))->error("Vous devez être connecté pour accéder à cette page");
+            (new FlashService($this->session))->error($e->getMessage());
             return new RedirectResponse($this->loginPath);
         }
  }

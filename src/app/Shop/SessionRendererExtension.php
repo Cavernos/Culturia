@@ -7,7 +7,7 @@ use G1c\Culturia\framework\Renderer\ExtensionFunction;
 use G1c\Culturia\framework\Renderer\RendererExtensionInterface;
 use G1c\Culturia\framework\Session\SessionInterface;
 
-class CartRendererExtension implements RendererExtensionInterface
+class SessionRendererExtension implements RendererExtensionInterface
 {
     private SessionInterface $session;
     private Auth $auth;
@@ -21,12 +21,12 @@ class CartRendererExtension implements RendererExtensionInterface
 
     public function getFunctions(): ExtensionFunction
     {
-        return new ExtensionFunction("cart_count", [$this, "count"]);
+        return new ExtensionFunction("session_count", [$this, "count"]);
     }
 
-    public function count(): int {
+    public function count(string $sessionKey): int {
         $user = $this->auth->getUser();
-        $carts = $this->session->get("carts", []);
+        $carts = $this->session->get($sessionKey, []);
         if(!is_null($user) && isset($carts[$user->id])) {
             return count($carts[$user->id]);
         }
