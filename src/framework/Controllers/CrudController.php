@@ -53,8 +53,8 @@ class CrudController
         if (str_ends_with($request->getUri()->getPath(), 'new')){
             return $this->create($request);
         }
-        if (isset($params[0])){
-            return $this->edit($request, $params[0]);
+        if ($request->getAttribute("id")){
+            return $this->edit($request);
         }
         return $this->index($request);
     }

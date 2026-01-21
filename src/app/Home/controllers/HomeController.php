@@ -33,6 +33,9 @@ class HomeController
 
     public function __invoke(ServerRequestInterface $request): string
     {
+        if(str_contains($request->getUri()->getPath(), "faq")){
+            return $this->faq($request);
+        }
         return $this->index($request);
     }
  public function index(ServerRequestInterface $request): string

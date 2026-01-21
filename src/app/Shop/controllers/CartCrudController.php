@@ -68,7 +68,7 @@ class CartCrudController extends CrudController
             $this->redirect("shop.view",
                 ["slug" => str_replace(" ", "-", strtolower($item->name)), "id" => $item->id ]);
         }
-        return $this->index();
+        return $this->index($request);
     }
 
     public function delete($id): ResponseInterface

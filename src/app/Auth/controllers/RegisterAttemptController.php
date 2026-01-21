@@ -35,6 +35,7 @@ class RegisterAttemptController
     {
         $errors = null;
         $params = $request->getParsedBody();
+        var_dump($params);
         $validator = (new Validator($params))
             ->required("username", "email", "password", "password2", "cgu", "role")
             ->length("email", 3, 255)

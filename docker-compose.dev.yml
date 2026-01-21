@@ -16,6 +16,7 @@ services:
       - ./public/index.php:/var/www/html/public/index.php
       - ./public/assets:/var/www/html/public/assets
       - ./scripts/entrypoint.sh:/usr/local/bin/entrypoint.sh
+      - ./views:/var/www/html/views
     networks:
       - web
     depends_on:

@@ -61,7 +61,7 @@ use G1c\Culturia\app\Auth\model\ClientModel;
                     <img class="profile-image" src="<?= $current_user()->avatar ? $current_user()->avatar : "/assets/img/profile.svg" ?>" alt="Profil">
                 </a>
                     <?php } else { ?>
-                        <a href="<?= $pathFor('auth.prefix', ["id" => $current_user()->id])  ?>" class="icon-btn">
+                        <a href="<?= $pathFor('auth.index', ["id" => $current_user()->id])  ?>" class="icon-btn">
                             <img class="profile-image" src="<?= $current_user()->avatar ?  $current_user()->avatar  : "/assets/img/profile.svg" ?>" alt="Profil">
                         </a>
 
@@ -215,7 +215,6 @@ use G1c\Culturia\app\Auth\model\ClientModel;
                 <?= $field($errors ?? [], 'password2', $params["password2"] ?? null, "Réécrire le mot de passe : ", ["type" => "password"]) ?>
 
                 <!-- Catégorie d'art -->
-                <?php if()?>
                 <?= $field($errors ?? [], 'category', null, "Catégorie d'art :", ["options" => ["Option 1" => "Catégorie 1"]]) ?>
 
                 <!-- Conditions -->

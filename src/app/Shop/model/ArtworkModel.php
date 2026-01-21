@@ -42,7 +42,8 @@ class ArtworkModel extends Model
 
     public function getImageUrl()
     {
-        return "/upload/artworks/{$this->image}";
+        ['filename' => $filename, 'extension' => $extension] = pathinfo($this->image);
+        return "/upload/artworks/$filename.$extension";
     }
 
 }

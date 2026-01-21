@@ -27,8 +27,8 @@
             </div>
             <div class="profile-stats">
                 <div class="profile-stats-header">
-                    <h1>Chiffre d'affaire : <?= $summary["revenue"] ?>€</h1>
-                    <h1>Nombre d'article vendus : <?= $summary["total"] ?></h1>
+                    <h1>Chiffre d'affaire : <?= $summary["revenue"] ?? 0 ?>€</h1>
+                    <h1>Nombre d'article vendus : <?= $summary["total"] ?? 0 ?></h1>
                 </div>
 
                 <h1>Dernières ventes</h1>
@@ -129,7 +129,7 @@
     <div class="panel-element">
         <h1 class="page-sub-title"><?= $current_user() == $user ? "Vos c" : "C"?>ommandes</h1>
         <div class="panel-container">
-            <?php foreach ($orders as $order) { ?>
+            <?php foreach ($orders ?? [] as $order) { ?>
                 <div class="order-container">
                     <img src="/assets/img/account.svg" alt="client"/>
                     <h2>De : Client 1</h2>

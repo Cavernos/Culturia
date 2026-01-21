@@ -77,6 +77,7 @@ class DatabaseAuth implements Auth
         ) {
             return null;
         }
+        $role = (bool)$params['role'];
         if($params["password"] === $params["password2"]){
             $params = ["username" => $params["username"],
                 "email" => $params["email"],
@@ -86,13 +87,13 @@ class DatabaseAuth implements Auth
                 "modification_date" => date("Y-m-d H:i:s")
 
             ];
-            $table = $this->getTable($params['role']);
+            $table = $this->getTable($role);
             $table->insert($params);
             $id = $table->getPdo()->lastInsertId();
             $user = $table->findById($id);
             if($user){
                 $this->session->set('auth.user', $user->id);
-                $this->session->set('auth.role', (bool)$params["role"]);
+                $this->session->set('auth.role', $role);
                 return $user;
             }
         }

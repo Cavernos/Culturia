@@ -30,7 +30,7 @@ class Validator
     {
         foreach ($keys as $key) {
             $value = $this->getValue($key);
-            if (is_null($value) || empty($value)) {
+            if (is_null($value) || $value === '') {
                 $this->addError($key, 'required');
             }
         }

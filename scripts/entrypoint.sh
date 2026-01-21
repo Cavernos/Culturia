@@ -7,6 +7,10 @@ else
   echo "Mise à jour et installation des dépendances"
   composer update && composer install --prefer-dist
   mkdir -p ./public/upload/artworks
+  cp ./public/assets/img/oeuvre_1.png ./public/upload/artworks/oeuvre_1.png
+  cp ./public/assets/img/oeuvre_2.png ./public/upload/artworks/oeuvre_2.png
+  cp ./public/assets/img/oeuvre_3.png ./public/upload/artworks/oeuvre_3.png
+  cp ./public/assets/img/oeuvre_4.png ./public/upload/artworks/oeuvre_4.png
   cp ./public/assets/img/oeuvre_1.png ./public/upload/artworks/oeuvre_1_thumb.png
   cp ./public/assets/img/oeuvre_2.png ./public/upload/artworks/oeuvre_2_thumb.png
   cp ./public/assets/img/oeuvre_3.png ./public/upload/artworks/oeuvre_3_thumb.png
