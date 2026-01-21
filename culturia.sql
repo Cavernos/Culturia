@@ -31,7 +31,14 @@ CREATE TABLE IF NOT EXISTS artists (
     inscription_date DATE,
     modification_date DATE
 );
-
+CREATE TABLE IF NOT EXISTS orders (
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    order_date DATE,
+    client_address VARCHAR(128),
+    previsionnal_delivery DATE,
+    client_id INT,
+    FOREIGN KEY (client_id) REFERENCES clients (id) ON DELETE CASCADE
+);
 CREATE TABLE IF NOT EXISTS artwork (
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     name VARCHAR(128),
@@ -61,14 +68,7 @@ CREATE TABLE IF NOT EXISTS artwork_category (
     PRIMARY KEY (artwork_id, category_id)
 );
 
-CREATE TABLE IF NOT EXISTS orders (
-    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    order_date DATE,
-    client_address VARCHAR(128),
-    previsionnal_delivery DATE,
-    client_id INT,
-    FOREIGN KEY (client_id) REFERENCES clients (id) ON DELETE CASCADE
-);
+
 
 CREATE TABLE IF NOT EXISTS reviews (
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,

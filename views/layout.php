@@ -171,7 +171,7 @@ use G1c\Culturia\app\Auth\model\ClientModel;
             <form action="<?= $pathFor("auth.login") ?>" method="post" class="login-form">
                 <?= $csrf_input() ?>
                 <?= $field($errors ?? [], 'role', $params["role"] ?? null, "<span class='left'>Artiste</span><span class='right'>Client</span>", ["type" => "switch"]) ?>
-                <?= $field($errors ?? [], "email",  $params['email'] ?? null, "E-mail ou Nom d'utilisteur :") ?>
+                <?= $field($errors ?? [], "email",  $params['email'] ?? null, "E-mail ou Nom d'utilisateur :") ?>
 
                 <!-- Mot de passe + lien "oublié ?" -->
                 <?= $field($errors ?? [], "password", $params['password'] ?? null, "Mot de passe :", ["type" => "password"]) ?>
@@ -199,10 +199,10 @@ use G1c\Culturia\app\Auth\model\ClientModel;
 
     </modal-box>
     <modal-box id="register">
-        <?= $csrf_input() ?>
         <!-- Overlay + fenêtre centrale -->
             <h1>S'inscrire</h1>
             <form class="candidature-form" action="<?= $pathFor("auth.register") ?>" method="post">
+                <?= $csrf_input() ?>
                 <?= $field($errors ?? [], 'role', $params["role"] ?? null, "<span class='left'>Artiste</span><span class='right'>Client</span>", ["type" => "switch"]) ?>
                 <!-- Nom d'artiste -->
                 <?= $field($errors ?? [], 'username', $params["username"] ?? null,  "Nom d'utilisateur : "); ?>
@@ -215,7 +215,8 @@ use G1c\Culturia\app\Auth\model\ClientModel;
                 <?= $field($errors ?? [], 'password2', $params["password2"] ?? null, "Réécrire le mot de passe : ", ["type" => "password"]) ?>
 
                 <!-- Catégorie d'art -->
-                <?= $field($errors ?? [], 'category', null, "Categorie d'art :", ["options" => ["Option 1" => "Categorie 1"]]) ?>
+                <?php if()?>
+                <?= $field($errors ?? [], 'category', null, "Catégorie d'art :", ["options" => ["Option 1" => "Catégorie 1"]]) ?>
 
                 <!-- Conditions -->
                 <?= $field($errors ?? [], 'cgu', $params["cgu"] ?? null, "<a href='{$pathFor('auth.cgu')}'>J’accepte les condition d’utilisation</a>", ["type" => "checkbox"]) ?>

@@ -5,7 +5,7 @@
                 Michel Ange
             </h1>
             <p class="carousel-element-description">
-                Artiste capable d’exrimer dans ses œuvres une parfaite maîtrise de l’anatomie et des formes humaines, alliant puissance, expressivité et émotion pour créer des compositions harmonieuses et saisissantes.
+                Artiste capable d’exprimer dans ses œuvres une parfaite maîtrise de l’anatomie et des formes humaines, alliant puissance, expressivité et émotion pour créer des compositions harmonieuses et saisissantes.
             </p>
         </div>
     </li>
@@ -15,7 +15,7 @@
                 Michel Ange
             </h1>
             <p class="carousel-element-description">
-                Artiste capable d’exrimer dans ses œuvres une parfaite maîtrise de l’anatomie et des formes humaines, alliant puissance, expressivité et émotion pour créer des compositions harmonieuses et saisissantes.
+                Artiste capable d’exprimer dans ses œuvres une parfaite maîtrise de l’anatomie et des formes humaines, alliant puissance, expressivité et émotion pour créer des compositions harmonieuses et saisissantes.
             </p>
         </div>
     </li>
@@ -25,7 +25,7 @@
                 Michel Ange
             </h1>
             <p class="carousel-element-description">
-                Artiste capable d’exrimer dans ses œuvres une parfaite maîtrise de l’anatomie et des formes humaines, alliant puissance, expressivité et émotion pour créer des compositions harmonieuses et saisissantes.
+                Artiste capable d’exprimer dans ses œuvres une parfaite maîtrise de l’anatomie et des formes humaines, alliant puissance, expressivité et émotion pour créer des compositions harmonieuses et saisissantes.
             </p>
         </div>
     </li>
@@ -35,7 +35,7 @@
                 Michel Ange
             </h1>
             <p class="carousel-element-description">
-                Artiste capable d’exrimer dans ses œuvres une parfaite maîtrise de l’anatomie et des formes humaines, alliant puissance, expressivité et émotion pour créer des compositions harmonieuses et saisissantes.
+                Artiste capable d’exprimer dans ses œuvres une parfaite maîtrise de l’anatomie et des formes humaines, alliant puissance, expressivité et émotion pour créer des compositions harmonieuses et saisissantes.
             </p>
         </div>
     </li>
@@ -53,10 +53,10 @@
 </div>
 <div class="etes-vous-artiste">
     <div class="artiste-element-container">
-        <h1>Etez-vous artiste?</h1>
+        <h1>Etes-vous artistes ?</h1>
         <p>Inscrivez-vous pour mettre en ligne vos oeuvres</p>
 
-        <a href="#register" class="button filter-button">Je m'inscrit</a>
+        <a for-modal="register" class="button filter-button">Je m'inscrit</a>
 
     </div>
     <img class = "categorie-image-artiste" src = "/assets/img/artiste_back.jpg" width="200px" height="200px" srcset=""/>

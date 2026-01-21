@@ -28,13 +28,10 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 
 
-FROM common AS production
+FROM ghcr.io/garage-isep/nginx-php-base:latest AS production
+# Project configuration
+WORKDIR /var/www/html
+COPY . .
 COPY --from=build /var/www/html/vendor /var/www/html/vendor
 COPY --from=build /usr/local/lib/php/extensions /usr/local/lib/php/extensions
 COPY --from=build /usr/local/etc/php/conf.d /usr/local/etc/php/conf.d
-
-# Expose ports
-EXPOSE 9000
-COPY scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]

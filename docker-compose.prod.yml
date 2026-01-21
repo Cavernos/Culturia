@@ -1,15 +1,33 @@
 services:
   php:
-    build:
-      context: .
-      target: production
+    image: cavernos/culturia:1.0
     container_name: culturia_prod
     environment:
       ENV: production
+      HANGAR_WEBROOT_DIR: "/var/www/html/public"
+      DATABASE_HOST: db
     ports:
-      - "9000:9000"
+      - "80:80"
     networks:
       - web
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: mysql:8
+    container_name: db_dev
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      MYSQL_DATABASE: culturia_test
+    networks:
+      - web
+    healthcheck:
+      test: >
+        mysql -e "SHOW DATABASES LIKE 'culturia_test';" | grep 'culturia_test'
+      start_period: 30s
+      interval: 5s
+      timeout: 5s
+      retries: 30
 
 
 networks:
