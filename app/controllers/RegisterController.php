@@ -4,13 +4,19 @@ class RegisterController
 {
     private User $userModel;
 
-    public function __construct()//interagir avec la bdd
+    public function __construct()
     {
         $this->userModel = new User();
     }
 
     public function showForm(): void
     {
+        // Si déjà connecté, redirige vers le profil
+        if (isset($_SESSION['user_id'])) {
+            header('Location: index.php?url=profil');
+            exit;
+        }
+
         if (empty($_SESSION['csrf_token'])) {
             $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         }
@@ -23,7 +29,7 @@ class RegisterController
 
         require '../views/register.php';
     }
-
+    /* train=tement de l'inscription*/
     public function register(): void
     {
         $errors = [];
@@ -43,7 +49,7 @@ class RegisterController
         }
 
         if (strlen($username) < 3) {
-            $errors[] = "Nom d’utilisateur trop court (min 3 caractères).";
+            $errors[] = "Nom d'utilisateur trop court (min 3 caractères).";
         }
 
         if (strlen($password) < 8) {
@@ -64,14 +70,27 @@ class RegisterController
                 'email'    => $email,
                 'username' => $username
             ];
-            header('Location: index.php');
+            header('Location: index.php?url=register');
             exit;
         }
 
-        $this->userModel->create($email, $password, $username);
+        // Créer l'utilisateur et récupérer son ID
+        $userId = $this->userModel->create($email, $password, $username);
 
-        $_SESSION['success'] = "Compte créé avec succès.";
-        header('Location: index.php');
-        exit;
+        if ($userId) {
+            // Connecter automatiquement l'utilisateur
+            $_SESSION['user_id'] = $userId;
+            $_SESSION['username'] = $username;
+            $_SESSION['email'] = $email;
+            $_SESSION['success'] = "Compte créé avec succès ! Bienvenue $username ";
+            
+            // Rediriger vers le profil
+            header('Location: index.php?url=profil');
+            exit;
+        } else {
+            $_SESSION['errors'] = ["Une erreur s'est produite lors de la création du compte."];
+            header('Location: index.php?url=register');
+            exit;
+        }
     }
 }
