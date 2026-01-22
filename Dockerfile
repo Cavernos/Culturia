@@ -2,7 +2,7 @@ FROM php:8.3-fpm-alpine AS common
 
 # Project configuration
 WORKDIR /var/www/html
-COPY . .
+
 
 
 
@@ -27,10 +27,12 @@ RUN docker-php-ext-configure zip && \
     docker-php-ext-install -j$(nproc)  pdo pdo_mysql zip exif gd opcache
 
 # Composer installation
+COPY ./composer.json .
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 RUN composer install --no-interaction --optimize-autoloader
 
 FROM build AS dev
+COPY . .
 RUN apk add --no-cache $PHPIZE_DEPS linux-headers
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 

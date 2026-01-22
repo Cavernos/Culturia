@@ -1,4 +1,9 @@
 #!/bin/sh
+
+if [ ! -d "/var/www/html/storage/migrations" ]
+then
+  php migrator.php migrate
+fi
 set -e
 
 HANGAR_WEBROOT_DIR="${HANGAR_WEBROOT_DIR:-/var/www/html}"

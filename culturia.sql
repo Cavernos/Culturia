@@ -4,8 +4,8 @@ USE culturia_test;
 DROP TABLE IF EXISTS artwork_category;
 DROP TABLE IF EXISTS category;
 DROP TABLE IF EXISTS reviews;
-DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS artwork;
+DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS artists;
 DROP TABLE IF EXISTS clients;
 
