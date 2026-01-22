@@ -14,7 +14,11 @@ class OrderTable extends Table
     protected $entity = OrderModel::class;
     public function findByArtworks(array $ids): Query
     {
-        return $this->makeQuery()->where("id IN (" . implode(", ", array_filter($ids)) . ")");
+        return $this->makeQuery()
+            ->where("orders.id IN (" . implode(", ", array_filter($ids)) . ")")
+            ->select("orders.*", "clients.username", "clients.avatar")
+            ->order("order_date DESC")
+            ->join("clients", "orders.client_id = clients.id");
     }
 
 

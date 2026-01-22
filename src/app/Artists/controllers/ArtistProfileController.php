@@ -46,17 +46,17 @@ class ArtistProfileController
 
     public function __invoke(ServerRequestInterface $request): string|RedirectResponse
     {
-        $this->renderer->addGlobal("viewPath", "@artists/profile");
+        $this->renderer->addGlobal("viewPath", "@auth/profile");
         if($request->getMethod() === "DELETE") {
             return $this->delete($request);
         }
         if(str_ends_with($request->getUri()->getPath(), "edit")) {
             return $this->edit($request);
         }
-        return $this->profile($request);
+        return $this->index($request);
     }
 
-    public function profile(ServerRequestInterface $request): string
+    public function index(ServerRequestInterface $request): string
     {
         $id = $request->getAttribute("id");
         try {
@@ -82,7 +82,10 @@ class ArtistProfileController
         }
         $order_ids = array_unique(array_filter($order_ids));
         if (count($order_ids) > 0) {
-            $ordersResult = $this->orderTable->findByArtworks($order_ids)->fetchAll();
+            $ordersResult = $this->orderTable
+                ->findByArtworks($order_ids)
+
+                ->fetchAll();
             $order_artworks = $this->artworkTable
                 ->makeQuery()
                 ->where("order_id IN (" . implode(",", $order_ids) . ")")

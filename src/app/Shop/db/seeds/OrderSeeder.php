@@ -17,6 +17,7 @@ class OrderSeeder extends Seeder
                 "order_date" => $time,
                 "client_address" => $i * 33 . "Ter 79800",
                 "previsionnal_delivery" => $time,
+                "client_id" => random_int(1, 100)
             ];
         }
         $this->table()->insert($data)->save();

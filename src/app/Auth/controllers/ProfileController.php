@@ -4,6 +4,7 @@ namespace G1c\Culturia\app\Auth\controllers;
 
 use G1c\Culturia\app\Auth\table\ClientTable;
 use G1c\Culturia\app\Shop\table\ArtworkTable;
+use G1c\Culturia\app\Shop\table\OrderTable;
 use G1c\Culturia\framework\Controllers\SessionCrudController;
 use G1c\Culturia\framework\Renderer;
 use G1c\Culturia\framework\Response\RedirectResponse;
@@ -22,9 +23,13 @@ class ProfileController
     private ClientTable $clientTable;
     private SessionInterface $session;
     private Router $router;
+    private OrderTable $orderTable;
+    private ArtworkTable $artworkTable;
 
     public function __construct(Renderer $renderer,
                                 ClientTable $clientTable,
+                                OrderTable $orderTable,
+                                ArtworkTable $artworkTable,
                                 Router $router,
                                 SessionInterface $session)
     {
@@ -32,6 +37,8 @@ class ProfileController
         $this->clientTable = $clientTable;
         $this->session = $session;
         $this->router = $router;
+        $this->orderTable = $orderTable;
+        $this->artworkTable = $artworkTable;
     }
 
     public function __invoke(ServerRequestInterface $request): string|RedirectResponse
@@ -50,6 +57,19 @@ class ProfileController
     {
         $user = $this->clientTable->findById($request->getAttribute("id"));
         $favorites = $this->session->get("favorite", []);
+        $orders = $this->orderTable->makeQuery()
+            ->select("orders.*")
+            ->where("client_id = :id")
+            ->params([":id" => $user->id])
+            ->fetchAll();
+        $order_ids = [];
+        foreach ($orders as $order) {
+            $order_ids[] = $order->id;
+        }
+        $artworks = $this->artworkTable->makeQuery()
+            ->where("order_id IN (:id)")
+            ->params([":id" => implode(", ", $order_ids)])
+        ->fetchAll();
         if(isset($favorites[$user->id])) {
             $favorites = $favorites[$user->id];
         }

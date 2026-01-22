@@ -33,55 +33,19 @@
                 </div>
 
                 <h1>Dernières ventes</h1>
-                <div class="last-item-sold">
-                    <div class="card">
-                        <div class="card-container">
-                            <img class='card-image' src="../public/assets/img/oeuvre_1.png" alt="" srcset=""/>
-                            <div class="card-title">
-                                <h4 class="card-name">Nom oeuvre</h4>
-                                <h4 class="card-price">650 €</h4>
+                <a class="last-item-sold">
+                    <?php foreach ($orders[0]["artworks"] ?? [] as $artwork) { ?>
+                        <a href="<?= $pathFor("shop.view", ["slug" => $artwork->getSlug(), "id" => $artwork->id]) ?>" class="card">
+                            <div class="card-container">
+                                <img class='card-image' src="<?= $artwork->getThumb() ?>" alt="<?=$artwork->name ?>" srcset=""/>
+                                <div class="card-title">
+                                    <h4 class="card-name"><?= $artwork->name ?></h4>
+                                    <h4 class="card-price"><?= $artwork->price ?> €</h4>
+                                </div>
+                                <p class="card-description"><?= $artwork->description ?></p>
                             </div>
-                            <h4 class="card-author">Artiste</h4>
-                            <p class="card-description">Description concise de l’oeuvre en expliqueant le style, date, lieu de création...</p>
-                        </div>
-
-                    </div>
-                    <div class="card">
-                        <div class="card-container">
-                            <img class='card-image' src="../public/assets/img/oeuvre_1.png" alt="" srcset=""/>
-                            <div class="card-title">
-                                <h4 class="card-name">Nom oeuvre</h4>
-                                <h4 class="card-price">650 €</h4>
-                            </div>
-                            <h4 class="card-author">Artiste</h4>
-                            <p class="card-description">Description concise de l’oeuvre en expliqueant le style, date, lieu de création...</p>
-                        </div>
-
-                    </div>
-                    <div class="card">
-                        <div class="card-container">
-                            <img class='card-image' src="../public/assets/img/oeuvre_1.png" alt="" srcset=""/>
-                            <div class="card-title">
-                                <h4 class="card-name">Nom oeuvre</h4>
-                                <h4 class="card-price">650 €</h4>
-                            </div>
-                            <h4 class="card-author">Artiste</h4>
-                            <p class="card-description">Description concise de l’oeuvre en expliqueant le style, date, lieu de création...</p>
-                        </div>
-
-                    </div>
-                    <div class="card">
-                        <div class="card-container">
-                            <img class='card-image' src="../public/assets/img/oeuvre_1.png" alt="" srcset=""/>
-                            <div class="card-title">
-                                <h4 class="card-name">Nom oeuvre</h4>
-                                <h4 class="card-price">650 €</h4>
-                            </div>
-                            <h4 class="card-author">Artiste</h4>
-                            <p class="card-description">Description concise de l’oeuvre en expliqueant le style, date, lieu de création...</p>
-                        </div>
-
-                    </div>
+                        </a>
+                    <?php } ?>
 
                 </div>
 
@@ -89,9 +53,6 @@
             </div>
 
             <?php } ?>
-
-
-        </div>
     </div>
 
     <div class="panel-element">
@@ -132,23 +93,23 @@
         <div class="panel-container">
             <?php foreach ($orders ?? [] as $order) { ?>
                 <div class="order-container">
-                    <img src="/assets/img/account.svg" alt="client"/>
-                    <h2>De : Client 1</h2>
+                    <img src="<?= $order['order']->avatar ?? "/assets/img/account.svg"?>" alt="client"/>
+                    <h2>De : <?= $order['order']->username ?? "Anonyme" ?></h2>
                     <h2>Nombre d'article : <?= count($order["artworks"]) ?></h2>
                     <h2>Prix total : <?= array_sum(array_column(iterator_to_array($order["artworks"]), 'price'))?> €</h2>
                     <a id="toggle" class="button">Récapitulatif de la commande</a>
                     <div class="order-content">
                         <?php foreach ($order["artworks"] as $artwork) { ?>
-                        <div class="card">
-                            <div class="card-container">
-                                <img class='card-image' src="<?= $artwork->getThumb() ?>" alt="<?= $artwork->name ?>" srcset=""/>
-                                <div class="card-title">
-                                    <h4 class="card-name"><?= $artwork->name ?></h4>
-                                    <h4 class="card-price"><?= $artwork->price ?> €</h4>
+                            <a href="<?= $pathFor("shop.view", ["slug" => $artwork->getSlug(), "id" => $artwork->id]) ?>" class="card">
+                                <div class="card-container">
+                                    <img class='card-image' src="<?= $artwork->getThumb() ?>" alt="<?=$artwork->name ?>" srcset=""/>
+                                    <div class="card-title">
+                                        <h4 class="card-name"><?= $artwork->name ?></h4>
+                                        <h4 class="card-price"><?= $artwork->price ?> €</h4>
+                                    </div>
+                                    <p class="card-description"><?= $artwork->description ?></p>
                                 </div>
-                                <p class="card-description"><?= $artwork->description ?></p>
-                            </div>
-                        </div>
+                            </a>
                         <?php } ?>
                         <?php if(iterator_count($order['artworks']) > 4) { ?>
                             <a href="" class="button">Voir toutes les oeuvres</a>
@@ -157,5 +118,5 @@
                 </div>
             <?php } ?>
         </div>
-
     </div>
+</div>

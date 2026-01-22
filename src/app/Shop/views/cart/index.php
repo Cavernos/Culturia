@@ -31,7 +31,7 @@
         <td>60x70</td>
         <td>Abstrait</td>
         <td>
-            <form action="<?= $pathFor("shop.cart.delete", ["id" => $item->id]) ?>" method="POST">
+            <form action="<?= $pathFor("client.cart.delete", ["id" => $item->id]) ?>" method="POST">
                 <input name="_METHOD" value="DELETE" type="hidden"/>
                 <?= $csrf_input() ?>
                 <button class="button iconify-button delete-button" type="submit"></button>
@@ -43,6 +43,9 @@
 </table>
 <div class="cart-footer">
     <h1>Prix total : <?= array_sum(array_column(iterator_to_array($items ?? []), "price")) ?? 0?> €</h1>
-    <button class="button" type="submit">Finaliser ma commande</button>
+    <form action="<?= $pathFor("client.orders.create")?>" method="POST">
+        <?= $csrf_input() ?>
+        <button class="button" type="submit">Finaliser ma commande</button>
+    </form>
 </div>
 <?php } ?>

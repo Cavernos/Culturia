@@ -5,6 +5,7 @@ namespace G1c\Culturia\app\Auth;
 use G1c\Culturia\app\Auth\controllers\AuthController;
 use G1c\Culturia\app\Auth\controllers\Crud\CartCrudController;
 use G1c\Culturia\app\Auth\controllers\Crud\FavoriteCrudController;
+use G1c\Culturia\app\Auth\controllers\Crud\OrderCrudController;
 use G1c\Culturia\app\Auth\controllers\LoginAttemptController;
 use G1c\Culturia\app\Auth\controllers\LoginController;
 use G1c\Culturia\app\Auth\controllers\LogoutController;
@@ -37,6 +38,8 @@ class AuthModule extends Module
          $router->get($client_prefix . "/{id:[0-9]+}/edit", ProfileController::class, 'auth.edit');
          $router->post($client_prefix . "/{id:[0-9]+}/edit", ProfileController::class);
          $router->delete($client_prefix . "/{id:[0-9]+}", ProfileController::class, "auth.delete");
+
+         $router->post($client_prefix . "/orders/new", OrderCrudController::class, "client.orders.create");
 
 
          $router->crud($client_prefix . "/favorite", FavoriteCrudController::class, 'client.favorite');
